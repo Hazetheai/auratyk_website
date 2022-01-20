@@ -107,10 +107,9 @@ export default {
 
   styleResources: {
     scss: [
-      '~assets/scss/resources/_mixins.scss',
-      '~assets/scss/resources/_breakpoints.scss',
-      '~assets/scss/resources/_hover.scss',
-      '~assets/scss/resources/_media.scss',
+      '~assets/scss/shared/_mixins.scss',
+      '~assets/scss/shared/_breakpoints.scss',
+      '~assets/scss/shared/_media.scss',
     ],
     hoistUseStatements: true, // Hoists the "@use" imports. Applies only to "sass", "scss" and "less". Default: false.
   },
