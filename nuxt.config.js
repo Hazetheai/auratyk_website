@@ -122,7 +122,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    '@nuxtjs/style-resources',
+    // '@nuxtjs/style-resources',
     'nuxt-mq',
     'nuxt-helmet',
     'nuxt-ssr-cache',
@@ -162,7 +162,6 @@ export default {
     { src: '~/plugins/directives.js', mode: 'client' },
     { src: '~/plugins/gsap.js', mode: 'client' },
     { src: '~/plugins/three.js', mode: 'client' },
-    { src: '~/plugins/soundReactor.js', mode: 'client' },
     { src: '~/plugins/soundReactor.js', mode: 'client' },
     { src: '~/plugins/loadingController.js', mode: 'client' },
   ],
