@@ -37,7 +37,7 @@
 
 // edit space unit on a component level
 @mixin spaceUnit($space-unit) {
-  --space-unit:  #{$space-unit};
+  --space-unit: #{$space-unit};
 }
 
 // --------------------------------
@@ -65,16 +65,19 @@
 
 // define HSL color variable
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {
-  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");#{$color}-h: #{$hue};#{$color}-s: #{$saturation};#{$color}-l: #{$lightness};
+  #{$color}: unquote('hsl(#{$hue}, #{$saturation}, #{$lightness})');
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
 }
 
 // return color with different opacity value
 @function alpha($color, $opacity) {
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');
-  $color-h: var(#{$color+'-h'});
-  $color-s: var(#{$color+'-s'});
-  $color-l: var(#{$color+'-l'});
+  $color-h: var(#{$color + '-h'});
+  $color-s: var(#{$color + '-s'});
+  $color-l: var(#{$color + '-l'});
   @return hsla($color-h, $color-s, $color-l, $opacity);
 }
 
@@ -82,20 +85,31 @@
 @function lightness($color, $lightnessMultiplier) {
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');
-  $color-h: var(#{$color+'-h'});
-  $color-s: var(#{$color+'-s'});
-  $color-l: var(#{$color+'-l'});
+  $color-h: var(#{$color + '-h'});
+  $color-s: var(#{$color + '-s'});
+  $color-l: var(#{$color + '-l'});
   @return hsl($color-h, $color-s, calc(#{$color-l} * #{$lightnessMultiplier}));
 }
 
 // modify color HSLA values
-@function adjustHSLA($color, $hueMultiplier: 1, $saturationMultiplier: 1, $lightnessMultiplier: 1, $opacity: 1) {
+@function adjustHSLA(
+  $color,
+  $hueMultiplier: 1,
+  $saturationMultiplier: 1,
+  $lightnessMultiplier: 1,
+  $opacity: 1
+) {
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');
-  $color-h: var(#{$color+'-h'});
-  $color-s: var(#{$color+'-s'});
-  $color-l: var(#{$color+'-l'});
-  @return hsla(calc(#{$color-h} * #{$hueMultiplier}), calc(#{$color-s} * #{$saturationMultiplier}), calc(#{$color-l} * #{$lightnessMultiplier}), $opacity);
+  $color-h: var(#{$color + '-h'});
+  $color-s: var(#{$color + '-s'});
+  $color-l: var(#{$color + '-l'});
+  @return hsla(
+    calc(#{$color-h} * #{$hueMultiplier}),
+    calc(#{$color-s} * #{$saturationMultiplier}),
+    calc(#{$color-l} * #{$lightnessMultiplier}),
+    $opacity
+  );
 }
 
 // replace substring with another string
@@ -103,7 +117,12 @@
 @function str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
   }
   @return $string;
 }
@@ -134,18 +153,30 @@
 
 // --------------------------------
 
-@mixin triangle ($direction: up, $width: 12px, $color: red) {
+@mixin triangle($direction: up, $width: 12px, $color: red) {
   width: 0;
   height: 0;
   border: $width solid transparent;
 
-  @if( $direction == left ) {
+  @if ($direction == left) {
     border-right-color: $color;
-  } @else if( $direction == right ) {
+  } @else if($direction == right) {
     border-left-color: $color;
-  } @else if( $direction == down ) {
+  } @else if($direction == down) {
     border-top-color: $color;
   } @else {
     border-bottom-color: $color;
+  }
+}
+
+// --------------------------------
+
+// Gestures
+
+// --------------------------------
+
+@mixin hover {
+  @media (hover: hover) {
+    @content;
   }
 }
