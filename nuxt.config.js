@@ -162,6 +162,10 @@ export default {
     { src: '~/plugins/mouse.js', mode: 'client' },
     { src: '~/plugins/directives.js', mode: 'client' },
     { src: '~/plugins/gsap.js', mode: 'client' },
+    { src: '~/plugins/three.js', mode: 'client' },
+    { src: '~/plugins/soundReactor.js', mode: 'client' },
+    { src: '~/plugins/soundReactor.js', mode: 'client' },
+    { src: '~/plugins/loadingController.js', mode: 'client' },
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
