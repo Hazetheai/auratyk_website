@@ -38,7 +38,7 @@ class SoundReactor {
 
   update() {
     this.analyser.getByteFrequencyData(this.fftdata)
-    console.log(`hey`)
+    // console.log(`hey`)
   }
 
   bind() {
