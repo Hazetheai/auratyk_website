@@ -1,6 +1,6 @@
 <template>
   <div class="threeScene">
-    <div class="container" ref="container"></div>
+    <div ref="container"></div>
   </div>
 </template>
 
