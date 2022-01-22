@@ -1,24 +1,15 @@
 <template>
-  <div>
-    <MainHeader1 />
-    <!-- <Hero /> -->
-    <LoadingScreen />
-    <TitleScreen />
-    <ThreeScene />
-  </div>
+  <div class="home"><AuratykHomeScene /> <AuratykHomeSceneOverlay /></div>
 </template>
 
 <script>
-import MainHeader1 from '../components/G-MainHeader-1.vue'
-import Hero from '../components/blocks/hero.vue'
-import ThreeScene from '../components/webgl/ThreeScene.vue'
-import TitleScreen from '../components/webgl/TitleScreen.vue'
-import LoadingScreen from '../components/webgl/LoadingScreen.vue'
+import AuratykHomeScene from '@/components/webgl/AuratykHomeScene'
+import AuratykHomeSceneOverlay from '@/components/blocks/AuratykHomeSceneOverlay'
 export default {
   layout(context) {
     return 'default'
   },
   name: 'IndexPage',
-  components: { MainHeader1, Hero, ThreeScene, TitleScreen, LoadingScreen },
+  components: { AuratykHomeScene, AuratykHomeSceneOverlay },
 }
 </script>
