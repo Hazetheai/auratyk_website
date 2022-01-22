@@ -10,13 +10,13 @@
   --font-secondary: 'Space Mono', monospace;
 
   // font size
-  --text-base-size: 1rem; // body font-size
+  --text-base-size: 1.2rem; // body font-size
   --text-scale-ratio: 1.2; // multiplier used to generate the type scale values 👇
-  
+
   // line-height
   --body-line-height: 1.4;
   --heading-line-height: 1.2;
-  
+
   // capital letters - used in combo with the lhCrop mixin
   --font-primary-capital-letter: 1;
   --font-secondary-capital-letter: 1;
@@ -25,18 +25,22 @@
   --text-unit: var(--text-base-size); // if Em units → --text-unit: 1em;
 }
 
-:root, * {
+:root,
+* {
   // type scale
-  --text-xs: calc((var(--text-unit) / var(--text-scale-ratio)) / var(--text-scale-ratio));
+  --text-xs: calc(
+    (var(--text-unit) / var(--text-scale-ratio)) / var(--text-scale-ratio)
+  );
   --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
-  --text-md: calc(var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-md: calc(
+    var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
+  );
   --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
   --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
   --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
   --text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
   --text-xxxxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
 }
-
 
 @include breakpoint(md) {
   :root {
@@ -47,22 +51,55 @@
 
 body {
   font-family: var(--font-primary);
+  color: var(--color-contrast-high);
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-primary);
   --heading-font-weight: 700;
+  color: var(--color-contrast-higher);
 }
 
 // font family
-.font-primary { font-family: var(--font-primary); }
-.font-secondary { font-family: var(--font-secondary); }
+.font-primary {
+  font-family: var(--font-primary);
+}
+.font-secondary {
+  font-family: var(--font-secondary);
+}
 
 // gradient
-.color-gradient-primary-top { background-image: linear-gradient(0deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
-.color-gradient-primary-right { background-image: linear-gradient(90deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
-.color-gradient-primary-bottom { background-image: linear-gradient(180deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
-.color-gradient-primary-left { background-image: linear-gradient(270deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
+.color-gradient-primary-top {
+  background-image: linear-gradient(
+    0deg,
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
+.color-gradient-primary-right {
+  background-image: linear-gradient(
+    90deg,
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
+.color-gradient-primary-bottom {
+  background-image: linear-gradient(
+    180deg,
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
+.color-gradient-primary-left {
+  background-image: linear-gradient(
+    270deg,
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
 
 // --------------------------------
 
@@ -71,7 +108,17 @@ h1, h2, h3, h4 {
 // --------------------------------
 
 // link style
-a, .link {}
+a,
+.link {
+  color: var(--color-accent);
+  text-decoration: none;
+  @include transition;
+
+  &:hover {
+    @include transition;
+    text-decoration: underline;
+  }
+}
 
 mark {
   background-color: alpha(var(--color-accent), 0.2);
@@ -98,7 +145,8 @@ mark {
   }
 }
 
-.article { // e.g., blog posts
+.article {
+  // e.g., blog posts
   --body-line-height: 1.58; // set body line-height
   --text-space-y-multiplier: 1.2; // control vertical spacing
 }

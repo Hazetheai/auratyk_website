@@ -180,3 +180,13 @@
     @content;
   }
 }
+
+// --------------------------------
+
+// Animations
+
+// --------------------------------
+
+@mixin transition {
+  transition: var(--base-transition);
+}

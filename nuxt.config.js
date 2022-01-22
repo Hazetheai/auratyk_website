@@ -35,7 +35,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/scss/app.scss'],
+  css: ['@/assets/scss/_base.scss', '@/assets/scss/app.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 
@@ -43,6 +43,11 @@ export default {
   components: [
     {
       path: '@/components',
+      extensions: ['vue'],
+    },
+    {
+      path: '@/assets/icons',
+      prefix: 'icon',
       extensions: ['vue'],
     },
     {
@@ -127,7 +132,19 @@ export default {
     'nuxt-helmet',
     'nuxt-ssr-cache',
     'nuxt-compress',
+    '@nuxtjs/google-fonts',
   ],
+
+  googleFonts: {
+    families: {
+      'Space+Grotesk': [300, 400, 700],
+      'Space+Mono': [100, 300],
+    },
+    prefetch: true,
+    preconnect: true,
+    preload: true,
+    display: 'swap',
+  },
 
   mq: {
     defaultBreakpoint: 'default',
@@ -162,6 +179,7 @@ export default {
     { src: '~/plugins/directives.js', mode: 'client' },
     { src: '~/plugins/gsap.js', mode: 'client' },
     { src: '~/plugins/three.js', mode: 'client' },
+    { src: '~/plugins/auratyk-home.js', mode: 'client' },
     { src: '~/plugins/soundReactor.js', mode: 'client' },
     { src: '~/plugins/loadingController.js', mode: 'client' },
   ],

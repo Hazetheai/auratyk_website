@@ -1,10 +1,5 @@
-// --------------------------------
-
-// (START) Global editor code https://codyhouse.co/ds/globals/colors
-
-// --------------------------------
-
-:root, [data-theme="default"] {
+:root,
+[data-theme='default'] {
   // main
   @include defineColorHSL(--color-primary-darker, 0, 0%, 0%);
   @include defineColorHSL(--color-primary-dark, 0, 0%, 6%);
@@ -41,46 +36,104 @@
   @include defineColorHSL(--color-error-lighter, 0, 51%, 44%);
 
   // background
-  @include defineColorHSL(--color-bg-darker, 210, 4%, 89%);
-  @include defineColorHSL(--color-bg-dark, 180, 3%, 94%);
-  @include defineColorHSL(--color-bg, 0, 0%, 100%);
-  @include defineColorHSL(--color-bg-light, 180, 3%, 100%);
-  @include defineColorHSL(--color-bg-lighter, 210, 4%, 100%);
+  @include defineColorHSL(--color-bg-darker, 0, 0%, 6%);
+  @include defineColorHSL(--color-bg-dark, 0, 0%, 9%);
+  @include defineColorHSL(--color-bg, 0, 0%, 13%);
+  @include defineColorHSL(--color-bg-light, 0, 0%, 17%);
+  @include defineColorHSL(--color-bg-lighter, 0, 0%, 20%);
 
   // color contrasts
-  @include defineColorHSL(--color-contrast-lower, 180, 1%, 84%);
-  @include defineColorHSL(--color-contrast-low, 210, 2%, 64%);
-  @include defineColorHSL(--color-contrast-medium, 204, 2%, 46%);
-  @include defineColorHSL(--color-contrast-high, 210, 7%, 21%);
-  @include defineColorHSL(--color-contrast-higher, 204, 28%, 7%);
+  @include defineColorHSL(--color-contrast-lower, 0, 0%, 23%);
+  @include defineColorHSL(--color-contrast-low, 0, 0%, 37%);
+  @include defineColorHSL(--color-contrast-medium, 0, 0%, 52%);
+  @include defineColorHSL(--color-contrast-high, 0, 0%, 75%);
+  @include defineColorHSL(--color-contrast-higher, 0, 0%, 90%);
 
   // gradients
   @include defineColorHSL(--gradient-primary-stop-1, 0, 0%, 13%);
   @include defineColorHSL(--gradient-primary-stop-2, 50, 0%, 13%);
 }
 
-body, [data-theme="default"] {
+body,
+[data-theme='default'] {
   // font rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 // background gradient
-.bg-gradient-primary { background-image: radial-gradient(var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
-.bg-gradient-primary-top { background-image: linear-gradient(0deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
-.bg-gradient-primary-right { background-image: linear-gradient(90deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
-.bg-gradient-primary-bottom { background-image: linear-gradient(180deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
-.bg-gradient-primary-left { background-image: linear-gradient(270deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)); }
+.bg-gradient-primary {
+  background-image: radial-gradient(
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
+.bg-gradient-primary-top {
+  background-image: linear-gradient(
+    0deg,
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
+.bg-gradient-primary-right {
+  background-image: linear-gradient(
+    90deg,
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
+.bg-gradient-primary-bottom {
+  background-image: linear-gradient(
+    180deg,
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
+.bg-gradient-primary-left {
+  background-image: linear-gradient(
+    270deg,
+    var(--gradient-primary-stop-1),
+    var(--gradient-primary-stop-2)
+  );
+}
 
 // border gradient
-.border-gradient-primary { border-image: radial-gradient(var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)) 1; }
-.border-gradient-primary-top { border-image: linear-gradient(0deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)) 1; }
-.border-gradient-primary-right { border-image: linear-gradient(90deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)) 1; }
-.border-gradient-primary-bottom { border-image: linear-gradient(180deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)) 1; }
-.border-gradient-primary-left { border-image: linear-gradient(270deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2)) 1; }
-
-// --------------------------------
-
-// (END) Global editor code
-
-// --------------------------------
+.border-gradient-primary {
+  border-image: radial-gradient(
+      var(--gradient-primary-stop-1),
+      var(--gradient-primary-stop-2)
+    )
+    1;
+}
+.border-gradient-primary-top {
+  border-image: linear-gradient(
+      0deg,
+      var(--gradient-primary-stop-1),
+      var(--gradient-primary-stop-2)
+    )
+    1;
+}
+.border-gradient-primary-right {
+  border-image: linear-gradient(
+      90deg,
+      var(--gradient-primary-stop-1),
+      var(--gradient-primary-stop-2)
+    )
+    1;
+}
+.border-gradient-primary-bottom {
+  border-image: linear-gradient(
+      180deg,
+      var(--gradient-primary-stop-1),
+      var(--gradient-primary-stop-2)
+    )
+    1;
+}
+.border-gradient-primary-left {
+  border-image: linear-gradient(
+      270deg,
+      var(--gradient-primary-stop-1),
+      var(--gradient-primary-stop-2)
+    )
+    1;
+}
