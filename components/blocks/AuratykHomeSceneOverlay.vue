@@ -47,8 +47,11 @@
         <icon-settings class="settings-btn__icon" :width="32" />
       </button>
     </footer>
-    <div v-if="this.menuOpen" class="menu-overlay">
-      <div class="menu-overlay__container flex flex-column justify-between">
+    <div v-if="this.menuOpen" class="menu-overlay grid">
+      <div class="col-2"></div>
+      <div
+        class="menu-overlay__container col-10 flex flex-column justify-between"
+      >
         <button
           class="menu-overlay__close btn btn--clear btn--clear"
           @click="toggleMenu('close')"
@@ -216,8 +219,7 @@ export default {
   backdrop-filter: blur(10px);
 
   &__container {
-    padding: var(--space-xxxl) var(--space-xxl) var(--space-xxl)
-      var(--space-xxl);
+    padding: var(--space-xxxl) 0 var(--space-xxl) 0;
     height: 100%;
     position: relative;
   }
@@ -239,5 +241,9 @@ export default {
       }
     }
   }
+}
+
+.social-menu {
+  padding-right: var(--space-xxl);
 }
 </style>
