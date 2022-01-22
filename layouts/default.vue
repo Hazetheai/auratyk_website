@@ -6,4 +6,17 @@
 export default {}
 </script>
 
-<style></style>
+<style>
+/* html,
+body,
+#__nuxt,
+#__layout,
+.app-container {
+  height: 100%;
+}
+
+.app-container > footer {
+  position: sticky;
+  top: 100vh;
+} */
+</style>
