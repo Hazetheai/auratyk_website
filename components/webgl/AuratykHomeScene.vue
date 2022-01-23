@@ -9,14 +9,27 @@
 
 export default {
   name: 'AuratykHomeScene',
+  props: ['isPlaying'],
   data() {
     return {
       scene: {},
     }
   },
-  props: {
-    msg: String,
+  watch: {
+    isPlaying: function (newData, oldData) {
+      // console.log('newData', newData)
+      // console.log('oldData', oldData)
+      // this.$props
+      // console.log('this.props.isPlaying', this.$props.isPlaying)
+
+      if (this.$props.isPlaying) {
+        this.$AuratykHomeSceneInstance.play()
+      } else this.$AuratykHomeSceneInstance.pause()
+    },
   },
+  // props: {
+  //   msg: String,
+  // },
   mounted() {
     this.loadMainThreeScene()
     // console.log('this.scene', this.scene)
