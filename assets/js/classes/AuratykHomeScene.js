@@ -8,10 +8,11 @@ import MyGUI from '../utils/MyGUI'
 import { ParticleSystem as PS } from './ParticleClass'
 // import ParticleSystem from './ParticleClass'
 import CamParralax from './CamParallaxClass'
-import { Color } from 'three'
-import { Fog } from 'three'
-
-// const ParticleSystem =
+import { Color, Fog, TextureLoader } from 'three'
+import ScreenShaderInstance from './ScreenShaderClass'
+import water_refraction_frag from '@/assets/shaders/water_refraction.frag'
+import water_refraction_vert from '@/assets/shaders/water_refraction.vert'
+const texLoader = new TextureLoader()
 
 class AuratykScene {
   constructor() {
@@ -42,8 +43,21 @@ class AuratykScene {
     const fogColor = new Color('hsl(268, 43%, 72%)')
 
     const fog = new Fog(fogColor, 10, 40)
+    const texture = texLoader.load('/images/cool-bg.png')
+    const time = new THREE.Clock()
+
+    // Why Does Shader not appear?
+    const waterFilter = new THREE.ShaderMaterial({
+      uniforms: { texture0: texture, time },
+      fragmentShader: water_refraction_frag,
+      vertexShader: water_refraction_vert,
+    })
+
+    const boxGeo = new THREE.BoxGeometry(5, 5, 5)
+    const box = new THREE.Mesh(boxGeo, waterFilter)
 
     this.scene = new THREE.Scene()
+    this.scene.add(box)
     this.scene.background = bgColor
     this.scene.fog = fog
 
@@ -68,6 +82,7 @@ class AuratykScene {
     // Floor.init(this.scene)
     // Spectrum.init(this.scene)
     this.particleSystem.init(this.scene)
+    // ScreenShaderInstance.init(this.scene)
 
     MyGUI.hide()
     if (config.myGui) MyGUI.show()
@@ -111,12 +126,21 @@ class AuratykScene {
     // Spectrum.update()
     this.particleSystem.update()
     CamParralax.update()
+    // ScreenShaderInstance.update()
+  }
+
+  play() {
+    // ScreenShaderInstance.play()
+  }
+  pause() {
+    // ScreenShaderInstance.pause()
   }
 
   resizeCanvas() {
     this.renderer.setSize(window.innerWidth, window.innerHeight)
     this.camera.aspect = window.innerWidth / window.innerHeight
     this.camera.updateProjectionMatrix()
+    // ScreenShaderInstance.update()
   }
 
   bind() {
