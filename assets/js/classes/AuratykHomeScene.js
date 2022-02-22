@@ -6,22 +6,42 @@ import RAF from '../utils/RAF'
 import config from '../utils/config'
 import MyGUI from '../utils/MyGUI'
 import { ParticleSystem as PS } from './ParticleClass'
-// import ParticleSystem from './ParticleClass'
+
 import CamParralax from './CamParallaxClass'
 import { Color, Fog, TextureLoader } from 'three'
-import ScreenShaderInstance from './ScreenShaderClass'
-import water_refraction_frag from '@/assets/shaders/water_refraction.frag'
-import water_refraction_vert from '@/assets/shaders/water_refraction.vert'
+import SoundReactor from './SoundReactor'
+import testFrag from '@/assets/shaders/test.frag'
+import waterFrag from '@/assets/shaders/water_refraction.frag'
+import homeFrag from '@/assets/shaders/home.frag'
+import kodelifeFrag from '@/assets/shaders/kodelife.frag'
+import testVert from '@/assets/shaders/test.vert'
 const texLoader = new TextureLoader()
 
 class AuratykScene {
   constructor() {
+    const tex = new THREE.TextureLoader().load('/images/cool-bg.png')
+    this.width = window.innerWidth
+    this.height = window.innerHeight
     this.bind()
     this.camera
     this.scene
     this.renderer
     this.controls
     this.particleSystem = new PS(500, 25)
+    this.clock
+    this.time = 0
+    this.uniforms = {
+      uTime: {
+        value: this.time,
+      },
+      uResolution: {
+        type: 'vec2',
+        value: { x: window.innerWidth, y: window.innerHeight },
+      },
+      uSpectrum: { type: 'vec3', value: new THREE.Vector3(0, 0, 0) },
+      uSpectrumDamping: { value: 1, type: 'f' },
+      texture0: { type: 'sampler2D', value: tex },
+    }
   }
 
   init(container) {
@@ -44,21 +64,26 @@ class AuratykScene {
 
     const fog = new Fog(fogColor, 10, 40)
     const texture = texLoader.load('/images/cool-bg.png')
-    const time = new THREE.Clock()
+    this.clock = new THREE.Clock()
+    this.clock.start()
 
     // Why Does Shader not appear?
-    const waterFilter = new THREE.ShaderMaterial({
-      uniforms: { texture0: texture, time },
-      fragmentShader: water_refraction_frag,
-      vertexShader: water_refraction_vert,
+    const testShader = new THREE.ShaderMaterial({
+      uniforms: this.uniforms,
+      fragmentShader: homeFrag,
+      vertexShader: testVert,
     })
 
+    const shaderTex = new THREE.Texture(testShader)
+
     const boxGeo = new THREE.BoxGeometry(5, 5, 5)
-    const box = new THREE.Mesh(boxGeo, waterFilter)
+    const box = new THREE.Mesh(boxGeo, testShader)
+    const planeGeo = new THREE.PlaneGeometry(this.width, this.height)
+    const plane = new THREE.Mesh(planeGeo, testShader)
 
     this.scene = new THREE.Scene()
-    this.scene.add(box)
-    this.scene.background = bgColor
+    this.scene.add(plane)
+    this.scene.background = shaderTex
     this.scene.fog = fog
 
     //CAMERA AND ORBIT CONTROLLER
@@ -77,70 +102,79 @@ class AuratykScene {
     this.controls.maxPolarAngle = Math.PI / 2 + 0.3 // radians
 
     CamParralax.init(this.camera)
-
-    // Pillards.init(this.scene)
-    // Floor.init(this.scene)
-    // Spectrum.init(this.scene)
+    // SoundReactor.init()
     this.particleSystem.init(this.scene)
-    // ScreenShaderInstance.init(this.scene)
+    // TODO Play Silently
+    // SoundReactor.play()
 
-    MyGUI.hide()
-    if (config.myGui) MyGUI.show()
+    // MyGUI.hide()
+    // if (config.myGui) MyGUI.show()
 
-    const camFolder = MyGUI.addFolder('Camera')
-    // camFolder.open()
+    // const camFolder = MyGUI.addFolder('Camera')
+    // // camFolder.open()
 
-    camFolder
-      .add(this.controls, 'enabled')
-      .onChange(() => {
-        if (this.controls.enabled) {
-          CamParralax.active = false
-        }
-      })
-      .listen()
-      .name('Orbit Controls')
-    camFolder
-      .add(CamParralax, 'active')
-      .onChange(() => {
-        if (CamParralax.active) {
-          this.controls.enabled = false
-        }
-      })
-      .listen()
-      .name('Cam Parallax')
+    // camFolder
+    //   .add(this.controls, 'enabled')
+    //   .onChange(() => {
+    //     if (this.controls.enabled) {
+    //       CamParralax.active = false
+    //     }
+    //   })
+    //   .listen()
+    //   .name('Orbit Controls')
+    // camFolder
+    //   .add(CamParralax, 'active')
+    //   .onChange(() => {
+    //     if (CamParralax.active) {
+    //       this.controls.enabled = false
+    //     }
+    //   })
+    //   .listen()
+    //   .name('Cam Parallax')
 
-    camFolder
-      .add(CamParralax.params, 'intensity', 0.001, 0.01)
-      .name('Parallax Intensity')
-    camFolder.add(CamParralax.params, 'ease', 0.01, 0.1).name('Parallax Easing')
+    // camFolder
+    //   .add(CamParralax.params, 'intensity', 0.001, 0.01)
+    //   .name('Parallax Intensity')
+    // camFolder.add(CamParralax.params, 'ease', 0.01, 0.1).name('Parallax Easing')
 
     //RENDER LOOP AND WINDOW SIZE UPDATER SETUP
     window.addEventListener('resize', this.resizeCanvas)
-    RAF.subscribe('threeSceneUpdate', this.update)
+    RAF.subscribe('AuratykHomeSceneUpdate', this.update)
   }
 
   update() {
+    this.time = this.clock.getElapsedTime()
     this.renderer.render(this.scene, this.camera)
-    this.scene.rotateY(0.0015)
-    // Pillards.update()
-    // Spectrum.update()
+
     this.particleSystem.update()
     CamParralax.update()
-    // ScreenShaderInstance.update()
+    this.uniforms.uTime.value = this.time
+    const a = false
+    if (this.isInit) {
+      SoundReactor.update()
+    }
+    this.uniforms.uSpectrum.value.set(SoundReactor.spectrumVec.x, 1, 1)
   }
 
   play() {
-    // ScreenShaderInstance.play()
+    console.log('play', SoundReactor.ctx)
+    if (!SoundReactor.isInit) {
+      SoundReactor.init()
+    }
+
+    SoundReactor.play()
   }
   pause() {
-    // ScreenShaderInstance.pause()
+    SoundReactor.pause()
+    console.log('pause')
   }
 
   resizeCanvas() {
     this.renderer.setSize(window.innerWidth, window.innerHeight)
     this.camera.aspect = window.innerWidth / window.innerHeight
+    this.uniforms.uResolution.value.x = window.innerWidth
+    this.uniforms.uResolution.value.y = window.innerHeight
     this.camera.updateProjectionMatrix()
-    // ScreenShaderInstance.update()
   }
 
   bind() {

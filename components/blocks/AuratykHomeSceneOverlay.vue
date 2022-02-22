@@ -32,17 +32,19 @@
             nisl odio duis morbi.
           </p>
         </div>
-        <div class="play-button flex justify-center">
+        <div class="play-button flex justify-end padding-x-xxxl">
           <button
             v-if="this.isPlaying"
             class="btn btn--clear"
             @click="togglePlay"
             :stroke-width="0.5"
           >
-            <icon-pause :width="48" />
+            <!-- <icon-pause :width="48" /> -->
+            <icon-equalizer class="animation" />
           </button>
           <button v-else class="btn btn--clear" @click="togglePlay">
-            <icon-play :width="48" />
+            <!-- <icon-play :width="48" /> -->
+            <icon-equalizer class="animation-none" />
           </button>
         </div>
       </main>
@@ -166,7 +168,7 @@ export default {
 .main {
   &__content {
     transition: var(--base-transition);
-    padding: var(--space-xxxl) 0;
+    padding: var(--space-xxxl) 0 var(--space-lg) 0;
 
     &-heading {
       font-size: var(--text-xxxxl);

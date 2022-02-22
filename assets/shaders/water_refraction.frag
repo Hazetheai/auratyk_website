@@ -1,12 +1,16 @@
-uniform float time;
-// uniform vec2 resolution;
-// uniform vec2 mouse;
-// uniform vec3 spectrum;
+#ifdef GL_ES
+precision highp float;
+#endif
+
+uniform float uTime;
+uniform vec2 uResolution;
+
 
 uniform sampler2D texture0;
 
-// varying vec3 v_normal;
-varying vec2 vUv;
+
+varying vec3 v_normal;
+varying vec2 v_texcoord;
 
 #define NUM_OCTAVES 5
 
@@ -44,7 +48,9 @@ void main(void)
 {
 
     // uv reset: -1. + 2. *
-    vec2 uv = vUv;
+   vec2 uv = (gl_FragCoord.xy / uResolution);    // Not quite correct
+
+    // vec2 uv = v_texcoord;
     // reset image orientation
     uv.y = 1.0 - uv.y;
     
@@ -52,8 +58,8 @@ void main(void)
     float waveIntensity = 10.0;    
     vec2 surface = strength * vec2(
     // run noise over position && mix to normalize fbm output
-    mix(-0.3, 0.3, fbm(waveIntensity * uv+time * .5)), 
-    mix(-0.3, 0.3,fbm(waveIntensity * uv+time * .5))
+    mix(-0.3, 0.3, fbm(waveIntensity * uv+uTime * .5)), 
+    mix(-0.3, 0.3,fbm(waveIntensity * uv+uTime * .5))
     );
     
     uv += refract(vec2(0.0, 0.0), surface, 1.0 / 1.333);
