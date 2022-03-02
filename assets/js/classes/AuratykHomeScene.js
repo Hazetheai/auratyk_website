@@ -3,23 +3,28 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three-stdlib'
 
 import RAF from '../utils/RAF'
-import config from '../utils/config'
-import MyGUI from '../utils/MyGUI'
+// import config from '../utils/config'
+// import MyGUI from '../utils/MyGUI'
 import { ParticleSystem as PS } from './ParticleClass'
 
 import CamParralax from './CamParallaxClass'
 import { Color, Fog, TextureLoader } from 'three'
 import SoundReactor from './SoundReactor'
-import testFrag from '@/assets/shaders/test.frag'
-import waterFrag from '@/assets/shaders/water_refraction.frag'
+// import testFrag from '@/assets/shaders/test.frag'
+// import waterFrag from '@/assets/shaders/water_refraction.frag'
 import homeFrag from '@/assets/shaders/home.frag'
-import kodelifeFrag from '@/assets/shaders/kodelife.frag'
+// import kodelifeFrag from '@/assets/shaders/kodelife.frag'
 import testVert from '@/assets/shaders/test.vert'
-const texLoader = new TextureLoader()
+
+import LoadingController from './LoadingControllerClass'
+
+const texLoader = new TextureLoader(LoadingController)
 
 class AuratykScene {
   constructor() {
-    const tex = new THREE.TextureLoader().load('/images/cool-bg.png')
+    const tex = new THREE.TextureLoader(LoadingController).load(
+      '/images/cool-bg.png'
+    )
     this.width = window.innerWidth
     this.height = window.innerHeight
     this.bind()
@@ -63,7 +68,7 @@ class AuratykScene {
     const fogColor = new Color('hsl(268, 43%, 72%)')
 
     const fog = new Fog(fogColor, 10, 40)
-    const texture = texLoader.load('/images/cool-bg.png')
+    // const texture = texLoader.load('/images/cool-bg.png')
     this.clock = new THREE.Clock()
     this.clock.start()
 
@@ -149,7 +154,6 @@ class AuratykScene {
     this.particleSystem.update()
     CamParralax.update()
     this.uniforms.uTime.value = this.time
-    const a = false
     if (this.isInit) {
       SoundReactor.update()
     }

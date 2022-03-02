@@ -5,7 +5,7 @@
   // --radius-sm: calc(var(--radius)/2);
   // --radius-md: var(--radius);
   // --radius-lg: calc(var(--radius)*2);
-  --base-transition: all 200ms ease-in;
+  --base-transition: all 300ms ease-in;
 
   // box shadow - 👇 uncomment to modify default shadow values
   // --shadow-xs:  0 0.1px 0.3px rgba(0, 0, 0, 0.06),
@@ -76,3 +76,12 @@
 // (END) Global editor code
 
 // --------------------------------
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}

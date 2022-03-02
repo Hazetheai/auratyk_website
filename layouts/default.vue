@@ -1,22 +1,12 @@
 <template>
-  <Nuxt />
+  <div>
+    <Footer />
+  </div>
 </template>
 
 <script>
-export default {}
+import Footer from '@/components/app/Footer'
+export default { components: { Footer } }
 </script>
 
-<style>
-/* html,
-body,
-#__nuxt,
-#__layout,
-.app-container {
-  height: 100%;
-}
-
-.app-container > footer {
-  position: sticky;
-  top: 100vh;
-} */
-</style>
+<style></style>

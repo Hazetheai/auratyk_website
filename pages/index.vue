@@ -1,15 +1,14 @@
 <template>
-  <div class="home"><AuratykHomeSceneOverlay /></div>
+  <HomeComponent />
 </template>
 
 <script>
-// import AuratykHomeScene from '@/components/webgl/AuratykHomeScene'
-import AuratykHomeSceneOverlay from '@/components/blocks/AuratykHomeSceneOverlay'
+import HomeComponent from '@/components/blocks/HomeComponent'
 export default {
   layout(context) {
-    return 'default'
+    return 'main'
   },
+  components: { HomeComponent },
   name: 'IndexPage',
-  components: { AuratykHomeSceneOverlay },
 }
 </script>

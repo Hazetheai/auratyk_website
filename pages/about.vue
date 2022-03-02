@@ -1,18 +1,15 @@
 <template>
-  <div>
-    <MainHeader1 />
-    <Hero />
-  </div>
+  <AboutComponent />
 </template>
 
 <script>
-import MainHeader1 from '../components/G-MainHeader-1.vue'
-import Hero from '../components/blocks/hero.vue'
+// import MainHeader1 from '../components/G-MainHeader-1.vue'
+import AboutComponent from '../components/blocks/AboutComponent.vue'
 export default {
   layout(context) {
-    return 'default'
+    return 'main'
   },
-  name: 'IndexPage',
-  components: { MainHeader1, Hero },
+  name: 'AboutPage',
+  components: { AboutComponent },
 }
 </script>

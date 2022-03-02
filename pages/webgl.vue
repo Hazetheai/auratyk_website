@@ -1,5 +1,5 @@
 <template>
-  <div class="pageIndex">
+  <div class="pageIndex webgl">
     <block-title />
     <!-- <block-images-grid class="appIndex__imagesGrid" /> -->
     <div class="pageIndex__image">

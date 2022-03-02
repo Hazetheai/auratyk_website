@@ -45,7 +45,7 @@ export default {
 .loadingScreen {
   width: 100vw;
   height: 100vh;
-  background: #151515;
+  background: var(--color-primary);
   position: absolute;
   top: 0;
   left: 0;
@@ -70,12 +70,12 @@ export default {
   width: 30vw;
   height: 1rem;
   border-radius: 100vw;
-  background: #090909;
+  background: var(--color-primary);
   overflow: hidden;
   margin: 1rem;
 }
 .loading-bar-fill {
-  background: #bc13fe;
+  background: var(--color-accent);
   transition: width 0.3s;
   height: 100%;
 }

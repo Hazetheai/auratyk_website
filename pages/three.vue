@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <MainHeader1 />
+  <div class="three">
+    <!-- <MainHeader1 /> -->
     <!-- <Hero /> -->
     <LoadingScreen />
     <TitleScreen />
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import MainHeader1 from '../components/G-MainHeader-1.vue'
+// import MainHeader1 from '../components/G-MainHeader-1.vue'
 import Hero from '../components/blocks/hero.vue'
 import ThreeScene from '../components/webgl/ThreeScene.vue'
 import TitleScreen from '../components/webgl/TitleScreen.vue'
@@ -19,6 +19,6 @@ export default {
     return 'default'
   },
   name: 'IndexPage',
-  components: { MainHeader1, Hero, ThreeScene, TitleScreen, LoadingScreen },
+  components: { Hero, ThreeScene, TitleScreen, LoadingScreen },
 }
 </script>

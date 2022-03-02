@@ -27,12 +27,9 @@ export default {
       } else this.$AuratykHomeSceneInstance.pause()
     },
   },
-  // props: {
-  //   msg: String,
-  // },
+
   mounted() {
     this.loadMainThreeScene()
-    // console.log('this.scene', this.scene)
   },
 
   methods: {
@@ -45,7 +42,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss">
 .canvasContainer {
   position: absolute;
   top: 0;

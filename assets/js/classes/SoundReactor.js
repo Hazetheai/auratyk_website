@@ -1,5 +1,6 @@
 import getFrequencies from '../utils/getFrequencies'
 import RAF from '../utils/RAF'
+// import LoadingController from './LoadingControllerClass'
 
 class SoundReactor {
   constructor(audioUrl) {
@@ -59,7 +60,7 @@ class SoundReactor {
 
     this.analyser.fftSize = 1024
     this.bufferLength = this.analyser.frequencyBinCount
-    this.dataArray = new Uint8Array(this.bufferLength)
+    this.fftdata = new Uint8Array(this.bufferLength)
     this.analyser.connect(gainNode2)
 
     gainNode2.gain.setValueAtTime(1.0, 0)
@@ -67,9 +68,25 @@ class SoundReactor {
 
     ////////////////////////////////////////////////
 
-    // getFrequencies(this.dataArray, this.analyser)
+    // getFrequencies(this.fftdata, this.analyser)
 
     this.isInit = true
+
+    this.audio.addEventListener('play', () => {
+      // console.log(
+      //   `audio listener playing?`,
+      //   this.audio.paused ? 'isPaused' : 'isPlaying'
+      // )
+      navigator.mediaSession.playbackState = 'playing'
+    })
+
+    this.audio.addEventListener('pause', () => {
+      // console.log(
+      //   `audio listener pause?`,
+      //   this.audio.paused ? 'isPaused' : 'isPlaying'
+      // )
+      navigator.mediaSession.playbackState = 'paused'
+    })
   }
 
   play() {
@@ -88,7 +105,7 @@ class SoundReactor {
     // this.analyser.getByteFrequencyData(this.fftdata)
     // console.log(`hey`)
 
-    const freqs = getFrequencies(this.dataArray, this.analyser)
+    const freqs = getFrequencies(this.fftdata, this.analyser)
     // freqs.throttleLog();
     // window.currentFreqs = freqs
 
@@ -109,3 +126,4 @@ class SoundReactor {
 }
 const _instance = new SoundReactor('/audio/video_clip.mp3')
 export default _instance
+export { SoundReactor }

@@ -80,24 +80,24 @@ export default {
     name: 'page',
     mode: 'out-in',
     beforeLeave(el) {
-      // console.log('Before leave...')
+      console.log('Before leave...')
       this.$events.emit('cursor:enter', { type: 'default' })
     },
     leave(el) {
-      // console.log('Enter...')
+      console.log('Enter...')
       this.$events.emit('scroller:reset')
     },
     afterLeave(el) {
-      // console.log('After leave...')
+      console.log('After leave...')
     },
     beforeEnter(el) {
-      // console.log('Before enter...')
+      console.log('Before enter...')
     },
     enter(el) {
-      // console.log('Enter...')
+      console.log('Enter...')
     },
     afterEnter(el) {
-      // console.log('After enter...')
+      console.log('After enter...')
     },
   },
   loading: false,
@@ -157,14 +157,32 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://localhost:3000', // Used as fallback if no runtime config is provided
   },
+
+  // publicRuntimeConfig: {
+  //   axios: {
+  //     browserBaseURL: process.env.BROWSER_BASE_URL,
+  //   },
+  // },
+
+  // privateRuntimeConfig: {
+  //   axios: {
+  //     baseURL: process.env.BASE_URL,
+  //   },
+  // },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'en',
     },
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    staticForms: process.env.STATIC_FORMS_KEY,
+    sheetsEndpoint: process.env.SHEETS_CONTACT_ENDPOINT,
+    sheetsTabId: process.env.SHEETS_CONTACT_TAB_ID,
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -180,6 +198,7 @@ export default {
     { src: '~/plugins/gsap.js', mode: 'client' },
     { src: '~/plugins/three.js', mode: 'client' },
     { src: '~/plugins/auratyk-home.js', mode: 'client' },
+    { src: '~/plugins/codyhouse-utils.js', mode: 'client' },
     { src: '~/plugins/soundReactor.js', mode: 'client' },
     { src: '~/plugins/loadingController.js', mode: 'client' },
   ],

@@ -186,7 +186,6 @@ Usage: codyhouse.co/license
 .header {
   height: var(--header-height);
   width: 100%;
-  background-color: var(--color-bg);
   z-index: var(--z-index-header, 3);
 }
 
