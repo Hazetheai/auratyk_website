@@ -39,8 +39,6 @@ export default {
   methods: {
     loadSoundReactor() {
       this.soundReactor = this.$SoundReactorInstance
-      console.log('this.soundReactor', this.soundReactor)
-      console.log('this.$SoundReactorInstance', this.$SoundReactorInstance)
     },
     onPlay() {
       if (this.initFlag === false) {

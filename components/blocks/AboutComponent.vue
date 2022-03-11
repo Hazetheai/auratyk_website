@@ -1,5 +1,5 @@
 <template>
-  <div class="about main__content">
+  <div class="about main__content margin-bottom-xl">
     <h1 class="main__content-heading">About</h1>
     <p class="main__content-intro max-width-xxs">
       I'm an electronic producer from Ireland. I grew up on folk and acoustic
@@ -120,6 +120,7 @@
 <script>
 import Newsletter from './Newsletter.vue'
 export default {
+  scrollToTop: true,
   components: { Newsletter },
 }
 </script>

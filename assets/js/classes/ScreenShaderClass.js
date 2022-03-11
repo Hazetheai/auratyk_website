@@ -153,12 +153,9 @@ class ScreenShader {
 
   async play() {
     await this.audio.play()
-
-    console.log('playing', this.audio.played)
   }
   pause() {
     this.audio.pause()
-    console.log('pausing')
   }
   update() {
     if (this.uniforms.u_resolution !== undefined) {

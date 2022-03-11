@@ -1,9 +1,9 @@
 <template>
-  <ContactComponent />
+  <LegalInfoComponent />
 </template>
 
 <script>
-import ContactComponent from '../components/blocks/ContactComponent.vue'
+import LegalInfoComponent from '../components/blocks/LegalInfoComponent.vue'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 
 export default {
@@ -11,11 +11,11 @@ export default {
     return 'main'
   },
 
-  name: 'ContactPage',
-  components: { ContactComponent },
+  name: 'LegalInfoPage',
+  components: { LegalInfoComponent },
   scrollToTop: true,
   data() {
-    return { title: 'Contact' }
+    return { title: 'Legal Info' }
   },
 
   computed: {
@@ -38,7 +38,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://auratyk.com/contact`,
+          href: `https://auratyk.com/legal`,
         },
       ],
     }

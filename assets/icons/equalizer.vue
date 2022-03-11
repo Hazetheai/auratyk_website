@@ -3,11 +3,51 @@
     <title>Asset 3</title>
     <g id="Layer_2" data-name="Layer 2">
       <g id="Layer_1-2" data-name="Layer 1">
-        <rect class="eq" x="1" y="2" width="0.05" height="9.5" />
-        <rect class="eq" x="2" y="2" width="0.05" height="11.81" />
-        <rect class="eq" x="2.5" y="2" width="0.05" height="7.14" />
-        <rect class="eq" x="0.5" y="2" width="0.05" height="5.24" />
-        <rect class="eq" x="1.5" y="2" width="0.05" height="14.5" />
+        <rect
+          class="eq"
+          x="1"
+          y="2"
+          width="0.05"
+          height="9.5"
+          :stroke="fill"
+          :stroke-width="0.05"
+        />
+        <rect
+          class="eq"
+          x="2"
+          y="2"
+          width="0.05"
+          height="11.81"
+          :stroke="fill"
+          :stroke-width="0.05"
+        />
+        <rect
+          class="eq"
+          x="2.5"
+          y="2"
+          width="0.05"
+          height="7.14"
+          :stroke="fill"
+          :stroke-width="0.05"
+        />
+        <rect
+          class="eq"
+          x="0.5"
+          y="2"
+          width="0.05"
+          height="5.24"
+          :stroke="fill"
+          :stroke-width="0.05"
+        />
+        <rect
+          class="eq"
+          x="1.5"
+          y="2"
+          width="0.05"
+          height="14.5"
+          :stroke="fill"
+          :stroke-width="0.05"
+        />
       </g>
     </g>
   </svg>
@@ -24,12 +64,31 @@ export default {
       type: [String],
       default: '',
     },
+    width: {
+      type: [Number, String],
+      default: '100%',
+    },
+    height: {
+      type: [Number, String],
+      default: '100%',
+    },
+    strokewidth: {
+      type: [Number, String],
+      default: 1,
+    },
+    fill: {
+      type: String,
+      default: 'currentColor',
+    },
+    secondaryfill: {
+      type: String,
+    },
   },
-  //   computed: {
-  //     _secondaryfill: function () {
-  //       return this.secondaryfill || this.fill
-  //     },
-  //   },
+  computed: {
+    _secondaryfill: function () {
+      return this.secondaryfill || this.fill
+    },
+  },
 }
 
 if (typeof window !== 'undefined') {

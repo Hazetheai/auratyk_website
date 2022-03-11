@@ -7,7 +7,6 @@ export const state = () => ({
 
 export const mutations = {
   toggleMenu(state, override) {
-    console.log('override', override)
     if (override === 'close') {
       state.menuOpen = false
       return

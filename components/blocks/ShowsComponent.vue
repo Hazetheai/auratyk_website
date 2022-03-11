@@ -56,16 +56,10 @@
 import Newsletter from './Newsletter.vue'
 export default {
   components: { Newsletter },
+  scrollToTop: true,
   data() {
     return {
       shows: [
-        // {
-        //   venue: 'Space Meduza',
-        //   venueAddress: 'Skalitzer Straße, 10999 Berlin',
-        //   country: 'Germany',
-        //   date: '23/03/22',
-        //   ticketLink: '#0',
-        // },
         // {
         //   venue: 'Space Meduza',
         //   venueAddress: 'Skalitzer Straße, 10999 Berlin',

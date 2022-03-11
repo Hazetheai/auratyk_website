@@ -3,8 +3,5 @@ import stickyShareBar from '@/assets/js/codyhouse-utils/_2_sticky-sharebar.js'
 
 export default (context, inject) => {
   // console.log('context', context)
-  if (context.route.path === '/about') {
-    // console.log(`on about page`)
-    inject('codyhouseUtils', { socialSharing, stickyShareBar })
-  }
+  inject('codyhouseUtils', { socialSharing, stickyShareBar })
 }

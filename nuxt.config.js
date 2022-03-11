@@ -1,5 +1,7 @@
 import webpack from 'webpack'
+import getSiteMeta from './assets/js/utils/getSiteMeta'
 
+const meta = getSiteMeta()
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     const r = (Math.random() * 16) | 0
@@ -15,14 +17,23 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    // title: '',
+    // titleTemplate: 'Auratyk | %s',
     title: 'Auratyk',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      ...meta,
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: process.env.BASE_URL,
+      },
+    ],
     script: [
       {
         src: 'https://unpkg.com/codyhouse-framework/main/assets/js/util.js',
@@ -101,12 +112,15 @@ export default {
     },
   },
   loading: false,
-
+  image: {
+    // Options
+  },
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
     // https://www.npmjs.com/package/@nuxtjs/style-resources
+    '@nuxt/image',
     '@nuxtjs/style-resources',
   ],
 
@@ -157,20 +171,23 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://localhost:3000', // Used as fallback if no runtime config is provided
+    baseURL:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000'
+        : 'https://auratyk.com', // Used as fallback if no runtime config is provided
   },
 
-  // publicRuntimeConfig: {
-  //   axios: {
-  //     browserBaseURL: process.env.BROWSER_BASE_URL,
-  //   },
-  // },
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL,
+    },
+  },
 
-  // privateRuntimeConfig: {
-  //   axios: {
-  //     baseURL: process.env.BASE_URL,
-  //   },
-  // },
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL,
+    },
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -205,6 +222,8 @@ export default {
     { src: '~/plugins/soundReactor.js', mode: 'client' },
     { src: '~/plugins/loadingController.js', mode: 'client' },
     { src: '~/plugins/scrollHandlers.js', mode: 'client' },
+    { src: '~/plugins/insights-analytics.js', mode: 'client' },
+    { src: '~plugins/vue-js-modal.js', mode: 'client' },
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

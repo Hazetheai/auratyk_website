@@ -28,7 +28,6 @@ class Cursor {
 export default {
   inserted(el, binding) {
     const params = binding.value || {}
-    console.log(params)
 
     if (instances.has(el)) return
     instances.set(el, new Cursor(el, params))
@@ -37,5 +36,5 @@ export default {
     if (!instances.has(el)) return
     instances.get(el).destroy()
     instances.delete(el)
-  }
+  },
 }

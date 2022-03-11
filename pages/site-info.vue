@@ -1,9 +1,9 @@
 <template>
-  <ContactComponent />
+  <SiteInfoComponent />
 </template>
 
 <script>
-import ContactComponent from '../components/blocks/ContactComponent.vue'
+import SiteInfoComponent from '../components/blocks/SiteInfoComponent.vue'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 
 export default {
@@ -11,11 +11,11 @@ export default {
     return 'main'
   },
 
-  name: 'ContactPage',
-  components: { ContactComponent },
+  name: 'SiteInfoPage',
+  components: { SiteInfoComponent },
   scrollToTop: true,
   data() {
-    return { title: 'Contact' }
+    return { title: 'Site Info' }
   },
 
   computed: {
@@ -38,7 +38,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://auratyk.com/contact`,
+          href: `https://auratyk.com/site-info`,
         },
       ],
     }

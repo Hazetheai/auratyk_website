@@ -1,7 +1,6 @@
 // File#: _1_social-sharing
 // Usage: codyhouse.co/license
 ;(function () {
-  console.log('_1_social-sharing')
   function initSocialShare(button) {
     button.addEventListener('click', function (event) {
       event.preventDefault()

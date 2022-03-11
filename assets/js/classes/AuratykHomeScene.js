@@ -17,10 +17,12 @@ import homeFrag from '@/assets/shaders/home.frag'
 import testVert from '@/assets/shaders/test.vert'
 
 import LoadingController from './LoadingControllerClass'
-
+import iOS from '@/assets/js/utils/iOS'
 const texLoader = new TextureLoader(LoadingController)
+
 // FIXME
-const _height = window.innerHeight + 80
+const _height = iOS() ? window.innerHeight + 80 : window.innerHeight
+
 class AuratykScene {
   constructor() {
     const tex = texLoader.load('/images/cool-bg.png')
@@ -160,7 +162,6 @@ class AuratykScene {
   }
 
   play() {
-    console.log('play', SoundReactor.ctx)
     if (!SoundReactor.isInit) {
       SoundReactor.init()
     }
@@ -169,7 +170,6 @@ class AuratykScene {
   }
   pause() {
     SoundReactor.pause()
-    console.log('pause')
   }
 
   resizeCanvas() {

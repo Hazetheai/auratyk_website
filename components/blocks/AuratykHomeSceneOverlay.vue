@@ -36,7 +36,7 @@
       <slot />
       <!--  -->
       <div class="col-2"></div>
-      <footer></footer>
+      <Footer v-if="$route.path !== '/'" />
     </div>
     <div
       class="app-buttons-left position-fixed flex flex-column justify-between"
@@ -44,7 +44,7 @@
       <button
         v-if="!this.menuOpen"
         @click="toggleMenu"
-        class="btn btn--clear menu-btn margin-y-md display@sm"
+        class="btn btn--clear menu-btn margin-y-md display@sm z-index-fixed-element"
       >
         <icon-menu :width="48" />
       </button>
@@ -91,7 +91,7 @@
         class="menu-overlay__container col-8 padding-y-lg flex flex-column position-relative"
       >
         <button
-          class="menu-overlay__close btn btn--clear position-absolute top-xl right-0 hide display@sm"
+          class="menu-overlay__close btn btn--clear position-absolute top-xl right-0 display@sm"
           @click="toggleMenu('close')"
         >
           <icon-close class="" :width="32" />
@@ -162,7 +162,7 @@
               <a
                 target="_blank"
                 rel="noopener nofollow"
-                href="https://www.instagram.com/auratyk/"
+                :href="this.socials.instagram"
               >
                 Instagram</a
               >
@@ -171,7 +171,7 @@
               <a
                 target="_blank"
                 rel="noopener nofollow"
-                href="https://soundcloud.com/user-618807717"
+                :href="this.socials.soundcloud"
               >
                 SoundCloud</a
               >
@@ -180,7 +180,7 @@
               <a
                 target="_blank"
                 rel="noopener nofollow"
-                href="https://auratyk.bandcamp.com/releases?external_follow=1"
+                :href="this.socials.bandcamp"
               >
                 Bandcamp</a
               >
@@ -189,7 +189,7 @@
               <a
                 target="_blank"
                 rel="noopener nofollow"
-                href="https://www.youtube.com/channel/UC3_B4pGVMt_u3SI4mJlLmrQ"
+                :href="this.socials.youtube"
               >
                 Youtube</a
               >
@@ -213,24 +213,22 @@
 <script>
 import AuratykHomeScene from '@/components/webgl/AuratykHomeScene.vue'
 import Newsletter from '@/components/blocks/Newsletter'
+import Footer from '@/components/app/Footer'
+import socials from '@/assets/js/utils/getSocials'
 export default {
-  components: { AuratykHomeScene, Newsletter },
+  components: { AuratykHomeScene, Newsletter, Footer },
   data() {
-    return { menuOpen: false, isPlaying: false }
+    return { menuOpen: false, isPlaying: false, socials }
   },
   created() {
-    console.log('created')
-
     if (typeof window !== 'undefined') {
       window.addEventListener('keyup', (e) => {
-        console.log('e', e)
         if (e.key === 'Escape') {
           this.toggleMenu('close')
         }
       })
     }
   },
-  mounted() {},
 
   methods: {
     togglePlay() {
@@ -339,9 +337,6 @@ export default {
   &__content {
     @include transition-d-200;
     padding-top: var(--space-xxxl);
-    @include breakpoint(sm) {
-      padding: var(--space-xxxl) 0;
-    }
 
     &-heading {
       font-size: var(--text-xxxxl);

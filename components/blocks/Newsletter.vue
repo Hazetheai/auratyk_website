@@ -5,8 +5,8 @@
       :class="this.$props.full ? 'container' : ''"
     >
       <div v-if="this.$props['full']" class="text-component margin-bottom-md">
-        <h2>Join our Newsletter</h2>
-        <p>Get our monthly recap with the latest news.</p>
+        <h2>Join our Mailing List</h2>
+        <p>Stay up to date with shows and releases.</p>
       </div>
 
       <form @submit.prevent class="grid gap-xxs">
@@ -74,15 +74,23 @@ export default {
   props: ['full'],
   methods: {
     async fetchSomething(params) {
-      console.log('form submitted')
       const ip = await this.$axios.$post(
         `${process.env.sheetsEndpoint}?tabId=${process.env.sheetsTabId}`,
         params
       )
-      console.log(ip)
 
       if (ip && ip.message === 'Successfully Inserted') {
         this.form.success = true
+
+        this.$InsightsAnalytics.track({
+          id: 'signup-newsletter',
+          parameters: {
+            // this will track the locale of the user, useful to know if we should translate our posts
+            locale: this.$InsightsAnalytics.parameters.locale(),
+            // this will track the type of screen on which the user reads the post, useful for useability
+            screenSize: this.$InsightsAnalytics.parameters.screenType(),
+          },
+        })
       }
       this.form.email = ''
       this.form.name = ''

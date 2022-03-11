@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="max-width-adaptive-md">
+    <div class="max-width-adaptive-md margin-bottom-lg">
       <div class="grid gap-lg">
         <div class="col-6@md">
           <dl class="details-list details-list--rows">
@@ -91,11 +91,15 @@
         </div>
       </div>
     </div>
+    <!-- <Newsletter :full="true" /> -->
   </section>
 </template>
 
 <script>
+import Newsletter from './Newsletter.vue'
 export default {
+  scrollToTop: true,
+  components: { Newsletter },
   data() {
     return {
       form: {
@@ -111,8 +115,6 @@ export default {
     async fetchSomething() {
       const { name, email, message } = this.form
 
-      console.log('{ name, email, message }', { name, email, message })
-      console.log('form submitted')
       const res = await this.$axios.$post(
         'https://api.staticforms.xyz/submit',
         {
@@ -125,7 +127,6 @@ export default {
           accessKey: process.env.staticForms, // get your access key from https://www.staticforms.xyz
         }
       )
-      console.log(res)
 
       if (res && res.message === 'Email Sent' && res.success) {
         this.form.success = true
