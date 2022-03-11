@@ -80,24 +80,24 @@ export default {
     name: 'page',
     mode: 'out-in',
     beforeLeave(el) {
-      console.log('Before leave...')
+      // console.log('Before leave...')
       this.$events.emit('cursor:enter', { type: 'default' })
     },
     leave(el) {
-      console.log('Enter...')
+      // console.log('leave...')
       this.$events.emit('scroller:reset')
     },
     afterLeave(el) {
-      console.log('After leave...')
+      // console.log('After leave...')
     },
     beforeEnter(el) {
-      console.log('Before enter...')
+      // console.log('Before enter...')
     },
     enter(el) {
-      console.log('Enter...')
+      // console.log('Enter...', el)
     },
     afterEnter(el) {
-      console.log('After enter...')
+      // console.log('After enter...')
     },
   },
   loading: false,
@@ -178,6 +178,9 @@ export default {
       lang: 'en',
     },
   },
+  server: {
+    host: '0', // default: localhost
+  },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     staticForms: process.env.STATIC_FORMS_KEY,
@@ -201,6 +204,7 @@ export default {
     { src: '~/plugins/codyhouse-utils.js', mode: 'client' },
     { src: '~/plugins/soundReactor.js', mode: 'client' },
     { src: '~/plugins/loadingController.js', mode: 'client' },
+    { src: '~/plugins/scrollHandlers.js', mode: 'client' },
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

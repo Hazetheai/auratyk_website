@@ -15,5 +15,18 @@ import LoadingScreen from '@/components/webgl/LoadingScreen'
 export default {
   name: 'MainLayout',
   components: { AuratykHomeSceneOverlay, LoadingScreen },
+  // mounted() {
+  //   const tl = this.$gsap.timeline()
+
+  //   tl.to('main', {
+  //     opacity: 1,
+  //     y: 0,
+  //     duration: 3,
+  //     stagger: {
+  //       each: 0.1,
+  //       ease: 'power2.inOut',
+  //     },
+  //   })
+  // },
 }
 </script>

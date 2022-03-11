@@ -8,7 +8,7 @@ import {
   BlendFunction,
   KernelSize,
   // GlitchEffect,
-  GlitchMode
+  GlitchMode,
 } from 'postprocessing'
 
 import AntialiasingEffect from './effects/antialiasing'
@@ -35,8 +35,8 @@ export default class Composer {
   }
 
   async init() {
-    await this.initComposer()
-    this.initGUI()
+    // await this.initComposer()
+    // this.initGUI()
   }
 
   async load() {
@@ -154,11 +154,7 @@ export default class Composer {
 
     const menu = GUI.postprocessing._addFolder('Mouse distortion')
 
-    menu
-      .add(this.fluidSimulation, 'iterations')
-      .min(1)
-      .max(10)
-      .step(1)
+    menu.add(this.fluidSimulation, 'iterations').min(1).max(10).step(1)
     menu
       .add(this.fluidSimulation, 'densityDissipation')
       .min(0)
@@ -174,16 +170,8 @@ export default class Composer {
       .min(0)
       .max(1)
       .step(0.01)
-    menu
-      .add(this.fluidSimulation, 'curlStrength')
-      .min(0)
-      .max(50)
-      .step(1)
-    menu
-      .add(this.fluidSimulation, 'radius')
-      .min(0)
-      .max(1)
-      .step(0.01)
+    menu.add(this.fluidSimulation, 'curlStrength').min(0).max(50).step(1)
+    menu.add(this.fluidSimulation, 'radius').min(0).max(1).step(0.01)
   }
 
   initGlitchGUI() {
@@ -207,7 +195,7 @@ export default class Composer {
       'weak glitches': strength.x,
       'strong glitches': strength.y,
       'glitch ratio': effect.ratio,
-      columns: uniforms.get('columns').value
+      columns: uniforms.get('columns').value,
     }
 
     menu.add(params, 'glitch mode', GlitchMode).onChange(() => {
@@ -314,10 +302,10 @@ export default class Composer {
       luminance: {
         filter: effect.luminancePass.enabled,
         threshold: effect.luminanceMaterial.threshold,
-        smoothing: effect.luminanceMaterial.smoothing
+        smoothing: effect.luminanceMaterial.smoothing,
       },
       opacity: blendMode.opacity.value,
-      'blend mode': blendMode.blendFunction
+      'blend mode': blendMode.blendFunction,
     }
 
     menu.add(params, 'resolution', [240, 360, 480, 720, 1080]).onChange(() => {

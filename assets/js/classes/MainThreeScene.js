@@ -3,8 +3,8 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three-stdlib'
 
 import RAF from '../utils/RAF'
-import config from '../utils/config'
-import MyGUI from '../utils/MyGUI'
+// import config from '../utils/config'
+// import MyGUI from '../utils/MyGUI'
 
 import Pillards from './PillardClass'
 import Floor from './FloorClass'
@@ -59,35 +59,35 @@ class MainThreeScene {
     Spectrum.init(this.scene)
     ParticleSystem.init(this.scene)
 
-    MyGUI.hide()
-    if (config.myGui) MyGUI.show()
+    // MyGUI.hide()
+    // if (config.myGui) MyGUI.show()
 
-    const camFolder = MyGUI.addFolder('Camera')
-    camFolder.open()
+    // const camFolder = MyGUI.addFolder('Camera')
+    // camFolder.open()
 
-    camFolder
-      .add(this.controls, 'enabled')
-      .onChange(() => {
-        if (this.controls.enabled) {
-          CamParralax.active = false
-        }
-      })
-      .listen()
-      .name('Orbit Controls')
-    camFolder
-      .add(CamParralax, 'active')
-      .onChange(() => {
-        if (CamParralax.active) {
-          this.controls.enabled = false
-        }
-      })
-      .listen()
-      .name('Cam Parallax')
+    // camFolder
+    //   .add(this.controls, 'enabled')
+    //   .onChange(() => {
+    //     if (this.controls.enabled) {
+    //       CamParralax.active = false
+    //     }
+    //   })
+    //   .listen()
+    //   .name('Orbit Controls')
+    // camFolder
+    //   .add(CamParralax, 'active')
+    //   .onChange(() => {
+    //     if (CamParralax.active) {
+    //       this.controls.enabled = false
+    //     }
+    //   })
+    //   .listen()
+    //   .name('Cam Parallax')
 
-    camFolder
-      .add(CamParralax.params, 'intensity', 0.001, 0.01)
-      .name('Parallax Intensity')
-    camFolder.add(CamParralax.params, 'ease', 0.01, 0.1).name('Parallax Easing')
+    // camFolder
+    //   .add(CamParralax.params, 'intensity', 0.001, 0.01)
+    //   .name('Parallax Intensity')
+    // camFolder.add(CamParralax.params, 'ease', 0.01, 0.1).name('Parallax Easing')
 
     //RENDER LOOP AND WINDOW SIZE UPDATER SETUP
     window.addEventListener('resize', this.resizeCanvas)

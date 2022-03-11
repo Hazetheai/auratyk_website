@@ -192,5 +192,9 @@
 }
 @mixin transition-d-200 {
   transition: var(--base-transition);
-  transition-delay: 200;
+  transition-delay: 200ms;
+}
+@mixin transition-d-400 {
+  transition: var(--base-transition);
+  transition-delay: 400ms;
 }

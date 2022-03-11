@@ -19,14 +19,13 @@ import testVert from '@/assets/shaders/test.vert'
 import LoadingController from './LoadingControllerClass'
 
 const texLoader = new TextureLoader(LoadingController)
-
+// FIXME
+const _height = window.innerHeight + 80
 class AuratykScene {
   constructor() {
-    const tex = new THREE.TextureLoader(LoadingController).load(
-      '/images/cool-bg.png'
-    )
+    const tex = texLoader.load('/images/cool-bg.png')
     this.width = window.innerWidth
-    this.height = window.innerHeight
+    this.height = _height
     this.bind()
     this.camera
     this.scene
@@ -41,7 +40,7 @@ class AuratykScene {
       },
       uResolution: {
         type: 'vec2',
-        value: { x: window.innerWidth, y: window.innerHeight },
+        value: { x: window.innerWidth, y: _height },
       },
       uSpectrum: { type: 'vec3', value: new THREE.Vector3(0, 0, 0) },
       uSpectrumDamping: { value: 1, type: 'f' },
@@ -52,7 +51,7 @@ class AuratykScene {
   init(container) {
     //RENDERER SETUP
     this.renderer = new THREE.WebGLRenderer({ antialias: true })
-    this.renderer.setSize(window.innerWidth, window.innerHeight)
+    this.renderer.setSize(window.innerWidth, _height)
     this.renderer.debug.checkShaderErrors = true
     container.appendChild(this.renderer.domElement)
 
@@ -94,7 +93,7 @@ class AuratykScene {
     //CAMERA AND ORBIT CONTROLLER
     this.camera = new THREE.PerspectiveCamera(
       75,
-      window.innerWidth / window.innerHeight,
+      window.innerWidth / _height,
       0.1,
       1000
     )
@@ -174,10 +173,10 @@ class AuratykScene {
   }
 
   resizeCanvas() {
-    this.renderer.setSize(window.innerWidth, window.innerHeight)
-    this.camera.aspect = window.innerWidth / window.innerHeight
+    this.renderer.setSize(window.innerWidth, _height)
+    this.camera.aspect = window.innerWidth / _height
     this.uniforms.uResolution.value.x = window.innerWidth
-    this.uniforms.uResolution.value.y = window.innerHeight
+    this.uniforms.uResolution.value.y = _height
     this.camera.updateProjectionMatrix()
   }
 

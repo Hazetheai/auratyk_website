@@ -33,6 +33,29 @@
 
 // --------------------------------
 
+body {
+  // padding-bottom: env(safe-area-inset-bottom);
+  height: 100%;
+  height: -webkit-fill-available;
+  // FIXME
+  background-color: var(--color-black);
+}
+
+#__nuxt {
+  // @supports (-webkit-touch-callout: none) {
+  //   /* CSS specific to iOS devices */
+  //   height: 100%;
+  //   height: -webkit-fill-available;
+  //   // FIXME
+  //   background-color: var(--color-black);
+  // }
+}
+#__layout {
+}
+
+.main-layout {
+}
+
 .hover\:reduce-opacity {
   opacity: 1;
   transition: all 0.3s ease;
@@ -79,9 +102,11 @@
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.3s ease-in-out;
 }
 .page-enter,
 .page-leave-to {
+  @include transition;
   opacity: 0;
+  filter: blur(6px);
 }

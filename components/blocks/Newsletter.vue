@@ -35,7 +35,7 @@
             class="btn btn--primary width-100% height-100%"
             @click="fetchSomething([[form.name, form.email]])"
           >
-            Subscribe
+            Join
           </button>
         </div>
       </form>

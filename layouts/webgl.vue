@@ -27,10 +27,10 @@ export default {
 </script>
 
 <style lang="scss">
-#__nuxt {
+/* #__nuxt {
   height: 100%;
   overflow-y: auto;
-}
+} */
 
 #appNoise {
   height: 100%;

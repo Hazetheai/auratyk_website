@@ -9,7 +9,7 @@ import {
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import spectrumFrag from '../../shaders/spectrum.frag'
 import spectrumVert from '../../shaders/spectrum.vert'
-import MyGUI from '../utils/MyGUI'
+// import MyGUI from '../utils/MyGUI'
 import LoadingController from './LoadingControllerClass'
 
 class SpectrumClass {
@@ -42,17 +42,17 @@ class SpectrumClass {
       },
     }
 
-    const shaderFolder = MyGUI.addFolder('Spectrum')
-    shaderFolder.open()
-    shaderFolder
-      .add(this.uniforms['uSpecterSize'], 'value', -1, 1)
-      .name('Specter Size')
-    shaderFolder
-      .add(this.uniforms['uWaveBorderSize'], 'value', 0.01, 1)
-      .name('Wave Border Size')
-    shaderFolder
-      .add(this.uniforms['uWaveSpeed'], 'value', 0.01, 1)
-      .name('Wave Speed')
+    // const shaderFolder = MyGUI.addFolder('Spectrum')
+    // shaderFolder.open()
+    // shaderFolder
+    //   .add(this.uniforms['uSpecterSize'], 'value', -1, 1)
+    //   .name('Specter Size')
+    // shaderFolder
+    //   .add(this.uniforms['uWaveBorderSize'], 'value', 0.01, 1)
+    //   .name('Wave Border Size')
+    // shaderFolder
+    //   .add(this.uniforms['uWaveSpeed'], 'value', 0.01, 1)
+    //   .name('Wave Speed')
     // shaderFolder
     //   .add(this.uniforms["uBorderColor"], "value")
     //   .name("Border Color");

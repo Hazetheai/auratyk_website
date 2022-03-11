@@ -1,10 +1,12 @@
 <template>
   <div class="home main__content">
-    <h1 class="main__content-heading margin-bottom-md">Show Dates</h1>
+    <h1 class="main__content-heading margin-bottom-md">Shows</h1>
     <div v-if="this.shows.length" class="shows-container">
       <div class="show" v-for="show in shows" :key="show.date">
-        <hr class="margin-y-sm" />
-        <div class="show-details flex justify-between">
+        <hr class="hr margin-y-md" />
+        <div
+          class="show-details flex flex-column flex-row@sm justify-between items-baseline"
+        >
           <div
             class="show-details__venue flex flex-column items-start text-component text-left"
           >
@@ -15,15 +17,15 @@
           </div>
 
           <div
-            class="show-details__main-details flex justify-between text-component"
+            class="show-details__main-details flex flex-column flex-row@sm justify-between text-component"
           >
-            <p class="show-details__country text-md padding-x-sm">
+            <p class="show-details__country text-md padding-x-sm@sm">
               {{ show.country }}
             </p>
-            <p class="show-details__date text-md padding-x-sm">
+            <p class="show-details__date text-md padding-x-sm@sm">
               {{ show.date }}
             </p>
-            <div class="show-details__tickets padding-x-sm">
+            <div class="show-details__tickets padding-x-sm@sm min-width-50%">
               <p class="text-md">
                 <a class="link" :href="show.ticketLink" rel="noopener"
                   >Buy Tickets</a
@@ -64,16 +66,15 @@ export default {
         //   date: '23/03/22',
         //   ticketLink: '#0',
         // },
+        // {
+        //   venue: 'Space Meduza',
+        //   venueAddress: 'Skalitzer Straße, 10999 Berlin',
+        //   country: 'Germany',
+        //   date: '23/03/22',
+        //   ticketLink: '#0',
+        // },
       ],
     }
   },
 }
 </script>
-
-<style lang="scss" scoped>
-hr {
-  background: var(--color-contrast-lower);
-  width: 100%;
-  height: 1px;
-}
-</style>

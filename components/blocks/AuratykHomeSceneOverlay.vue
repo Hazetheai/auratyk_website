@@ -1,12 +1,17 @@
 <template>
   <div>
     <div
+      @keyup.esc="toggleMenu('close')"
       class="app-container grid"
-      :class="this.menuOpen ? 'app-container--menu-open' : ''"
+      :class="
+        this.$store.state.menuOpen
+          ? 'app-container--menu-open'
+          : 'app-container--menu-closed'
+      "
     >
       <header class="header grid position-fixed top-0 left-0">
         <div class="col-2"></div>
-        <div class="flex justify-end items-center col-8">
+        <div class="flex justify-start justify-end@sm items-center col-8">
           <a
             class="bandcamp-follow z-index-fixed-element flex items-center justify-between"
             href="https://auratyk.bandcamp.com/follow_me"
@@ -16,7 +21,14 @@
             <strong>Follow&nbsp;</strong>on Bandcamp</a
           >
         </div>
-        <div class="col-2"></div>
+        <div class="col-2">
+          <button
+            @click="toggleMenu('open')"
+            class="menu-btn btn btn--clear margin-y-md hide@sm"
+          >
+            <icon-menu :width="48" />
+          </button>
+        </div>
       </header>
       <aside class="aside col-2 flex flex-column justify-evenly"></aside>
 
@@ -32,12 +44,12 @@
       <button
         v-if="!this.menuOpen"
         @click="toggleMenu"
-        class="btn btn--clear menu-btn margin-y-md"
+        class="btn btn--clear menu-btn margin-y-md display@sm"
       >
         <icon-menu :width="48" />
       </button>
       <!-- <button
-        v-if="!this.menuOpen"
+        v-if="!this.$store.state.menuOpen"
         class="btn btn--clear settings-btn margin-y-md"
       >
         <icon-line-button
@@ -49,11 +61,11 @@
       </button> -->
     </div>
     <div
-      v-if="!this.menuOpen && $route.path === '/'"
+      v-if="!this.$store.state.menuOpen && $route.path === '/'"
       class="play-button padding-x-xl"
     >
       <button
-        v-if="this.isPlaying"
+        v-if="this.$store.state.isPlaying"
         class="btn btn--clear"
         @click="togglePlay"
         :stroke-width="0.5"
@@ -67,9 +79,11 @@
       </button>
     </div>
     <div
-      class="menu-overlay grid z-index-overlay"
+      class="menu-overlay grid z-index-overlay position-fixed"
       :class="
-        this.menuOpen ? 'menu-overlay--menu-open' : 'menu-overlay--menu-closed'
+        this.$store.state.menuOpen
+          ? 'menu-overlay--menu-open'
+          : 'menu-overlay--menu-closed'
       "
     >
       <div class="col-2"></div>
@@ -77,12 +91,15 @@
         class="menu-overlay__container col-8 padding-y-lg flex flex-column position-relative"
       >
         <button
-          class="menu-overlay__close btn btn--clear position-absolute top-xl right-0"
+          class="menu-overlay__close btn btn--clear position-absolute top-xl right-0 hide display@sm"
           @click="toggleMenu('close')"
         >
           <icon-close class="" :width="32" />
         </button>
-        <div class="flex justify-between margin-y-xxl items-end">
+
+        <div
+          class="flex justify-between margin-top-md margin-top-xxl@sm items-end"
+        >
           <nav class="main-menu padding-y-sm">
             <ul
               class="main-menu__list flex flex-column justify-between padding-top-md"
@@ -90,38 +107,58 @@
               <li
                 v-if="$route.path !== '/'"
                 class="main-menu__list-item text-lg padding-y-sm"
-                @click="toggleMenu('close')"
               >
-                <nuxt-link to="/">Home</nuxt-link>
+                <nuxt-link to="/" event="" v-slot="{ route, href }" custom>
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Home
+                  </a>
+                </nuxt-link>
               </li>
               <li
                 v-if="$route.path !== '/about'"
                 class="main-menu__list-item text-lg padding-y-sm"
-                @click="toggleMenu('close')"
               >
-                <nuxt-link to="/about">About</nuxt-link>
+                <nuxt-link to="/about" event="" v-slot="{ route, href }" custom>
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    About
+                  </a>
+                </nuxt-link>
               </li>
               <li
                 v-if="$route.path !== '/shows'"
                 class="main-menu__list-item text-lg padding-y-sm"
-                @click="toggleMenu('close')"
               >
-                <nuxt-link to="/shows">Shows</nuxt-link>
+                <nuxt-link to="/shows" event="" v-slot="{ route, href }" custom>
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Shows
+                  </a>
+                </nuxt-link>
               </li>
               <li
                 v-if="$route.path !== '/contact'"
                 class="main-menu__list-item text-lg padding-y-sm"
-                @click="toggleMenu('close')"
               >
-                <nuxt-link to="/contact">Contact</nuxt-link>
+                <nuxt-link
+                  to="/contact"
+                  event=""
+                  v-slot="{ route, href }"
+                  custom
+                >
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Contact
+                  </a>
+                </nuxt-link>
               </li>
             </ul>
           </nav>
           <!-- <Newsletter /> -->
         </div>
+        <hr class="hr margin-y-lg" />
         <nav class="social-menu">
-          <ul class="social-menu__list flex justify-between items-center">
-            <li class="social-menu__list-item">
+          <ul
+            class="social-menu__list flex flex-column flex-row@sm justify-between items-center@sm"
+          >
+            <li class="social-menu__list-item padding-y-sm padding-y-0@sm">
               <a
                 target="_blank"
                 rel="noopener nofollow"
@@ -130,7 +167,7 @@
                 Instagram</a
               >
             </li>
-            <li class="social-menu__list-item">
+            <li class="social-menu__list-item padding-y-sm padding-y-0@sm">
               <a
                 target="_blank"
                 rel="noopener nofollow"
@@ -139,7 +176,7 @@
                 SoundCloud</a
               >
             </li>
-            <li class="social-menu__list-item">
+            <li class="social-menu__list-item padding-y-sm padding-y-0@sm">
               <a
                 target="_blank"
                 rel="noopener nofollow"
@@ -148,7 +185,7 @@
                 Bandcamp</a
               >
             </li>
-            <li class="social-menu__list-item">
+            <li class="social-menu__list-item padding-y-sm padding-y-0@sm">
               <a
                 target="_blank"
                 rel="noopener nofollow"
@@ -160,9 +197,16 @@
           </ul>
         </nav>
       </div>
-      <div class="col-2"></div>
+      <div class="col-2">
+        <button
+          @click="toggleMenu('close')"
+          class="menu-btn btn btn--clear margin-y-md hide@sm"
+        >
+          <icon-close class="" :width="32" />
+        </button>
+      </div>
     </div>
-    <AuratykHomeScene :isPlaying="this.isPlaying" />
+    <AuratykHomeScene :isPlaying="this.$store.state.isPlaying" />
   </div>
 </template>
 
@@ -174,17 +218,39 @@ export default {
   data() {
     return { menuOpen: false, isPlaying: false }
   },
+  created() {
+    console.log('created')
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keyup', (e) => {
+        console.log('e', e)
+        if (e.key === 'Escape') {
+          this.toggleMenu('close')
+        }
+      })
+    }
+  },
+  mounted() {},
 
   methods: {
     togglePlay() {
-      this.isPlaying = !this.isPlaying
+      // const { isPlaying } = this.$store.state
+      this.$store.commit('togglePlay')
     },
-    toggleMenu(override) {
+    async toggleMenu(override, route) {
+      const { menuOpen } = this.$store.state
+
+      if (override === 'close' || this.menuOpen) {
+        this.$scrollHandlers.enableScroll()
+      } else {
+        this.$scrollHandlers.disableScroll()
+      }
+
       const tl = this.$gsap.timeline()
 
       tl.to('.main-menu__list-item', {
-        opacity: this.menuOpen ? 0 : 1,
-        y: this.menuOpen ? 30 : 0,
+        opacity: menuOpen ? 0 : 1,
+        y: menuOpen ? 30 : 0,
         duration: 0.3,
         stagger: {
           each: 0.1,
@@ -193,8 +259,8 @@ export default {
       })
 
       tl.to('.social-menu__list-item', {
-        opacity: this.menuOpen ? 0 : 1,
-        x: this.menuOpen ? 0 : 1,
+        opacity: menuOpen ? 0 : 1,
+        x: menuOpen ? -30 : 0,
         duration: 0.3,
         stagger: {
           each: 0.05,
@@ -203,13 +269,16 @@ export default {
         },
       })
 
+      // if (override === "close"){
+
+      // }
+
       tl.to('.main-menu__list-item', {
         opacity: override === 'close' ? 0 : 1,
         y: override === 'close' ? 30 : 0,
         duration: 0.3,
         stagger: {
           each: 0.1,
-          // from: 'center',
           ease: 'power2.inOut',
         },
       })
@@ -220,20 +289,17 @@ export default {
         duration: 0.3,
         stagger: {
           each: 0.1,
-          // from: 'center',
           ease: 'power2.inOut',
         },
       })
 
-      if (override === 'close') {
-        this.menuOpen = false
-        return
+      this.$store.commit('toggleMenu', override)
+
+      if (route && override === 'close') {
+        setTimeout(() => {
+          this.$router.push(route)
+        }, 150)
       }
-      if (override === 'open') {
-        this.menuOpen = true
-        return
-      }
-      this.menuOpen = !this.menuOpen
     },
   },
   mounted() {
@@ -253,23 +319,29 @@ export default {
 <style lang="scss">
 .app-container {
   max-height: 100vh;
-  overflow-y: scroll;
   @include transition;
-  /* height: calc(100vh - var(--header-height)); */
 
   &--menu-open {
     filter: blur(6px);
     @include transition;
     opacity: 0.7;
   }
+  &--menu-closed {
+    filter: none;
+    @include transition-d-400;
+    opacity: 1;
+  }
 }
 
 .main {
   height: 100%;
-  /* overflow-y: scroll; */
+
   &__content {
     @include transition-d-200;
-    padding: var(--space-xxxl) 0;
+    padding-top: var(--space-xxxl);
+    @include breakpoint(sm) {
+      padding: var(--space-xxxl) 0;
+    }
 
     &-heading {
       font-size: var(--text-xxxxl);
@@ -283,6 +355,10 @@ export default {
 
 .header {
   height: var(--header-height);
+  background: var(--color-black);
+  @include breakpoint(sm) {
+    background: transparent;
+  }
 }
 
 .aside {
@@ -303,29 +379,42 @@ export default {
 .bandcamp-follow {
   font-size: var(--text-xs);
   color: var(--color-white);
-  border: 0.5px solid #00a1c6;
+  /* border: 0.5px solid #00a1c6; */
+  border: 0.5px solid var(--color-accent);
   border-radius: 4px;
   padding: var(--space-xxxs) var(--space-xs);
   text-decoration: none;
   align-items: center;
   @include transition-d-200;
 
+  @supports (-webkit-touch-callout: none) {
+    /* CSS specific to iOS devices */
+    border-width: 1px;
+  }
   & .icon {
     margin-right: var(--space-xxs);
   }
 
   &:hover {
     text-decoration: underline;
-    background: #00a1c6;
-    @include transition-d-200;
-    opacity: 0.7;
+    color: var(--color-primary);
+    /* background: #00a1c6; */
+    background: var(--color-accent);
+    @include transition;
+    opacity: 0.9;
   }
 }
 
 .play-button {
   position: absolute;
-  right: 200px;
-  bottom: 200px;
+  right: 25%;
+  bottom: 10%;
+
+  @supports (-webkit-touch-callout: none) {
+    /* CSS specific to iOS devices */
+    right: 25%;
+    bottom: 10%;
+  }
 }
 
 .settings-btn {
@@ -342,7 +431,6 @@ export default {
 }
 
 .menu-overlay {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -375,6 +463,8 @@ export default {
 
   &__list {
     &-item {
+      transform: translateY(30px);
+      opacity: 0;
       & a {
         color: var(--color-accent);
       }
@@ -383,5 +473,14 @@ export default {
 }
 
 .social-menu {
+  &__list {
+    &-item {
+      transform: translateX(-30px);
+      opacity: 0;
+      & a {
+        color: var(--color-accent);
+      }
+    }
+  }
 }
 </style>

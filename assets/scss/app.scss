@@ -9,16 +9,21 @@
 @import '~codyhouse-framework/main/assets/css/base';
 
 /*! purgecss start ignore */
-@import 'custom-style';
-@import 'components/1_list';
+
+// @import 'components/1_list'; // Causing an error
+
 // @import 'components/1_drop-cap';
 // @import 'components/1_social-sharing';
 // @import 'components/2_sticky-sharebar';
 // @import 'components/3_article-v3';
 // @import 'components/1_author';
+// @import 'components/_1_main-footer-v3';
+
 @import 'components/1_details-list';
 @import 'components/2_contact-v3';
 @import 'components/_1_newsletter';
-// @import 'components/_1_main-footer-v3';
+@import 'components/_1_main-header';
+
+@import 'custom-style';
 /*! purgecss end ignore */
 @import 'resources/aspect-ratio';

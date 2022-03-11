@@ -9,7 +9,7 @@ import {
 } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import SoundReactor from './SoundReactor'
-import MyGUI from '../utils/MyGUI'
+// import MyGUI from '../utils/MyGUI'
 import LoadingController from './LoadingControllerClass'
 
 class PillardClass {
@@ -50,17 +50,17 @@ class PillardClass {
       this.computePositions()
     })
 
-    const sphereFolder = MyGUI.addFolder('Sphere Pillards')
-    sphereFolder.open()
-    sphereFolder.add(this.params, 'waveSpeed', 0.001, 3).name('Wave Speed')
-    sphereFolder
-      .add(this.params, 'subDivisions', 1, 5, 1)
-      .name('Ico Subdivisions')
-      .onChange(this.computePositions)
-    sphereFolder
-      .add(this.params, 'pillardsSize', 0.01, 1)
-      .name('Pillards Size')
-      .onChange(this.computePositions)
+    // const sphereFolder = MyGUI.addFolder('Sphere Pillards')
+    // sphereFolder.open()
+    // sphereFolder.add(this.params, 'waveSpeed', 0.001, 3).name('Wave Speed')
+    // sphereFolder
+    //   .add(this.params, 'subDivisions', 1, 5, 1)
+    //   .name('Ico Subdivisions')
+    //   .onChange(this.computePositions)
+    // sphereFolder
+    //   .add(this.params, 'pillardsSize', 0.01, 1)
+    //   .name('Pillards Size')
+    //   .onChange(this.computePositions)
   }
   computePositions() {
     let ico
