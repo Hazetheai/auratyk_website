@@ -11,7 +11,7 @@ export default {
   layout(context) {
     return 'main'
   },
-  scrollToTop: true,
+
   data() {
     return { title: 'About' }
   },

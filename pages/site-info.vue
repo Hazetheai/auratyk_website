@@ -13,7 +13,7 @@ export default {
 
   name: 'SiteInfoPage',
   components: { SiteInfoComponent },
-  scrollToTop: true,
+
   data() {
     return { title: 'Site Info' }
   },

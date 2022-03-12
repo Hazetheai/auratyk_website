@@ -4,13 +4,13 @@
       class="container max-width-lg flex flex-column justify-center items-center"
     >
       <div class="footer-v3__logo">
-        <a href="/">
+        <NuxtLink to="/">
           <nuxt-img
             sizes="sm:100vw md:50vw lg:400px"
             src="/images/profile-pic.jpg"
             alt="Go to homepage"
           />
-        </a>
+        </NuxtLink>
       </div>
 
       <nav class="footer-v3__nav">
@@ -55,20 +55,23 @@
         </a>
       </div>
       <hr class="hr margin-y-sm" />
-      <div class="footer-v3__newsletter">
-        <p class="color-contrast-medium">
-          <button class="btn btn--clear text-sm" @click="show()">
-            Sign up to the mailing list
-          </button>
-          <modal
-            name="my-first-modal"
-            :adaptive="true"
-            :classes="'bg-light newsletter-modal'"
-          >
-            <Newsletter :full="true" />
-          </modal>
-        </p>
-      </div>
+      <client-only placeholder="Loading...">
+        <div class="footer-v3__newsletter">
+          <p class="color-contrast-medium">
+            <button class="btn btn--clear text-sm" @click="show()">
+              Sign up to the mailing list
+            </button>
+            <modal
+              name="my-first-modal"
+              :adaptive="true"
+              :classes="'bg-light newsletter-modal'"
+            >
+              <Newsletter :full="true" />
+            </modal>
+          </p>
+        </div>
+      </client-only>
+
       <hr class="hr margin-y-sm" />
 
       <div class="footer-v3__copyright margin-top-lg">

@@ -13,7 +13,7 @@ export default {
 
   name: 'ContactPage',
   components: { ContactComponent },
-  scrollToTop: true,
+
   data() {
     return { title: 'Contact' }
   },

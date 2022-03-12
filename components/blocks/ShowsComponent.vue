@@ -56,7 +56,7 @@
 import Newsletter from './Newsletter.vue'
 export default {
   components: { Newsletter },
-  scrollToTop: true,
+
   data() {
     return {
       shows: [

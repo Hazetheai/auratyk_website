@@ -98,7 +98,6 @@
 <script>
 import Newsletter from './Newsletter.vue'
 export default {
-  scrollToTop: true,
   components: { Newsletter },
   data() {
     return {

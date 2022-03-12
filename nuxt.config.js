@@ -53,40 +53,40 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
-    {
-      path: '@/components',
-      extensions: ['vue'],
-    },
+    // {
+    //   path: '@/components',
+    //   extensions: ['vue'],
+    // },
     {
       path: '@/assets/icons',
       prefix: 'icon',
       extensions: ['vue'],
     },
-    {
-      path: '@/components/app',
-      prefix: 'app',
-      extensions: ['vue'],
-    },
-    {
-      path: '@/components/elements',
-      prefix: 'e',
-      extensions: ['vue'],
-    },
-    {
-      path: '@/components/blocks',
-      prefix: 'block',
-      extensions: ['vue'],
-    },
-    {
-      path: '@/components/webgl',
-      prefix: 'webgl',
-      extensions: ['vue'],
-    },
-    {
-      path: '@/components/svg',
-      prefix: 'svg',
-      extensions: ['vue'],
-    },
+    // {
+    //   path: '@/components/app',
+    //   prefix: 'app',
+    //   extensions: ['vue'],
+    // },
+    // {
+    //   path: '@/components/elements',
+    //   prefix: 'e',
+    //   extensions: ['vue'],
+    // },
+    // {
+    //   path: '@/components/blocks',
+    //   prefix: 'block',
+    //   extensions: ['vue'],
+    // },
+    // {
+    //   path: '@/components/webgl',
+    //   prefix: 'webgl',
+    //   extensions: ['vue'],
+    // },
+    // {
+    //   path: '@/components/svg',
+    //   prefix: 'svg',
+    //   extensions: ['vue'],
+    // },
   ],
   pageTransition: {
     name: 'page',
@@ -215,14 +215,14 @@ export default {
   content: {},
 
   plugins: [
-    { src: '~/plugins/polyfills.js', mode: 'client' },
+    // { src: '~/plugins/polyfills.js', mode: 'client' },
     { src: '~/plugins/events.js', mode: 'client' },
-    { src: '~/plugins/frame.js', mode: 'client' },
-    { src: '~/plugins/viewport.js', mode: 'client' },
-    { src: '~/plugins/mouse.js', mode: 'client' },
-    { src: '~/plugins/directives.js', mode: 'client' },
+    // { src: '~/plugins/frame.js', mode: 'client' },
+    // { src: '~/plugins/viewport.js', mode: 'client' },
+    // { src: '~/plugins/mouse.js', mode: 'client' },
+    // { src: '~/plugins/directives.js', mode: 'client' },
+    // { src: '~/plugins/three.js', mode: 'client' },
     { src: '~/plugins/gsap.js', mode: 'client' },
-    { src: '~/plugins/three.js', mode: 'client' },
     { src: '~/plugins/auratyk-home.js', mode: 'client' },
     { src: '~/plugins/codyhouse-utils.js', mode: 'client' },
     { src: '~/plugins/soundReactor.js', mode: 'client' },

@@ -13,7 +13,7 @@ export default {
 
   name: 'LegalInfoPage',
   components: { LegalInfoComponent },
-  scrollToTop: true,
+
   data() {
     return { title: 'Legal Info' }
   },

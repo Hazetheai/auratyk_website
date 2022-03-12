@@ -44,7 +44,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .canvasContainer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;

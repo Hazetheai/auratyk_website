@@ -8,7 +8,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {
+    this.$scrollHandlers.disableScroll()
+  },
+  beforeDestroy() {
+    this.$scrollHandlers.enableScroll()
+  },
+}
 </script>
 
 <style></style>

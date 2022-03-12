@@ -1,11 +1,14 @@
 <template>
   <div ref="loadingScreen" class="loadingScreen">
-    <h2>Loading</h2>
-    <p class="loading_undertitle">Loading different textures and models</p>
+    <h2>Soundchecking...</h2>
+    <!-- <p class="loading_undertitle">Soundchecking...</p> -->
     <div class="loading-bar">
-      <div class="loading-bar-fill" :style="{ width: progress + '%' }"></div>
+      <div
+        class="loading-bar-fill"
+        :style="{ width: Math.random() * 10 + progress + '%' }"
+      ></div>
     </div>
-    <div class="progress-url">{{ progressUrl }}</div>
+    <!-- <div class="progress-url">{{ progressUrl }}</div> -->
   </div>
 </template>
 
@@ -30,10 +33,13 @@ export default {
       this.loadingController = this.$LoadingControllerInstance
     },
     onProgress(url, loaded, total) {
+      console.log('url in component', url)
+
       this.progress = (loaded / total) * 100
       this.progressUrl = url
     },
     onLoad() {
+      console.log('comp loaded')
       this.$refs.loadingScreen.classList.add('finished')
     },
   },
@@ -45,7 +51,7 @@ export default {
 .loadingScreen {
   width: 100vw;
   height: 100vh;
-  background: var(--color-primary);
+  background: var(--color-black);
   position: absolute;
   top: 0;
   left: 0;
@@ -70,7 +76,7 @@ export default {
   width: 30vw;
   height: 1rem;
   border-radius: 100vw;
-  background: var(--color-primary);
+  background: var(--color-black);
   overflow: hidden;
   margin: 1rem;
 }

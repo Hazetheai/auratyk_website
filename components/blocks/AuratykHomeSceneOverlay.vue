@@ -17,7 +17,7 @@
             href="https://auratyk.bandcamp.com/follow_me"
             target="_blank"
           >
-            <icon-bandcamp-circle-0 class="icon" :width="16" />
+            <!-- <icon-bandcamp-circle-0 class="icon" :width="16" /> -->
             <strong>Follow&nbsp;</strong>on Bandcamp</a
           >
         </div>
@@ -70,11 +70,9 @@
         @click="togglePlay"
         :stroke-width="0.5"
       >
-        <!-- <icon-pause :width="48" /> -->
         <icon-equalizer class="animation" />
       </button>
       <button v-else class="btn btn--clear" @click="togglePlay">
-        <!-- <icon-play :width="48" /> -->
         <icon-equalizer class="animation-none" />
       </button>
     </div>
@@ -105,40 +103,40 @@
               class="main-menu__list flex flex-column justify-between padding-top-md"
             >
               <li
-                v-if="$route.path !== '/'"
+                v-show="$route.path !== '/'"
                 class="main-menu__list-item text-lg padding-y-sm"
               >
-                <nuxt-link to="/" event="" v-slot="{ route, href }" custom>
+                <NuxtLink to="/" event="" v-slot="{ route, href }" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Home
                   </a>
-                </nuxt-link>
+                </NuxtLink>
               </li>
               <li
-                v-if="$route.path !== '/about'"
+                v-show="$route.path !== '/about'"
                 class="main-menu__list-item text-lg padding-y-sm"
               >
-                <nuxt-link to="/about" event="" v-slot="{ route, href }" custom>
+                <NuxtLink to="/about" event="" v-slot="{ route, href }" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     About
                   </a>
-                </nuxt-link>
+                </NuxtLink>
               </li>
               <li
-                v-if="$route.path !== '/shows'"
+                v-show="$route.path !== '/shows'"
                 class="main-menu__list-item text-lg padding-y-sm"
               >
-                <nuxt-link to="/shows" event="" v-slot="{ route, href }" custom>
+                <NuxtLink to="/shows" event="" v-slot="{ route, href }" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Shows
                   </a>
-                </nuxt-link>
+                </NuxtLink>
               </li>
               <li
-                v-if="$route.path !== '/contact'"
+                v-show="$route.path !== '/contact'"
                 class="main-menu__list-item text-lg padding-y-sm"
               >
-                <nuxt-link
+                <NuxtLink
                   to="/contact"
                   event=""
                   v-slot="{ route, href }"
@@ -147,11 +145,10 @@
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Contact
                   </a>
-                </nuxt-link>
+                </NuxtLink>
               </li>
             </ul>
           </nav>
-          <!-- <Newsletter /> -->
         </div>
         <hr class="hr margin-y-lg" />
         <nav class="social-menu">
@@ -266,10 +263,6 @@ export default {
           ease: 'power2.inOut',
         },
       })
-
-      // if (override === "close"){
-
-      // }
 
       tl.to('.main-menu__list-item', {
         opacity: override === 'close' ? 0 : 1,

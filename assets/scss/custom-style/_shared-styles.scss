@@ -44,7 +44,7 @@ body {
 #__nuxt {
   width: 100%;
 
-  @include breakpoint(sm) {
+  @include breakpoint(xs) {
     overflow-x: auto;
   }
 

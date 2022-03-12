@@ -10,7 +10,7 @@ export default {
   layout(context) {
     return 'main'
   },
-  scrollToTop: true,
+
   name: 'ShowsPage',
   components: { ShowsComponent },
 

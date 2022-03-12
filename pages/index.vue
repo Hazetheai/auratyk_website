@@ -10,7 +10,7 @@ export default {
   layout(context) {
     return 'main'
   },
-  scrollToTop: true,
+
   components: { HomeComponent },
   name: 'IndexPage',
 
