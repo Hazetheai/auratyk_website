@@ -181,6 +181,10 @@ export default {
     axios: {
       browserBaseURL: process.env.BROWSER_BASE_URL,
     },
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    staticForms: process.env.STATIC_FORMS_KEY,
+    sheetsEndpoint: process.env.SHEETS_CONTACT_ENDPOINT,
+    sheetsTabId: process.env.SHEETS_CONTACT_TAB_ID,
   },
 
   privateRuntimeConfig: {
