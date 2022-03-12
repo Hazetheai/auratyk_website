@@ -75,7 +75,7 @@ export default {
   methods: {
     async fetchSomething(params) {
       const ip = await this.$axios.$post(
-        `${process.env.sheetsEndpoint}?tabId=${process.env.sheetsTabId}`,
+        `${this.$config.sheetsEndpoint}?tabId=${this.$config.sheetsTabId}`,
         params
       )
 
