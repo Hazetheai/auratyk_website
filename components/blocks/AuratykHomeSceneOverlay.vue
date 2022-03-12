@@ -39,12 +39,12 @@
       <Footer v-if="$route.path !== '/'" />
     </div>
     <div
-      class="app-buttons-left position-fixed flex flex-column justify-between"
+      class="app-buttons-left position-fixed flex flex-column justify-between z-index-fixed-element"
     >
       <button
         v-if="!this.menuOpen"
         @click="toggleMenu"
-        class="btn btn--clear menu-btn margin-y-md display@sm z-index-fixed-element"
+        class="btn btn--clear menu-btn margin-y-md display@sm"
       >
         <icon-menu :width="48" />
       </button>
@@ -61,8 +61,12 @@
       </button> -->
     </div>
     <div
-      v-if="!this.$store.state.menuOpen && $route.path === '/'"
-      class="play-button padding-x-xl"
+      v-if="
+        (this.$store.state.menuOpen && $route.path !== '/') ||
+        $route.path === '/'
+      "
+      class="play-button play-button--home z-index-overlay"
+      :class="this.$store.state.isLoaded && 'play-button--animate'"
     >
       <button
         v-if="this.$store.state.isPlaying"
@@ -76,8 +80,9 @@
         <icon-equalizer class="animation-none" />
       </button>
     </div>
+
     <div
-      class="menu-overlay grid z-index-overlay position-fixed"
+      class="menu-overlay grid z-index-fixed-element position-fixed"
       :class="
         this.$store.state.menuOpen
           ? 'menu-overlay--menu-open'
@@ -193,6 +198,15 @@
             </li>
           </ul>
         </nav>
+        <!-- <div
+          v-if="this.$store.state.isPlaying"
+          @click="togglePlay"
+          class="play-button play-button--menu padding-x-xxl"
+        >
+          <button class="btn btn--clear">
+            <icon-equalizer class="animation-none" />
+          </button>
+        </div> -->
       </div>
       <div class="col-2">
         <button
@@ -394,13 +408,20 @@ export default {
 }
 
 .play-button {
-  position: absolute;
-  right: 25%;
-  bottom: 10%;
+  position: fixed;
+  right: 0%;
+  bottom: 8%;
+  opacity: 0;
+  transform: translateX(30px);
+  &--animate {
+    animation: fade-up 700ms ease-in;
+    opacity: 1;
+    transform: translateX(0);
+  }
 
   @supports (-webkit-touch-callout: none) {
     /* CSS specific to iOS devices */
-    right: 25%;
+    right: 0%;
     bottom: 10%;
   }
 }
@@ -469,6 +490,19 @@ export default {
         color: var(--color-accent);
       }
     }
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
   }
 }
 </style>

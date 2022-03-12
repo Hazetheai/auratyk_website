@@ -3,6 +3,7 @@ export const strict = false
 export const state = () => ({
   menuOpen: false,
   isPlaying: false,
+  isLoaded: false,
 })
 
 export const mutations = {
@@ -19,6 +20,9 @@ export const mutations = {
   },
   togglePlay(state) {
     state.isPlaying = !state.isPlaying
+  },
+  isLoaded(state) {
+    state.isLoaded = true
   },
 }
 

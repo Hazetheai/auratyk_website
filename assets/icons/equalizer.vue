@@ -105,10 +105,10 @@ if (typeof window !== 'undefined') {
 
 <style scoped>
 svg {
-  width: 15vh;
+  width: 8vh;
   height: 15vh;
   transform-origin: center;
-  transform: rotate(180deg);
+  transform: translateX(10%) rotate(90deg);
 }
 
 rect {
