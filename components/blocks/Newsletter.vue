@@ -74,6 +74,14 @@ export default {
   props: ['full'],
   methods: {
     async fetchSomething(params) {
+      const cfgSht = this.$config.sheetsEndpoint
+      const cfgTiD = this.$config.sheetsTabId
+
+      const envSht = process.env.sheetsEndpoint
+      const envTiD = process.env.sheetsTabId
+
+      console.table({ cfgSht, cfgTiD, envSht, envTiD })
+
       const ip = await this.$axios.$post(
         `${this.$config.sheetsEndpoint}?tabId=${this.$config.sheetsTabId}`,
         params

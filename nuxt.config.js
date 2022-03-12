@@ -147,6 +147,7 @@ export default {
     'nuxt-ssr-cache',
     'nuxt-compress',
     '@nuxtjs/google-fonts',
+    '@nuxtjs/dotenv',
   ],
 
   googleFonts: {
