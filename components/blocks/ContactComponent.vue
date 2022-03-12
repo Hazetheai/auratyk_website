@@ -124,7 +124,7 @@ export default {
           honeypot: '', // if any value received in this field, form submission will be ignored.
           message,
           replyTo: '@', // this will set replyTo of email to email address entered in the form
-          accessKey: process.env.staticForms, // get your access key from https://www.staticforms.xyz
+          accessKey: this.$config.staticForms, // get your access key from https://www.staticforms.xyz
         }
       )
 
