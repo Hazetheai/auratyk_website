@@ -1,5 +1,6 @@
 import webpack from 'webpack'
 import getSiteMeta from './assets/js/utils/getSiteMeta'
+require('dotenv').config()
 
 const meta = getSiteMeta()
 function uuidv4() {
