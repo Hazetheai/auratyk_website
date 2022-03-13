@@ -87,7 +87,7 @@ export default {
     },
     title: {
       type: String,
-      default: 'soundcloud bw',
+      default: 'soundcloud',
     },
     fill: {
       type: String,

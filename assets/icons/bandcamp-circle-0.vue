@@ -5,6 +5,7 @@
     :width="width"
     :height="height"
   >
+    <title>bandcamp</title>
     <g fill="none"><path d="M10.5 0L7 6.4H0L3.5 0h7z" :fill="fill"></path></g>
   </svg>
 </template>

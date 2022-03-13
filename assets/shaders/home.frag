@@ -62,6 +62,7 @@ uniform vec2 uResolution;
 uniform vec2 uMouse;
 uniform vec3 uSpectrum;
 uniform float uSpectrumDamping;
+uniform float uWaveIntensity;
 
 uniform sampler2D texture0;
 
@@ -90,7 +91,7 @@ void main(void)
     uv.y = 1.0 - uv.y;
     
     float strength = smoothstep(0.5, 1.0, uv.y);
-    float waveIntensity = 10.0;    
+    float waveIntensity = uWaveIntensity;    
     vec2 surface = strength * vec2(
     // run noise over position && mix to normalize fbm output
     mix(-0.3, 0.3, fbm(waveIntensity * uv+uTime * .5)), 

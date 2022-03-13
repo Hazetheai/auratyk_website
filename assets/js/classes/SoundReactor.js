@@ -52,19 +52,21 @@ class SoundReactor {
     this.analyser.smoothingTimeConstant = 0.8
 
     const gainNode = this.audioCtx.createGain()
-    const gainNode2 = this.audioCtx.createGain()
+    // const gainNode2 = this.audioCtx.createGain()
 
     this.audioSource.connect(gainNode)
     gainNode.gain.setValueAtTime(1, 0)
     gainNode.connect(this.analyser)
+    gainNode.connect(this.audioCtx.destination)
 
-    this.analyser.fftSize = 1024
+    this.analyser.fftSize = 512
     this.bufferLength = this.analyser.frequencyBinCount
     this.fftdata = new Uint8Array(this.bufferLength)
-    this.analyser.connect(gainNode2)
 
-    gainNode2.gain.setValueAtTime(1.0, 0)
-    gainNode2.connect(this.audioCtx.destination)
+    // this.analyser.connect(gainNode2)
+
+    // gainNode2.gain.setValueAtTime(1.0, 0)
+    // gainNode2.connect(this.audioCtx.destination)
 
     ////////////////////////////////////////////////
 
@@ -108,15 +110,19 @@ class SoundReactor {
     const freqs = getFrequencies(this.fftdata, this.analyser)
     // freqs.throttleLog();
     // window.currentFreqs = freqs
+    // freqs.throttleLog()
+    // console.log('freqs.baseAvg', freqs.bassAvg)
+    const newVec3 = new THREE.Vector3(
+      freqs.bassMax >= 250 ? freqs.bassMax : 0,
+      freqs.midMax,
+      freqs.trebleMax
+    )
 
-    this.spectrumVec.setX(freqs.bassMax)
-    this.spectrumVec.setY(freqs.midMax)
-    this.spectrumVec.setZ(freqs.trebleMax)
-    this.spectrumVec.normalize()
-    // this.spectrumVec.setX(this.spectrumVec.x)
-    // this.spectrumVec.setY(this.spectrumVec.y)
-    // this.spectrumVec.setZ(this.spectrumVec.z)
-    // window.currentFreqs['spectrumVec'] = this.spectrumVec
+    newVec3.normalize()
+
+    this.spectrumVec.set(newVec3.x, newVec3.y, newVec3.z)
+
+    // console.log('this.spectrumVec', this.spectrumVec)
   }
 
   bind() {

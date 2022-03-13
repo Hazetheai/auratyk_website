@@ -5,8 +5,8 @@ export default function getFrequencies(dataArray, analyser) {
   // Mids = 501 - 4999
   // Treble = 5001+
 
-  const bass = dataArray.slice(0, dataArray.length / 12)
-
+  const bass = dataArray.slice(0, (dataArray.length / 12) * 2)
+  // console.log('bass', bass)
   const mid = dataArray.slice(
     dataArray.length / 12,
     (dataArray.length / 12) * 4
@@ -14,14 +14,16 @@ export default function getFrequencies(dataArray, analyser) {
 
   const treble = dataArray.slice((dataArray.length / 12) * 4)
 
-  const throttleLog = throttle(() => console.log(`dataArray`, dataArray), 300)
+  const throttleLog = throttle(() => console.log(`dataArray`, dataArray), 10)
 
   const bassAvg = avg(bass)
   const bassMax = max(bass)
-
+  // console.log('bassAvg', bassAvg)
+  // console.log('bassMax', bassMax)
   const midAvg = avg(mid)
   const midMax = max(mid)
-
+  // console.log('midAvg', midAvg)
+  // console.log('midMax', midMax)
   const trebleAvg = avg(treble)
   const trebleMax = max(treble)
 

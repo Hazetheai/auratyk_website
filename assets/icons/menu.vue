@@ -5,6 +5,7 @@
     :width="width"
     :height="height"
   >
+    <title>Menu</title>
     <g fill="none">
       <path d="M0 .5h38" :stroke="fill"></path>
       <path d="M10 15.5h38" :stroke="fill"></path>

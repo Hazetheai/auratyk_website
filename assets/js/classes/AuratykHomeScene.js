@@ -20,6 +20,20 @@ import LoadingController from './LoadingControllerClass'
 import iOS from '@/assets/js/utils/iOS'
 const texLoader = new TextureLoader(LoadingController)
 
+function debounce(func, wait, immediate) {
+  var timeout
+  return function () {
+    var context = this,
+      args = arguments
+    clearTimeout(timeout)
+    timeout = setTimeout(function () {
+      timeout = null
+      if (!immediate) func.apply(context, args)
+    }, wait)
+    if (immediate && !timeout) func.apply(context, args)
+  }
+}
+
 // FIXME
 const _height = iOS() ? window.innerHeight + 80 : window.innerHeight
 
@@ -46,6 +60,7 @@ class AuratykScene {
       },
       uSpectrum: { type: 'vec3', value: new THREE.Vector3(0, 0, 0) },
       uSpectrumDamping: { value: 1, type: 'f' },
+      uWaveIntensity: { value: 10, type: 'f' },
       texture0: { type: 'sampler2D', value: tex },
     }
   }
@@ -79,6 +94,18 @@ class AuratykScene {
       fragmentShader: homeFrag,
       vertexShader: testVert,
     })
+
+    document.addEventListener(
+      'mousemove',
+      debounce(
+        (e) =>
+          (this.uniforms.uWaveIntensity.value =
+            ((e.clientY / window.innerHeight + e.clientX / window.innerWidth) /
+              2) *
+            20),
+        10
+      )
+    )
 
     const shaderTex = new THREE.Texture(testShader)
 
@@ -158,7 +185,7 @@ class AuratykScene {
     if (this.isInit) {
       SoundReactor.update()
     }
-    this.uniforms.uSpectrum.value.set(SoundReactor.spectrumVec.x, 1, 1)
+    this.uniforms.uSpectrum.value.set(SoundReactor.spectrumVec.x * 2, 1, 1)
   }
 
   play() {
