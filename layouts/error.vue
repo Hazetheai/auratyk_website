@@ -10,5 +10,14 @@
 export default {
   props: ['error'],
   layout: 'main', // you can set a custom layout for the error page
+  mounted() {
+    this.$logsnag.publish({
+      project: 'auratyk_website',
+      channel: 'errors',
+      event: `App Error`,
+      icon: '😵',
+      notify: true,
+    })
+  },
 }
 </script>
