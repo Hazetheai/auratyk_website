@@ -43,7 +43,7 @@ class SoundReactor {
     }
 
     this.audio = new Audio(this.url)
-    this.audio.loop = true
+    // this.audio.loop = true
     const analyzedAudio = this.audio
     analyzedAudio.volume = this.audio.volume
 
