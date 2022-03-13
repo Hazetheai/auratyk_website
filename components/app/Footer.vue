@@ -30,6 +30,7 @@
 
       <div class="footer-v3__socials">
         <a
+          @click="logSocial('instagram')"
           :href="this.socials.instagram"
           rel="noopener nofollow"
           target="_blank"
@@ -37,6 +38,7 @@
           <icon-instagram :width="24" />
         </a>
         <a
+          @click="logSocial('soundcloud')"
           :href="this.socials.soundcloud"
           rel="noopener nofollow"
           target="_blank"
@@ -44,13 +46,19 @@
           <icon-soundcloud-bw :width="48" />
         </a>
         <a
+          @click="logSocial('bandcamp')"
           :href="this.socials.bandcamp"
           rel="noopener nofollow"
           target="_blank"
         >
           <icon-bandcamp-circle-0 :width="32" />
         </a>
-        <a :href="this.socials.youtube" rel="noopener nofollow" target="_blank">
+        <a
+          @click="logSocial('youtube')"
+          :href="this.socials.youtube"
+          rel="noopener nofollow"
+          target="_blank"
+        >
           <icon-youtube :width="32" />
         </a>
       </div>
@@ -98,6 +106,23 @@ export default {
     },
     hide() {
       this.$modal.hide('my-first-modal')
+    },
+
+    logSocial(platform) {
+      const socials = {
+        instagram: '📷',
+        bandcamp: '🎸',
+        youtube: '🎥',
+        soundcloud: '☁️',
+      }
+
+      this.$logsnag.publish({
+        project: 'auratyk_website',
+        channel: 'main',
+        event: `User clicked ${platform} link`,
+        icon: socials[platform],
+        notify: true,
+      })
     },
   },
 }

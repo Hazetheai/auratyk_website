@@ -13,6 +13,7 @@
         <div class="col-2"></div>
         <div class="flex justify-start justify-end@sm items-center col-8">
           <a
+            @click="logsnagBandcamp"
             class="bandcamp-follow z-index-fixed-element flex items-center justify-between"
             href="https://auratyk.bandcamp.com/follow_me"
             target="_blank"
@@ -242,6 +243,15 @@ export default {
   },
 
   methods: {
+    logsnagBandcamp() {
+      this.$logsnag.publish({
+        project: 'auratyk_website',
+        channel: 'main',
+        event: `User clicked bandcamp follow link`,
+        icon: '🎸',
+        notify: true,
+      })
+    },
     togglePlay() {
       // const { isPlaying } = this.$store.state
       this.$store.commit('togglePlay')

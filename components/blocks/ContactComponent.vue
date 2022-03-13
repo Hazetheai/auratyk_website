@@ -61,6 +61,9 @@
               >
               <input
                 v-model="form.email"
+                required
+                inputmode="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 class="form-control width-100%"
                 type="email"
                 name="contactEmail"
@@ -78,13 +81,24 @@
                 rows="5"
                 name="contactMessage"
                 id="contactMessage"
+                required
               ></textarea>
             </div>
 
             <div class="text-right">
-              <div v-if="this.form.success">Success</div>
-              <button class="btn btn--primary" @click="fetchSomething()">
-                Submit
+              <p
+                v-if="this.form.success"
+                role="alert"
+                class="bg-accent-light bg-opacity-20% text-sm text-left padding-xs radius-md margin-y-xs"
+              >
+                <strong>Success!</strong> I'll get back to you as soon as I can!
+              </p>
+              <button
+                class="btn btn--primary form-submit-btn"
+                @click="fetchSomething()"
+              >
+                <span v-if="this.form.loading"> <LoadingIcon /></span>
+                <span :class="this.form.loading ? 'loading' : ''">Submit</span>
               </button>
             </div>
           </form>
@@ -97,8 +111,9 @@
 
 <script>
 import Newsletter from './Newsletter.vue'
+import LoadingIcon from '../elements/LoadingIcon.vue'
 export default {
-  components: { Newsletter },
+  components: { Newsletter, LoadingIcon },
   data() {
     return {
       form: {
@@ -106,14 +121,21 @@ export default {
         email: '',
         message: '',
         success: undefined,
+        loading: false,
       },
     }
   },
 
   methods: {
     async fetchSomething() {
+      this.form.loading = true
       const { name, email, message } = this.form
 
+      if (!name || !email || !message) {
+        this.form.loading = false
+
+        return
+      }
       const res = await this.$axios.$post(
         'https://api.staticforms.xyz/submit',
         {
@@ -127,8 +149,18 @@ export default {
         }
       )
 
+      this.form.loading = false
+
       if (res && res.message === 'Email Sent' && res.success) {
         this.form.success = true
+
+        this.$logsnag.publish({
+          project: 'auratyk_website',
+          channel: 'main',
+          event: `${this.form.name} sent an enquiry`,
+          icon: '📩',
+          notify: true,
+        })
       }
       this.form.email = ''
       this.form.name = ''
@@ -138,4 +170,10 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.form-submit-btn {
+  & .loading {
+    opacity: 0;
+  }
+}
+</style>

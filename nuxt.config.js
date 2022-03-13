@@ -235,6 +235,7 @@ export default {
     { src: '~/plugins/scrollHandlers.js', mode: 'client' },
     { src: '~/plugins/insights-analytics.js', mode: 'client' },
     { src: '~plugins/vue-js-modal.js', mode: 'client' },
+    { src: '~plugins/logsnag.js', mode: 'client' },
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
