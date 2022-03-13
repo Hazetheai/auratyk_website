@@ -23,9 +23,6 @@ export default {
       const metaData = {
         type: 'website',
         title: this.title,
-        // description: this.description,
-        url: `${this.$config.baseUrl}/${this.$route.params.slug}`,
-        // mainImage: this.article.image,
       }
       return getSiteMeta(metaData)
     },

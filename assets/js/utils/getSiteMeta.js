@@ -3,7 +3,7 @@ const url = 'https://auratyk.com'
 const title = 'Auratyk'
 const description =
   'Official website for Auratyk, electronic music composer, producer and performer.'
-const mainImage = '/images/default-social-image.jpg'
+const socialImage = '/images/default-social-image.jpg'
 
 export default (meta) => {
   return [
@@ -36,7 +36,7 @@ export default (meta) => {
     {
       hid: 'og:image',
       property: 'og:image',
-      content: (meta && meta.mainImage) || mainImage,
+      content: (meta && meta.socialImage) || socialImage,
     },
     {
       hid: 'twitter:url',
@@ -56,8 +56,12 @@ export default (meta) => {
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: (meta && meta.mainImage) || mainImage,
+      content: (meta && meta.socialImage) || socialImage,
     },
-    { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
+    {
+      hid: 'twitter:card',
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
   ]
 }

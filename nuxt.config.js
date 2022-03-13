@@ -25,6 +25,11 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'Auratyk',
+      },
       ...meta,
     ],
     link: [

@@ -24,7 +24,7 @@ export default {
         type: 'website',
         title: this.title,
         // description: this.description,
-        url: `${this.$config.baseUrl}/${this.$route.params.slug}`,
+        url: `${this.$config.baseUrl}${this.$route.path}`,
         // mainImage: this.article.image,
       }
       return getSiteMeta(metaData)
@@ -38,7 +38,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://auratyk.com/site-info`,
+          href: `${this.$config.baseUrl}${this.$route.path}`,
         },
       ],
     }
