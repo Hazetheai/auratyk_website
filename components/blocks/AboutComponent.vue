@@ -4,16 +4,16 @@
     <p class="main__content-intro max-width-xxs">
       I'm an electronic producer from Ireland. I grew up on folk and acoustic
       music, where the words told the stories and the lyrics took centre stage
-      for them to weave visual tapestries to feast upon.
+      to weave visual tapestries to feast upon.
       <br /><br />
       Having studied music for several years and playing in a variety of bands,
-      I knew it was the place for me but something never sat quite right. A few
+      I knew it was the place for me, but something never sat quite right. A few
       years ago something changed. I couldn't find that same energy in the words
       anymore. Every song sounded forced, or re-used. I began searching for new
       sounds to paint the images I wanted.
       <br /><br />
       Sometimes, when you can't find the exact sound you need, you have to make
-      it yourself. With this, Auratyk was born, a way for me to tell the stories
+      it yourself. With this, Auratyk was born. A way for me to tell the stories
       I see with sound. I want music that elicits an emotive response, tells a
       story and makes a lasting impact.
       <br /><br />
