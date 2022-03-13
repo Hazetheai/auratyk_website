@@ -141,7 +141,7 @@ export default {
         {
           name,
           email,
-          subject: 'StaticForms - Contact Form',
+          subject: 'Contact Form - Auratyk Website',
           honeypot: '', // if any value received in this field, form submission will be ignored.
           message,
           replyTo: '@', // this will set replyTo of email to email address entered in the form
