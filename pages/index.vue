@@ -7,15 +7,20 @@ import HomeComponent from '@/components/blocks/HomeComponent'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 
 export default {
+  name: 'IndexPage',
+  components: { HomeComponent },
   layout(context) {
     return 'main'
   },
 
-  components: { HomeComponent },
-  name: 'IndexPage',
-
   data() {
     return { title: 'Home' }
+  },
+  head() {
+    return {
+      title: `Auratyk`,
+      meta: [...this.meta],
+    }
   },
 
   computed: {
@@ -26,12 +31,6 @@ export default {
       }
       return getSiteMeta(metaData)
     },
-  },
-  head() {
-    return {
-      title: `Auratyk`,
-      meta: [...this.meta],
-    }
   },
 }
 </script>

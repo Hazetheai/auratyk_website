@@ -7,15 +7,28 @@ import SiteInfoComponent from '../components/blocks/SiteInfoComponent.vue'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 
 export default {
+  name: 'SiteInfoPage',
+  components: { SiteInfoComponent },
   layout(context) {
     return 'main'
   },
 
-  name: 'SiteInfoPage',
-  components: { SiteInfoComponent },
-
   data() {
     return { title: 'Site Info' }
+  },
+
+  head() {
+    return {
+      title: `Auratyk | ${this.title}`,
+      meta: [...this.meta],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${this.$config.baseUrl}${this.$route.path}`,
+        },
+      ],
+    }
   },
 
   computed: {
@@ -29,19 +42,6 @@ export default {
       }
       return getSiteMeta(metaData)
     },
-  },
-  head() {
-    return {
-      title: `Auratyk | ${this.title}`,
-      meta: [...this.meta],
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: `${this.$config.baseUrl}${this.$route.path}`,
-        },
-      ],
-    }
   },
 }
 </script>
