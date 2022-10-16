@@ -1,3 +1,4 @@
+import { getFileName, logger } from '../utils/environment'
 import getFrequencies from '../utils/getFrequencies'
 import RAF from '../utils/RAF'
 // import LoadingController from './LoadingControllerClass'
@@ -112,11 +113,11 @@ class SoundReactor {
 
   changeAudioFile(file) {
     if (typeof file !== 'string' || !this.audio) {
-      console.log('this.audio', this.audio)
+      logger('this.audio', this.audio, getFileName(__filename))
       return
     }
-    console.log('file', file)
-    console.log('this.audio', this.audio)
+    logger('file', file, getFileName(__filename))
+    logger('this.audio', this.audio, getFileName(__filename))
     this.url = file
     this.audio.src = file
     this.audio.load()

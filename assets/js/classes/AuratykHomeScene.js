@@ -18,6 +18,7 @@ import testVert from '@/assets/shaders/test.vert'
 
 import LoadingController from './LoadingControllerClass'
 import iOS from '@/assets/js/utils/iOS'
+import { getFileName, logger } from '../utils/environment'
 const texLoader = new TextureLoader(LoadingController)
 function debounce(func, wait, immediate) {
   var timeout
@@ -220,7 +221,7 @@ class AuratykScene {
   }
 
   changeTrack(track) {
-    console.log('track in Main Scene instance', track)
+    logger('track in Main Scene instance', track, getFileName(__filename))
     this.SoundReactorInstance.changeAudioFile(track)
   }
 
