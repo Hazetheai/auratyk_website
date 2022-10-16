@@ -4,6 +4,7 @@
     viewBox="0 0 64 64"
     :width="width"
     :height="height"
+    style="min-width: 1.25rem"
   >
     <g
       stroke-linecap="square"

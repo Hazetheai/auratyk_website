@@ -4,6 +4,7 @@
     xmlns="http://www.w3.org/2000/svg"
     :width="width"
     :height="height"
+    style="min-width: 1.25rem"
   >
     <title>bandcamp</title>
     <g fill="none"><path d="M10.5 0L7 6.4H0L3.5 0h7z" :fill="fill"></path></g>

@@ -4,6 +4,7 @@
     viewBox="0 0 64 64"
     height="1.25em"
     width="1.25em"
+    style="min-width: 1.25rem"
   >
     <title>{{ title }}</title>
     <g stroke-width="4" fill="var(--color-accent)" stroke="var(--color-accent)">

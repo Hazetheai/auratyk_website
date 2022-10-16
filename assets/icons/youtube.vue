@@ -5,6 +5,7 @@
     viewBox="0 0 24 24"
     :width="width"
     :height="height"
+    style="min-width: 1.25rem"
   >
     <title>{{ title }}</title>
     <g :fill="fill">

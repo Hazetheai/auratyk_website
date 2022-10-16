@@ -5,6 +5,7 @@
     xmlns="http://www.w3.org/2000/svg"
     :width="width"
     :height="height"
+    style="min-width: 1.25rem"
   >
     <title>{{ title }}</title>
     <g :fill="fill">

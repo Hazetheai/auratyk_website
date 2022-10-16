@@ -5,6 +5,7 @@
     enable-background="new 0 0 300 300"
     :width="width"
     :height="height"
+    style="min-width: 1.25rem"
   >
     <title>{{ title }}</title>
     <g :fill="fill">
