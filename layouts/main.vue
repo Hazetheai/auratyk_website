@@ -25,6 +25,7 @@ export default {
   created(args) {
     const isStatic = this.$route.query?.static === '1'
     this.isStatic = isStatic
+    this.$store.commit('isLoaded')
   },
   mounted() {
     const isProd = process.env.NODE_ENV === 'production'
