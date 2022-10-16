@@ -19,14 +19,16 @@
       <div class="flex@md gap-lg justify-center items-center">
         <div class="text-center padding-right-lg@sm">
           <h4 class="font-bold margin-bottom-xxs">Management/PR</h4>
-          <a href="mailto:jake@stefar.io" class="padding-y-xs block"
+          <a href="mailto:jake@stefar.io" class="padding-y-md block"
             >jake@stefar.io</a
           >
           <SocialIcons />
         </div>
         <div class="tracks">
           <ul>
-            <li class="flex items-center margin-y-xs justify-center">
+            <li
+              class="flex items-center margin-y-xs justify-center padding-y-md"
+            >
               <a class="" href="/audio/form-demos.zip" @click="logDownload()"
                 >Download All Tracks
               </a>
@@ -45,7 +47,9 @@
                 />
                 <icon-play-arrow v-else />
               </button>
-              <div class="margin-x-xs text-left audio-download-link">
+              <div
+                class="margin-x-xs text-left audio-download-link text-xs text-md@xs"
+              >
                 {{ track }}
               </div>
 
@@ -62,7 +66,7 @@
       </div>
       <div class="margin-top-xxl flex@md justify-center">
         <a
-          class="flex items-center btn margin-sm"
+          class="flex items-center btn margin-sm justify-between"
           target="_blank"
           href="https://www.dropbox.com/sh/h3k4c9sd4vhvw7z/AADyW-2kKPMUHtHDkDLZfuwfa?dl=0"
         >
@@ -70,7 +74,7 @@
           <icon-download-file
         /></a>
         <a
-          class="flex items-center btn margin-sm"
+          class="flex items-center btn margin-sm justify-between"
           target="_blank"
           href="https://www.dropbox.com/sh/bi0vyfva9lvntrx/AACWy3oCUpQOxHUmk5saSqcca?dl=0"
         >
@@ -78,7 +82,7 @@
           <icon-download-file
         /></a>
         <a
-          class="flex items-center btn margin-sm"
+          class="flex items-center btn margin-sm justify-between"
           target="_blank"
           href="https://soundcloud.com/auratyk/sets/form-demo"
         >
@@ -176,6 +180,7 @@
         <div
           class="flex flex-column max-width-xxxs@md justify-start text-sm padding-left-md@md"
         >
+          <h3 class="">Bio</h3>
           <p class="padding-y-sm">
             Auratyk is an audio visual artist from Ireland, based in Berlin.
           </p>
