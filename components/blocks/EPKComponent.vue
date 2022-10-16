@@ -54,7 +54,7 @@
               </div>
 
               <a
-                :href="`/audio/${track}.mp3`"
+                :href="`/audio/${track}.wav`"
                 download
                 @click="logDownload(track)"
               >
