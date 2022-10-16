@@ -7,7 +7,7 @@
         <h1 class="main__content-heading text-center">Form EP</h1>
         <p class="main__content-intro text-center">Out 13.11.22</p>
         <nuxt-img
-          class="black-image"
+          class="dark-image"
           sizes="sm:100vw md:50vw lg:600px"
           src="/images/ep-cover-art.png"
           alt="'Form' Cover Art"
@@ -127,7 +127,7 @@
       </div>
       <div class="">
         <nuxt-img
-          class="display@md"
+          class="display@md dark-image"
           sizes="sm:100vw md:50vw lg:400px"
           src="/images/ep-cover-art.png"
           alt="'Form' Cover Art"
@@ -279,7 +279,7 @@ export default {
   padding: 0 var(--space-xs);
 }
 
-.black-image {
+.dark-image {
   border: 2px solid var(--color-white);
 }
 </style>

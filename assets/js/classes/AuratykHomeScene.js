@@ -1,14 +1,14 @@
 import * as THREE from 'three'
 
 import { OrbitControls } from 'three-stdlib'
+import { Color, Fog, TextureLoader } from 'three'
 
 import RAF from '../utils/RAF'
-// import config from '../utils/config'
-// import MyGUI from '../utils/MyGUI'
+import { getFileName, logger } from '../utils/environment'
 import { ParticleSystem as PS } from './ParticleClass'
 
+import LoadingController from './LoadingControllerClass'
 import CamParralax from './CamParallaxClass'
-import { Color, Fog, TextureLoader } from 'three'
 import { SoundReactor } from './SoundReactor'
 // import testFrag from '@/assets/shaders/test.frag'
 // import waterFrag from '@/assets/shaders/water_refraction.frag'
@@ -16,15 +16,13 @@ import homeFrag from '@/assets/shaders/home.frag'
 // import kodelifeFrag from '@/assets/shaders/kodelife.frag'
 import testVert from '@/assets/shaders/test.vert'
 
-import LoadingController from './LoadingControllerClass'
 import iOS from '@/assets/js/utils/iOS'
-import { getFileName, logger } from '../utils/environment'
 const texLoader = new TextureLoader(LoadingController)
 function debounce(func, wait, immediate) {
-  var timeout
+  let timeout
   return function () {
-    var context = this,
-      args = arguments
+    let context = this
+    let args = arguments
     clearTimeout(timeout)
     timeout = setTimeout(function () {
       timeout = null
