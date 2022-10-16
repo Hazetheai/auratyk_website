@@ -9,7 +9,7 @@
         <nuxt-img
           class="dark-image"
           sizes="sm:100vw md:50vw lg:600px"
-          src="/images/ep-cover-art.png"
+          src="/images/png/ep-cover-art-ep.png"
           alt="'Form' Cover Art"
         />
       </div>
@@ -129,7 +129,7 @@
         <nuxt-img
           class="display@md dark-image"
           sizes="sm:100vw md:50vw lg:400px"
-          src="/images/ep-cover-art.png"
+          src="/images/png/ep-cover-art-ep.png"
           alt="'Form' Cover Art"
         />
       </div>
@@ -144,7 +144,7 @@
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1506035116%3Fsecret_token%3Ds-g9cgrC9Tccm&color=%23b699d6&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1513232659%3Fsecret_token%3Ds-KH8LkUIZHTN&color=%23b699d6&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"
           ></iframe>
           <div
             style="
@@ -169,11 +169,11 @@
             >
             ·
             <a
-              href="https://soundcloud.com/auratyk/sets/form-demo/s-g9cgrC9Tccm"
-              title="Form - Demos"
+              href="https://soundcloud.com/auratyk/sets/form/s-KH8LkUIZHTN"
+              title="Form"
               target="_blank"
               style="color: #cccccc; text-decoration: none"
-              >Form - Demos</a
+              >Form</a
             >
           </div>
         </div>
