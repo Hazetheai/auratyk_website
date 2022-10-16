@@ -6,7 +6,7 @@
       </main>
     </AuratykHomeSceneOverlay>
 
-    <LoadingScreen v-if="!isStatic" />
+    <LoadingScreen />
   </div>
 </template>
 
@@ -17,18 +17,8 @@ import LoadingScreen from '@/components/webgl/LoadingScreen'
 export default {
   name: 'MainLayout',
   components: { AuratykHomeSceneOverlay, LoadingScreen },
-  data() {
-    return {
-      isStatic: true,
-    }
-  },
-  created(args) {
-    const isStatic = this.$route.query?.static === '1'
-    this.isStatic = isStatic
-    this.$store.commit('isLoaded')
-  },
+
   mounted() {
-    this.isStatic = false
     const isProd = process.env.NODE_ENV === 'production'
     if (isProd) {
       this.$InsightsAnalytics.init('yES5xEiki5bhfgmw')
