@@ -37,11 +37,11 @@ class SoundReactor {
       }
     }
 
-    this.audioCtx
+    // this.audioCtx
     if (isAudioContextSupported()) {
       this.audioCtx = new window.AudioContext()
     }
-
+    // console.log('this.url', this.url)
     this.audio = new Audio(this.url)
     // this.audio.loop = true
     const analyzedAudio = this.audio
@@ -103,24 +103,48 @@ class SoundReactor {
     this.playFlag = false
   }
 
+  getProgress() {
+    return {
+      currentTime: Math.floor(this.audio.currentTime),
+      duration: Math.floor(this.audio.duration),
+    }
+  }
+
+  changeAudioFile(file) {
+    if (typeof file !== 'string' || !this.audio) {
+      console.log('this.audio', this.audio)
+      return
+    }
+    console.log('file', file)
+    console.log('this.audio', this.audio)
+    this.url = file
+    this.audio.src = file
+    this.audio.load()
+    // this.audio.play()
+  }
+
   update() {
     // this.analyser.getByteFrequencyData(this.fftdata)
     // console.log(`hey`)
 
-    const freqs = getFrequencies(this.fftdata, this.analyser)
-    // freqs.throttleLog();
-    // window.currentFreqs = freqs
-    // freqs.throttleLog()
-    // console.log('freqs.baseAvg', freqs.bassAvg)
-    const newVec3 = new THREE.Vector3(
-      freqs.bassMax >= 250 ? freqs.bassMax : 0,
-      freqs.midMax,
-      freqs.trebleMax
-    )
+    if (this.audio) {
+      const freqs = getFrequencies(this.fftdata, this.analyser)
+      // freqs.throttleLog();
+      // window.currentFreqs = freqs
+      // freqs.throttleLog()
+      // console.log('freqs.baseAvg', freqs.bassAvg)
+      const newVec3 = new THREE.Vector3(
+        freqs.bassMax >= 250 ? freqs.bassMax : 0,
+        freqs.midMax,
+        freqs.trebleMax
+      )
 
-    newVec3.normalize()
+      newVec3.normalize()
 
-    this.spectrumVec.set(newVec3.x, newVec3.y, newVec3.z)
+      this.spectrumVec.set(newVec3.x, newVec3.y, newVec3.z)
+    } else {
+      console.error('Error: Audio has not been initialized')
+    }
 
     // console.log('this.spectrumVec', this.spectrumVec)
   }

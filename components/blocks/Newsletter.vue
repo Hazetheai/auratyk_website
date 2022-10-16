@@ -5,7 +5,7 @@
       :class="this.$props.full ? 'container' : ''"
     >
       <div v-if="this.$props['full']" class="text-component margin-bottom-md">
-        <h2>Join our Mailing List</h2>
+        <h2>Join the Mailing List</h2>
         <p>Stay up to date with shows and releases.</p>
       </div>
 

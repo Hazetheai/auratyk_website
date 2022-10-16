@@ -4,6 +4,7 @@ export const state = () => ({
   menuOpen: false,
   isPlaying: false,
   isLoaded: false,
+  currentTrack: '/audio/Epiderm.mp3',
 })
 
 export const mutations = {
@@ -24,8 +25,15 @@ export const mutations = {
   isLoaded(state) {
     state.isLoaded = true
   },
+  changeTrack(state, track) {
+    state.currentTrack = track
+  },
 }
 
-export const getters = {}
+export const getters = {
+  getCurrentTrack(state) {
+    return state.currentTrack
+  },
+}
 
 export const actions = {}

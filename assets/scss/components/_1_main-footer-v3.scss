@@ -53,25 +53,3 @@ Usage: codyhouse.co/license
   justify-content: center;
   flex-wrap: wrap;
 }
-
-.footer-v3__socials {
-  display: flex;
-  align-items: center;
-
-  a {
-    text-decoration: none;
-    display: inline-block;
-    margin: 0 var(--space-lg);
-    color: var(--color-contrast-high); // icons color
-
-    &:hover {
-      color: var(--color-primary);
-    }
-
-    .icon {
-      display: block;
-      width: 1.25em;
-      height: 1.25em;
-    }
-  }
-}

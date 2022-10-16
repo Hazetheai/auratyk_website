@@ -37,7 +37,7 @@
       <slot />
       <!--  -->
       <div class="col-2"></div>
-      <Footer v-if="$route.path !== '/'" />
+      <FooterComponent v-if="$route.path !== '/'" />
     </div>
     <div
       class="app-buttons-left position-fixed flex flex-column justify-between z-index-fixed-element"
@@ -224,21 +224,25 @@
 
 <script>
 import AuratykHomeScene from '@/components/webgl/AuratykHomeScene.vue'
-import Newsletter from '@/components/blocks/Newsletter'
-import Footer from '@/components/app/Footer'
+import FooterComponent from '@/components/app/FooterComponent'
 import socials from '@/assets/js/utils/getSocials'
 export default {
-  components: { AuratykHomeScene, Newsletter, Footer },
+  components: { AuratykHomeScene, FooterComponent },
   data() {
     return { menuOpen: false, isPlaying: false, socials }
   },
   created() {
     if (typeof window !== 'undefined') {
-      window.addEventListener('keyup', (e) => {
-        if (e.key === 'Escape') {
-          this.toggleMenu('close')
-        }
-      })
+      // eslint-disable-next-line nuxt/no-globals-in-created
+      window.addEventListener(
+        'keyup',
+        (e) => {
+          if (e.key === 'Escape') {
+            this.toggleMenu('close')
+          }
+        },
+        false
+      )
     }
   },
 
@@ -256,6 +260,7 @@ export default {
       // const { isPlaying } = this.$store.state
       this.$store.commit('togglePlay')
     },
+    // eslint-disable-next-line require-await
     async toggleMenu(override, route) {
       const { menuOpen } = this.$store.state
 

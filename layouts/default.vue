@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Footer />
+    <FooterComponent />
   </div>
 </template>
 
 <script>
-import Footer from '@/components/app/Footer'
-export default { components: { Footer } }
+import FooterComponent from '@/components/app/FooterComponent'
+export default { components: { FooterComponent } }
 </script>
 
 <style></style>

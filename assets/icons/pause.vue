@@ -1,23 +1,13 @@
 <template>
   <svg
-    viewBox="0 0 20 22"
+    width="1.25em"
+    height="1.25em"
+    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
   >
+    <title>{{ title }}</title>
     <g fill="none">
-      <path
-        d="M1 .608v20.784h4.5V.608H1z"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        :stroke="fill"
-      ></path>
-      <path
-        d="M19 21.392V.608h-4.5v20.784H19z"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        :stroke="fill"
-      ></path>
+      <path d="M6 5h4v14H6V5zm8 0h4v14h-4V5z" fill="var(--color-accent)"></path>
     </g>
   </svg>
 </template>
@@ -25,29 +15,9 @@
 <script>
 export default {
   props: {
-    width: {
-      type: [Number, String],
-      default: '100%',
-    },
-    height: {
-      type: [Number, String],
-      default: '100%',
-    },
-    strokewidth: {
-      type: [Number, String],
-      default: 1,
-    },
-    fill: {
+    title: {
       type: String,
-      default: 'currentColor',
-    },
-    secondaryfill: {
-      type: String,
-    },
-  },
-  computed: {
-    _secondaryfill: function () {
-      return this.secondaryfill || this.fill
+      default: 'Pause',
     },
   },
 }

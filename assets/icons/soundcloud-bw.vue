@@ -98,7 +98,7 @@ export default {
     },
   },
   computed: {
-    _secondaryfill: function () {
+    _secondaryfill() {
       return this.secondaryfill || this.fill
     },
   },

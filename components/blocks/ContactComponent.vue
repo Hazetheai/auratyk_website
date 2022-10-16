@@ -105,15 +105,14 @@
         </div>
       </div>
     </div>
-    <!-- <Newsletter :full="true" /> -->
   </section>
 </template>
 
 <script>
-import Newsletter from './Newsletter.vue'
 import LoadingIcon from '../elements/LoadingIcon.vue'
+
 export default {
-  components: { Newsletter, LoadingIcon },
+  components: { LoadingIcon },
   data() {
     return {
       form: {

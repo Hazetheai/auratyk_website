@@ -6,6 +6,7 @@
 
 <script>
 // import MainThreeScene from '@/plugins/three'
+import { logger, getFileName } from '@/assets/js/utils/environment'
 
 export default {
   name: 'AuratykHomeScene',
@@ -16,12 +17,7 @@ export default {
     }
   },
   watch: {
-    isPlaying: function (newData, oldData) {
-      // console.log('newData', newData)
-      // console.log('oldData', oldData)
-      // this.$props
-      // console.log('this.props.isPlaying', this.$props.isPlaying)
-
+    isPlaying(newData, oldData) {
       if (this.$props.isPlaying) {
         this.$AuratykHomeSceneInstance.play()
       } else this.$AuratykHomeSceneInstance.pause()
@@ -35,7 +31,8 @@ export default {
   methods: {
     loadMainThreeScene() {
       this.scene = this.$AuratykHomeSceneInstance
-      this.scene.init(this.$refs.container)
+      this.scene.init(this.$refs.container, this.$store.state.currentTrack)
+      logger('scene loaded', this.scene, getFileName(__filename))
     },
   },
 }

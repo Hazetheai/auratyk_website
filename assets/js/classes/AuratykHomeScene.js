@@ -9,7 +9,7 @@ import { ParticleSystem as PS } from './ParticleClass'
 
 import CamParralax from './CamParallaxClass'
 import { Color, Fog, TextureLoader } from 'three'
-import SoundReactor from './SoundReactor'
+import { SoundReactor } from './SoundReactor'
 // import testFrag from '@/assets/shaders/test.frag'
 // import waterFrag from '@/assets/shaders/water_refraction.frag'
 import homeFrag from '@/assets/shaders/home.frag'
@@ -19,7 +19,6 @@ import testVert from '@/assets/shaders/test.vert'
 import LoadingController from './LoadingControllerClass'
 import iOS from '@/assets/js/utils/iOS'
 const texLoader = new TextureLoader(LoadingController)
-
 function debounce(func, wait, immediate) {
   var timeout
   return function () {
@@ -48,8 +47,11 @@ class AuratykScene {
     this.renderer
     this.controls
     this.particleSystem = new PS(500, 25)
+    this.track
     this.clock
     this.time = 0
+    // TODO
+    // this.audioProgress = {duration: 0, }
     this.uniforms = {
       uTime: {
         value: this.time,
@@ -65,12 +67,20 @@ class AuratykScene {
     }
   }
 
-  init(container) {
+  init(container, track) {
     //RENDERER SETUP
     this.renderer = new THREE.WebGLRenderer({ antialias: true })
     this.renderer.setSize(window.innerWidth, _height)
     this.renderer.debug.checkShaderErrors = true
     container.appendChild(this.renderer.domElement)
+
+    // AUDIO SETUP
+
+    this.track = track
+    this.SoundReactorInstance = new SoundReactor(track)
+    // if (!this.SoundReactorInstance.isInit) {
+    //   this.SoundReactorInstance.init()
+    // }
 
     //MAIN SCENE INSTANCE
     // TODO Why is the color var not being read?
@@ -135,10 +145,10 @@ class AuratykScene {
     this.controls.maxPolarAngle = Math.PI / 2 + 0.3 // radians
 
     CamParralax.init(this.camera)
-    // SoundReactor.init()
+    // this.SoundReactorInstance.init()
     this.particleSystem.init(this.scene)
     // TODO Play Silently
-    // SoundReactor.play()
+    // this.SoundReactorInstance.play()
 
     // MyGUI.hide()
     // if (config.myGui) MyGUI.show()
@@ -173,30 +183,45 @@ class AuratykScene {
     //RENDER LOOP AND WINDOW SIZE UPDATER SETUP
     window.addEventListener('resize', this.resizeCanvas)
     RAF.subscribe('AuratykHomeSceneUpdate', this.update)
+    this.isInit = true
   }
 
   update() {
     this.time = this.clock.getElapsedTime()
     this.renderer.render(this.scene, this.camera)
-
     this.particleSystem.update()
     CamParralax.update()
     this.uniforms.uTime.value = this.time
-    if (this.isInit) {
-      SoundReactor.update()
+    if (this.SoundReactorInstance.isInit) {
+      this.audioProgress = this.SoundReactorInstance.getProgress()
+      this.SoundReactorInstance.update()
     }
-    this.uniforms.uSpectrum.value.set(SoundReactor.spectrumVec.x * 2, 1, 1)
+    this.uniforms.uSpectrum.value.set(
+      this.SoundReactorInstance.spectrumVec.x * 2,
+      1,
+      1
+    )
+  }
+
+  initializeAudio() {
+    this.SoundReactorInstance.init()
   }
 
   play() {
-    if (!SoundReactor.isInit) {
-      SoundReactor.init()
+    if (!this.SoundReactorInstance.isInit) {
+      this.SoundReactorInstance.init()
     }
 
-    SoundReactor.play()
+    this.SoundReactorInstance.play()
   }
+
   pause() {
-    SoundReactor.pause()
+    this.SoundReactorInstance.pause()
+  }
+
+  changeTrack(track) {
+    console.log('track in Main Scene instance', track)
+    this.SoundReactorInstance.changeAudioFile(track)
   }
 
   resizeCanvas() {

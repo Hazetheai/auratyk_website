@@ -247,6 +247,11 @@ export default {
         exclude: /node_modules/,
         use: ['raw-loader', 'glslify-loader'],
       })
+
+      config.context = __dirname
+      config.node = {
+        __filename: true,
+      }
     },
     babel: {
       plugins: [

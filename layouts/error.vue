@@ -7,17 +7,21 @@
 </template>
 
 <script>
+import { isProd } from '@/assets/js/utils/environment'
 export default {
   props: ['error'],
   layout: 'main', // you can set a custom layout for the error page
   mounted() {
-    this.$logsnag.publish({
-      project: 'auratyk_website',
-      channel: 'errors',
-      event: `App Error`,
-      icon: '😵',
-      notify: true,
-    })
+    console.error(this.$props.error)
+    if (isProd) {
+      this.$logsnag.publish({
+        project: 'auratyk_website',
+        channel: 'errors',
+        event: `App Error`,
+        icon: '😵',
+        notify: true,
+      })
+    }
   },
 }
 </script>
