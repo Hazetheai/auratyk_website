@@ -19,7 +19,7 @@ export default {
   components: { AuratykHomeSceneOverlay, LoadingScreen },
   data() {
     return {
-      isStatic: false,
+      isStatic: true,
     }
   },
   created(args) {
@@ -28,6 +28,7 @@ export default {
     this.$store.commit('isLoaded')
   },
   mounted() {
+    this.isStatic = false
     const isProd = process.env.NODE_ENV === 'production'
     if (isProd) {
       this.$InsightsAnalytics.init('yES5xEiki5bhfgmw')
