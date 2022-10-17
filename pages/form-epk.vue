@@ -19,7 +19,10 @@ export default {
   head() {
     return {
       title: `Auratyk | ${this.title}`,
-      meta: [...this.meta],
+      meta: [
+        ...this.meta,
+        { hid: 'robots', name: 'robots', content: 'noindex' },
+      ],
       link: [
         {
           hid: 'canonical',
