@@ -29,7 +29,7 @@
             <li
               class="flex items-center margin-y-xs justify-center padding-y-md"
             >
-              <a class="" href="/audio/form-demos.zip" @click="logDownload()"
+              <a class="" href="/audio/form.zip" @click="logDownload()"
                 >Download All Tracks
               </a>
             </li>
@@ -54,7 +54,7 @@
               </div>
 
               <a
-                :href="`/audio/${track}.wav`"
+                :href="`/audio/${track}.mp3`"
                 download
                 @click="logDownload(track)"
               >
@@ -97,33 +97,13 @@
         class="flex flex-column max-width-xxxs@md justify-between text-sm padding-right-md"
       >
         <h3 class="">Auratyk shares debut EP ‘Form’</h3>
-        <p class="padding-y-sm">
-          Electronic Producer Auratyk has released a debut 4 track EP,
-          chronicling the formation of their artistic persona. Interlacing two
-          pieces produced and recorded during the harsh Montreal winter and two
-          pieces created in Berlin the following years, ‘Form’ delivers a
-          nuanced seasonal narrative.
-        </p>
-        <p class="padding-y-sm">
-          The all instrumental EP creates an ethereal sonic landscape combining
-          feelings of isolation and serenity from the intense Montreal winter
-          and the tempestuous growth experienced by the artist since their
-          arrival in Berlin. The decision to keep it instrumental was self
-          evident to Auratyk who explains:
-        </p>
-        <p class="padding-y-sm">
-          “Lyrics, can be incredible, but the most emotive experiences always
-          seems to be without distinct words. This sonic palette allowed me to
-          freely express myself, without language and its inherent bias getting
-          in the way. There are whispers throughout the tracks, as I believe the
-          human voice is one of the most magical instruments there is, but they
-          never tell you what to feel, or think.”
-        </p>
-        <p class="padding-y-sm">
-          The finishing touches to the tracks were done in The Famous Gold Watch
-          Studios in Berlin.
-        </p>
-        <h5 class="">Auratyks ‘Form’ is out now.</h5>
+
+        <NotionRenderer
+          class="max-width-xxxs@md"
+          v-if="notionContent.releasesBlockMap"
+          :blockMap="notionContent.releasesBlockMap"
+          :contentId="pressReleaseContentId"
+        />
       </div>
       <div class="">
         <nuxt-img
@@ -136,7 +116,7 @@
     </div>
     <div class="text-divider padding-y-lg"></div>
     <div>
-      <div class="flex@md justify-center">
+      <div class="flex@md justify-between">
         <div class="padding-bottom-lg">
           <iframe
             width="100%"
@@ -181,21 +161,11 @@
           class="flex flex-column max-width-xxxs@md justify-start text-sm padding-left-md@md"
         >
           <h3 class="">Bio</h3>
-          <p class="padding-y-sm">
-            Auratyk is an audio visual artist from Ireland, based in Berlin.
-          </p>
-          <p class="padding-y-sm">
-            Using a combination of analog synthesizers, field recordings,
-            acoustic piano and drum machines to create evolving soundscapes and
-            jittery, IDM fused beats.
-          </p>
-          <p class="padding-y-sm">
-            Further expanded upon with various visual elements such as particle
-            systems, generative liquid-like liquid textures and glitchy
-            atmospheres. The aim is to create an audio visual experience that
-            elicits an emotive response, tells a story and makes a lasting
-            impact.
-          </p>
+          <NotionRenderer
+            v-if="notionContent.bioBlockMap"
+            :blockMap="notionContent.bioBlockMap"
+            :contentId="bioContentId"
+          />
         </div>
       </div>
     </div>
@@ -205,15 +175,25 @@
 </template>
 
 <script>
+import { NotionRenderer } from 'vue-notion'
 import Newsletter from './Newsletter.vue'
 import SocialIcons from './SocialIcons.vue'
 import { logger } from '@/assets/js/utils/environment'
+import bioContentIds from '@/content/notion/bio'
+import releaseContentIds from '@/content/notion/releases'
+
 export default {
-  components: { Newsletter, SocialIcons },
+  components: { Newsletter, SocialIcons, NotionRenderer },
+  props: {
+    notionContent: { type: Object, default: () => ({}) },
+  },
+
   data() {
     return {
       //   tracks: ['season_ending', 'skitter', 'epiderm', 'remember_linn'],
       tracks: ['Season Ending', 'Skitter', 'Epiderm', 'Remember Linn'],
+      bioContentId: bioContentIds.blocks.short,
+      pressReleaseContentId: releaseContentIds.blocks.pressRelease,
     }
   },
   computed: {
@@ -225,13 +205,15 @@ export default {
   methods: {
     async fetchSomething() {},
     logDownload(track) {
-      this.$logsnag.publish({
-        project: 'auratyk_website',
-        channel: 'main',
-        event: `User downloaded ${track || 'tracks'}`,
-        icon: '⏬',
-        notify: true,
-      })
+      if (process.env.NODE_ENV === 'production') {
+        this.$logsnag.publish({
+          project: 'auratyk_website',
+          channel: 'main',
+          event: `User downloaded ${track || 'tracks'}`,
+          icon: '⏬',
+          notify: true,
+        })
+      }
     },
     togglePlay() {
       this.$store.commit('togglePlay')

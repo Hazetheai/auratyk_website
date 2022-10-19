@@ -128,6 +128,7 @@ export default {
     // https://www.npmjs.com/package/@nuxtjs/style-resources
     '@nuxt/image',
     '@nuxtjs/style-resources',
+    'vue-notion/nuxt',
   ],
 
   styleResources: {
@@ -253,22 +254,22 @@ export default {
         __filename: true,
       }
     },
-    babel: {
-      plugins: [
-        '@babel/plugin-proposal-object-rest-spread',
-        '@babel/proposal-class-properties',
-        '@babel/plugin-proposal-optional-chaining',
-      ],
-      presets({ isServer }) {
-        return [
-          [
-            '@babel/preset-env',
-            {
-              targets: '> 2%, not dead',
-            },
-          ],
-        ]
-      },
-    },
+    // babel: {
+    //   plugins: [
+    //     '@babel/plugin-proposal-object-rest-spread',
+    //     '@babel/proposal-class-properties',
+    //     '@babel/plugin-proposal-optional-chaining',
+    //   ],
+    //   presets({ isServer }) {
+    //     return [
+    //       [
+    //         '@babel/preset-env',
+    //         {
+    //           targets: '> 2%, not dead',
+    //         },
+    //       ],
+    //     ]
+    //   },
+    // },
   },
 }

@@ -1,10 +1,12 @@
 <template>
-  <EPKComponent />
+  <EPKComponent :notionContent="{ bioBlockMap, releasesBlockMap }" />
 </template>
 
 <script>
 import EPKComponent from '../components/blocks/EPKComponent.vue'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
+import bio from '@/content/notion/bio'
+import releases from '@/content/notion/releases'
 
 export default {
   name: 'ContactPage',
@@ -12,9 +14,14 @@ export default {
   layout(context) {
     return 'main'
   },
-
+  async asyncData({ $notion }) {
+    // use Notion module to get Notion blocks from the API via a Notion pageId
+    const bioBlockMap = await $notion.getPageBlocks(bio.pageId)
+    const releasesBlockMap = await $notion.getPageBlocks(releases.pageId)
+    return { bioBlockMap, releasesBlockMap }
+  },
   data() {
-    return { title: 'Form EP - EPK' }
+    return { title: 'Form EPK', bioBlockMap: null, releasesBlockMap: null }
   },
   head() {
     return {
