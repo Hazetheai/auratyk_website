@@ -116,7 +116,7 @@
     </div>
     <div class="text-divider padding-y-lg"></div>
     <div>
-      <div class="flex@md justify-between">
+      <div class="flex@md justify-center">
         <div class="padding-bottom-lg">
           <iframe
             width="100%"
