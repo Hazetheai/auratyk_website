@@ -29,7 +29,11 @@
             <li
               class="flex items-center margin-y-xs justify-center padding-y-md"
             >
-              <a class="" href="/audio/form.zip" @click="logDownload()"
+              <a
+                class=""
+                href="https://www.dropbox.com/sh/ricyrxyeoxlv0se/AABMN3x0xDPoW07gg1Dbsb76a?dl=1"
+                download
+                @click="logDownload()"
                 >Download All Tracks
               </a>
             </li>
@@ -54,7 +58,10 @@
               </div>
 
               <a
-                :href="`/audio/${track}.mp3`"
+                :href="`https://www.dropbox.com/s/bff2tmz0enhue6b/${track.replace(
+                  /\s/,
+                  '%20'
+                )}.mp3?dl=1`"
                 download
                 @click="logDownload(track)"
               >
@@ -209,7 +216,7 @@ export default {
         this.$logsnag.publish({
           project: 'auratyk_website',
           channel: 'main',
-          event: `User downloaded ${track || 'tracks'}`,
+          event: `User downloaded ${track || 'all tracks'}`,
           icon: '⏬',
           notify: true,
         })
