@@ -21,7 +21,12 @@ export default {
     return { bioBlockMap, releasesBlockMap }
   },
   data() {
-    return { title: 'Form EPK', bioBlockMap: null, releasesBlockMap: null }
+    return {
+      title: 'Form EPK',
+      description: 'Debut release from Auratyk. Available 18.11.22',
+      bioBlockMap: null,
+      releasesBlockMap: null,
+    }
   },
   head() {
     return {
@@ -45,9 +50,9 @@ export default {
       const metaData = {
         type: 'website',
         title: this.title,
-        // description: this.description,
+        description: this.description,
         url: `${this.$config.baseUrl}${this.$route.path}`,
-        // mainImage: this.article.image,
+        socialImage: `/images/png/ep-cover-art-ep.png`,
       }
       return getSiteMeta(metaData)
     },
