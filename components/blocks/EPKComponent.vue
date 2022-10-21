@@ -91,7 +91,7 @@
         <a
           class="flex items-center btn margin-sm justify-between"
           target="_blank"
-          href="https://soundcloud.com/auratyk/sets/form-demo"
+          href="https://soundcloud.com/auratyk/sets/form"
         >
           <span class="padding-right-xs padding-y-sm"> SoundCloud Link </span>
           <icon-soundcloud-bw :width="48" :fill="'var(--color-accent)'" />
@@ -127,11 +127,11 @@
         <div class="padding-bottom-lg">
           <iframe
             width="100%"
-            height="300"
+            height="370"
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1513232659%3Fsecret_token%3Ds-KH8LkUIZHTN&color=%23b699d6&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1515565318%3Fsecret_token%3Ds-9SeDSkwIDHG&color=%23b699d6&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
           ></iframe>
           <div
             style="
@@ -156,7 +156,7 @@
             >
             ·
             <a
-              href="https://soundcloud.com/auratyk/sets/form/s-KH8LkUIZHTN"
+              href="https://soundcloud.com/auratyk/sets/form/s-9SeDSkwIDHG"
               title="Form"
               target="_blank"
               style="color: #cccccc; text-decoration: none"
