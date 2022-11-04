@@ -5,7 +5,7 @@
     <div class="margin-bottom-lg">
       <div class="text-component">
         <h1 class="main__content-heading text-center">Form EP</h1>
-        <p class="main__content-intro text-center">Out 18.11.22</p>
+        <p class="main__content-intro text-center">Out 25.11.22</p>
         <nuxt-img
           class="dark-image"
           sizes="sm:100vw md:50vw lg:600px"
@@ -112,7 +112,7 @@
           :contentId="pressReleaseContentId"
         />
       </div>
-      <div class="">
+      <div style="padding-top: 97px">
         <nuxt-img
           class="display@md dark-image"
           sizes="sm:100vw md:50vw lg:400px"
