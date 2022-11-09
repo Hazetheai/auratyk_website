@@ -24,7 +24,7 @@ export default {
       this.$InsightsAnalytics.init('yES5xEiki5bhfgmw')
       this.$InsightsAnalytics.trackPages()
     }
-
+    console.log('this.$route.query.static', this.$route)
     if (parseInt(this.$route.query.static, 10) === 1)
       this.$store.commit('isLoaded')
   },
