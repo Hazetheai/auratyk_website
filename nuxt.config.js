@@ -151,7 +151,7 @@ export default {
     // '@nuxtjs/style-resources',
     'nuxt-mq',
     'nuxt-helmet',
-    'nuxt-ssr-cache',
+    // 'nuxt-ssr-cache',
     'nuxt-compress',
     '@nuxtjs/google-fonts',
     '@nuxtjs/dotenv',
