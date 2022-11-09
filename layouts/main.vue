@@ -5,18 +5,15 @@
         <Nuxt />
       </main>
     </AuratykHomeSceneOverlay>
-
-    <LoadingScreen v-if="parseInt($route.query.static, 10) !== 1" />
   </div>
 </template>
 
 <script>
 import AuratykHomeSceneOverlay from '@/components/blocks/AuratykHomeSceneOverlay'
-import LoadingScreen from '@/components/webgl/LoadingScreen'
 
 export default {
   name: 'MainLayout',
-  components: { AuratykHomeSceneOverlay, LoadingScreen },
+  components: { AuratykHomeSceneOverlay },
 
   mounted() {
     const isProd = process.env.NODE_ENV === 'production'
@@ -24,9 +21,9 @@ export default {
       this.$InsightsAnalytics.init('yES5xEiki5bhfgmw')
       this.$InsightsAnalytics.trackPages()
     }
-    console.log('this.$route.query.static', this.$route)
-    if (parseInt(this.$route.query.static, 10) === 1)
-      this.$store.commit('isLoaded')
+    console.log('this.$route', this.$route)
+
+    this.$store.commit('isLoaded', true)
   },
 }
 </script>
