@@ -52,7 +52,7 @@ export default {
         title: this.title,
         description: this.description,
         url: `${this.$config.baseUrl}${this.$route.path}`,
-        socialImage: `/images/png/ep-cover-art-ep.png`,
+        socialImage: `/images/png/ep-cover-art-ep.jpg`,
       }
       return getSiteMeta(metaData)
     },

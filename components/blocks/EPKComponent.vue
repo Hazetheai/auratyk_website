@@ -9,7 +9,7 @@
         <nuxt-img
           class="dark-image"
           sizes="sm:100vw md:50vw lg:600px"
-          src="/images/png/ep-cover-art-ep.png"
+          src="/images/png/ep-cover-art-ep.jpg"
           alt="'Form' Cover Art"
         />
       </div>
@@ -116,7 +116,7 @@
         <nuxt-img
           class="display@md dark-image"
           sizes="sm:100vw md:50vw lg:400px"
-          src="/images/png/ep-cover-art-ep.png"
+          src="/images/png/ep-cover-art-ep.jpg"
           alt="'Form' Cover Art"
         />
       </div>
