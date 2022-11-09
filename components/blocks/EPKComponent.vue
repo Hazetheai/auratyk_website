@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="text-divider padding-y-lg"></div>
-    <div class="max-width-adaptive-md margin-bottom-lg">
+    <div class="margin-bottom-lg">
       <div class="flex@md gap-lg justify-center items-center">
         <div class="text-center padding-right-lg@sm">
           <h4 class="font-bold margin-bottom-xxs">Management/PR</h4>
