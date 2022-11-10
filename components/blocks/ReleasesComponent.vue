@@ -5,36 +5,38 @@
       <div v-for="release in releases" :key="release.date" class="release">
         <hr class="hr margin-y-md" />
         <div
-          class="release-details flex flex-column flex-row@sm justify-between items-baseline"
+          class="release-details flex flex-column flex-row@sm justify-between items-start items-end@md"
         >
           <div
-            class="release-details__venue flex flex-column items-start text-component text-left"
+            class="release-details__venue flex flex-column items-start text-component text-left margin-bottom-sm"
           >
-            <p class="text-xl">{{ release.name }} {{ release.type }}</p>
+            <h3 class="text-xl">{{ release.name }} {{ release.type }}</h3>
           </div>
 
           <div
-            class="release-details__main-details flex flex-column flex-row@sm justify-between text-component"
+            class="release-details__main-details flex flex-col flex-row@sm justify-between text-component margin-bottom-sm"
           >
-            <p
-              v-for="(medium, index) in release.mediums"
-              :key="medium"
-              class="release-details__medium text-md"
-            >
-              <span class="flex"
-                >{{ medium
-                }}<span v-if="index % 2 === 0" class="padding-x-sm@sm"
-                  >&amp;</span
-                ></span
+            <p class="release-details__medium text-md">
+              <span
+                v-for="medium in release.mediums"
+                :key="medium"
+                class="flex"
+                >{{ medium }}</span
               >
             </p>
-            <p class="release-details__date text-md padding-x-sm@sm link">
-              {{ release.date }}
-            </p>
           </div>
-          <div class="release-details__tickets padding-x-sm@sm">
+          <p
+            class="release-details__date text-md padding-x-sm@sm margin-bottom-sm"
+          >
+            {{ release.date }}
+          </p>
+          <div
+            class="release-details__tickets padding-x-sm@sm margin-bottom-sm"
+          >
             <p class="text-md">
-              <a class="link" :href="release.buyLink" rel="noopener">Buy</a>
+              <a class="link" :href="release.buyLink" rel="noopener"
+                >Pre-order</a
+              >
             </p>
           </div>
         </div>
@@ -67,7 +69,7 @@ export default {
         {
           name: 'Form',
           type: 'EP',
-          mediums: ['Digital', 'Cassette'],
+          mediums: ['Digital & Cassette'],
           date: '25/11/22',
           buyLink: 'https://auratyk.bandcamp.com/album/form?external_follow=1',
         },
