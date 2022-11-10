@@ -68,7 +68,7 @@ export default {
           name: 'Form',
           type: 'EP',
           mediums: ['Digital', 'Cassette'],
-          date: '2?/11/22',
+          date: '25/11/22',
           buyLink: 'https://auratyk.bandcamp.com/album/form?external_follow=1',
         },
       ],
