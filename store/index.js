@@ -4,7 +4,7 @@ export const state = () => ({
   menuOpen: false,
   isPlaying: false,
   isLoaded: false,
-  currentTrack: '/audio/Epiderm.mp3',
+  currentTrack: '/audio/Season Ending.mp3',
 })
 
 export const mutations = {
