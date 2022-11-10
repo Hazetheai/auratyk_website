@@ -139,6 +139,21 @@
                 </NuxtLink>
               </li>
               <li
+                v-show="$route.path !== '/releases'"
+                class="main-menu__list-item text-lg padding-y-sm"
+              >
+                <NuxtLink
+                  to="/releases"
+                  event=""
+                  v-slot="{ route, href }"
+                  custom
+                >
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Releases
+                  </a>
+                </NuxtLink>
+              </li>
+              <li
                 v-show="$route.path !== '/contact'"
                 class="main-menu__list-item text-lg padding-y-sm"
               >
@@ -156,7 +171,7 @@
             </ul>
           </nav>
         </div>
-        <hr class="hr margin-y-lg" />
+        <hr class="hr margin-y-sm" />
         <nav class="social-menu">
           <ul
             class="social-menu__list flex flex-column flex-row@sm justify-between items-center@sm"
