@@ -1,8 +1,8 @@
 <template>
   <div class="home main__content">
     <h1 class="main__content-heading margin-bottom-md">Shows</h1>
-    <div v-if="this.shows.length" class="shows-container">
-      <div class="show" v-for="show in shows" :key="show.date">
+    <div v-if="shows.length" class="shows-container">
+      <div v-for="show in shows" :key="show.date" class="show">
         <hr class="hr margin-y-md" />
         <div
           class="show-details flex flex-column flex-row@sm justify-between items-baseline"
@@ -71,21 +71,27 @@
 import Newsletter from './Newsletter.vue'
 export default {
   components: { Newsletter },
-
-  data() {
-    return {
-      shows: [
-        {
-          venue: 'Agatha Hopfen',
-          venueAddress: 'Revaler Str. 99, 10245 Berlin',
-          googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
-          country: 'Germany',
-          date: '10/08/23',
-          // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-          promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-        },
-      ],
-    }
+  props: {
+    shows: {
+      type: Array,
+      required: true,
+    },
   },
+
+  // data() {
+  //   return {
+  //     shows: [
+  //       {
+  //         venue: 'Agatha Hopfen',
+  //         venueAddress: 'Revaler Str. 99, 10245 Berlin',
+  //         googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
+  //         country: 'Germany',
+  //         date: '10/08/23',
+  //         // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+  //         promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+  //       },
+  //     ],
+  //   }
+  // },
 }
 </script>

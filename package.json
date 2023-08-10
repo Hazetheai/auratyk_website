@@ -24,6 +24,7 @@
     "codyhouse-framework": "^3.0.4",
     "core-js": "^3.19.3",
     "dat.gui": "^0.7.7",
+    "dayjs": "^1.11.9",
     "events": "^3.3.0",
     "glsl-noise": "0.0.0",
     "glslify": "^7.1.1",
