@@ -6,8 +6,8 @@
 
 :root {
   // font family
-  --font-primary: 'Space Grotesk', sans-serif;
-  --font-secondary: 'Space Mono', monospace;
+  --font-primary: "Space Grotesk", sans-serif;
+  --font-secondary: "Space Mono", monospace;
 
   // font size
   --text-base-size: 1.2rem; // body font-size
@@ -28,13 +28,9 @@
 :root,
 * {
   // type scale
-  --text-xs: calc(
-    (var(--text-unit) / var(--text-scale-ratio)) / var(--text-scale-ratio)
-  );
+  --text-xs: calc((var(--text-unit) / var(--text-scale-ratio)) / var(--text-scale-ratio));
   --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
-  --text-md: calc(
-    var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
-  );
+  --text-md: calc(var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
   --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
   --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
   --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
@@ -73,32 +69,16 @@ h4 {
 
 // gradient
 .color-gradient-primary-top {
-  background-image: linear-gradient(
-    0deg,
-    var(--gradient-primary-stop-1),
-    var(--gradient-primary-stop-2)
-  );
+  background-image: linear-gradient(0deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2));
 }
 .color-gradient-primary-right {
-  background-image: linear-gradient(
-    90deg,
-    var(--gradient-primary-stop-1),
-    var(--gradient-primary-stop-2)
-  );
+  background-image: linear-gradient(90deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2));
 }
 .color-gradient-primary-bottom {
-  background-image: linear-gradient(
-    180deg,
-    var(--gradient-primary-stop-1),
-    var(--gradient-primary-stop-2)
-  );
+  background-image: linear-gradient(180deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2));
 }
 .color-gradient-primary-left {
-  background-image: linear-gradient(
-    270deg,
-    var(--gradient-primary-stop-1),
-    var(--gradient-primary-stop-2)
-  );
+  background-image: linear-gradient(270deg, var(--gradient-primary-stop-1), var(--gradient-primary-stop-2));
 }
 
 // --------------------------------
@@ -112,6 +92,7 @@ a,
 .link {
   color: var(--color-accent);
   text-decoration: none;
+  cursor: pointer;
   @include transition;
 
   &:hover {

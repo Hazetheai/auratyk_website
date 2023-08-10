@@ -12,7 +12,14 @@
           >
             <p class="text-lg">{{ show.venue }}</p>
             <p class="show-details__address text-sm color-contrast-medium">
-              {{ show.venueAddress }}
+              <a
+                v-if="show.googleMapsLink"
+                target="_blank"
+                :href="show.googleMapsLink"
+              >
+                {{ show.venueAddress }}</a
+              >
+              <span v-else>{{ show.venueAddress }}</span>
             </p>
           </div>
 
@@ -27,8 +34,16 @@
             </p>
             <div class="show-details__tickets padding-x-sm@sm min-width-50%">
               <p class="text-md">
-                <a class="link" :href="show.ticketLink" rel="noopener"
+                <a
+                  v-if="show.ticketLink"
+                  class="link"
+                  :href="show.ticketLink"
+                  target="_blank"
+                  rel="noopener"
                   >Buy Tickets</a
+                >
+                <a v-else class="link" :href="show.promoterLink" rel="noopener"
+                  >Promoter</a
                 >
               </p>
             </div>
@@ -60,13 +75,15 @@ export default {
   data() {
     return {
       shows: [
-        // {
-        //   venue: 'Space Meduza',
-        //   venueAddress: 'Skalitzer Straße, 10999 Berlin',
-        //   country: 'Germany',
-        //   date: '23/03/22',
-        //   ticketLink: '#0',
-        // },
+        {
+          venue: 'Agatha Hopfen',
+          venueAddress: 'Revaler Str. 99, 10245 Berlin',
+          googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
+          country: 'Germany',
+          date: '10/08/23',
+          // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+          promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+        },
       ],
     }
   },
