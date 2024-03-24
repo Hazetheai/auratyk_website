@@ -71,27 +71,37 @@
 import Newsletter from './Newsletter.vue'
 export default {
   components: { Newsletter },
-  props: {
-    shows: {
-      type: Array,
-      required: true,
-    },
-  },
-
-  // data() {
-  //   return {
-  //     shows: [
-  //       {
-  //         venue: 'Agatha Hopfen',
-  //         venueAddress: 'Revaler Str. 99, 10245 Berlin',
-  //         googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
-  //         country: 'Germany',
-  //         date: '10/08/23',
-  //         // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-  //         promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-  //       },
-  //     ],
-  //   }
+  // props: {
+  //   shows: {
+  //     type: Array,
+  //     required: true,
+  //   },
   // },
+
+  data() {
+    return {
+      shows: [
+        // {
+        //   venue: 'Agatha Hopfen',
+        //   venueAddress: 'Revaler Str. 99, 10245 Berlin',
+        //   googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
+        //   country: 'Germany',
+        //   date: '10/08/23',
+        //   // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+        //   promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+        // },
+        {
+          venue: 'Madame Claude',
+          venueAddress: 'Lübbener Str. 19, 10997 Berlin',
+          googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
+          country: 'Germany',
+          date: '06/04/24',
+          // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+          promoterLink:
+            'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
+        },
+      ],
+    }
+  },
 }
 </script>
