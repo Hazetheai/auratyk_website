@@ -1,7 +1,7 @@
 <template>
   <div class="main-layout">
     <AuratykHomeSceneOverlay>
-      <main class="main col-8">
+      <main class="main col-10 col-8@sm">
         <Nuxt />
       </main>
     </AuratykHomeSceneOverlay>

@@ -31,7 +31,7 @@ export default {
     meta() {
       const metaData = {
         type: 'website',
-        title: this.title,
+        // title: this.title,
       }
       return getSiteMeta(metaData)
     },

@@ -1,22 +1,85 @@
 <template>
   <div>
     <div
-      @keyup.esc="toggleMenu('close')"
       class="app-container grid"
       :class="
-        this.$store.state.menuOpen
+        $store.state.menuOpen
           ? 'app-container--menu-open'
           : 'app-container--menu-closed'
       "
+      @keyup.esc="toggleMenu('close')"
     >
       <header class="header grid position-fixed top-0 left-0">
-        <div class="col-2"></div>
-        <div class="flex justify-start justify-end@sm items-center col-8">
+        <div class="col-1 col-2@sm"></div>
+        <div
+          class="nav-container flex justify-start justify-end@sm items-center col-8"
+        >
+          <nav class="main-menu padding-y-sm padding-right-md display@sm">
+            <ul class="main-menu__list flex justify-between gap-sm">
+              <li v-show="$route.path !== '/'" class="text-sm padding-y-sm">
+                <NuxtLink v-slot="{ route, href }" to="/" event="" custom>
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Home
+                  </a>
+                </NuxtLink>
+              </li>
+              <li
+                v-show="$route.path !== '/about'"
+                class="text-sm padding-y-sm"
+              >
+                <NuxtLink v-slot="{ route, href }" to="/about" event="" custom>
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    About
+                  </a>
+                </NuxtLink>
+              </li>
+              <li
+                v-show="$route.path !== '/shows'"
+                class="text-sm padding-y-sm"
+              >
+                <NuxtLink v-slot="{ route, href }" to="/shows" event="" custom>
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Shows
+                  </a>
+                </NuxtLink>
+              </li>
+              <li
+                v-show="$route.path !== '/releases'"
+                class="text-sm padding-y-sm"
+              >
+                <NuxtLink
+                  v-slot="{ route, href }"
+                  to="/releases"
+                  event=""
+                  custom
+                >
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Releases
+                  </a>
+                </NuxtLink>
+              </li>
+              <li
+                v-show="$route.path !== '/contact'"
+                class="text-sm padding-y-sm"
+              >
+                <NuxtLink
+                  v-slot="{ route, href }"
+                  to="/contact"
+                  event=""
+                  custom
+                >
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Contact
+                  </a>
+                </NuxtLink>
+              </li>
+            </ul>
+          </nav>
           <a
-            @click="logsnagBandcamp"
             class="bandcamp-follow z-index-fixed-element flex items-center justify-between"
             href="https://auratyk.bandcamp.com/follow_me"
             target="_blank"
+            @click="logsnagBandcamp"
           >
             <!-- <icon-bandcamp-circle-0 class="icon" :width="16" /> -->
             <strong>Follow&nbsp;</strong>on Bandcamp</a
@@ -24,28 +87,30 @@
         </div>
         <div class="col-2">
           <button
-            @click="toggleMenu('open')"
             class="menu-btn btn btn--clear margin-y-md hide@sm"
+            @click="toggleMenu('open')"
           >
             <icon-menu :width="48" />
           </button>
         </div>
       </header>
-      <aside class="aside col-2 flex flex-column justify-evenly"></aside>
+      <aside
+        class="aside col-1 col-2@sm flex flex-column justify-evenly"
+      ></aside>
 
       <!-- Page Content - <main/> -->
       <slot />
       <!--  -->
-      <div class="col-2"></div>
+      <div class="col-1 col-2@sm"></div>
       <FooterComponent v-if="$route.path !== '/'" />
     </div>
     <div
       class="app-buttons-left position-fixed flex flex-column justify-between z-index-fixed-element"
     >
       <button
-        v-if="!this.menuOpen"
-        @click="toggleMenu"
+        v-if="!menuOpen"
         class="btn btn--clear menu-btn margin-y-md display@sm"
+        @click="toggleMenu"
       >
         <icon-menu :width="48" />
       </button>
@@ -63,17 +128,16 @@
     </div>
     <div
       v-if="
-        (this.$store.state.menuOpen && $route.path !== '/') ||
-        $route.path === '/'
+        ($store.state.menuOpen && $route.path !== '/') || $route.path === '/'
       "
       class="play-button play-button--home z-index-overlay"
-      :class="this.$store.state.isLoaded && 'play-button--animate'"
+      :class="$store.state.isLoaded && 'play-button--animate'"
     >
       <button
-        v-if="this.$store.state.isPlaying"
+        v-if="$store.state.isPlaying"
         class="btn btn--clear"
-        @click="togglePlay"
         :stroke-width="0.5"
+        @click="togglePlay"
       >
         <icon-equalizer class="animation" />
       </button>
@@ -85,14 +149,14 @@
     <div
       class="menu-overlay grid z-index-fixed-element position-fixed"
       :class="
-        this.$store.state.menuOpen
+        $store.state.menuOpen
           ? 'menu-overlay--menu-open'
           : 'menu-overlay--menu-closed'
       "
     >
-      <div class="col-2"></div>
+      <div class="col-1 col-2@sm"></div>
       <div
-        class="menu-overlay__container col-8 padding-y-lg flex flex-column position-relative"
+        class="menu-overlay__container col-9 col-8@sm padding-y-lg flex flex-column position-relative"
       >
         <button
           class="menu-overlay__close btn btn--clear position-absolute top-xl right-0 display@sm"
@@ -112,7 +176,7 @@
                 v-show="$route.path !== '/'"
                 class="main-menu__list-item text-lg padding-y-sm"
               >
-                <NuxtLink to="/" event="" v-slot="{ route, href }" custom>
+                <NuxtLink v-slot="{ route, href }" to="/" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Home
                   </a>
@@ -122,7 +186,7 @@
                 v-show="$route.path !== '/about'"
                 class="main-menu__list-item text-lg padding-y-sm"
               >
-                <NuxtLink to="/about" event="" v-slot="{ route, href }" custom>
+                <NuxtLink v-slot="{ route, href }" to="/about" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     About
                   </a>
@@ -132,7 +196,7 @@
                 v-show="$route.path !== '/shows'"
                 class="main-menu__list-item text-lg padding-y-sm"
               >
-                <NuxtLink to="/shows" event="" v-slot="{ route, href }" custom>
+                <NuxtLink v-slot="{ route, href }" to="/shows" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Shows
                   </a>
@@ -143,9 +207,9 @@
                 class="main-menu__list-item text-lg padding-y-sm"
               >
                 <NuxtLink
+                  v-slot="{ route, href }"
                   to="/releases"
                   event=""
-                  v-slot="{ route, href }"
                   custom
                 >
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
@@ -158,9 +222,9 @@
                 class="main-menu__list-item text-lg padding-y-sm"
               >
                 <NuxtLink
+                  v-slot="{ route, href }"
                   to="/contact"
                   event=""
-                  v-slot="{ route, href }"
                   custom
                 >
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
@@ -180,7 +244,7 @@
               <a
                 target="_blank"
                 rel="noopener nofollow"
-                :href="this.socials.instagram"
+                :href="socials.instagram"
               >
                 Instagram</a
               >
@@ -189,7 +253,7 @@
               <a
                 target="_blank"
                 rel="noopener nofollow"
-                :href="this.socials.soundcloud"
+                :href="socials.soundcloud"
               >
                 SoundCloud</a
               >
@@ -198,7 +262,7 @@
               <a
                 target="_blank"
                 rel="noopener nofollow"
-                :href="this.socials.bandcamp"
+                :href="socials.bandcamp"
               >
                 Bandcamp</a
               >
@@ -207,7 +271,7 @@
               <a
                 target="_blank"
                 rel="noopener nofollow"
-                :href="this.socials.youtube"
+                :href="socials.youtube"
               >
                 Youtube</a
               >
@@ -226,14 +290,14 @@
       </div>
       <div class="col-2">
         <button
-          @click="toggleMenu('close')"
           class="menu-btn btn btn--clear margin-y-md hide@sm"
+          @click="toggleMenu('close')"
         >
           <icon-close class="" :width="32" />
         </button>
       </div>
     </div>
-    <AuratykHomeScene :isPlaying="this.$store.state.isPlaying" />
+    <AuratykHomeScene :is-playing="$store.state.isPlaying" />
   </div>
 </template>
 
@@ -259,6 +323,17 @@ export default {
         false
       )
     }
+  },
+  mounted() {
+    const vm = this
+    navigator.mediaSession.setActionHandler('play', () => {
+      // Do something more than just playing audio...
+      vm.togglePlay()
+    })
+    navigator.mediaSession.setActionHandler('pause', () => {
+      // Do something more than just playing audio...
+      vm.togglePlay()
+    })
   },
 
   methods: {
@@ -337,17 +412,6 @@ export default {
       }
     },
   },
-  mounted() {
-    const vm = this
-    navigator.mediaSession.setActionHandler('play', () => {
-      // Do something more than just playing audio...
-      vm.togglePlay()
-    })
-    navigator.mediaSession.setActionHandler('pause', () => {
-      // Do something more than just playing audio...
-      vm.togglePlay()
-    })
-  },
 }
 </script>
 
@@ -387,10 +451,27 @@ export default {
 
 .header {
   height: var(--header-height);
-  background: var(--color-black);
-  @include breakpoint(sm) {
-    background: transparent;
-  }
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.8) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  // & .nav-container {
+  //   position: relative;
+  //   &:before {
+  //     position: absolute;
+  //     content: '';
+  //     width: 100%;
+  //     height: 100%;
+  //     box-shadow: inset 0 0 0 3000px rgba(150, 150, 150, 0.192);
+  //     filter: blur(10px);
+  //   }
+  // }
+  // @include breakpoint(sm) {
+  //   background: transparent;
+  // }
 }
 
 .aside {
@@ -413,7 +494,7 @@ export default {
   color: var(--color-white);
   /* border: 0.5px solid #00a1c6; */
   border: 0.5px solid var(--color-accent);
-  border-radius: 4px;
+
   padding: var(--space-xxxs) var(--space-xs);
   text-decoration: none;
   align-items: center;
@@ -533,6 +614,16 @@ export default {
     opacity: 1;
     transform: translateX(0);
     filter: blur(0);
+  }
+}
+
+.notion-asset-wrapper {
+  & img,
+  & video,
+  & iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

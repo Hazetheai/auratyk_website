@@ -1,7 +1,7 @@
 <template>
   <div class="about main__content margin-bottom-xl">
     <h1 class="main__content-heading">About</h1>
-    <div class="main__content-intro max-width-xxs">
+    <div class="main__content-intro">
       <NotionRenderer :blockMap="blockMap" :contentId="bioContentId" />
     </div>
   </div>
@@ -55,7 +55,8 @@ export default {
       const metaData = {
         type: 'website',
         title: this.title,
-        // description: this.description,
+        description: `Electronic musician & Audio-visual artist. Based in Berlin.`,
+
         url: `${this.$config.baseUrl}${this.$route.path}`,
         // mainImage: this.article.image,
       }
@@ -64,3 +65,27 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.about {
+  .main__content {
+    &-intro {
+      & .notion-sync-block {
+        display: flex;
+        flex-direction: column;
+        & p {
+          max-width: var(--max-width-sm);
+          padding-top: var(--space-xl);
+          padding-bottom: var(--space-xl);
+          &:first-child {
+            padding-top: 0;
+          }
+          &:nth-child(2n) {
+            align-self: flex-end;
+            // text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div ref="loadingScreen" class="loadingScreen grid z-index-overlay">
-    <div class="col-2"></div>
-    <div class="home main__content col-8">
+    <div class="col-1 col-2@sm"></div>
+    <div class="home main__content col-10 col-8@sm">
       <h1 class="main__content-heading loading-title loading-title--initial">
         <span class="loading-title__letter-wrapper">
           <span class="loading-title__letter">A</span> </span
@@ -29,7 +29,7 @@
         :style="{ width: Math.random() * 10 + progress + '%' }"
       ></div>
     </div> -->
-    <div class="col-2"></div>
+    <div class="col-1 col-2@sm"></div>
 
     <!-- <p class="loading_undertitle">Soundchecking...</p> -->
 
@@ -92,7 +92,7 @@ export default {
       })
       .to('.loadingScreen', {
         clipPath: clipPath.hover,
-        onComplete: function () {
+        onComplete() {
           vm.$store.commit('isLoaded')
         },
       })
@@ -106,13 +106,10 @@ export default {
       this.loadingController = this.$LoadingControllerInstance
     },
     onProgress(url, loaded, total) {
-      console.log('url in component', url)
-
       this.progress = (loaded / total) * 100
       this.progressUrl = url
     },
     onLoad() {
-      console.log('comp loaded')
       this.$refs.loadingScreen.classList.add('finished')
     },
   },

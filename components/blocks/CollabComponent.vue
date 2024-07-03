@@ -4,10 +4,15 @@
   >
     <div class="max-width-xs margin-bottom-lg">
       <div class="text-component">
-        <h1 class="main__content-heading">Contact</h1>
+        <h1 class="main__content-heading">Collaborations</h1>
         <p class="main__content-intro max-width-xxs">
-          Please send any and all request for collaborations, bookings, press
-          info, tour dates etc. via the form below, or the email provided.
+          Looking to collaborate on a project? I'm open to all kinds of
+          possibilites - music videos &amp; visualisers, interactive
+          installations, tracks etc.
+          <br />
+          <br />
+          Please send me a message with the details and I'll get back to you as
+          soon as I can!
         </p>
       </div>
     </div>
@@ -17,9 +22,14 @@
         <div class="col-6@md">
           <dl class="details-list details-list--rows">
             <div class="details-list__item padding-y-md">
-              <dt class="font-bold margin-bottom-xxs">Address</dt>
+              <dt class="font-bold margin-bottom-xxs">What I can offer</dt>
               <dd class="line-height-md">
-                Lichtenberger Str. 41, <br />10243 Berlin <br />Germany
+                <p>Composition</p>
+                <p>Sound Design</p>
+                <p>Music Production</p>
+                <p>Music Videos / Visualisers</p>
+                <p>Developing interactive installations</p>
+                <p>Audio for Games / Film / VR/AR / Web</p>
               </dd>
             </div>
 

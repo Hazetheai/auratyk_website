@@ -11,7 +11,7 @@ Usage: codyhouse.co/license
   --header-height: 70px;
 
   @include breakpoint(md) {
-    --header-height: 70px;
+    --header-height: 90px;
   }
 }
 
@@ -63,7 +63,7 @@ Usage: codyhouse.co/license
 
   &::before {
     // top header bg + border
-    content: '';
+    content: "";
     display: block;
     position: sticky;
     top: 0;
@@ -137,7 +137,7 @@ Usage: codyhouse.co/license
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -156,7 +156,7 @@ Usage: codyhouse.co/license
   }
 }
 
-.header__trigger[aria-expanded='true'] .header__trigger-icon {
+.header__trigger[aria-expanded="true"] .header__trigger-icon {
   background-color: transparent;
 
   &::before {

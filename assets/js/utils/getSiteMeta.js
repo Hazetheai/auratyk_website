@@ -26,7 +26,7 @@ export default (meta) => {
     {
       hid: 'og:title',
       property: 'og:title',
-      content: `Auratyk | ${meta && meta.title}` || title,
+      content: meta?.title ? `Auratyk | ${meta.title}` : title,
     },
     {
       hid: 'og:description',

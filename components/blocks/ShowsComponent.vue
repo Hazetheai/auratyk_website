@@ -1,6 +1,6 @@
 <template>
   <div class="home main__content">
-    <h1 class="main__content-heading margin-bottom-md">Shows</h1>
+    <h1 class="main__content-heading margin-bottom-md">{{ content.title }}</h1>
     <div v-if="shows.length" class="shows-container">
       <div v-for="show in shows" :key="show.date" class="show">
         <hr class="hr margin-y-md" />
@@ -32,7 +32,10 @@
             <p class="show-details__date text-md padding-x-sm@sm">
               {{ show.date }}
             </p>
-            <div class="show-details__tickets padding-x-sm@sm min-width-50%">
+            <div
+              v-if="isPast != true"
+              class="show-details__tickets padding-x-sm@sm min-width-50%"
+            >
               <p class="text-md">
                 <a
                   v-if="show.ticketLink"
@@ -58,6 +61,9 @@
         <p class="text-md color-contrast-medium">
           No shows booked at the moment
         </p>
+        <p v-if="isPast != true" class="text-md color-contrast-medium">
+          See past shows <a href="/past-shows" class="link">here</a>
+        </p>
         <p class="text-md">
           Join our mailing list to be the first to know about new dates!
         </p>
@@ -71,6 +77,21 @@
 import Newsletter from './Newsletter.vue'
 export default {
   components: { Newsletter },
+  props: {
+    shows: {
+      type: Array,
+      required: true,
+    },
+    content: {
+      type: Object,
+      required: true,
+    },
+    isPast: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
   // props: {
   //   shows: {
   //     type: Array,
@@ -78,30 +99,30 @@ export default {
   //   },
   // },
 
-  data() {
-    return {
-      shows: [
-        // {
-        //   venue: 'Agatha Hopfen',
-        //   venueAddress: 'Revaler Str. 99, 10245 Berlin',
-        //   googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
-        //   country: 'Germany',
-        //   date: '10/08/23',
-        //   // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-        //   promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-        // },
-        {
-          venue: 'Madame Claude',
-          venueAddress: 'Lübbener Str. 19, 10997 Berlin',
-          googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
-          country: 'Germany',
-          date: '06/04/24',
-          // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-          promoterLink:
-            'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
-        },
-      ],
-    }
-  },
+  // data() {
+  //   return {
+  //     shows: [
+  // {
+  //   venue: 'Agatha Hopfen',
+  //   venueAddress: 'Revaler Str. 99, 10245 Berlin',
+  //   googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
+  //   country: 'Germany',
+  //   date: '10/08/23',
+  //   // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+  //   promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+  // },
+  // {
+  //   venue: 'Madame Claude',
+  //   venueAddress: 'Lübbener Str. 19, 10997 Berlin',
+  //   googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
+  //   country: 'Germany',
+  //   date: '06/04/24',
+  //   // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+  //   promoterLink:
+  //     'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
+  // },
+  //     ],
+  //   }
+  // },
 }
 </script>

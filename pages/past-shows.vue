@@ -1,5 +1,9 @@
 <template>
-  <ShowsComponent :shows="shows" :content="{ title: 'Shows' }" />
+  <ShowsComponent
+    :shows="shows"
+    :content="{ title: 'Past Shows' }"
+    :is-past="true"
+  />
 </template>
 
 <script>
@@ -35,7 +39,7 @@ export default {
           'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
       },
     ]
-      .filter((show) => dayjs(show.date).isAfter(dayjs().subtract(1, 'day')))
+      .filter((show) => dayjs(show.date).isBefore(dayjs().subtract(1, 'day')))
       .map((show) => {
         return {
           ...show,
@@ -68,9 +72,9 @@ export default {
       const s = this.shows?.[0] || undefined
       const metaData = {
         type: 'website',
-        title: 'Shows',
+        title: 'Past Shows',
         description: s
-          ? `Upcoming: ${s.date} at ${s.venue}, ${s.venueAddress}`
+          ? `Recent: ${s.date} at ${s.venue}, ${s.venueAddress}`
           : undefined,
         url: `${this.$config.baseUrl}${this.$route.path}`,
         // mainImage: this.article.image,
