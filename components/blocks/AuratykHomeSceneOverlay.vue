@@ -248,9 +248,11 @@
         <hr class="hr margin-y-sm" />
         <nav class="social-menu">
           <ul
-            class="social-menu__list flex flex-column flex-row@sm justify-between items-center@sm"
+            class="social-menu__list flex flex-wrap flex-row@sm justify-between items-center@sm"
           >
-            <li class="social-menu__list-item padding-y-sm padding-y-0@sm">
+            <li
+              class="social-menu__list-item padding-y-sm padding-y-0@sm padding-right-md padding-right-0@lg"
+            >
               <a
                 target="_blank"
                 rel="noopener nofollow"
@@ -259,7 +261,9 @@
                 Instagram</a
               >
             </li>
-            <li class="social-menu__list-item padding-y-sm padding-y-0@sm">
+            <li
+              class="social-menu__list-item padding-y-sm padding-y-0@sm padding-right-md padding-right-0@lg"
+            >
               <a
                 target="_blank"
                 rel="noopener nofollow"
@@ -268,7 +272,9 @@
                 SoundCloud</a
               >
             </li>
-            <li class="social-menu__list-item padding-y-sm padding-y-0@sm">
+            <li
+              class="social-menu__list-item padding-y-sm padding-y-0@sm padding-right-md padding-right-0@lg"
+            >
               <a
                 target="_blank"
                 rel="noopener nofollow"
@@ -277,7 +283,9 @@
                 Bandcamp</a
               >
             </li>
-            <li class="social-menu__list-item padding-y-sm padding-y-0@sm">
+            <li
+              class="social-menu__list-item padding-y-sm padding-y-0@sm padding-right-md padding-right-0@lg"
+            >
               <a
                 target="_blank"
                 rel="noopener nofollow"
