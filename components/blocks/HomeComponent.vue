@@ -1,6 +1,6 @@
 <template>
   <div class="home main__content">
-    <h1 class="main__content-heading">Auratyk</h1>
+    <h1 class="main__content-heading site-title">Auratyk</h1>
     <p class="main__content-intro max-width-xxs">
       Electronic musician &amp; Audio/Visual Artist
     </p>

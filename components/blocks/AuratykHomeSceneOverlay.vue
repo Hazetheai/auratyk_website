@@ -232,6 +232,16 @@
                   </a>
                 </NuxtLink>
               </li>
+              <li
+                v-show="$route.path !== '/collab'"
+                class="main-menu__list-item text-lg padding-y-sm"
+              >
+                <NuxtLink v-slot="{ route, href }" to="/collab" event="" custom>
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Collab
+                  </a>
+                </NuxtLink>
+              </li>
             </ul>
           </nav>
         </div>
@@ -440,7 +450,14 @@ export default {
     padding-top: var(--space-xxxl);
 
     &-heading {
-      font-size: var(--text-xxxxl);
+      font-size: var(--text-xxl);
+      @include breakpoint(sm) {
+        font-size: var(--text-xxxxl);
+      }
+
+      &.site-title {
+        font-size: var(--text-xxxxl);
+      }
       font-weight: 400;
     }
     &-intro {
