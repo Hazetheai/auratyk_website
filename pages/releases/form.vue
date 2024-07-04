@@ -38,6 +38,7 @@ export default {
       .find((release) => release.id === 'form-ep-2022')
     return {
       release,
+      title: 'Form EP',
     }
   },
   head() {

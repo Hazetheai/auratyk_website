@@ -13,16 +13,16 @@
     ],
     "streamLinks": [
       {
-        "platform": "Spotify",
-        "url": "https://open.spotify.com/album/3YFeHzq9ws196gfRCjCGQY"
+        "platform": "SoundCloud",
+        "url": "https://soundcloud.com/auratyk/sets/form"
       },
       {
         "platform": "Apple",
         "url": "https://music.apple.com/de/album/form-ep/1652874480"
       },
       {
-        "platform": "SoundCloud",
-        "url": "https://soundcloud.com/auratyk/sets/form"
+        "platform": "Spotify",
+        "url": "https://open.spotify.com/album/3YFeHzq9ws196gfRCjCGQY"
       }
     ]
   }

@@ -31,16 +31,22 @@
         <h3 class="">Auratyk shares debut EP ‘Form’</h3>
 
         <NotionRenderer
-          class="max-width-lg@md"
           v-if="notionContent.releasesBlockMap"
           :blockMap="notionContent.releasesBlockMap"
           :contentId="pressReleaseContentId"
+          class="max-width-lg@md"
         />
       </div>
       <div
         style="min-width: 50%"
         class="release-details__tickets flex justify-between padding-top-md padding-x-sm@md margin-bottom-sm"
       >
+        <a class="link" :href="release.buyLink" rel="noopener" target="_blank"
+          ><icon-bandcamp-circle-0
+            width="48"
+            height="48"
+            title="Listen on Bandcamp"
+        /></a>
         <a
           v-for="streamLink in release.streamLinks"
           :key="streamLink.url"
