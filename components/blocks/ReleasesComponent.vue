@@ -8,9 +8,13 @@
           class="release-details flex flex-column flex-row@md justify-between items-start items-end@md"
         >
           <div
-            class="release-details__venue flex flex-column items-start text-component text-left margin-bottom-sm"
+            class="release-details__venue link flex flex-column items-start text-component text-left margin-bottom-sm"
           >
-            <h3 class="text-xl">{{ release.name }} {{ release.type }}</h3>
+            <h3 class="text-xl">
+              <NuxtLink :to="release.pageLink"
+                >{{ release.name }} {{ release.type }}</NuxtLink
+              >
+            </h3>
           </div>
 
           <div
@@ -101,40 +105,13 @@
 import { isOnOrAfterToday } from '../../libs/dateFns'
 import { handleStreamLinks } from '../../libs/content-handlers'
 import Newsletter from './Newsletter.vue'
-
-const dates = [
-  {
-    name: 'Form',
-    type: 'EP',
-    mediums: ['Digital & Cassette'],
-    date: '25/11/22',
-    buyLink: 'https://auratyk.bandcamp.com/album/form?external_follow=1',
-    preSaveLinks: [
-      { platform: 'Spotify', url: 'https://gate.fm/5FPKE0', smart: 0 },
-      { platform: 'Apple', url: 'https://gate.fm/5FPKE0', smart: 0 },
-    ],
-    streamLinks: [
-      {
-        platform: 'Spotify',
-        url: 'https://open.spotify.com/album/3YFeHzq9ws196gfRCjCGQY',
-      },
-      {
-        platform: 'Apple',
-        url: 'https://music.apple.com/de/album/form-ep/1652874480',
-      },
-      {
-        platform: 'SoundCloud',
-        url: 'https://soundcloud.com/auratyk/sets/form',
-      },
-    ],
-  },
-]
+import releaseInfo from '@/content/releases.json'
 
 export default {
   components: { Newsletter },
 
   data() {
-    const _releases = dates.map((release) => ({
+    const _releases = releaseInfo.map((release) => ({
       ...release,
       date: isOnOrAfterToday(release.date),
       isReleased: isOnOrAfterToday(release.date) === 'Released',

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Form",
+    "id": "form-ep-2022",
+    "type": "EP",
+    "mediums": ["Digital & Cassette"],
+    "date": "25.11.22",
+    "pageLink": "/releases/form",
+    "buyLink": "https://auratyk.bandcamp.com/album/form?external_follow=1",
+    "preSaveLinks": [
+      { "platform": "Spotify", "url": "https://gate.fm/5FPKE0", "smart": 0 },
+      { "platform": "Apple", "url": "https://gate.fm/5FPKE0", "smart": 0 }
+    ],
+    "streamLinks": [
+      {
+        "platform": "Spotify",
+        "url": "https://open.spotify.com/album/3YFeHzq9ws196gfRCjCGQY"
+      },
+      {
+        "platform": "Apple",
+        "url": "https://music.apple.com/de/album/form-ep/1652874480"
+      },
+      {
+        "platform": "SoundCloud",
+        "url": "https://soundcloud.com/auratyk/sets/form"
+      }
+    ]
+  }
+]

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ReleasesComponent from '../components/blocks/ReleasesComponent.vue'
+import ReleasesComponent from '@/components/blocks/ReleasesComponent.vue'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 
 export default {
