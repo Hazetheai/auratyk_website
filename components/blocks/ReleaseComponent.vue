@@ -34,7 +34,7 @@
           v-if="notionContent.releasesBlockMap"
           :blockMap="notionContent.releasesBlockMap"
           :contentId="pressReleaseContentId"
-          class="max-width-lg@md"
+          class="max-width-md@md"
         />
       </div>
       <div
