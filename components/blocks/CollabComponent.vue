@@ -4,11 +4,11 @@
   >
     <div class="max-width-xs margin-bottom-lg">
       <div class="text-component">
-        <h1 class="main__content-heading">Collaborations</h1>
+        <h1 class="main__content-heading">Collaborations &amp; Comissions</h1>
         <p class="main__content-intro max-width-xxs">
-          Looking to collaborate on a project? I'm open to all kinds of
-          possibilites - music videos &amp; visualisers, interactive
-          installations, tracks etc.
+          Looking to collaborate on a project or commission a piece? I'm open to
+          all kinds of possibilites - music videos &amp; visualisers,
+          interactive installations, tracks etc.
           <br />
           <br />
           Please send me a message with the details and I'll get back to you as
@@ -29,7 +29,7 @@
                 <p>Music Production</p>
                 <p>Music Videos / Visualisers</p>
                 <p>Developing interactive installations</p>
-                <p>Audio for Games / Film / VR/AR / Web</p>
+                <p>Audio for Games / Film / VR/AR</p>
               </dd>
             </div>
 
@@ -39,13 +39,6 @@
                 <a href="mailto:info@auratyk.com">info@auratyk.com</a>
               </dd>
             </div>
-
-            <!-- <div class="details-list__item padding-y-md">
-              <dt class="font-bold margin-bottom-xxs">Phone</dt>
-              <dd class="line-height-md">
-                <p><a href="tel:+49 157 36218731">+49 157 36218731</a></p>
-              </dd>
-            </div> -->
           </dl>
         </div>
 
@@ -56,11 +49,11 @@
                 >Name</label
               >
               <input
+                id="contactName"
                 v-model="form.name"
                 class="form-control width-100%"
                 type="text"
                 name="contactName"
-                id="contactName"
                 required
               />
             </div>
@@ -70,6 +63,7 @@
                 >Email</label
               >
               <input
+                id="contactEmail"
                 v-model="form.email"
                 required
                 inputmode="email"
@@ -77,7 +71,6 @@
                 class="form-control width-100%"
                 type="email"
                 name="contactEmail"
-                id="contactEmail"
               />
             </div>
 
@@ -86,11 +79,11 @@
                 >Message</label
               >
               <textarea
+                id="contactMessage"
                 v-model="form.message"
                 class="form-control width-100%"
                 rows="5"
                 name="contactMessage"
-                id="contactMessage"
                 required
               ></textarea>
             </div>
@@ -150,7 +143,7 @@ export default {
         {
           name,
           email,
-          subject: 'Contact Form - Auratyk Website',
+          subject: 'Collaboration Enquiry - Auratyk Website',
           honeypot: '', // if any value received in this field, form submission will be ignored.
           message,
           replyTo: '@', // this will set replyTo of email to email address entered in the form
@@ -166,8 +159,8 @@ export default {
         this.$logsnag.publish({
           project: 'auratyk_website',
           channel: 'main',
-          event: `${this.form.name} sent an enquiry`,
-          icon: '📩',
+          event: `${this.form.name} sent a collaboration enquiry`,
+          icon: '🤝',
           notify: true,
         })
       }
