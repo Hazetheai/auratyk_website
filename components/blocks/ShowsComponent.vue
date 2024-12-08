@@ -45,7 +45,7 @@
                   rel="noopener"
                   >Buy Tickets</a
                 >
-                <a v-else class="link" :href="show.promoterLink" rel="noopener"
+                <a v-else-if="show.promoterLink" class="link" :href="show.promoterLink" rel="noopener"
                   >Promoter</a
                 >
               </p>

@@ -46,7 +46,7 @@ export default {
       title: `Auratyk | ${this.title}`,
       meta: [
         ...this.meta,
-        { hid: 'robots', name: 'robots', content: 'noindex' },
+        // { hid: 'robots', name: 'robots', content: 'noindex' },
       ],
       link: [
         {

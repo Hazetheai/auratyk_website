@@ -34,6 +34,16 @@ export default {
         promoterLink:
           'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
       },
+      {
+        venue: 'Madame Claude',
+        venueAddress: 'Lübbener Str. 19, 10997 Berlin',
+        googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
+        country: 'Germany',
+        date: '15/02/25',
+        // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
+        // promoterLink:
+        //   'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
+      },
     ]
       .filter((show) => dayjs(show.date).isAfter(dayjs().subtract(1, 'day')))
       .map((show) => {
