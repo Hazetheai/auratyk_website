@@ -20,7 +20,7 @@ export default {
         venueAddress: 'Revaler Str. 99, 10245 Berlin',
         googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
         country: 'Germany',
-        date: '10/08/23',
+        date: '2023-08-10',
         // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
         promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
       },
@@ -29,7 +29,7 @@ export default {
         venueAddress: 'Lübbener Str. 19, 10997 Berlin',
         googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
         country: 'Germany',
-        date: '06/04/24',
+        date: '2024-04-06',
         // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
         promoterLink:
           'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
@@ -39,12 +39,13 @@ export default {
         venueAddress: 'Lübbener Str. 19, 10997 Berlin',
         googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
         country: 'Germany',
-        date: '15/02/25',
+        date: '2025-02-15',
         // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-        // promoterLink:
-        //   'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
+        promoterLink:
+          'https://madameclaude.de/event/shuudr-auratyk-oberst-panizza-dj-set/',
       },
     ]
+
       .filter((show) => dayjs(show.date).isAfter(dayjs().subtract(1, 'day')))
       .map((show) => {
         return {
