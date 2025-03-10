@@ -1,19 +1,19 @@
 <template>
-  <ReleaseComponent :release="release" />
+  <ToxComponent :release="release" />
 </template>
 
 <script>
-import ReleaseComponent from '@/components/blocks/ReleaseComponent.vue'
+import ToxComponent from '@/components/blocks/ToxComponent.vue'
 import { isOnOrAfterToday } from '@/libs/dateFns'
 import { handleStreamLinks } from '@/libs/content-handlers'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 // import bio from '@/content/notion/bio'
 // import releases from '@/content/notion/releases'
-import releaseInfo from '@/content/releases.json'
+import toxInfo from '@/content/toxes.json'
 
 export default {
   name: 'FormEPPage',
-  components: { ReleaseComponent },
+  components: { ToxComponent },
   layout(context) {
     return 'main'
   },
@@ -24,18 +24,19 @@ export default {
   //   return { bioBlockMap, releasesBlockMap }
   // },
   data() {
-    const _releases = releaseInfo.map((release) => ({
-      ...release,
+    const _toxes = toxInfo.map((tox) => ({
+      ...tox,
       // date: isOnOrAfterToday(release.date),
-      isReleased: isOnOrAfterToday(release.date) === 'Released',
+      isReleased: isOnOrAfterToday(tox.date) === 'Released',
     }))
 
-    const release = _releases
+    const tox = _toxes
       .map(handleStreamLinks)
-      .find((release) => release.id === 'form-ep-2022')
+      .find((tox) => tox.id === 'cloud_seq-20250310')
+
     return {
-      release,
-      title: 'Form EP',
+      release: tox,
+      title: 'Cloud_Seq: Touchdesigner Component',
     }
   },
   head() {
@@ -62,7 +63,7 @@ export default {
         title: this.title,
         description: this.description,
         url: `${this.$config.baseUrl}${this.$route.path}`,
-        socialImage: `/images/png/ep-cover-art-ep.jpg`,
+        socialImage: `/images/cloud_seq-network.png`,
       }
       return getSiteMeta(metaData)
     },

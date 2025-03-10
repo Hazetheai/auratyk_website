@@ -23,30 +23,21 @@
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/about'"
-                class="text-sm padding-y-sm"
-              >
+              <li class="text-sm padding-y-sm">
                 <NuxtLink v-slot="{ route, href }" to="/about" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     About
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/shows'"
-                class="text-sm padding-y-sm"
-              >
+              <li class="text-sm padding-y-sm">
                 <NuxtLink v-slot="{ route, href }" to="/shows" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Shows
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/releases'"
-                class="text-sm padding-y-sm"
-              >
+              <li class="text-sm padding-y-sm">
                 <NuxtLink
                   v-slot="{ route, href }"
                   to="/releases"
@@ -58,10 +49,7 @@
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/contact'"
-                class="text-sm padding-y-sm"
-              >
+              <li class="text-sm padding-y-sm">
                 <NuxtLink
                   v-slot="{ route, href }"
                   to="/contact"
@@ -182,30 +170,21 @@
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/about'"
-                class="main-menu__list-item text-lg padding-y-sm"
-              >
+              <li class="main-menu__list-item text-lg padding-y-sm">
                 <NuxtLink v-slot="{ route, href }" to="/about" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     About
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/shows'"
-                class="main-menu__list-item text-lg padding-y-sm"
-              >
+              <li class="main-menu__list-item text-lg padding-y-sm">
                 <NuxtLink v-slot="{ route, href }" to="/shows" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Shows
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/releases'"
-                class="main-menu__list-item text-lg padding-y-sm"
-              >
+              <li class="main-menu__list-item text-lg padding-y-sm">
                 <NuxtLink
                   v-slot="{ route, href }"
                   to="/releases"
@@ -217,10 +196,7 @@
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/contact'"
-                class="main-menu__list-item text-lg padding-y-sm"
-              >
+              <li class="main-menu__list-item text-lg padding-y-sm">
                 <NuxtLink
                   v-slot="{ route, href }"
                   to="/contact"
@@ -232,13 +208,22 @@
                   </a>
                 </NuxtLink>
               </li>
-              <li
-                v-show="$route.path !== '/collab'"
-                class="main-menu__list-item text-lg padding-y-sm"
-              >
+              <li class="main-menu__list-item text-lg padding-y-sm">
                 <NuxtLink v-slot="{ route, href }" to="/collab" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Collab
+                  </a>
+                </NuxtLink>
+              </li>
+              <li class="main-menu__list-item text-lg padding-y-sm">
+                <NuxtLink
+                  v-slot="{ route, href }"
+                  to="/community/cloud-seq"
+                  event=""
+                  custom
+                >
+                  <a :href="href" @click.prevent="toggleMenu('close', route)">
+                    Cloud_Seq (Free TouchDesigner Tool)
                   </a>
                 </NuxtLink>
               </li>

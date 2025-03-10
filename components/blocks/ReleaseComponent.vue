@@ -30,12 +30,62 @@
       >
         <h3 class="">Auratyk shares debut EP ‘Form’</h3>
 
-        <NotionRenderer
+        <!-- <NotionRenderer
           v-if="notionContent.releasesBlockMap"
           :blockMap="notionContent.releasesBlockMap"
           :contentId="pressReleaseContentId"
           class="max-width-md@md"
-        />
+        /> -->
+        <div class="notion-sync-block max-width-md@md">
+          <p class="notion-text">
+            <span
+              ><span
+                >Electronic Producer Auratyk has released a debut 4 track EP,
+                chronicling the formation of their artistic persona. Interlacing
+                two pieces produced and recorded during the harsh Montreal
+                winter and two pieces created in Berlin the following years,
+                ‘Form’ offers a nuanced seasonal narrative.
+              </span></span
+            >
+          </p>
+          <p class="notion-text">
+            <span
+              ><span
+                >The all instrumental EP creates an ethereal sonic landscape
+                combining feelings of isolation and serenity from the intense
+                Montreal winter and the tempestuous growth experienced by the
+                artist since their arrival in Berlin. The decision to keep it
+                instrumental was self evident to Auratyk who explains:</span
+              ></span
+            >
+          </p>
+          <p class="notion-text">
+            <span
+              ><span
+                >“Lyrics, can be incredible, but the most emotive experiences
+                always seems to be without distinct words. This sonic palette
+                allowed me to freely express myself, without language and its
+                inherent bias getting in the way. There are whispers throughout
+                the tracks, as I believe the human voice is one of the most
+                magical instruments there is, but they never tell you what to
+                feel, or think.”</span
+              ></span
+            >
+          </p>
+          <p class="notion-text">
+            <span
+              ><span
+                >The finishing touches to the tracks were done in The Famous
+                Gold Watch Studios in Berlin.</span
+              ></span
+            >
+          </p>
+          <p class="notion-text">
+            <span
+              ><b><span>Auratyks ‘Form’ is out now.</span></b></span
+            >
+          </p>
+        </div>
       </div>
       <div
         style="min-width: 50%"
@@ -78,16 +128,16 @@
 </template>
 
 <script>
-import { NotionRenderer } from 'vue-notion'
+// import { NotionRenderer } from 'vue-notion'
 import Newsletter from './Newsletter.vue'
 import { logger } from '@/assets/js/utils/environment'
 import bioContentIds from '@/content/notion/bio'
 import releaseContentIds from '@/content/notion/releases'
 
 export default {
-  components: { Newsletter, NotionRenderer },
+  components: { Newsletter },
   props: {
-    notionContent: { type: Object, default: () => ({}) },
+    // notionContent: { type: Object, default: () => ({}) },
     release: { type: Object, default: () => ({}) },
   },
 
