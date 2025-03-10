@@ -73,14 +73,15 @@
       </div>
       <div
         style="min-width: 50%"
-        class="release-details__tickets flex justify-between padding-top-md padding-x-sm@md margin-bottom-sm gap-x-md"
+        class="release-details__tickets flex justify-between padding-top-md margin-bottom-sm gap-x-md"
       >
         <a
-          class="link"
+          class="link hover-fade"
           style="width: 50%"
           :href="release.compLink"
           rel="noopener"
           target="_blank"
+          download
           @click="logDownload('the Cloud_Seq tox')"
         >
           <nuxt-img
@@ -90,13 +91,15 @@
             alt="'Form' Cover Art"
             style="object-fit: cover; max-height: 550px; width: 100%"
           />
-          <br />
-          <br />
-
-          Component</a
-        >
+          <span class="github-icon-wrapper">
+            <span class="github-icon">
+              <icon-github-mark title="Component & Documentation" />
+            </span>
+          </span>
+          <span class="display@sm"> Component </span>
+        </a>
         <a
-          class="link"
+          class="link justify-center hover-fade"
           style="width: 54%"
           :href="release.exampleLink"
           rel="noopener"
@@ -107,18 +110,21 @@
             class="dark-image"
             sizes="sm:100vw md:50vw lg:600px"
             src="/images/cloud_seq-example.png"
-            alt="'Form' Cover Art"
+            alt="Touchdesigner Network inside example file"
             style="object-fit: cover; max-height: 550px; width: 100%"
           />
-
-          <br />
-          <br />
-          Example File</a
+          <span
+            class="file-download-link"
+            style="padding-top: 0.6rem; display: inline-block"
+          >
+            <icon-download-file />
+            <span class="display@sm"> Example File</span></span
+          ></a
         >
       </div>
       <div
         style="min-width: 50%"
-        class="release-details__tickets flex justify-center padding-top-md padding-x-sm@md margin-bottom-sm"
+        class="release-details__tickets flex justify-center padding-top-xxl padding-x-sm@md margin-bottom-sm"
       >
         <a
           v-for="socialLink in release.socialLinks"
@@ -228,6 +234,31 @@ export default {
 .audio-download-link {
   margin: 0 auto 0 var(--space-xs);
   padding: 0 var(--space-xs);
+}
+
+.hover-fade {
+  transition: all 300ms ease-out;
+
+  &:hover {
+    opacity: 0.8;
+    transition: all 300ms ease-out;
+  }
+}
+
+.github-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+}
+.github-icon {
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  transform: scale(0.3);
+  transform-origin: left center;
 }
 
 .dark-image {
