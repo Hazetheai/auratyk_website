@@ -21,26 +21,66 @@
       </div>
     </div>
     <div class="text-divider padding-y-lg"></div>
-    <div class="margin-bottom-lg flex flex-column items-center justify-center">
+    <div class="margin-bottom-lg flex flex-column justify-center">
       <div
         class="flex flex-column max-width-lg justify-between text-sm padding-right-md"
       >
-        <h3 class="">A Pointcloud sequencer for TouchDesigner</h3>
+        <h2 class="">A Pointcloud sequencer for TouchDesigner</h2>
 
         <div class="notion-sync-block max-width-md@md">
-          <p class="notion-text">
+          <h4 class="margin-top-sm"><strong>What is it?</strong></h4>
+          <p class="notion-text max-width-sm">
             <span
               ><span>
-                This component streamlines loading, arranging, and sequencing
-                pointclouds in TouchDesigner. It imports normalized .ply files,
-                arranges them in a layout texture, and performs LOD-style
-                selection from two textures. It supports dynamic blending
-                between pointclouds, enabling continuous pointcloud paths.
+                A component for loading, arranging, sequencing and selecting
+                pointclouds in TouchDesigner.
               </span>
             </span>
           </p>
+          <h4 class="margin-top-sm"><strong>Why did I create it?</strong></h4>
+          <p class="notion-text max-width-sm">
+            <span
+              ><span>
+                I love working with pointclouds in TouchDesigner. Both the
+                aesthetic & using scans to capture physical spaces. However, if
+                you want to move the camera through space, you often need more
+                than one cloud to maintain the illusion of scale. Managing all
+                of this can be cumbersome. Also, swapping between scans causes a
+                very distinct effect which you may not always want.
+              </span>
+            </span>
+          </p>
+          <h4 class="margin-top-sm"><strong>What does it do?</strong></h4>
+          <div class="notion-text max-width-sm">
+            <span
+              ><span>
+                It allows you to load as many pointclouds as you like (within
+                the limits of your computer) and then choose the two which could
+                be rendered. It then uses the camera direction to determine
+                which points to show. <br />
+                It helps to think of the pointclouds as game tiles, and you can
+                only see one full tile at a time.
+
+                <ol class="margin-top-sm">
+                  <li class="margin-bottom-sm">
+                    1. The sequencer lets you choose which tiles are available.
+                    (max 4)
+                  </li>
+                  <li class="margin-bottom-sm">
+                    2. The switches on the sequencer let you choose two tiles
+                    from the available tiles.
+                  </li>
+                  <li class="margin-bottom-sm">
+                    3. The camera then chooses points from those two based on
+                    the camera direction + the points distance from the camera.
+                  </li>
+                </ol>
+              </span>
+            </span>
+          </div>
+
           <h4 class="margin-top-sm"><strong>Features</strong></h4>
-          <div class="notion-text">
+          <div class="notion-text max-width-sm">
             <ul>
               <li class="margin-bottom-sm">
                 <p><strong>Pointcloud Loading &amp; Normalization:</strong></p>
@@ -69,6 +109,20 @@
               </li>
             </ul>
           </div>
+          <h4 class="margin-top-sm"><strong>How do I use it?</strong></h4>
+          <p class="notion-text max-width-sm">
+            <span
+              ><span>
+                Try the example file first. The network has extra instructions.
+                Help text is your friend!
+                <br />
+                <br /><strong>Note:</strong> Watch how the Cloud_Seq parameters
+                change as the camera moves and the clouds appear.
+                <br />
+                There are more technical details in the Github link below.
+              </span>
+            </span>
+          </p>
         </div>
       </div>
       <div
@@ -82,7 +136,7 @@
           rel="noopener"
           target="_blank"
           download
-          @click="logDownload('the Cloud_Seq tox')"
+          @click="logDownload('Github link for the Cloud_Seq tox')"
         >
           <nuxt-img
             class="dark-image"
@@ -104,7 +158,7 @@
           :href="release.exampleLink"
           rel="noopener"
           target="_blank"
-          @click="logDownload('the Cloud_Seq example file')"
+          @click="logDownload('User downloaded the Cloud_Seq tox')"
         >
           <nuxt-img
             class="dark-image"
@@ -179,12 +233,12 @@ export default {
 
   methods: {
     async fetchSomething() {},
-    logDownload(tox) {
+    logDownload(event) {
       if (process.env.NODE_ENV === 'production') {
         this.$logsnag.publish({
           project: 'auratyk_website',
           channel: 'main',
-          event: `User downloaded ${tox || 'a tox'}`,
+          event,
           icon: '⏬',
           notify: true,
         })
@@ -238,9 +292,10 @@ export default {
 
 .hover-fade {
   transition: all 300ms ease-out;
+  opacity: 0.8;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 1;
     transition: all 300ms ease-out;
   }
 }

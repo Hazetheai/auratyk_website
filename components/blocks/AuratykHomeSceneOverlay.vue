@@ -154,15 +154,15 @@
         </button>
 
         <div
-          class="flex justify-between margin-top-md margin-top-xxl@sm items-end"
+          class="flex justify-between margin-top-md margin-top-xxl@xl max-height-100vh overflow-auto items-end"
         >
-          <nav class="main-menu padding-y-sm">
+          <nav class="main-menu padding-y-sm@lg">
             <ul
               class="main-menu__list flex flex-column justify-between padding-top-md"
             >
               <li
                 v-show="$route.path !== '/'"
-                class="main-menu__list-item text-lg padding-y-sm"
+                class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
               >
                 <NuxtLink v-slot="{ route, href }" to="/" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
@@ -170,21 +170,27 @@
                   </a>
                 </NuxtLink>
               </li>
-              <li class="main-menu__list-item text-lg padding-y-sm">
+              <li
+                class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
+              >
                 <NuxtLink v-slot="{ route, href }" to="/about" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     About
                   </a>
                 </NuxtLink>
               </li>
-              <li class="main-menu__list-item text-lg padding-y-sm">
+              <li
+                class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
+              >
                 <NuxtLink v-slot="{ route, href }" to="/shows" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Shows
                   </a>
                 </NuxtLink>
               </li>
-              <li class="main-menu__list-item text-lg padding-y-sm">
+              <li
+                class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
+              >
                 <NuxtLink
                   v-slot="{ route, href }"
                   to="/releases"
@@ -196,7 +202,9 @@
                   </a>
                 </NuxtLink>
               </li>
-              <li class="main-menu__list-item text-lg padding-y-sm">
+              <li
+                class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
+              >
                 <NuxtLink
                   v-slot="{ route, href }"
                   to="/contact"
@@ -208,14 +216,18 @@
                   </a>
                 </NuxtLink>
               </li>
-              <li class="main-menu__list-item text-lg padding-y-sm">
+              <li
+                class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
+              >
                 <NuxtLink v-slot="{ route, href }" to="/collab" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Collab
                   </a>
                 </NuxtLink>
               </li>
-              <li class="main-menu__list-item text-lg padding-y-sm">
+              <li
+                class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
+              >
                 <NuxtLink
                   v-slot="{ route, href }"
                   to="/community/cloud-seq"
@@ -243,8 +255,9 @@
                 rel="noopener nofollow"
                 :href="socials.instagram"
               >
-                Instagram</a
-              >
+                <!-- <span>Instagram</span> -->
+                <span><icon-instagram width="32px" height="32px" /></span>
+              </a>
             </li>
             <li
               class="social-menu__list-item padding-y-sm padding-y-0@sm padding-right-md padding-right-0@lg"
@@ -254,8 +267,9 @@
                 rel="noopener nofollow"
                 :href="socials.soundcloud"
               >
-                SoundCloud</a
-              >
+                <!-- <span>SoundCloud</span> -->
+                <span><icon-soundcloud-bw width="32px" height="32px" /></span>
+              </a>
             </li>
             <li
               class="social-menu__list-item padding-y-sm padding-y-0@sm padding-right-md padding-right-0@lg"
@@ -265,8 +279,10 @@
                 rel="noopener nofollow"
                 :href="socials.bandcamp"
               >
-                Bandcamp</a
-              >
+                <!-- <span>Bandcamp</span> -->
+                <span
+                  ><icon-bandcamp-circle-0 width="32px" height="32px" /></span
+              ></a>
             </li>
             <li
               class="social-menu__list-item padding-y-sm padding-y-0@sm padding-right-md padding-right-0@lg"
@@ -276,8 +292,9 @@
                 rel="noopener nofollow"
                 :href="socials.youtube"
               >
-                Youtube</a
-              >
+                <!-- <span>YouTube</span> -->
+                <span><icon-youtube width="32px" height="32px" /></span
+              ></a>
             </li>
           </ul>
         </nav>
