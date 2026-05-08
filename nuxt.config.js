@@ -239,6 +239,21 @@ export default {
     { src: '~plugins/logsnag.js', mode: 'client' },
   ],
 
+  hooks: {
+    'generate:before': async () => {
+      if (process.env.NOTION_API_KEY) {
+        try {
+          const { main } = require('./scripts/fetch-notion')
+          await main()
+        } catch (err) {
+          console.error('Notion fetch failed:', err.message)
+        }
+      } else {
+        console.warn('⏭ Skipping Notion fetch (NOTION_API_KEY not set)')
+      }
+    },
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extend: (config) => {
