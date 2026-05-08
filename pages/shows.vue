@@ -6,6 +6,8 @@
 import dayjs from 'dayjs'
 import ShowsComponent from '../components/blocks/ShowsComponent.vue'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
+import showsData from '@/content/notion/shows.json'
+
 export default {
   name: 'ShowsPage',
   components: { ShowsComponent },
@@ -14,43 +16,16 @@ export default {
   },
 
   data() {
-    const _shows = [
-      {
-        venue: 'Agatha Hopfen',
-        venueAddress: 'Revaler Str. 99, 10245 Berlin',
-        googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
-        country: 'Germany',
-        date: '2023-08-10',
-        // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-        promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-      },
-      {
-        venue: 'Madame Claude',
-        venueAddress: 'Lübbener Str. 19, 10997 Berlin',
-        googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
-        country: 'Germany',
-        date: '2024-04-06',
-        // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-        promoterLink:
-          'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
-      },
-      {
-        venue: 'Madame Claude',
-        venueAddress: 'Lübbener Str. 19, 10997 Berlin',
-        googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
-        country: 'Germany',
-        date: '2025-02-15',
-        // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-        promoterLink:
-          'https://madameclaude.de/event/shuudr-auratyk-oberst-panizza-dj-set/',
-      },
-    ]
-
-      .filter((show) => dayjs(show.date).isAfter(dayjs().subtract(1, 'day')))
+    const items = showsData.items || []
+    const _shows = items
+      .filter((show) => dayjs(show.properties.date).isAfter(dayjs().subtract(1, 'day')))
       .map((show) => {
         return {
-          ...show,
-          date: dayjs(show.date).format('DD/MM/YY'),
+          venue: show.title,
+          venueAddress: show.properties.venueAddress,
+          country: show.properties.country,
+          date: dayjs(show.properties.date).format('DD/MM/YY'),
+          ticketLink: show.properties.ticketLink,
         }
       })
       .sort((a, b) => (dayjs(a.date).isBefore(dayjs(b.date)) ? 1 : -1))
@@ -84,7 +59,6 @@ export default {
           ? `Upcoming: ${s.date} at ${s.venue}, ${s.venueAddress}`
           : undefined,
         url: `${this.$config.baseUrl}${this.$route.path}`,
-        // mainImage: this.article.image,
       }
       return getSiteMeta(metaData)
     },
