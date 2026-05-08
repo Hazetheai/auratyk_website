@@ -2,7 +2,7 @@
   <div class="home main__content">
     <h1 class="main__content-heading margin-bottom-md">Releases</h1>
     <div v-if="releases.length" class="releases-container">
-      <div v-for="release in releases" :key="release.name" class="release">
+      <div v-for="release in releases" :key="release.title" class="release">
         <hr class="hr margin-y-md" />
         <div
           class="release-details flex flex-column flex-row@md justify-between items-start items-end@md"
@@ -11,8 +11,8 @@
             class="release-details__venue link flex flex-column items-start text-component text-left margin-bottom-sm"
           >
             <h3 class="text-xl">
-              <NuxtLink :to="release.pageLink"
-                >{{ release.name }} {{ release.type }}</NuxtLink
+              <NuxtLink :to="`/releases/${release.slug}`"
+                >{{ release.title }} {{ release.properties.type }}</NuxtLink
               >
             </h3>
           </div>
@@ -22,7 +22,7 @@
           >
             <p class="release-details__medium text-md">
               <span
-                v-for="medium in release.mediums"
+                v-for="medium in (release.properties.mediums || [])"
                 :key="medium"
                 class="flex"
                 >{{ medium }}</span
@@ -32,7 +32,7 @@
           <p
             class="release-details__date text-md padding-x-sm@md margin-bottom-sm"
           >
-            {{ release.date }}
+            {{ release.properties.date }}
           </p>
           <div
             class="release-details__tickets padding-x-sm@md margin-bottom-sm"
@@ -40,7 +40,7 @@
             <p class="text-md">
               <a
                 class="link"
-                :href="release.buyLink"
+                :href="release.properties.buyLink"
                 rel="noopener"
                 target="_blank"
                 ><span v-if="release.isReleased">Buy</span
@@ -53,7 +53,7 @@
           >
             <p class="text-md">
               <a
-                v-for="streamLink in release.streamLinks"
+                v-for="streamLink in (release.streamLinks || [])"
                 :key="streamLink.url"
                 class="link padding-right-sm inline-block"
                 :href="streamLink.url"
@@ -102,19 +102,20 @@
 </template>
 
 <script>
-import { isOnOrAfterToday } from '../../libs/dateFns'
-import { handleStreamLinks } from '../../libs/content-handlers'
+import { isOnOrAfterToday } from '@/libs/dateFns'
+import { handleStreamLinks } from '@/libs/content-handlers'
 import Newsletter from './Newsletter.vue'
-import releaseInfo from '@/content/releases.json'
+import releasesData from '@/content/notion/releases.json'
 
 export default {
   components: { Newsletter },
 
   data() {
-    const _releases = releaseInfo.map((release) => ({
+    const items = releasesData.items || []
+    const _releases = items.map((release) => ({
       ...release,
-      date: isOnOrAfterToday(release.date),
-      isReleased: isOnOrAfterToday(release.date) === 'Released',
+      date: isOnOrAfterToday(release.properties.date),
+      isReleased: isOnOrAfterToday(release.properties.date) === 'Released',
     }))
 
     const releases = _releases.map(handleStreamLinks)

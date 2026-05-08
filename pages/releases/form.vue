@@ -7,9 +7,7 @@ import ReleaseComponent from '@/components/blocks/ReleaseComponent.vue'
 import { isOnOrAfterToday } from '@/libs/dateFns'
 import { handleStreamLinks } from '@/libs/content-handlers'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
-// import bio from '@/content/notion/bio'
-// import releases from '@/content/notion/releases'
-import releaseInfo from '@/content/releases.json'
+import releasesData from '@/content/notion/releases.json'
 
 export default {
   name: 'FormEPPage',
@@ -17,22 +15,16 @@ export default {
   layout(context) {
     return 'main'
   },
-  // async asyncData({ $notion }) {
-  //   // use Notion module to get Notion blocks from the API via a Notion pageId
-  //   const bioBlockMap = await $notion.getPageBlocks(bio.pageId)
-  //   const releasesBlockMap = await $notion.getPageBlocks(releases.pageId)
-  //   return { bioBlockMap, releasesBlockMap }
-  // },
   data() {
-    const _releases = releaseInfo.map((release) => ({
+    const items = releasesData.items || []
+    const _releases = items.map((release) => ({
       ...release,
-      // date: isOnOrAfterToday(release.date),
-      isReleased: isOnOrAfterToday(release.date) === 'Released',
+      isReleased: isOnOrAfterToday(release.properties?.date) === 'Released',
     }))
 
     const release = _releases
       .map(handleStreamLinks)
-      .find((release) => release.id === 'form-ep-2022')
+      .find((release) => release.slug === 'form')
     return {
       release,
       title: 'Form EP',
@@ -41,10 +33,7 @@ export default {
   head() {
     return {
       title: `Auratyk | ${this.title}`,
-      meta: [
-        ...this.meta,
-        // { hid: 'robots', name: 'robots', content: 'noindex' },
-      ],
+      meta: [...this.meta],
       link: [
         {
           hid: 'canonical',
