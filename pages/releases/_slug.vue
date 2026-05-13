@@ -1,5 +1,8 @@
 <template>
-  <ReleaseComponent :release="release" />
+  <ReleaseComponent v-if="release" :release="release" />
+  <div v-else class="main__content">
+    <p>Release not found.</p>
+  </div>
 </template>
 
 <script>
@@ -10,50 +13,38 @@ import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 import releasesData from '@/content/notion/releases.json'
 
 export default {
-  name: 'FormEPPage',
   components: { ReleaseComponent },
-  layout(context) {
-    return 'main'
-  },
-  data() {
+  layout() { return 'main' },
+  asyncData({ params }) {
     const items = releasesData.items || []
     const _releases = items.map((release) => ({
       ...release,
       isReleased: isOnOrAfterToday(release.properties?.date) === 'Released',
     }))
-
     const release = _releases
       .map(handleStreamLinks)
-      .find((release) => release.slug === 'form')
+      .find((r) => r.slug === params.slug) || null
+    return { release }
+  },
+  data() {
     return {
-      release,
-      title: 'Form EP',
+      title: this.release?.title || 'Release Not Found',
     }
   },
   head() {
     return {
       title: `Auratyk | ${this.title}`,
       meta: [...this.meta],
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: `${this.$config.baseUrl}${this.$route.path}`,
-        },
-      ],
+      link: [{ hid: 'canonical', rel: 'canonical', href: `${this.$config.baseUrl}${this.$route.path}` }],
     }
   },
-
   computed: {
     meta() {
-      const metaData = {
+      return getSiteMeta({
         type: 'website',
         title: this.title,
-        description: this.description,
         url: `${this.$config.baseUrl}${this.$route.path}`,
-        socialImage: `/images/png/ep-cover-art-ep.jpg`,
-      }
-      return getSiteMeta(metaData)
+      })
     },
   },
 }
