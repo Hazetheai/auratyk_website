@@ -1,5 +1,5 @@
 <template>
-  <ProjectsComponent :projects="projects" />
+    <ProjectsComponent :projects="projects" title="Projects" />
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       title: 'Projects',
-      projects: projectsData.items || [],
+      projects: (projectsData.items || []).filter(p => !p.properties.isExperiment),
     }
   },
   head() {

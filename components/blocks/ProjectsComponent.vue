@@ -1,6 +1,6 @@
 <template>
   <section class="projects main__content">
-    <h1 class="main__content-heading margin-bottom-md">Projects</h1>
+    <h1 class="main__content-heading margin-bottom-md">{{ title }}</h1>
     <div v-if="projects.length" class="projects__grid">
       <div v-for="project in projects" :key="project.id" class="project">
         <hr class="hr margin-y-md" />
@@ -23,6 +23,7 @@
 export default {
   props: {
     projects: { type: Array, required: true },
+    title: { type: String, default: 'Projects' },
   },
 }
 </script>
