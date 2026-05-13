@@ -1,12 +1,12 @@
 <template>
-  <EPKComponent :notionContent="{ bioBlockMap, releasesBlockMap }" />
+  <EPKComponent :bioHtml="bioHtml" :pressHtml="pressHtml" />
 </template>
 
 <script>
 import EPKComponent from '../components/blocks/EPKComponent.vue'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
-import bio from '@/content/notion/bio'
-import releases from '@/content/notion/releases'
+import pages from '@/content/notion/pages.json'
+import releases from '@/content/notion/releases.json'
 
 export default {
   name: 'ContactPage',
@@ -14,18 +14,14 @@ export default {
   layout(context) {
     return 'main'
   },
-  async asyncData({ $notion }) {
-    // use Notion module to get Notion blocks from the API via a Notion pageId
-    const bioBlockMap = await $notion.getPageBlocks(bio.pageId)
-    const releasesBlockMap = await $notion.getPageBlocks(releases.pageId)
-    return { bioBlockMap, releasesBlockMap }
-  },
   data() {
+    const bioPage = (pages.items || []).find(p => p.slug === 'bio')
+    const pressRelease = (releases.items || []).find(r => r.slug === 'form-press')
     return {
       title: 'Form EPK',
       description: 'Debut release from Auratyk. Available 18.11.22',
-      bioBlockMap: null,
-      releasesBlockMap: null,
+      bioHtml: (bioPage && bioPage.bodyHtml) || '',
+      pressHtml: (pressRelease && pressRelease.bodyHtml) || '',
     }
   },
   head() {

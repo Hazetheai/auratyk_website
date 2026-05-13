@@ -10,7 +10,8 @@
           <div
             class="show-details__venue flex flex-column items-start text-component text-left"
           >
-            <p class="text-lg">{{ show.venue }}</p>
+            <NuxtLink v-if="show.slug" :to="`/shows/${show.slug}`" class="text-lg link">{{ show.venue }}</NuxtLink>
+            <p v-else class="text-lg">{{ show.venue }}</p>
             <p class="show-details__address text-sm color-contrast-medium">
               <a
                 v-if="show.googleMapsLink"
@@ -52,6 +53,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="past-shows-link margin-top-lg text-center">
+        <NuxtLink to="/past-shows" class="link text-md">Past Shows →</NuxtLink>
       </div>
     </div>
     <div v-else class="no-shows">

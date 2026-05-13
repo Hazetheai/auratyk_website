@@ -4,12 +4,7 @@
 
 <script>
 import ToxComponent from '@/components/blocks/ToxComponent.vue'
-import { isOnOrAfterToday } from '@/libs/dateFns'
-import { handleStreamLinks } from '@/libs/content-handlers'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
-// import bio from '@/content/notion/bio'
-// import releases from '@/content/notion/releases'
-import toxInfo from '@/content/toxes.json'
 
 export default {
   name: 'FormEPPage',
@@ -17,35 +12,29 @@ export default {
   layout(context) {
     return 'main'
   },
-  // async asyncData({ $notion }) {
-  //   // use Notion module to get Notion blocks from the API via a Notion pageId
-  //   const bioBlockMap = await $notion.getPageBlocks(bio.pageId)
-  //   const releasesBlockMap = await $notion.getPageBlocks(releases.pageId)
-  //   return { bioBlockMap, releasesBlockMap }
-  // },
   data() {
-    const _toxes = toxInfo.map((tox) => ({
-      ...tox,
-      // date: isOnOrAfterToday(release.date),
-      isReleased: isOnOrAfterToday(tox.date) === 'Released',
-    }))
-
-    const tox = _toxes
-      .map(handleStreamLinks)
-      .find((tox) => tox.id === 'cloud_seq-20250310')
-
     return {
-      release: tox,
+      release: {
+        name: 'Cloud_Seq',
+        id: 'cloud_seq-20250310',
+        type: 'Tox',
+        mediums: ['Touchdesigner Component'],
+        date: '10.03.2025',
+        compLink: 'https://github.com/Hazetheai/touchdesigner-comps/tree/main/Cloud_Seq',
+        exampleLink: 'https://www.dropbox.com/scl/fo/71t9bat88lblui3q09hos/AA0w81nwv4s95JIGP1p1zdU?rlkey=5oj5s1zbhxejr1nt936xmbjyk&dl=1',
+        socialLinks: [
+          { platform: 'Instagram', url: 'https://www.instagram.com/auratyk/' },
+          { platform: 'Kofi', url: 'https://ko-fi.com/auratyk' },
+        ],
+      },
       title: 'Cloud_Seq: Touchdesigner Component',
+      description: 'A pointcloud sequencer component for TouchDesigner.',
     }
   },
   head() {
     return {
       title: `Auratyk | ${this.title}`,
-      meta: [
-        ...this.meta,
-        // { hid: 'robots', name: 'robots', content: 'noindex' },
-      ],
+      meta: [...this.meta],
       link: [
         {
           hid: 'canonical',

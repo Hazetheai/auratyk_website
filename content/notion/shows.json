@@ -1,1 +1,197 @@
-{"fetchedAt":null,"items":[]}
+{
+  "fetchedAt": "2026-05-13T18:19:52.136Z",
+  "items": [
+    {
+      "id": "35c70fd9-1edd-8019-b02a-ed55dd45190f",
+      "title": "Crack Bellmer",
+      "slug": "crack-bellmer",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "Crack Bellmer, Revaler Str. 99, 10245 Berlin",
+        "country": "Germany",
+        "date": "2025-05-10",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Group",
+        "showType": "VJ Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-80cc-909a-d029d27ec663",
+      "title": "Studio dB",
+      "slug": "studio-db",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "Studio dB, Uferstraße 8-11, 13357 Berlin",
+        "country": "Germany",
+        "date": "2025-05-02",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Collab",
+        "showType": "VJ Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-8098-92a2-ec2b0dbb2379",
+      "title": "Ceangailte",
+      "slug": "ceangailte",
+      "description": "Ceangailte, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.",
+      "bodyHtml": "<p><strong>Ceangailte</strong>, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.</p><p>The word Ceangailte <em>[key-ang-el-ta]</em> comes from the Irish language, Gaeilge, the definitions of which approximate “tied”, “connected”, or “bound”. Taking as its point of departure, the multiplicity of perspectives woven throughout the connected histories of former colonies of Empire, Ceangailte articulates future aspirations while holding a mirror up to an extreme and alienating present, interrogating the contradictions between what is outwardly expressed by establishment media and what is internally pursued by those in power.</p>",
+      "properties": {
+        "venueAddress": "LiTE-HAUS Galerie + Projektraum, Mareschstraße 4, 12055 Berlin",
+        "country": "Germany",
+        "date": "2026-07-03",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Collab",
+        "showType": "Installation"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-8097-adeb-ebb1fc09939a",
+      "title": "B.L.O. Ateliers",
+      "slug": "blo-ateliers",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "B.L.O. Ateliers, Kaskelstraße 55, 10317 Berlin",
+        "country": "Germany",
+        "date": "2026-02-19",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Group",
+        "showType": "AV Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-80da-9492-e29fd3fdf6e6",
+      "title": "XoK Blackout",
+      "slug": "xok-blackout",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "Neue Zukunft, Alt-Stralau 68, 10245 Berlin",
+        "country": "Germany",
+        "date": "2025-12-04",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Group",
+        "showType": "AV Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-80bd-ad48-d413a9c07620",
+      "title": "Berlin New Media Art Week",
+      "slug": "berlin-new-media-art-week",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "MaHalla, Wilhelminenhofstraße 76, 12459 Berlin",
+        "country": "Germany",
+        "date": "2025-09-07",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Group",
+        "showType": "AV Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-8053-b6ac-faf58b9ffbfd",
+      "title": "Panke",
+      "slug": "panke",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "panke.gallery, Gerichtstraße 23/Hof 5, 13347 Berlin",
+        "country": "Germany",
+        "date": "2025-08-08",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Group",
+        "showType": "Live Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-8067-be5c-ff74601d93a5",
+      "title": "Kukumu",
+      "slug": "kukumu",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "Kukumu, Lübecker Str. 43, 10559 Berlin",
+        "country": "Germany",
+        "date": "2025-05-11",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Group",
+        "showType": "Live Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-8020-a258-e0a994e85554",
+      "title": "AV Jam #2",
+      "slug": "av-jam-2",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "MotionLab.Berlin, Bouchéstraße 12/Halle 20, 12435 Berlin",
+        "country": "Germany",
+        "date": "2025-03-28",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Group",
+        "showType": "AV Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-80fb-9fcc-d68f7e80765a",
+      "title": "AV Jam #1",
+      "slug": "av-jam-1",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "MotionLab.Berlin, Bouchéstraße 12/Halle 20, 12435 Berlin",
+        "country": "Germany",
+        "date": "2025-01-31",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Group",
+        "showType": "VJ Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-802a-93b5-d4bf84db711e",
+      "title": "Madame Claude #2",
+      "slug": "madame-claude-2",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "Madame Claude, Lübbener Str. 19, 10997 Berlin",
+        "country": "Germany",
+        "date": "2025-02-15",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Support",
+        "showType": "AV Set"
+      }
+    },
+    {
+      "id": "35c70fd9-1edd-8063-b342-c122a33c550c",
+      "title": "Madame Claude #1",
+      "slug": "madame-claude-1",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "Madame Claude, Lübbener Str. 19, 10997 Berlin",
+        "country": "Germany",
+        "date": "2024-04-06",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Support",
+        "showType": "AV Set"
+      }
+    }
+  ]
+}

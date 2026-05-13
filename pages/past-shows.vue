@@ -25,6 +25,7 @@ export default {
       .filter((show) => dayjs(show.properties.date).isBefore(dayjs().subtract(1, 'day')))
       .map((show) => {
         return {
+          slug: show.slug,
           venue: show.title,
           venueAddress: show.properties.venueAddress,
           country: show.properties.country,

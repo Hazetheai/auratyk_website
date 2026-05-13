@@ -58,63 +58,28 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
-    // {
-    //   path: '@/components',
-    //   extensions: ['vue'],
-    // },
     {
       path: '@/assets/icons',
       prefix: 'icon',
       extensions: ['vue'],
     },
-    // {
-    //   path: '@/components/app',
-    //   prefix: 'app',
-    //   extensions: ['vue'],
-    // },
-    // {
-    //   path: '@/components/elements',
-    //   prefix: 'e',
-    //   extensions: ['vue'],
-    // },
-    // {
-    //   path: '@/components/blocks',
-    //   prefix: 'block',
-    //   extensions: ['vue'],
-    // },
-    // {
-    //   path: '@/components/webgl',
-    //   prefix: 'webgl',
-    //   extensions: ['vue'],
-    // },
-    // {
-    //   path: '@/components/svg',
-    //   prefix: 'svg',
-    //   extensions: ['vue'],
-    // },
   ],
   pageTransition: {
     name: 'page',
     mode: 'out-in',
     beforeLeave(el) {
-      // console.log('Before leave...')
       this.$events.emit('cursor:enter', { type: 'default' })
     },
     leave(el) {
-      // console.log('leave...')
       this.$events.emit('scroller:reset')
     },
     afterLeave(el) {
-      // console.log('After leave...')
     },
     beforeEnter(el) {
-      // console.log('Before enter...')
     },
     enter(el) {
-      // console.log('Enter...', el)
     },
     afterEnter(el) {
-      // console.log('After enter...')
     },
   },
   loading: false,
@@ -123,12 +88,8 @@ export default {
   },
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    // '@nuxtjs/eslint-module',
-    // https://www.npmjs.com/package/@nuxtjs/style-resources
     '@nuxt/image',
     '@nuxtjs/style-resources',
-    'vue-notion/nuxt',
   ],
 
   styleResources: {
@@ -140,18 +101,11 @@ export default {
     hoistUseStatements: true, // Hoists the "@use" imports. Applies only to "sass", "scss" and "less". Default: false.
   },
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
-    // '@nuxtjs/style-resources',
     'nuxt-mq',
     'nuxt-helmet',
-    // 'nuxt-ssr-cache',
     'nuxt-compress',
     '@nuxtjs/google-fonts',
     '@nuxtjs/dotenv',
@@ -221,13 +175,7 @@ export default {
   content: {},
 
   plugins: [
-    // { src: '~/plugins/polyfills.js', mode: 'client' },
     { src: '~/plugins/events.js', mode: 'client' },
-    // { src: '~/plugins/frame.js', mode: 'client' },
-    // { src: '~/plugins/viewport.js', mode: 'client' },
-    // { src: '~/plugins/mouse.js', mode: 'client' },
-    // { src: '~/plugins/directives.js', mode: 'client' },
-    // { src: '~/plugins/three.js', mode: 'client' },
     { src: '~/plugins/gsap.js', mode: 'client' },
     { src: '~/plugins/auratyk-home.js', mode: 'client' },
     { src: '~/plugins/codyhouse-utils.js', mode: 'client' },
@@ -269,22 +217,5 @@ export default {
         __filename: true,
       }
     },
-    // babel: {
-    //   plugins: [
-    //     '@babel/plugin-proposal-object-rest-spread',
-    //     '@babel/proposal-class-properties',
-    //     '@babel/plugin-proposal-optional-chaining',
-    //   ],
-    //   presets({ isServer }) {
-    //     return [
-    //       [
-    //         '@babel/preset-env',
-    //         {
-    //           targets: '> 2%, not dead',
-    //         },
-    //       ],
-    //     ]
-    //   },
-    // },
   },
 }

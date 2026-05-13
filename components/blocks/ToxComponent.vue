@@ -207,22 +207,15 @@
 </template>
 
 <script>
-// import { NotionRenderer } from 'vue-notion'
 import { logger } from '@/assets/js/utils/environment'
-import bioContentIds from '@/content/notion/bio'
-import releaseContentIds from '@/content/notion/releases'
 
 export default {
   props: {
-    // notionContent: { type: Object, default: () => ({}) },
     release: { type: Object, default: () => ({}) },
   },
 
   data() {
     return {
-      //   tracks: ['season_ending', 'skitter', 'epiderm', 'remember_linn'],
-      bioContentId: bioContentIds.blocks.short,
-      pressReleaseContentId: releaseContentIds.blocks.pressRelease,
     }
   },
   computed: {

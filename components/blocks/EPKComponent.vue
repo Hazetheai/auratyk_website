@@ -105,11 +105,10 @@
       >
         <h3 class="">Auratyk shares debut EP ‘Form’</h3>
 
-        <NotionRenderer
-          class="max-width-xxxs@md"
-          v-if="notionContent.releasesBlockMap"
-          :blockMap="notionContent.releasesBlockMap"
-          :contentId="pressReleaseContentId"
+        <div
+          class="max-width-xxxs@md notion-sync-block"
+          v-if="pressHtml"
+          v-html="pressHtml"
         />
       </div>
       <div style="padding-top: 97px">
@@ -168,10 +167,10 @@
           class="flex flex-column max-width-xxxs@md justify-start text-sm padding-left-md@md"
         >
           <h3 class="">Bio</h3>
-          <NotionRenderer
-            v-if="notionContent.bioBlockMap"
-            :blockMap="notionContent.bioBlockMap"
-            :contentId="bioContentId"
+          <div
+            class="notion-sync-block"
+            v-if="bioHtml"
+            v-html="bioHtml"
           />
         </div>
       </div>
@@ -182,25 +181,20 @@
 </template>
 
 <script>
-import { NotionRenderer } from 'vue-notion'
 import Newsletter from './Newsletter.vue'
 import SocialIcons from './SocialIcons.vue'
 import { logger } from '@/assets/js/utils/environment'
-import bioContentIds from '@/content/notion/bio'
-import releaseContentIds from '@/content/notion/releases'
 
 export default {
-  components: { Newsletter, SocialIcons, NotionRenderer },
+  components: { Newsletter, SocialIcons },
   props: {
-    notionContent: { type: Object, default: () => ({}) },
+    bioHtml: { type: String, default: '' },
+    pressHtml: { type: String, default: '' },
   },
 
   data() {
     return {
-      //   tracks: ['season_ending', 'skitter', 'epiderm', 'remember_linn'],
       tracks: ['Season Ending', 'Skitter', 'Epiderm', 'Remember Linn'],
-      bioContentId: bioContentIds.blocks.short,
-      pressReleaseContentId: releaseContentIds.blocks.pressRelease,
     }
   },
   computed: {

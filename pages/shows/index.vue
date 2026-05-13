@@ -4,7 +4,7 @@
 
 <script>
 import dayjs from 'dayjs'
-import ShowsComponent from '../components/blocks/ShowsComponent.vue'
+import ShowsComponent from '@/components/blocks/ShowsComponent.vue'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 import showsData from '@/content/notion/shows.json'
 
@@ -21,11 +21,15 @@ export default {
       .filter((show) => dayjs(show.properties.date).isAfter(dayjs().subtract(1, 'day')))
       .map((show) => {
         return {
+          slug: show.slug,
           venue: show.title,
           venueAddress: show.properties.venueAddress,
+          city: show.properties.city,
           country: show.properties.country,
           date: dayjs(show.properties.date).format('DD/MM/YY'),
           ticketLink: show.properties.ticketLink,
+          participants: show.properties.participants,
+          showType: show.properties.showType,
         }
       })
       .sort((a, b) => (dayjs(a.date).isBefore(dayjs(b.date)) ? 1 : -1))

@@ -1,1 +1,23 @@
-{"fetchedAt":null,"items":[]}
+{
+  "fetchedAt": "2026-05-13T18:19:47.767Z",
+  "items": [
+    {
+      "id": "35c70fd9-1edd-804d-8ec3-cbd26835e1d9",
+      "title": "Ceangailte",
+      "slug": "ceangailte",
+      "description": "Ceangailte, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.",
+      "bodyHtml": "",
+      "properties": {
+        "date": null,
+        "coverUrl": null,
+        "links": [],
+        "tags": [
+          "Audio-Visual",
+          "Installation",
+          "Collaborative"
+        ],
+        "isExperiment": false
+      }
+    }
+  ]
+}
