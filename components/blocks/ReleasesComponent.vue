@@ -17,18 +17,6 @@
             </h3>
           </div>
 
-          <div
-            class="hide@md release-details__main-details flex flex-col flex-row@md justify-between text-component margin-bottom-sm"
-          >
-            <p class="release-details__medium text-md">
-              <span
-                v-for="medium in (release.properties.mediums || [])"
-                :key="medium"
-                class="flex"
-                >{{ medium }}</span
-              >
-            </p>
-          </div>
           <p
             class="release-details__date text-md padding-x-sm@md margin-bottom-sm"
           >

@@ -8,18 +8,15 @@
           {{ release.title }} {{ release.properties.type }}
         </h1>
         <p class="main__content-intro text-center">
-          Out {{ release.properties.date }}<br />
-          On
-          <span v-for="medium in (release.properties.mediums || [])" :key="medium">{{
-            medium
-          }}</span>
+          Out {{ release.properties.date }}
         </p>
 
         <nuxt-img
+          v-if="release.properties.coverUrl"
           class="dark-image"
           sizes="sm:100vw md:50vw lg:600px"
-          src="/images/png/ep-cover-art-ep.jpg"
-          alt="'Form' Cover Art"
+          :src="release.properties.coverUrl"
+          :alt="release.title + ' Cover Art'"
         />
       </div>
     </div>
@@ -28,7 +25,7 @@
       <div
         class="flex flex-column max-width-lg justify-between text-sm padding-right-md"
       >
-        <h3 class="">Auratyk shares debut EP 'Form'</h3>
+        <h3 v-if="release.description">{{ release.description }}</h3>
 
         <div class="notion-sync-block max-width-md@md" v-html="release.bodyHtml"></div>
       </div>
