@@ -28,9 +28,12 @@ export default {
           slug: show.slug,
           venue: show.title,
           venueAddress: show.properties.venueAddress,
+          city: show.properties.city,
           country: show.properties.country,
           date: dayjs(show.properties.date).format('DD/MM/YY'),
           ticketLink: show.properties.ticketLink,
+          participants: show.properties.participants,
+          showType: show.properties.showType,
         }
       })
       .sort((a, b) => (dayjs(a.date).isBefore(dayjs(b.date)) ? 1 : -1))
