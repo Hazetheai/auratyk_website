@@ -1,8 +1,9 @@
 <template>
   <div v-if="page" class="page-content">
-    <div v-html="page.bodyHtml" class="page-content__body"></div>
+    <h1 v-if="page.title" class="main__content-heading">{{ page.title }}</h1>
+    <div v-html="page.bodyHtml" class="page-content__body notion-sync-block"></div>
   </div>
-  <div v-else>
+  <div v-else class="main__content">
     <p>Page not found.</p>
   </div>
 </template>
@@ -35,3 +36,24 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.page-content__body {
+  &.notion-sync-block,
+  .notion-sync-block {
+    display: flex;
+    flex-direction: column;
+    & p {
+      max-width: var(--max-width-sm);
+      padding-top: var(--space-xl);
+      padding-bottom: var(--space-xl);
+      &:first-child {
+        padding-top: 0;
+      }
+      &:nth-child(2n) {
+        align-self: flex-end;
+      }
+    }
+  }
+}
+</style>
