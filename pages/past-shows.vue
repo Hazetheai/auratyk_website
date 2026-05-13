@@ -1,9 +1,14 @@
 <template>
-  <ShowsComponent
-    :shows="shows"
-    :content="{ title: 'Past Shows' }"
-    :is-past="true"
-  />
+  <div>
+    <ShowsComponent
+      :shows="shows"
+      :content="{ title: 'Past Shows' }"
+      :is-past="true"
+    />
+    <div class="text-center margin-top-lg">
+      <NuxtLink to="/shows" class="link text-md">Upcoming Shows →</NuxtLink>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -35,6 +40,8 @@ export default {
           participants: show.properties.participants,
           showType: show.properties.showType,
           hasBody: !!show.bodyHtml,
+          showUrl: show.properties.showUrl,
+          projectIds: show.properties.projects || [],
         }
       })
 

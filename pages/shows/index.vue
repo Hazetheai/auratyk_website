@@ -31,6 +31,8 @@ export default {
           participants: show.properties.participants,
           showType: show.properties.showType,
           hasBody: !!show.bodyHtml,
+          showUrl: show.properties.showUrl,
+          projectIds: show.properties.projects || [],
         }
       })
 
