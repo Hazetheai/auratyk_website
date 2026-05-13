@@ -122,6 +122,7 @@ async function fetchContentType(type, databaseId) {
           coverUrl: getCoverUrl(props, 'Cover'),
           links: parseJsonField(getPropertyValue(props, 'Links')),
           tags: getPropertyValue(props, 'Tags') || [],
+          isExperiment: getPropertyValue(props, 'IsExperiment') || false,
         }
         break
       case 'shows':
