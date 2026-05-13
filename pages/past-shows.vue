@@ -34,9 +34,9 @@ export default {
           ticketLink: show.properties.ticketLink,
           participants: show.properties.participants,
           showType: show.properties.showType,
+          hasBody: !!show.bodyHtml,
         }
       })
-      .sort((a, b) => (dayjs(a.date).isBefore(dayjs(b.date)) ? 1 : -1))
 
     return {
       title: 'Past Shows',

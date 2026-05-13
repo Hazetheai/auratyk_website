@@ -38,9 +38,9 @@
                 </NuxtLink>
               </li>
               <li class="text-sm padding-y-sm">
-                <NuxtLink v-slot="{ route, href }" to="/past-shows" event="" custom>
+                <NuxtLink v-slot="{ route, href }" to="/projects" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
-                    Past Shows
+                    Projects
                   </a>
                 </NuxtLink>
               </li>
@@ -198,9 +198,9 @@
               <li
                 class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
               >
-                <NuxtLink v-slot="{ route, href }" to="/past-shows" event="" custom>
+                <NuxtLink v-slot="{ route, href }" to="/projects" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
-                    Past Shows
+                    Projects
                   </a>
                 </NuxtLink>
               </li>

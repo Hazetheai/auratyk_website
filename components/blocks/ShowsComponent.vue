@@ -10,7 +10,7 @@
           <div
             class="show-details__venue flex flex-column items-start text-component text-left"
           >
-            <NuxtLink v-if="show.slug" :to="`/shows/${show.slug}`" class="text-lg link">{{ show.venue }}</NuxtLink>
+            <NuxtLink v-if="show.slug && show.hasBody" :to="`/shows/${show.slug}`" class="text-lg link">{{ show.venue }}</NuxtLink>
             <p v-else class="text-lg">{{ show.venue }}</p>
             <p class="show-details__address text-sm color-contrast-medium">
               <a
@@ -27,7 +27,17 @@
           <div
             class="show-details__main-details flex flex-column flex-row@sm justify-between text-component"
           >
-            <p class="show-details__country text-md padding-x-sm@sm">
+            <p v-if="show.showType" class="show-details__type text-md padding-x-sm@sm">
+              <span v-if="show.showType === 'Club Night'" class="show-type-icon">●</span>
+              <span v-else-if="show.showType === 'AV Jam'" class="show-type-icon">◉</span>
+              <span v-else-if="show.showType === 'Exhibition'" class="show-type-icon">◯</span>
+              <span v-else-if="show.showType === 'Festival'" class="show-type-icon">◆</span>
+              <span v-else-if="show.showType === 'Performance'" class="show-type-icon">◇</span>
+              <span v-else-if="show.showType === 'Workshop'" class="show-type-icon">◎</span>
+              <span v-else class="show-type-icon">○</span>
+              {{ show.showType }}
+            </p>
+            <p v-if="!allSameCountry" class="show-details__country text-md padding-x-sm@sm">
               {{ show.country }}
             </p>
             <p class="show-details__date text-md padding-x-sm@sm">
@@ -96,37 +106,19 @@ export default {
       default: false,
     },
   },
-  // props: {
-  //   shows: {
-  //     type: Array,
-  //     required: true,
-  //   },
-  // },
-
-  // data() {
-  //   return {
-  //     shows: [
-  // {
-  //   venue: 'Agatha Hopfen',
-  //   venueAddress: 'Revaler Str. 99, 10245 Berlin',
-  //   googleMapsLink: 'https://goo.gl/maps/xsRyN7hKp4KP8TPU6',
-  //   country: 'Germany',
-  //   date: '10/08/23',
-  //   // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-  //   promoterLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-  // },
-  // {
-  //   venue: 'Madame Claude',
-  //   venueAddress: 'Lübbener Str. 19, 10997 Berlin',
-  //   googleMapsLink: 'https://maps.app.goo.gl/HVkSVjB8DSapYDkJ6',
-  //   country: 'Germany',
-  //   date: '06/04/24',
-  //   // ticketLink: 'https://www.instagram.com/p/CvrU5GLtQuj/',
-  //   promoterLink:
-  //     'https://madameclaude.de/event/club-alpino-auratyk-adrian-bang-dj-set/',
-  // },
-  //     ],
-  //   }
-  // },
+  computed: {
+    allSameCountry() {
+      if (this.shows.length < 2) return false
+      const first = this.shows[0].country
+      return first && this.shows.every(s => s.country === first)
+    },
+  },
 }
 </script>
+
+<style lang="scss">
+.show-type-icon {
+  margin-right: var(--space-xxs);
+  color: var(--color-accent);
+}
+</style>

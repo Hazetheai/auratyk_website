@@ -7,7 +7,7 @@
         <nuxt-link :to="`/projects/${project.slug}`" class="project__link">
           <h3 class="text-xl">{{ project.title }}</h3>
           <p v-if="project.properties.date" class="text-md">{{ project.properties.date }}</p>
-          <div v-if="project.properties.tags?.length" class="project__tags text-sm">
+          <div v-if="project.properties.tags?.length" class="text-sm margin-top-xs">
             <span v-for="tag in project.properties.tags" :key="tag" class="project__tag">{{ tag }}</span>
           </div>
         </nuxt-link>
@@ -27,3 +27,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.project__tag {
+  display: inline-block;
+  border: 1px solid var(--color-contrast-medium);
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin-right: var(--space-xxs);
+  margin-bottom: var(--space-xxs);
+}
+</style>
