@@ -60,6 +60,19 @@ function getPropertyValue(properties, name) {
   }
 }
 
+function getCoverUrl(props, name) {
+  const prop = props[name]
+  if (!prop) return null
+  if (prop.type === 'files') {
+    const urls = prop.files.map(f => f.type === 'external' ? f.external.url : f.file?.url).filter(Boolean)
+    return urls[0] || null
+  }
+  if (prop.type === 'url') {
+    return prop.url || null
+  }
+  return null
+}
+
 function parseJsonField(value) {
   if (!value) return []
   try {
@@ -96,7 +109,7 @@ async function fetchContentType(type, databaseId) {
         entry.properties = {
           type: getPropertyValue(props, 'Type'),
           date: getPropertyValue(props, 'Date'),
-          coverUrl: getPropertyValue(props, 'Cover')?.[0] || null,
+          coverUrl: getCoverUrl(props, 'Cover'),
           buyLink: getPropertyValue(props, 'BuyLink'),
           preSaveLinks: parseJsonField(getPropertyValue(props, 'PreSaveLinks')),
           streamLinks: parseJsonField(getPropertyValue(props, 'StreamLinks')),
@@ -106,7 +119,7 @@ async function fetchContentType(type, databaseId) {
       case 'projects':
         entry.properties = {
           date: getPropertyValue(props, 'Date'),
-          coverUrl: getPropertyValue(props, 'Cover')?.[0] || null,
+          coverUrl: getCoverUrl(props, 'Cover'),
           links: parseJsonField(getPropertyValue(props, 'Links')),
           tags: getPropertyValue(props, 'Tags') || [],
         }
@@ -117,6 +130,9 @@ async function fetchContentType(type, databaseId) {
           country: getPropertyValue(props, 'Country'),
           date: getPropertyValue(props, 'Date'),
           ticketLink: getPropertyValue(props, 'TicketLink'),
+          city: getPropertyValue(props, 'City'),
+          participants: getPropertyValue(props, 'Participants'),
+          showType: getPropertyValue(props, 'ShowType'),
         }
         break
     }
