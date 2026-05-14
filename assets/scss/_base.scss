@@ -1,2 +1,29 @@
 // _base.scss file
 // import the basic style of the framework
+
+.notion-sync-block {
+  p { margin-bottom: var(--space-md); }
+  h1, h2, h3, h4 {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+  figure, .video-embed {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+  .video-embed__inner {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  img { max-width: 100%; }
+}

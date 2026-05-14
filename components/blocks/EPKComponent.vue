@@ -19,9 +19,8 @@
       <div class="flex@md gap-lg justify-center items-center">
         <div class="text-center padding-right-lg@sm">
           <h4 class="font-bold margin-bottom-xxs">Management/PR</h4>
-          <a href="mailto:jake@stefar.io" class="padding-y-md block"
-            >jake@stefar.io</a
-          >
+          <span class="link email-copy padding-y-md block" @click="copyEmail('jake@stefar.io')" title="Click to copy">jake@stefar.io</span>
+          <span v-if="copied" class="text-xs color-contrast-medium">Copied!</span>
           <SocialIcons />
         </div>
         <div class="tracks">
@@ -194,6 +193,7 @@ export default {
 
   data() {
     return {
+      copied: false,
       tracks: ['Season Ending', 'Skitter', 'Epiderm', 'Remember Linn'],
     }
   },
@@ -204,6 +204,22 @@ export default {
   },
 
   methods: {
+    async copyEmail(email) {
+      try {
+        await navigator.clipboard.writeText(email)
+        this.copied = true
+        setTimeout(() => { this.copied = false }, 2000)
+      } catch {
+        const input = document.createElement('input')
+        input.value = email
+        document.body.appendChild(input)
+        input.select()
+        document.execCommand('copy')
+        document.body.removeChild(input)
+        this.copied = true
+        setTimeout(() => { this.copied = false }, 2000)
+      }
+    },
     async fetchSomething() {},
     logDownload(track) {
       if (process.env.NODE_ENV === 'production') {
@@ -243,6 +259,7 @@ export default {
 </script>
 
 <style lang="scss">
+.email-copy { cursor: pointer; }
 .form-submit-btn {
   & .loading {
     opacity: 0;

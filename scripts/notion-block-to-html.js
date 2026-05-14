@@ -28,6 +28,14 @@ function blockToHtml(block) {
       return block.image.type === 'external'
         ? `<figure><img src="${block.image.external.url}" alt="${block.image.caption?.[0]?.plain_text || ''}" /></figure>`
         : `<figure><img src="${block.image.file.url}" alt="${block.image.caption?.[0]?.plain_text || ''}" /></figure>`
+    case 'video': {
+      const url = block.video.external.url
+      const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/)?.[1] || ''
+      if (videoId) {
+        return `<figure class="video-embed"><div class="video-embed__inner"><iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></figure>`
+      }
+      return ''
+    }
     case 'callout':
       return `<div class="callout">${block.callout.icon?.emoji || ''} ${textToHtml(block.callout.rich_text)}</div>`
     case 'child_page':

@@ -36,7 +36,8 @@
             <div class="details-list__item padding-y-md">
               <dt class="font-bold margin-bottom-xxs">Email</dt>
               <dd>
-                <a href="mailto:info@auratyk.com">info@auratyk.com</a>
+                <span class="link email-copy" @click="copyEmail('info@auratyk.com')" title="Click to copy">info@auratyk.com</span>
+                <span v-if="copied" class="text-xs color-contrast-medium">Copied!</span>
               </dd>
             </div>
           </dl>
@@ -118,6 +119,7 @@ export default {
   components: { LoadingIcon },
   data() {
     return {
+      copied: false,
       form: {
         name: '',
         email: '',
@@ -129,6 +131,22 @@ export default {
   },
 
   methods: {
+    async copyEmail(email) {
+      try {
+        await navigator.clipboard.writeText(email)
+        this.copied = true
+        setTimeout(() => { this.copied = false }, 2000)
+      } catch {
+        const input = document.createElement('input')
+        input.value = email
+        document.body.appendChild(input)
+        input.select()
+        document.execCommand('copy')
+        document.body.removeChild(input)
+        this.copied = true
+        setTimeout(() => { this.copied = false }, 2000)
+      }
+    },
     async fetchSomething() {
       this.form.loading = true
       const { name, email, message } = this.form
@@ -173,6 +191,7 @@ export default {
 </script>
 
 <style lang="scss">
+.email-copy { cursor: pointer; }
 .form-submit-btn {
   & .loading {
     opacity: 0;
