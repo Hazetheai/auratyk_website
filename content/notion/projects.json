@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-13T18:19:47.767Z",
+  "fetchedAt": "2026-05-14T08:58:21.284Z",
   "items": [
     {
       "id": "35c70fd9-1edd-804d-8ec3-cbd26835e1d9",
@@ -9,14 +9,17 @@
       "bodyHtml": "",
       "properties": {
         "date": null,
-        "coverUrl": null,
+        "coverUrl": "https://www.dropbox.com/scl/fi/smofkl0t9dtgm011qxmqv/social-image.jpg?rlkey=btsx8zq3t0c9tmlorl8z3kxv2&raw=1",
         "links": [],
         "tags": [
           "Audio-Visual",
           "Installation",
-          "Collaborative"
+          "Collaboration"
         ],
-        "isExperiment": false
+        "isExperiment": false,
+        "collaborators": [
+          "David Mathuna"
+        ]
       }
     }
   ]

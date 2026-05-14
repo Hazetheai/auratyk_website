@@ -30,6 +30,10 @@
           {{ project.properties.tags.join(' · ') }}
         </div>
 
+        <p v-if="project.properties.collaborators?.length" class="text-md margin-top-xs">
+          <strong>Collaboration with</strong> {{ project.properties.collaborators.join(', ') }}
+        </p>
+
         <p
           v-if="project.description"
           class="text-md margin-top-sm color-contrast-medium"
@@ -120,5 +124,10 @@ export default {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+@media (max-width: 768px) {
+  .project-cover-wrapper {
+    height: 250px;
+  }
 }
 </style>

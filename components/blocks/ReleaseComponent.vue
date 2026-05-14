@@ -3,146 +3,144 @@
     class="contact main__content contact-v3 position-relative z-index-1 margin-bottom-xl"
   >
     <div class="margin-bottom-lg">
-      <div class="text-component">
-        <h1 class="main__content-heading text-center">
+      <div class="text-component text-center">
+        <h1 class="main__content-heading">
           {{ release.title }} {{ release.properties.type }}
         </h1>
-        <p class="main__content-intro text-center">
-          Out {{ release.properties.date }}
+
+        <p
+          v-if="release.properties.mediums?.length"
+          class="text-md margin-top-xs color-contrast-medium"
+        >
+          On {{ release.properties.mediums.join(' and ') }}
         </p>
 
-        <nuxt-img
-          v-if="release.properties.coverUrl"
-          class="dark-image"
-          sizes="sm:100vw md:50vw lg:600px"
-          :src="release.properties.coverUrl"
-          :alt="release.title + ' Cover Art'"
-        />
+        <p class="main__content-intro">Out {{ release.properties.date }}</p>
+
+        <div class="release-cover-wrapper">
+          <nuxt-img
+            v-if="release.properties.coverUrl"
+            class="release-cover"
+            sizes="400px"
+            :src="release.properties.coverUrl"
+            :alt="release.title + ' Cover Art'"
+          />
+        </div>
       </div>
     </div>
+
     <div class="text-divider padding-y-lg"></div>
+
     <div class="margin-bottom-lg flex flex-column items-center justify-center">
       <div
         class="flex flex-column max-width-lg justify-between text-sm padding-right-md"
       >
-        <h3 v-if="release.description">{{ release.description }}</h3>
-
-        <div class="notion-sync-block max-width-md@md" v-html="release.bodyHtml"></div>
+        <div
+          v-if="displayBody"
+          class="notion-sync-block max-width-md@md"
+          v-html="displayBody"
+        ></div>
+        <p
+          v-else-if="release.description"
+          class="text-md color-contrast-medium"
+        >
+          {{ release.description }}
+        </p>
       </div>
+
       <div
-        style="min-width: 50%"
-        class="release-details__tickets flex justify-between padding-top-md padding-x-sm@md margin-bottom-sm"
+        class="release-details__tickets flex justify-center padding-top-md padding-x-sm@md margin-bottom-sm gap-lg"
       >
-        <a class="link" :href="release.properties.buyLink" rel="noopener" target="_blank"
-          ><icon-bandcamp-circle-0
-            width="48"
-            height="48"
-            title="Listen on Bandcamp"
-        /></a>
         <a
-          v-for="streamLink in (release.streamLinks || [])"
-          :key="streamLink.url"
-          class="link padding-right-sm inline-block"
-          :href="streamLink.url"
+          v-if="release.properties.buyLink"
+          class="link"
+          :href="release.properties.buyLink"
           rel="noopener"
           target="_blank"
         >
-          <span v-if="streamLink.platform === 'Apple'"
-            ><icon-apple width="48" height="48" title="Stream on Apple Music"
-          /></span>
-          <span v-else-if="streamLink.platform === 'Spotify'"
-            ><icon-spotify width="48" height="48" title="Stream on Spotify"
-          /></span>
-          <span v-else-if="streamLink.platform === 'SoundCloud'"
-            ><icon-soundcloud-bw
-              width="48"
-              height="48"
-              title="Stream on SoundCloud"
-          /></span>
-          <span v-else>{{ streamLink.platform }}</span>
+          <icon-bandcamp-circle-0
+            width="48"
+            height="48"
+            title="Listen on Bandcamp"
+          />
+        </a>
+        <a
+          v-if="appleLink"
+          class="link"
+          :href="appleLink"
+          rel="noopener"
+          target="_blank"
+        >
+          <icon-apple width="48" height="48" title="Stream on Apple Music" />
+        </a>
+        <a
+          v-if="soundcloudLink"
+          class="link"
+          :href="soundcloudLink"
+          rel="noopener"
+          target="_blank"
+        >
+          <icon-soundcloud-bw
+            width="48"
+            height="48"
+            title="Stream on SoundCloud"
+          />
         </a>
       </div>
     </div>
-    <div class="text-divider padding-y-lg"></div>
 
+    <div class="text-divider padding-y-lg"></div>
     <Newsletter :full="true" />
   </section>
 </template>
 
 <script>
 import Newsletter from './Newsletter.vue'
-import { logger } from '@/assets/js/utils/environment'
+import { dedupDescription } from '@/libs/description-dedup'
 
 export default {
   components: { Newsletter },
   props: {
     release: { type: Object, default: () => ({}) },
   },
-
-  data() {
-    return {
-      tracks: ['Season Ending', 'Skitter', 'Epiderm', 'Remember Linn'],
-    }
-  },
   computed: {
-    currentTrack() {
-      return this.$store.state.currentTrack
+    streamLinks() {
+      return this.release.streamLinks || []
     },
-  },
-
-  methods: {
-    logDownload(track) {
-      if (process.env.NODE_ENV === 'production') {
-        this.$logsnag.publish({
-          project: 'auratyk_website',
-          channel: 'main',
-          event: `User downloaded ${track || 'all tracks'}`,
-          icon: '⏬',
-          notify: true,
-        })
+    appleLink() {
+      const link = this.streamLinks.find(
+        (l) => l.platform === 'Apple' || l.platform === 'Apple Music'
+      )
+      return link?.url || null
+    },
+    soundcloudLink() {
+      const link = this.streamLinks.find((l) => l.platform === 'SoundCloud')
+      return link?.url || null
+    },
+    displayBody() {
+      const body = this.release.bodyHtml || ''
+      const desc = this.release.description || ''
+      if (body && desc) {
+        return dedupDescription(body, desc)
       }
-    },
-    togglePlay() {
-      this.$store.commit('togglePlay')
-    },
-    changeTrack(track) {
-      if (
-        this.$store.state.currentTrack === `/audio/${track}.mp3` &&
-        this.$store.state.isPlaying
-      ) {
-        this.togglePlay()
-        return
-      }
-      this.$AuratykHomeSceneInstance.initializeAudio()
-      this.$AuratykHomeSceneInstance.changeTrack(`/audio/${track}.mp3`)
-      this.togglePlay()
-      this.$store.commit('changeTrack', `/audio/${track}.mp3`)
-    },
-    logScene() {
-      logger('this.$AuratykHomeSceneInstance', this.$AuratykHomeSceneInstance)
+      return body
     },
   },
 }
 </script>
 
 <style lang="scss">
-.form-submit-btn {
-  & .loading {
-    opacity: 0;
-  }
+.release-cover-wrapper {
+  width: 200px;
+  height: 200px;
+  background: var(--color-contrast-lower);
+  margin: var(--space-md) auto 0;
 }
-.socials a {
-  margin: 0 var(--space-xs);
-}
-
-.tracks {
-  padding: var(--space-xs) var(--space-md);
-  border: 1px solid var(--color-accent);
-}
-
-.audio-download-link {
-  margin: 0 auto 0 var(--space-xs);
-  padding: 0 var(--space-xs);
+.release-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid var(--color-white);
 }
 
 .dark-image {

@@ -84,7 +84,7 @@ export default {
   },
   loading: false,
   image: {
-    // Options
+    domains: ['www.dropbox.com', 'dl.dropboxusercontent.com'],
   },
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

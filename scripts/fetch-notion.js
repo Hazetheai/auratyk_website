@@ -40,13 +40,13 @@ function getPropertyValue(properties, name) {
 
   switch (prop.type) {
     case 'title':
-      return prop.title.map(t => t.plain_text).join('')
+      return prop.title.map((t) => t.plain_text).join('')
     case 'rich_text':
-      return prop.rich_text.map(t => t.plain_text).join('')
+      return prop.rich_text.map((t) => t.plain_text).join('')
     case 'select':
       return prop.select?.name || null
     case 'multi_select':
-      return prop.multi_select.map(s => s.name)
+      return prop.multi_select.map((s) => s.name)
     case 'date':
       return prop.date?.start || null
     case 'url':
@@ -54,23 +54,41 @@ function getPropertyValue(properties, name) {
     case 'checkbox':
       return prop.checkbox
     case 'files':
-      return prop.files.map(f => f.type === 'external' ? f.external.url : f.file?.url).filter(Boolean)
+      return prop.files
+        .map((f) => (f.type === 'external' ? f.external.url : f.file?.url))
+        .filter(Boolean)
+    case 'relation':
+      return prop.relation.map(r => r.id)
     default:
       return null
   }
+}
+
+function normalizeDropboxUrl(url) {
+  if (!url || !url.includes('dropbox.com')) return url
+  return url
+    .replace(/[?&]dl=0/, (m) => m.startsWith('?') ? '?raw=1' : '&raw=1')
+    .replace(/[?&]dl=1/, (m) => m.startsWith('?') ? '?raw=1' : '&raw=1')
 }
 
 function getCoverUrl(props, name) {
   const prop = props[name]
   if (!prop) return null
   if (prop.type === 'files') {
-    const urls = prop.files.map(f => f.type === 'external' ? f.external.url : f.file?.url).filter(Boolean)
-    return urls[0] || null
+    const urls = prop.files
+      .map((f) => (f.type === 'external' ? f.external.url : f.file?.url))
+      .filter(Boolean)
+    return urls[0] ? normalizeDropboxUrl(urls[0]) : null
   }
   if (prop.type === 'url') {
-    return prop.url || null
+    return normalizeDropboxUrl(prop.url || null)
   }
   return null
+}
+
+function parseNewlineList(value) {
+  if (!value) return []
+  return value.split('\n').map(s => s.trim()).filter(Boolean)
 }
 
 function parseJsonField(value) {
@@ -80,6 +98,17 @@ function parseJsonField(value) {
   } catch {
     return []
   }
+}
+
+function parseRichTextLinks(props, name) {
+  const prop = props[name]
+  if (!prop || prop.type !== 'rich_text') return []
+  return prop.rich_text
+    .filter(t => t.href)
+    .map(t => ({
+      platform: t.plain_text.trim(),
+      url: t.href,
+    }))
 }
 
 async function fetchContentType(type, databaseId) {
@@ -97,7 +126,11 @@ async function fetchContentType(type, databaseId) {
 
     const entry = {
       id: item.id,
-      title: getPropertyValue(props, 'Title') || getPropertyValue(props, 'Name') || getPropertyValue(props, 'Venue') || slug,
+      title:
+        getPropertyValue(props, 'Title') ||
+        getPropertyValue(props, 'Name') ||
+        getPropertyValue(props, 'Venue') ||
+        slug,
       slug,
       description: getPropertyValue(props, 'Description'),
       bodyHtml,
@@ -109,20 +142,21 @@ async function fetchContentType(type, databaseId) {
         entry.properties = {
           type: getPropertyValue(props, 'Type'),
           date: getPropertyValue(props, 'Date'),
-          coverUrl: getCoverUrl(props, 'Cover'),
+          coverUrl: getCoverUrl(props, 'CoverImage'),
           buyLink: getPropertyValue(props, 'BuyLink'),
-          preSaveLinks: parseJsonField(getPropertyValue(props, 'PreSaveLinks')),
-          streamLinks: parseJsonField(getPropertyValue(props, 'StreamLinks')),
-          tags: getPropertyValue(props, 'Tags') || [],
+          preSaveLinks: parseRichTextLinks(props, 'PreSaveLinks'),
+          streamLinks: parseRichTextLinks(props, 'StreamLinks'),
+          mediums: getPropertyValue(props, 'Mediums') || [],
         }
         break
       case 'projects':
         entry.properties = {
           date: getPropertyValue(props, 'Date'),
-          coverUrl: getCoverUrl(props, 'Cover'),
+          coverUrl: getCoverUrl(props, 'CoverImage'),
           links: parseJsonField(getPropertyValue(props, 'Links')),
           tags: getPropertyValue(props, 'Tags') || [],
           isExperiment: getPropertyValue(props, 'IsExperiment') || false,
+          collaborators: parseNewlineList(getPropertyValue(props, 'Collaborators')),
         }
         break
       case 'shows':
@@ -134,6 +168,14 @@ async function fetchContentType(type, databaseId) {
           city: getPropertyValue(props, 'City'),
           participants: getPropertyValue(props, 'Participants'),
           showType: getPropertyValue(props, 'ShowType'),
+          showUrl: getPropertyValue(props, 'Show URL'),
+          projects: getPropertyValue(props, 'Projects') || [],
+          coverUrl: getCoverUrl(props, 'CoverImage'),
+        }
+        break
+      case 'pages':
+        entry.properties = {
+          coverUrl: getCoverUrl(props, 'CoverImage'),
         }
         break
     }
@@ -166,7 +208,10 @@ async function main() {
     try {
       const data = await fetchContentType(type, databaseId)
       const output = { fetchedAt: new Date().toISOString(), items: data }
-      fs.writeFileSync(path.join(OUTPUT_DIR, `${type}.json`), JSON.stringify(output, null, 2))
+      fs.writeFileSync(
+        path.join(OUTPUT_DIR, `${type}.json`),
+        JSON.stringify(output, null, 2)
+      )
     } catch (err) {
       console.error(`  ✗ Error fetching ${type}:`, err.message)
     }
@@ -176,7 +221,7 @@ async function main() {
 }
 
 if (require.main === module) {
-  main().catch(err => {
+  main().catch((err) => {
     console.error(err)
     process.exit(1)
   })

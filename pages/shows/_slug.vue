@@ -30,8 +30,14 @@
         This event has passed
       </div>
 
-      <p v-if="show.properties.participants" class="text-md margin-top-sm">
-        <strong>With:</strong> {{ show.properties.participants }}
+      <p v-if="participantLabel || projectCollaborators" class="text-md margin-top-sm">
+        <template v-if="participantLabel">
+          <strong>{{ participantLabel }}</strong>
+        </template>
+        <template v-if="projectCollaborators">
+          <template v-if="participantLabel"><br/></template>
+          <strong>With:</strong> {{ projectCollaborators }}
+        </template>
       </p>
 
       <a
@@ -82,6 +88,7 @@ import dayjs from 'dayjs'
 import showsData from '@/content/notion/shows.json'
 import projectsData from '@/content/notion/projects.json'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
+import { dedupDescription } from '@/libs/description-dedup'
 
 export default {
   layout() { return 'main' },
@@ -113,7 +120,12 @@ export default {
       return dayjs(endDate).isBefore(dayjs())
     },
     displayBody() {
-      return this.show.bodyHtml || ''
+      const body = this.show.bodyHtml || ''
+      const desc = this.show.description
+      if (body && desc) {
+        return dedupDescription(body, desc)
+      }
+      return body
     },
     formattedAddress() {
       const addr = this.show?.properties?.venueAddress || ''
@@ -128,6 +140,29 @@ export default {
       const ids = this.show?.properties?.projects || []
       if (!ids.length) return []
       return (projectsData.items || []).filter(p => ids.includes(p.id))
+    },
+    participantLabel() {
+      const p = this.show?.properties?.participants
+      if (!p) return null
+      const labels = {
+        'Collab': `Collaboration with ${p}`,
+        'Commission': `Commissioned by ${p}`,
+        'Solo': 'Solo Show',
+        'Line Up': null,
+        'Support': null,
+        'Group': null,
+      }
+      return labels[p] || null
+    },
+    projectCollaborators() {
+      const ids = this.show?.properties?.projects || []
+      if (!ids.length) return null
+      const projects = (projectsData.items || []).filter(p => ids.includes(p.id))
+      const allCollabs = projects
+        .map(p => p.properties.collaborators || [])
+        .flat()
+        .filter(Boolean)
+      return allCollabs.length ? allCollabs.join(', ') : null
     },
     meta() {
       return getSiteMeta({
