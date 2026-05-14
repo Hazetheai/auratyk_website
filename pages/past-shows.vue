@@ -28,6 +28,7 @@ export default {
     const items = showsData.items || []
     const _shows = items
       .filter((show) => dayjs(show.properties.date).isBefore(dayjs().subtract(1, 'day')))
+      .sort((a, b) => (dayjs(a.properties.date).isBefore(dayjs(b.properties.date)) ? 1 : -1))
       .map((show) => {
         return {
           slug: show.slug,

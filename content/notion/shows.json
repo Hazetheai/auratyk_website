@@ -1,6 +1,25 @@
 {
-  "fetchedAt": "2026-05-13T18:19:52.136Z",
+  "fetchedAt": "2026-05-14T12:35:44.826Z",
   "items": [
+    {
+      "id": "35f70fd9-1edd-8039-b14a-f2f95d873374",
+      "title": "Radical Picnic",
+      "slug": "radical-picnic",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "Mauerpark, Berlin",
+        "country": "Germany",
+        "date": "2023-09-16",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Line Up",
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
+      }
+    },
     {
       "id": "35c70fd9-1edd-8019-b02a-ed55dd45190f",
       "title": "Crack Bellmer",
@@ -13,8 +32,11 @@
         "date": "2025-05-10",
         "ticketLink": null,
         "city": "Berlin",
-        "participants": "Group",
-        "showType": "VJ Set"
+        "participants": "Line Up",
+        "showType": "VJ Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -30,7 +52,10 @@
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Collab",
-        "showType": "VJ Set"
+        "showType": "VJ Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -38,7 +63,7 @@
       "title": "Ceangailte",
       "slug": "ceangailte",
       "description": "Ceangailte, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.",
-      "bodyHtml": "<p><strong>Ceangailte</strong>, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.</p><p>The word Ceangailte <em>[key-ang-el-ta]</em> comes from the Irish language, Gaeilge, the definitions of which approximate “tied”, “connected”, or “bound”. Taking as its point of departure, the multiplicity of perspectives woven throughout the connected histories of former colonies of Empire, Ceangailte articulates future aspirations while holding a mirror up to an extreme and alienating present, interrogating the contradictions between what is outwardly expressed by establishment media and what is internally pursued by those in power.</p>",
+      "bodyHtml": "<p><strong>Ceangailte</strong>, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.</p><p>\nThe word Ceangailte <em>[key-ang-el-ta]</em> comes from the Irish language, Gaeilge, the definitions of which approximate “tied”, “connected”, or “bound”. Taking as its point of departure, the multiplicity of perspectives woven throughout the connected histories of former colonies of Empire, Ceangailte articulates future aspirations while holding a mirror up to an extreme and alienating present, interrogating the contradictions between what is outwardly expressed by establishment media and what is internally pursued by those in power.</p><p></p>",
       "properties": {
         "venueAddress": "LiTE-HAUS Galerie + Projektraum, Mareschstraße 4, 12055 Berlin",
         "country": "Germany",
@@ -46,7 +71,12 @@
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Collab",
-        "showType": "Installation"
+        "showType": "Installation",
+        "showUrl": "https://ceangailte.ie",
+        "projects": [
+          "35c70fd9-1edd-804d-8ec3-cbd26835e1d9"
+        ],
+        "coverUrl": "https://www.dropbox.com/scl/fi/fnduu9sm8hbdg5u3f0g8l/Cork_Gaza.jpg?rlkey=djov4ebbsr81tj3503p6d9om0&st=3m2pjnhu&raw=1"
       }
     },
     {
@@ -61,8 +91,11 @@
         "date": "2026-02-19",
         "ticketLink": null,
         "city": "Berlin",
-        "participants": "Group",
-        "showType": "AV Set"
+        "participants": "Line Up",
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -77,8 +110,11 @@
         "date": "2025-12-04",
         "ticketLink": null,
         "city": "Berlin",
-        "participants": "Group",
-        "showType": "AV Set"
+        "participants": "Line Up",
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -93,8 +129,11 @@
         "date": "2025-09-07",
         "ticketLink": null,
         "city": "Berlin",
-        "participants": "Group",
-        "showType": "AV Set"
+        "participants": "Line Up",
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -109,8 +148,11 @@
         "date": "2025-08-08",
         "ticketLink": null,
         "city": "Berlin",
-        "participants": "Group",
-        "showType": "Live Set"
+        "participants": "Line Up",
+        "showType": "Live Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -125,8 +167,11 @@
         "date": "2025-05-11",
         "ticketLink": null,
         "city": "Berlin",
-        "participants": "Group",
-        "showType": "Live Set"
+        "participants": "Line Up",
+        "showType": "Live Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -141,8 +186,11 @@
         "date": "2025-03-28",
         "ticketLink": null,
         "city": "Berlin",
-        "participants": "Group",
-        "showType": "AV Set"
+        "participants": "Line Up",
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -157,8 +205,11 @@
         "date": "2025-01-31",
         "ticketLink": null,
         "city": "Berlin",
-        "participants": "Group",
-        "showType": "VJ Set"
+        "participants": "Line Up",
+        "showType": "VJ Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -174,7 +225,10 @@
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Support",
-        "showType": "AV Set"
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     },
     {
@@ -190,7 +244,10 @@
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Support",
-        "showType": "AV Set"
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
       }
     }
   ]

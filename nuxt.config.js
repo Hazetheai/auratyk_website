@@ -204,6 +204,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    loaders: {
+      scss: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api', 'import', 'if-function', 'global-builtin'],
+        },
+      },
+    },
     extend: (config) => {
       config.plugins.push(new webpack.ProvidePlugin({ THREE: 'three' }))
       config.module.rules.push({

@@ -1,9 +1,12 @@
 const fs = require('fs')
 const path = require('path')
+const https = require('https')
+const http = require('http')
 const { notion, DATABASES } = require('./notion-config')
 const { blocksToHtml } = require('./notion-block-to-html')
 
 const OUTPUT_DIR = path.resolve(__dirname, '..', 'content', 'notion')
+const IMAGES_DIR = path.resolve(__dirname, '..', 'static', 'images', 'notion')
 
 async function queryDatabase(databaseId) {
   const results = []
@@ -100,6 +103,54 @@ function parseJsonField(value) {
   }
 }
 
+function parseNewlineList(value) {
+  if (!value) return []
+  return value.split('\n').map(s => s.trim()).filter(Boolean)
+}
+
+function downloadFile(url, destPath) {
+  return new Promise((resolve, reject) => {
+    const file = fs.createWriteStream(destPath)
+    const protocol = url.startsWith('https') ? https : http
+    protocol.get(url, (response) => {
+      if (response.statusCode >= 300 && response.statusCode < 400) {
+        file.close()
+        return downloadFile(response.headers.location, destPath).then(resolve).catch(reject)
+      }
+      response.pipe(file)
+      file.on('finish', () => { file.close(); resolve() })
+    }).on('error', (err) => { fs.unlink(destPath, () => {}); reject(err) })
+  })
+}
+
+async function downloadAndReplaceNotionImages(html) {
+  if (!fs.existsSync(IMAGES_DIR)) {
+    fs.mkdirSync(IMAGES_DIR, { recursive: true })
+  }
+  const notionS3Regex = /https:\/\/prod-files-secure\.s3\.[^"'\s]+/g
+  const urls = html.match(notionS3Regex) || []
+  const uniqueUrls = [...new Set(urls)]
+
+  for (const url of uniqueUrls) {
+    const pathOnly = url.split('?')[0]
+    const hash = require('crypto').createHash('md5').update(pathOnly).digest('hex').substring(0, 8)
+    const ext = url.match(/\.(png|jpg|jpeg|gif|webp|svg)/i)?.[1] || 'png'
+    const filename = `${hash}.${ext}`
+    const destPath = path.join(IMAGES_DIR, filename)
+
+    if (!fs.existsSync(destPath)) {
+      try {
+        await downloadFile(url, destPath)
+        console.log(`    ↓ downloaded notion image: ${filename}`)
+      } catch (err) {
+        console.error(`    ✗ failed to download: ${filename} (${err.message})`)
+        continue
+      }
+    }
+    html = html.replaceAll(url, `/images/notion/${filename}`)
+  }
+  return html
+}
 function parseRichTextLinks(props, name) {
   const prop = props[name]
   if (!prop || prop.type !== 'rich_text') return []
@@ -122,7 +173,7 @@ async function fetchContentType(type, databaseId) {
     if (!slug) continue
 
     const blocks = await fetchPageBlocks(item.id)
-    const bodyHtml = blocksToHtml(blocks)
+    const bodyHtml = await downloadAndReplaceNotionImages(blocksToHtml(blocks))
 
     const entry = {
       id: item.id,

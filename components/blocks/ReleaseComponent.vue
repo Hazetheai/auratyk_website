@@ -18,10 +18,9 @@
         <p class="main__content-intro">Out {{ release.properties.date }}</p>
 
         <div class="release-cover-wrapper">
-          <nuxt-img
+          <img
             v-if="release.properties.coverUrl"
             class="release-cover"
-            sizes="400px"
             :src="release.properties.coverUrl"
             :alt="release.title + ' Cover Art'"
           />
@@ -131,8 +130,8 @@ export default {
 
 <style lang="scss">
 .release-cover-wrapper {
-  width: 200px;
-  height: 200px;
+  width: 500px;
+  height: 500px;
   background: var(--color-contrast-lower);
   margin: var(--space-md) auto 0;
 }

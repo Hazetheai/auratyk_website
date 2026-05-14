@@ -26,17 +26,17 @@
             <div class="details-list__item padding-y-md">
               <dt class="font-bold margin-bottom-xxs">Email</dt>
               <dd>
-                <span class="link email-copy" @click="copyEmail('info@auratyk.com')" title="Click to copy">info@auratyk.com</span>
-                <span v-if="copied" class="text-xs color-contrast-medium">Copied!</span>
+                <span
+                  class="link email-copy"
+                  @click="copyEmail('info@auratyk.com')"
+                  title="Click to copy"
+                  >Copy email address</span
+                >
+                <span v-if="copied" class="text-xs color-contrast-medium"
+                  >Copied!</span
+                >
               </dd>
             </div>
-
-            <!-- <div class="details-list__item padding-y-md">
-              <dt class="font-bold margin-bottom-xxs">Phone</dt>
-              <dd class="line-height-md">
-                <p><a href="tel:+49 157 36218731">+49 157 36218731</a></p>
-              </dd>
-            </div> -->
           </dl>
         </div>
 
@@ -132,7 +132,9 @@ export default {
       try {
         await navigator.clipboard.writeText(email)
         this.copied = true
-        setTimeout(() => { this.copied = false }, 2000)
+        setTimeout(() => {
+          this.copied = false
+        }, 2000)
       } catch {
         const input = document.createElement('input')
         input.value = email
@@ -141,7 +143,9 @@ export default {
         document.execCommand('copy')
         document.body.removeChild(input)
         this.copied = true
-        setTimeout(() => { this.copied = false }, 2000)
+        setTimeout(() => {
+          this.copied = false
+        }, 2000)
       }
     },
     async fetchSomething() {
@@ -188,7 +192,9 @@ export default {
 </script>
 
 <style lang="scss">
-.email-copy { cursor: pointer; }
+.email-copy {
+  cursor: pointer;
+}
 .form-submit-btn {
   & .loading {
     opacity: 0;

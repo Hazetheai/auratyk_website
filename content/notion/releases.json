@@ -1,20 +1,32 @@
 {
-  "fetchedAt": "2026-05-13T18:19:47.013Z",
+  "fetchedAt": "2026-05-14T12:35:39.532Z",
   "items": [
     {
       "id": "35c70fd9-1edd-8050-a708-d34474a64f11",
       "title": "Form",
       "slug": "form",
-      "description": "",
-      "bodyHtml": "",
+      "description": "Electronic Producer Auratyk has released a debut 4 track EP, chronicling the formation of their artistic persona. Interlacing two pieces produced and recorded during the harsh Montreal winter and two pieces created in Berlin the following years, ‘Form’ offers a nuanced seasonal narrative.",
+      "bodyHtml": "<h1><strong>Auratyk shares debut EP ‘Form’</strong></h1><p>Electronic Producer Auratyk has released a debut 4 track EP, chronicling the formation of their artistic persona. Interlacing two pieces produced and recorded during the harsh Montreal winter and two pieces created in Berlin the following years, ‘Form’ offers a nuanced seasonal narrative.</p><p>The all instrumental EP creates an ethereal sonic landscape combining feelings of isolation and serenity from the intense Montreal winter and the tempestuous growth experienced by the artist since their arrival in Berlin. The decision to keep it instrumental was self evident to Auratyk who explains:</p><p>“Lyrics, can be incredible, but the most emotive experiences always seems to be without distinct words. This sonic palette allowed me to freely express myself, without language and its inherent bias getting in the way. There are whispers throughout the tracks, as I believe the human voice is one of the most magical instruments there is, but they never tell you what to feel, or think.”</p><p>The finishing touches to the tracks were done in The Famous Gold Watch Studios in Berlin.</p><p><strong>Auratyks ‘Form’ is out now.</strong></p>",
       "properties": {
         "type": "EP",
         "date": "2022-11-25",
-        "coverUrl": null,
+        "coverUrl": "https://www.dropbox.com/scl/fi/vu54c04z8834k8dqpoxz8/Form_Artwork_small.png?rlkey=5ny8gac4b75amf39578blgp74&raw=1",
         "buyLink": "https://auratyk.bandcamp.com/album/form?external_follow=1",
         "preSaveLinks": [],
-        "streamLinks": [],
-        "tags": []
+        "streamLinks": [
+          {
+            "platform": "SoundCloud",
+            "url": "https://soundcloud.com/auratyk/sets/form"
+          },
+          {
+            "platform": "Apple",
+            "url": "https://music.apple.com/de/album/form-ep/1652874480"
+          }
+        ],
+        "mediums": [
+          "Casette",
+          "Digital"
+        ]
       }
     }
   ]

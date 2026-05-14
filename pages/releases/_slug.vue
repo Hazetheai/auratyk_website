@@ -24,16 +24,12 @@ export default {
     const release = _releases
       .map(handleStreamLinks)
       .find((r) => r.slug === params.slug) || null
-    return { release }
-  },
-  data() {
-    return {
-      title: this.release?.title || 'Release Not Found',
-    }
+    return { release, titleOverride: release?.title || 'Release Not Found' }
   },
   head() {
+    const t = this.release?.title || 'Release Not Found'
     return {
-      title: `Auratyk | ${this.title}`,
+      title: `Auratyk | ${t}`,
       meta: [...this.meta],
       link: [{ hid: 'canonical', rel: 'canonical', href: `${this.$config.baseUrl}${this.$route.path}` }],
     }
@@ -42,7 +38,7 @@ export default {
     meta() {
       return getSiteMeta({
         type: 'website',
-        title: this.title,
+        title: this.release?.title || 'Release Not Found',
         url: `${this.$config.baseUrl}${this.$route.path}`,
       })
     },

@@ -1,13 +1,23 @@
 <template>
   <div class="home main__content">
     <h1 class="main__content-heading margin-bottom-md">{{ content.title }}</h1>
-    <div class="show-type-legend text-sm color-contrast-medium margin-bottom-md">
-      <span class="show-type-icon legend-item" title="Live Set">● Live Set</span>
+    <div
+      class="show-type-legend text-sm color-contrast-medium margin-bottom-md"
+    >
+      <span class="show-type-icon legend-item" title="Live Set"
+        >● Live Set</span
+      >
       <span class="show-type-icon legend-item" title="VJ Set">◯ VJ Set</span>
       <span class="show-type-icon legend-item" title="AV Set">◉ AV Set</span>
-      <span class="show-type-icon legend-item" title="Installation">◆ Installation</span>
-      <span class="show-type-icon legend-item" title="Exhibition">◇ Exhibition</span>
-      <span class="show-type-icon legend-item" title="Workshop">◎ Workshop</span>
+      <span class="show-type-icon legend-item" title="Installation"
+        >◆ Installation</span
+      >
+      <!-- <span class="show-type-icon legend-item" title="Exhibition"
+        >◇ Exhibition</span
+      > -->
+      <!-- <span class="show-type-icon legend-item" title="Workshop"
+        >◎ Workshop</span
+      > -->
     </div>
     <div v-if="shows.length" class="shows-container">
       <div v-for="show in shows" :key="show.date" class="show">
@@ -21,14 +31,20 @@
             <NuxtLink
               v-if="show.slug && show.hasBody"
               :to="`/shows/${show.slug}`"
-              class="text-lg link"
-              >{{ show.venue }}</NuxtLink
+              class="text-lg flex items-center gap-sm link"
+              ><span class="text-sm">{{ showTypeIcon(show.showType) }}</span>
+              {{ show.venue }}</NuxtLink
             >
-            <p v-else class="text-lg">{{ show.venue }}</p>
+            <p v-else class="text-lg flex items-center gap-sm">
+              <span class="text-sm">{{ showTypeIcon(show.showType) }}</span>
+              {{ show.venue }}
+            </p>
             <p class="show-details__address text-sm color-contrast-medium">
               <span>
                 {{ show.venueAddress }}
-                <template v-if="show.city && !venueAddressHasCity(show)">, {{ show.city }}</template>
+                <template v-if="show.city && !venueAddressHasCity(show)"
+                  >, {{ show.city }}</template
+                >
               </span>
             </p>
           </div>
@@ -36,17 +52,6 @@
           <div
             class="show-details__main-details show-details__grid text-component"
           >
-            <p
-              v-if="show.showType"
-              class="show-details__type text-md padding-x-sm@sm"
-            >
-              <span v-if="show.showType === 'Live Set'" class="show-type-icon" :title="show.showType">●</span> Live Set
-              <span v-else-if="show.showType === 'VJ Set'" class="show-type-icon" :title="show.showType">◯</span> VJ Set
-              <span v-else-if="show.showType === 'AV Set'" class="show-type-icon" :title="show.showType">◉</span> AV Set
-              <span v-else-if="show.showType === 'Installation'" class="show-type-icon" :title="show.showType">◆</span> Installation
-              <span v-else-if="show.showType === 'Exhibition'" class="show-type-icon" :title="show.showType">◇</span> Exhibition
-              <span v-else-if="show.showType === 'Workshop'" class="show-type-icon" :title="show.showType">◎</span> Workshop
-            </p>
             <p
               v-if="!allSameCountry"
               class="show-details__country text-md padding-x-sm@sm"
@@ -74,7 +79,10 @@
           </div>
         </div>
       </div>
-      <div class="past-shows-link margin-top-lg text-center">
+      <div
+        v-if="isPast != true"
+        class="past-shows-link margin-top-lg text-center"
+      >
         <NuxtLink to="/past-shows" class="link text-md">Past Shows →</NuxtLink>
       </div>
     </div>
@@ -129,6 +137,17 @@ export default {
       const city = (show.city || '').toLowerCase()
       return city && addr.includes(city)
     },
+    showTypeIcon(type) {
+      const icons = {
+        'Live Set': '●',
+        'VJ Set': '◯',
+        'AV Set': '◉',
+        Installation: '◆',
+        // Exhibition: '◇',
+        // Workshop: '◎',
+      }
+      return icons[type] || '○'
+    },
   },
 }
 </script>
@@ -149,7 +168,8 @@ export default {
 .show-details__grid {
   display: flex;
   gap: var(--space-md);
-  & > p, & > div {
+  & > p,
+  & > div {
     min-width: 80px;
   }
 }

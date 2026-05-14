@@ -6,19 +6,31 @@
       <p v-if="show.properties.showType" class="text-md margin-top-sm">
         <span class="show-type-icon" :title="show.properties.showType">
           <template v-if="show.properties.showType === 'Live Set'">●</template>
-          <template v-else-if="show.properties.showType === 'VJ Set'">◯</template>
-          <template v-else-if="show.properties.showType === 'AV Set'">◉</template>
-          <template v-else-if="show.properties.showType === 'Installation'">◆</template>
-          <template v-else-if="show.properties.showType === 'Exhibition'">◇</template>
-          <template v-else-if="show.properties.showType === 'Workshop'">◎</template>
+          <template v-else-if="show.properties.showType === 'VJ Set'"
+            >◯</template
+          >
+          <template v-else-if="show.properties.showType === 'AV Set'"
+            >◉</template
+          >
+          <template v-else-if="show.properties.showType === 'Installation'"
+            >◆</template
+          >
+          <template v-else-if="show.properties.showType === 'Exhibition'"
+            >◇</template
+          >
+          <template v-else-if="show.properties.showType === 'Workshop'"
+            >◎</template
+          >
           <template v-else>○</template>
         </span>
-        <strong>Type:</strong> {{ show.properties.showType }}
+        {{ show.properties.showType }}
       </p>
 
       <p class="text-md margin-top-sm color-contrast-medium">
         <span class="show-detail__address">{{ formattedAddress }}</span>
-        <template v-if="show.properties.city && !addressHasCity"> · {{ show.properties.city }}</template>
+        <template v-if="show.properties.city && !addressHasCity">
+          · {{ show.properties.city }}</template
+        >
         · {{ show.properties.country }}
       </p>
 
@@ -30,13 +42,12 @@
         This event has passed
       </div>
 
-      <p v-if="participantLabel || projectCollaborators" class="text-md margin-top-sm">
+      <p
+        v-if="participantLabel || projectCollaborators"
+        class="text-md margin-top-sm"
+      >
         <template v-if="participantLabel">
           <strong>{{ participantLabel }}</strong>
-        </template>
-        <template v-if="projectCollaborators">
-          <template v-if="participantLabel"><br/></template>
-          <strong>With:</strong> {{ projectCollaborators }}
         </template>
       </p>
 
@@ -46,7 +57,8 @@
         :href="show.properties.showUrl"
         target="_blank"
         rel="noopener"
-      >Event Website</a>
+        >Event Website</a
+      >
 
       <a
         v-if="show.properties.ticketLink && !isPast"
@@ -54,7 +66,8 @@
         :href="show.properties.ticketLink"
         target="_blank"
         rel="noopener"
-      >Buy Tickets</a>
+        >Buy Tickets</a
+      >
 
       <div v-if="relatedProjects.length" class="margin-top-md">
         <p class="text-md"><strong>Related Projects:</strong></p>
@@ -63,7 +76,8 @@
           :key="project.slug"
           :to="`/projects/${project.slug}`"
           class="link padding-right-sm"
-        >{{ project.title }}</NuxtLink>
+          >{{ project.title }}</NuxtLink
+        >
       </div>
     </div>
 
@@ -75,7 +89,9 @@
     <div
       v-if="show.description && !show.bodyHtml"
       class="show-detail__description text-md color-contrast-medium margin-top-lg"
-    >{{ show.description }}</div>
+    >
+      {{ show.description }}
+    </div>
   </section>
 
   <div v-else class="main__content">
@@ -91,14 +107,16 @@ import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 import { dedupDescription } from '@/libs/description-dedup'
 
 export default {
-  layout() { return 'main' },
+  layout() {
+    return 'main'
+  },
   asyncData({ params }) {
-    const show = (showsData.items || []).find(s => s.slug === params.slug) || null
-    return { show }
+    const show =
+      (showsData.items || []).find((s) => s.slug === params.slug) || null
+    return { show, title: show?.title || 'Show Not Found' }
   },
   data() {
     return {
-      title: this.show?.title || 'Show Not Found',
       description: this.show?.description || '',
     }
   },
@@ -116,7 +134,12 @@ export default {
     isPast() {
       if (!this.show?.properties?.date) return false
       const d = this.show.properties.date
-      const endDate = (typeof d === 'object' && d.end) ? d.end : (typeof d === 'object' ? d.start : d)
+      const endDate =
+        typeof d === 'object' && d.end
+          ? d.end
+          : typeof d === 'object'
+          ? d.start
+          : d
       return dayjs(endDate).isBefore(dayjs())
     },
     displayBody() {
@@ -139,27 +162,31 @@ export default {
     relatedProjects() {
       const ids = this.show?.properties?.projects || []
       if (!ids.length) return []
-      return (projectsData.items || []).filter(p => ids.includes(p.id))
+      return (projectsData.items || []).filter((p) => ids.includes(p.id))
     },
     participantLabel() {
       const p = this.show?.properties?.participants
       if (!p) return null
       const labels = {
-        'Collab': `Collaboration with ${p}`,
-        'Commission': `Commissioned by ${p}`,
-        'Solo': 'Solo Show',
+        Collab: `Collaboration with ${
+          this.projectCollaborators || 'various artists'
+        }`,
+        Commission: `Commissioned by `,
+        Solo: 'Solo Show',
         'Line Up': null,
-        'Support': null,
-        'Group': null,
+        Support: null,
+        Group: null,
       }
       return labels[p] || null
     },
     projectCollaborators() {
       const ids = this.show?.properties?.projects || []
       if (!ids.length) return null
-      const projects = (projectsData.items || []).filter(p => ids.includes(p.id))
+      const projects = (projectsData.items || []).filter((p) =>
+        ids.includes(p.id)
+      )
       const allCollabs = projects
-        .map(p => p.properties.collaborators || [])
+        .map((p) => p.properties.collaborators || [])
         .flat()
         .filter(Boolean)
       return allCollabs.length ? allCollabs.join(', ') : null
@@ -168,7 +195,9 @@ export default {
       return getSiteMeta({
         type: 'website',
         title: this.title,
-        description: this.description || `${this.title} at ${this.show?.properties?.venueAddress || ''}`,
+        description:
+          this.description ||
+          `${this.title} at ${this.show?.properties?.venueAddress || ''}`,
         url: `${this.$config.baseUrl}${this.$route.path}`,
       })
     },
@@ -177,7 +206,13 @@ export default {
     return {
       title: `Auratyk | ${this.title}`,
       meta: [...this.meta],
-      link: [{ hid: 'canonical', rel: 'canonical', href: `${this.$config.baseUrl}${this.$route.path}` }],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${this.$config.baseUrl}${this.$route.path}`,
+        },
+      ],
     }
   },
 }

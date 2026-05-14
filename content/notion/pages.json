@@ -1,13 +1,15 @@
 {
-  "fetchedAt": "2026-05-13T18:19:46.188Z",
+  "fetchedAt": "2026-05-14T12:35:38.781Z",
   "items": [
     {
       "id": "35f70fd9-1edd-80d5-aef9-e18c8c2e4f9b",
       "title": "About",
       "slug": "about",
       "description": "Inspired by the fallibility of memory, both digital and analogue, queer theory, and the impact of physical spaces, they create works that evoke the indefinable aesthetics of memory.",
-      "bodyHtml": "<h2>Long</h2><h2>Medium</h2>",
-      "properties": {}
+      "bodyHtml": "<p>I create electronic music and immersive experiences that aim to elicit an emotive response charged with nostalgia and melancholy. Using a blend of analog synthesisers, field recordings, acoustic piano and drum machines, my compositions create evolving soundscapes interwoven with jittery, IDM fused beats. Building upon this with sliced and warped vocals woven around pulsing synthesizer riffs, creating a multi-layered sonic experience. My music is further expanded upon with visual elements: 3D scans, particle systems, generative liquid-like textures and glitchy atmospheres.</p><figure><img src=\"/images/notion/560f41dd.png\" alt=\"\" /></figure><p>Through sound and visuals, I construct a realm where listeners can delve into their own individual memories, perceiving it as a familiar environment — whether vividly or vaguely remembered. I try to produce a comfortable space where the listeners are immersed in the piece that leaves traces in them, as we leave traces in each other, and the spaces we haunt leave traces in us.</p><figure class=\"video-embed\"><div class=\"video-embed__inner\"><iframe src=\"https://www.youtube-nocookie.com/embed/VPEfe95NIeA?rel=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div></figure><p>In my artistic expression, I seek to convey my queerness, encapsulating both its recent discovery and my evolving daily experience. My music serves as a reflection of my personal journey, a process of challenging and deconstructing my past self while exploring how queerness shapes my current worldview. Each individual piece contributes to a larger narrative, emphasising the interconnectedness of personal journeys, memories, introspection and environment.</p><figure class=\"video-embed\"><div class=\"video-embed__inner\"><iframe src=\"https://www.youtube-nocookie.com/embed/hYHxyq_vjqc?rel=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div></figure>",
+      "properties": {
+        "coverUrl": "https://www.dropbox.com/scl/fi/uizefmimyarqfoxiqpyzd/bandcamp-bg.png?rlkey=wf8i18qoamy3toh63vf4j8r7x&raw=1"
+      }
     },
     {
       "id": "35c70fd9-1edd-8098-9f0c-ea00fa6c0a35",
@@ -15,7 +17,9 @@
       "slug": "test-page",
       "description": "",
       "bodyHtml": "",
-      "properties": {}
+      "properties": {
+        "coverUrl": "https://www.dropbox.com/scl/fi/fnduu9sm8hbdg5u3f0g8l/Cork_Gaza.jpg?rlkey=djov4ebbsr81tj3503p6d9om0&st=3m2pjnhu&raw=1"
+      }
     }
   ]
 }
