@@ -69,17 +69,12 @@ export default {
 .page-content__body {
   &.notion-sync-block,
   .notion-sync-block {
-    display: flex;
-    flex-direction: column;
     & p {
       max-width: var(--max-width-sm);
-      padding-top: var(--space-xl);
-      padding-bottom: var(--space-xl);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
       &:first-child {
         padding-top: 0;
-      }
-      &:nth-child(2n) {
-        align-self: flex-end;
       }
     }
   }

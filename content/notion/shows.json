@@ -1,6 +1,25 @@
 {
-  "fetchedAt": "2026-05-14T12:35:44.826Z",
+  "fetchedAt": "2026-07-16T06:39:10.835Z",
   "items": [
+    {
+      "id": "36f70fd9-1edd-8057-9342-f9194c7186ec",
+      "title": "VJOpenLab x 48NK",
+      "slug": "vjopenlab-x-48nk",
+      "description": "",
+      "bodyHtml": "",
+      "properties": {
+        "venueAddress": "Prachtwerk, Berlin",
+        "country": "Germany",
+        "date": "2025-06-27",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Line Up",
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [],
+        "coverUrl": null
+      }
+    },
     {
       "id": "35f70fd9-1edd-8039-b14a-f2f95d873374",
       "title": "Radical Picnic",

@@ -31,6 +31,11 @@ async function fetchPageBlocks(pageId) {
       block_id: pageId,
       start_cursor: cursor,
     })
+    for (const block of response.results) {
+      if (block.has_children) {
+        block.children = await fetchPageBlocks(block.id)
+      }
+    }
     results.push(...response.results)
     cursor = response.next_cursor || undefined
   } while (cursor)
@@ -138,14 +143,12 @@ async function downloadAndReplaceNotionImages(html) {
     const filename = `${hash}.${ext}`
     const destPath = path.join(IMAGES_DIR, filename)
 
-    if (!fs.existsSync(destPath)) {
-      try {
-        await downloadFile(url, destPath)
-        console.log(`    ↓ downloaded notion image: ${filename}`)
-      } catch (err) {
-        console.error(`    ✗ failed to download: ${filename} (${err.message})`)
-        continue
-      }
+    try {
+      await downloadFile(url, destPath)
+      console.log(`    ↓ downloaded notion image: ${filename}`)
+    } catch (err) {
+      console.error(`    ✗ failed to download: ${filename} (${err.message})`)
+      continue
     }
     html = html.replaceAll(url, `/images/notion/${filename}`)
   }

@@ -1,27 +1,32 @@
 const { textToHtml } = require('./notion-richtext-to-html')
 
+function blockChildrenHtml(block) {
+  return block[block.type]?.children || ''
+}
+
 function blockToHtml(block) {
+  const children = blockChildrenHtml(block)
   switch (block.type) {
     case 'paragraph':
-      return `<p>${textToHtml(block.paragraph.rich_text)}</p>`
+      return `<p>${textToHtml(block.paragraph.rich_text)}${children}</p>`
     case 'heading_1':
-      return `<h1>${textToHtml(block.heading_1.rich_text)}</h1>`
+      return `<h1>${textToHtml(block.heading_1.rich_text)}${children}</h1>`
     case 'heading_2':
-      return `<h2>${textToHtml(block.heading_2.rich_text)}</h2>`
+      return `<h2>${textToHtml(block.heading_2.rich_text)}${children}</h2>`
     case 'heading_3':
-      return `<h3>${textToHtml(block.heading_3.rich_text)}</h3>`
+      return `<h3>${textToHtml(block.heading_3.rich_text)}${children}</h3>`
     case 'bulleted_list_item':
-      return `<li>${textToHtml(block.bulleted_list_item.rich_text)}</li>`
+      return `<li>${textToHtml(block.bulleted_list_item.rich_text)}${children}</li>`
     case 'numbered_list_item':
-      return `<li>${textToHtml(block.numbered_list_item.rich_text)}</li>`
+      return `<li>${textToHtml(block.numbered_list_item.rich_text)}${children}</li>`
     case 'to_do':
-      return `<div class="todo">${textToHtml(block.to_do.rich_text)}</div>`
+      return `<div class="todo">${textToHtml(block.to_do.rich_text)}${children}</div>`
     case 'toggle':
-      return `<details><summary>${textToHtml(block.toggle.rich_text)}</summary></details>`
+      return `<details><summary>${textToHtml(block.toggle.rich_text)}</summary>${children}</details>`
     case 'code':
       return `<pre><code class="language-${block.code.language}">${textToHtml(block.code.rich_text)}</code></pre>`
     case 'quote':
-      return `<blockquote>${textToHtml(block.quote.rich_text)}</blockquote>`
+      return `<blockquote>${textToHtml(block.quote.rich_text)}${children}</blockquote>`
     case 'divider':
       return `<hr>`
     case 'image':
@@ -37,7 +42,7 @@ function blockToHtml(block) {
       return ''
     }
     case 'callout':
-      return `<div class="callout">${block.callout.icon?.emoji || ''} ${textToHtml(block.callout.rich_text)}</div>`
+      return `<div class="callout">${block.callout.icon?.emoji || ''} ${textToHtml(block.callout.rich_text)}${children}</div>`
     case 'child_page':
       return ''
     default:

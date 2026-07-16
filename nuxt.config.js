@@ -189,15 +189,13 @@ export default {
 
   hooks: {
     'generate:before': async () => {
-      if (process.env.NOTION_API_KEY) {
-        try {
-          const { main } = require('./scripts/fetch-notion')
-          await main()
-        } catch (err) {
-          console.error('Notion fetch failed:', err.message)
-        }
-      } else {
-        console.warn('⏭ Skipping Notion fetch (NOTION_API_KEY not set)')
+      try {
+        const { main } = require('./scripts/fetch-notion')
+        await main()
+      } catch (err) {
+        console.error('\n\x1b[31m✗ Notion fetch failed:\x1b[0m', err.message)
+        console.error('\x1b[33m  Using cached content from content/notion/*.json\x1b[0m')
+        console.error('  Set NOTION_API_KEY and database IDs in .env or environment\n')
       }
     },
   },
