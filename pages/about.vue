@@ -10,9 +10,11 @@
 <script>
 import pages from '@/content/notion/pages.json'
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
+import videoPlayer from '@/mixins/video-player'
 
 export default {
   name: 'AboutPage',
+  mixins: [videoPlayer],
   layout() { return 'main' },
   data() {
     const page = (pages.items || []).find(p => p.slug === 'about') || {}

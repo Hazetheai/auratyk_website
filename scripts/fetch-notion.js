@@ -73,10 +73,11 @@ function getPropertyValue(properties, name) {
 }
 
 function normalizeDropboxUrl(url) {
-  if (!url || !url.includes('dropbox.com')) return url
+  if (!url) return url
+  if (!url.includes('dropbox.com') && !url.includes('dropboxusercontent.com')) return url
   return url
-    .replace(/[?&]dl=0/, (m) => m.startsWith('?') ? '?raw=1' : '&raw=1')
-    .replace(/[?&]dl=1/, (m) => m.startsWith('?') ? '?raw=1' : '&raw=1')
+    .replace(/[?&]dl=0/, '&raw=1')
+    .replace(/[?&]dl=1/, '&raw=1')
 }
 
 function getCoverUrl(props, name) {

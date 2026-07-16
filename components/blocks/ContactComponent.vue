@@ -19,7 +19,7 @@
             <div class="details-list__item padding-y-md">
               <dt class="font-bold margin-bottom-xxs">Address</dt>
               <dd class="line-height-md">
-                Lichtenberger Str. 41, <br />10243 Berlin <br />Germany
+                Lübecker Str. 43, <br />10559 Berlin <br />Germany
               </dd>
             </div>
 

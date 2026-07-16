@@ -21,8 +21,10 @@
 <script>
 import pages from '@/content/notion/pages.json'
 import { dedupDescription } from '@/libs/description-dedup'
+import videoPlayer from '@/mixins/video-player'
 
 export default {
+  mixins: [videoPlayer],
   layout() {
     return 'main'
   },
