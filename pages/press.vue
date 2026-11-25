@@ -16,22 +16,24 @@
       </div>
     </div>
 
-    <figure class="press__hero margin-bottom-lg">
+    <figure v-if="hero" class="press__hero margin-bottom-lg">
       <img
-        src="/press/img/auratyk-read-rites-blo-2026-wide.jpg"
-        alt="Auratyk performing read:rites | cannibalize at B.L.O. Ateliers, Berlin, 2026"
+        :src="hero.full"
+        :data-full="hero.full"
+        :alt="hero.alt"
         loading="eager"
       />
       <figcaption class="text-xs color-contrast-medium margin-top-xxs">
-        read:rites | cannibalize, B.L.O. Ateliers, Berlin, 2026. Photo:
-        {{ credits.blo }}
+        {{ hero.caption }}<template v-if="hero.credit">
+          · Photo: {{ hero.credit }}</template
+        >
       </figcaption>
     </figure>
 
     <!-- Downloads -->
     <div class="press__downloads flex flex-wrap gap-sm margin-bottom-xl">
       <a
-        v-for="d in downloads"
+        v-for="d in downloads.filter((d) => !d.href.startsWith('#'))"
         :key="d.href"
         class="btn btn--subtle"
         :href="d.href"
@@ -80,12 +82,23 @@
         Free to use for press about Auratyk with the photo credit.
       </p>
       <div class="press__grid">
-        <figure v-for="p in photos" :key="p.src" class="press__photo">
-          <a :href="p.src" target="_blank" rel="noopener">
-            <img :src="p.src" :alt="p.alt" loading="lazy" />
-          </a>
+        <figure v-for="p in photos" :key="p.id" class="press__photo">
+          <img
+            :src="p.src"
+            :data-full="p.full"
+            :alt="p.alt"
+            :width="p.width"
+            :height="p.height"
+            loading="lazy"
+          />
           <figcaption class="text-xs color-contrast-medium margin-top-xxs">
-            {{ p.caption }} · Photo: {{ p.credit }}
+            {{ p.caption }}<template v-if="p.credit">
+              · Photo: {{ p.credit }}</template
+            >
+            ·
+            <a :href="p.full" target="_blank" rel="noopener" download
+              >Download</a
+            >
           </figcaption>
         </figure>
       </div>
@@ -95,7 +108,7 @@
     <div class="max-width-adaptive-md margin-bottom-xl">
       <h2 class="text-lg margin-bottom-sm">Works</h2>
       <div class="grid gap-lg">
-        <article v-for="w in works" :key="w.title" class="col-4@md">
+        <article v-for="w in works" :key="w.slug" class="col-4@md">
           <img
             :src="w.img"
             :alt="w.title"
@@ -103,8 +116,10 @@
             loading="lazy"
           />
           <h3 class="text-md margin-top-sm">
-            {{ w.title }}
-            <span class="color-contrast-medium">({{ w.year }})</span>
+            <nuxt-link :to="`/projects/${w.slug}`">{{ w.title }}</nuxt-link>
+            <span v-if="w.year" class="color-contrast-medium"
+              >({{ w.year }})</span
+            >
           </h3>
           <p class="text-xs color-contrast-medium margin-y-xxs">
             {{ w.caption }}
@@ -120,7 +135,7 @@
       <dl class="details-list details-list--rows">
         <div
           v-for="s in shows"
-          :key="s.date + s.event"
+          :key="s.id"
           class="details-list__item padding-y-xs flex gap-md"
         >
           <dt class="text-xs color-contrast-medium press__date">
@@ -181,9 +196,21 @@
 <script>
 import getSiteMeta from '@/assets/js/utils/getSiteMeta'
 import SocialIcons from '@/components/blocks/SocialIcons.vue'
+import pressData from '@/content/notion/press.json'
+import showsData from '@/content/notion/shows.json'
+import projectsData from '@/content/notion/projects.json'
+import { yearSpan, byRecency } from '@/libs/project-utils'
 
-// TODO before publishing: fill in photo credits, the hi-res zip link and the trailer link.
-const TBC = '[credit TBC]'
+// Photos, selected works and selected shows all come from Notion:
+// - photos: "Auratyk Website Press Photos" (Hero = the big image at the top)
+// - works: Projects with Press ticked (PressCaption, PressText)
+// - shows: Shows with Press ticked (PressLabel), newest first
+const pressPhotos = pressData.items || []
+
+function pressDate(iso) {
+  const [y, m] = String(iso).split('-')
+  return `${m}.${y}`
+}
 
 export default {
   name: 'PressPage',
@@ -199,7 +226,6 @@ export default {
       activeBio: 'short',
       copied: false,
       emailCopied: false,
-      credits: { blo: TBC },
       downloads: [
         {
           label: 'Press kit (PDF)',
@@ -260,99 +286,34 @@ export default {
           ],
         },
       ],
-      photos: [
-        {
-          src: '/press/img/auratyk-read-rites-blo-2026-wide.jpg',
-          alt: 'Auratyk performing in front of a terminal projection',
-          caption: 'read:rites | cannibalize, B.L.O. Ateliers, 2026',
-          credit: TBC,
-        },
-        {
-          src: '/press/img/auratyk-read-rites-blo-2026-colour.jpg',
-          alt: 'Auratyk in front of colourful datamoshed projection',
-          caption: 'read:rites | cannibalize, B.L.O. Ateliers, 2026',
-          credit: TBC,
-        },
-        {
-          src: '/press/img/auratyk-mahalla-2025-screen.jpg',
-          alt: 'Auratyk at the controllers beside an LED screen',
-          caption: 'Berlin New Media Art Week, MaHalla, 2025',
-          credit: TBC,
-        },
-        {
-          src: '/press/img/auratyk-mahalla-2025-backlit.jpg',
-          alt: 'Auratyk backlit by projection',
-          caption: 'Berlin New Media Art Week, MaHalla, 2025',
-          credit: TBC,
-        },
-        {
-          src: '/press/img/auratyk-mahalla-2025-audience.jpg',
-          alt: 'Auratyk performing to a seated audience',
-          caption: 'Berlin New Media Art Week, MaHalla, 2025',
-          credit: TBC,
-        },
-        {
-          src: '/press/img/auratyk-read-rites-bnmw-2026-hands.jpg',
-          alt: 'Hands on Push and controllers',
-          caption: 'read:rites | cannibalize, The Space, Berlin, 2026',
-          credit: TBC,
-        },
-      ],
-      works: [
-        {
-          title: 'read:rites | cannibalize',
-          year: '2025–',
-          img: '/press/img/auratyk-read-rites-blo-2026-colour.jpg',
-          caption:
-            'Live audiovisual performance · Ableton, TouchDesigner · 45 min',
-          text: 'A live AV performance about cultural recycling and the myth of progress. A machine makes a silent human feed it a century of recorded music; with each pass the material is sampled and resampled faster, until loops shrink and fragments return eroded.',
-        },
-        {
-          title: 'Remembering Linn',
-          year: '2024',
-          img: '/press/img/remembering-linn-reuterplatz-2024.jpg',
-          caption: 'Five-part video series · point clouds, field recordings',
-          text: 'Five liminal Berlin places – a grove, a square, a bridge, an underground station, a pond – scanned into point clouds and scored with sound from the same locations, so the spaces seem to breathe, dissolve and remember.',
-        },
-        {
-          title: 'Ceangailte',
-          year: '2026',
-          img: '/press/img/ceangailte-litehaus-2026.jpg',
-          caption:
-            'Installation with David Mathúna · dual-screen video, immersive audio',
-          text: 'A collaborative audiovisual installation exploring how media representations shape narratives of colonialism, oppression and resilience. Shown at LiTE-HAUS, 48 Stunden Neukölln, 2026.',
-        },
-      ],
-      shows: [
-        {
-          date: '09.2026',
-          event: 'The Space, Berlin – read:rites | cannibalize',
-        },
-        {
-          date: '07.2026',
-          event:
-            '48 Stunden Neukölln, LiTE-HAUS – Ceangailte (with David Mathúna)',
-        },
-        {
-          date: '02.2026',
-          event:
-            'B.L.O. Ateliers, Media Drift × co:evolve – read:rites | cannibalize',
-        },
-        {
-          date: '12.2025',
-          event:
-            'XoK Blackout, Neue Zukunft – read:rites | cannibalize (premiere)',
-        },
-        {
-          date: '09.2025',
-          event: 'Berlin New Media Art Week, MaHalla – AV set',
-        },
-        {
-          date: '06.2025',
-          event: 'Fusion Festival – live visuals for Culture Crush',
-        },
-        { date: '06.2024', event: 'Re–Fest, CultureHub – screening' },
-      ],
+      hero: pressPhotos.find((p) => p.hero) || pressPhotos[0] || null,
+      photos: pressPhotos,
+      works: (projectsData.items || [])
+        .filter((p) => p.properties.press)
+        .sort(byRecency)
+        .map((p) => ({
+          slug: p.slug,
+          title: p.title,
+          year: yearSpan(p),
+          img: p.properties.coverUrl,
+          caption: p.properties.pressCaption || (p.properties.tags || []).join(' · '),
+          text: p.properties.pressText || p.description,
+        })),
+      shows: (showsData.items || [])
+        .filter((s) => s.properties.press && s.properties.date)
+        .sort((a, b) => (a.properties.date < b.properties.date ? 1 : -1))
+        .map((s) => {
+          const projects = (projectsData.items || [])
+            .filter((p) => (s.properties.projects || []).includes(p.id))
+            .map((p) => p.title)
+          return {
+            id: s.id,
+            date: pressDate(s.properties.date),
+            event:
+              s.properties.pressLabel ||
+              [s.title, projects.join(', ')].filter(Boolean).join(' – '),
+          }
+        }),
     }
   },
   head() {
@@ -378,7 +339,7 @@ export default {
         title: this.title,
         description: this.description,
         url: `${this.$config.baseUrl}${this.$route.path}`,
-        socialImage: '/press/img/auratyk-read-rites-blo-2026-wide.jpg',
+        socialImage: this.hero ? this.hero.full : undefined,
       })
     },
   },
@@ -417,12 +378,24 @@ export default {
     object-fit: cover;
     display: block;
   }
+  // Masonry columns: every photo keeps its own shape (portraits aren't cropped).
   &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: var(--space-md);
+    columns: 3 260px;
+    column-gap: var(--space-md);
   }
-  &__photo img,
+  &__photo {
+    break-inside: avoid;
+    margin: 0 0 var(--space-md);
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+    }
+  }
+  &__hero img {
+    cursor: zoom-in;
+  }
   &__work-img {
     width: 100%;
     aspect-ratio: 3 / 2;

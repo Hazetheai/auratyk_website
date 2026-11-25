@@ -80,6 +80,8 @@ const SELECTOR = [
   '.page-cover',
   '.notion-sync-block figure img',
   '.notion-sync-block figure.video-embed--direct video',
+  '.press__hero img',
+  '.press__photo img',
 ].join(', ')
 
 export default {

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-25T18:41:07.079Z",
+  "fetchedAt": "2026-11-25T19:57:14.573Z",
   "items": [
     {
       "id": "42370fd9-1edd-8178-92e6-d9f7a79efc25",
@@ -26,7 +26,9 @@
         "lineup": "",
         "duration": "",
         "tools": "TouchDesigner",
-        "credits": ""
+        "credits": "",
+        "press": true,
+        "pressLabel": "Fusion Festival – live visuals for Culture Crush"
       }
     },
     {
@@ -54,7 +56,9 @@
         "lineup": "",
         "duration": "25 min loop",
         "tools": "TouchDesigner, Ableton Live",
-        "credits": ""
+        "credits": "",
+        "press": true,
+        "pressLabel": "Unframe Festival, CANK, Berlin + Culture Night, Nano Nagle Place, Cork – Ceangailte (with David Mathúna)"
       }
     },
     {
@@ -82,7 +86,9 @@
         "lineup": "",
         "duration": "25 min loop",
         "tools": "TouchDesigner, Ableton Live",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -110,7 +116,9 @@
         "lineup": "Function Store",
         "duration": "45 min",
         "tools": "TouchDesigner, Ableton Live",
-        "credits": "Photos: Claudia Montesi, Isabelle Schmitz"
+        "credits": "Photos: Claudia Montesi, Isabelle Schmitz",
+        "press": true,
+        "pressLabel": "Berlin New Media Week, The Space – read:rites | cannibalize"
       }
     },
     {
@@ -136,7 +144,9 @@
         "lineup": "sasha df (abstraqt), Rosh Zeeba, Benjamin Busch",
         "duration": "",
         "tools": "",
-        "credits": "Cover photo: Ayca"
+        "credits": "Cover photo: Ayca",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -164,7 +174,9 @@
         "lineup": "",
         "duration": "18 min",
         "tools": "TouchDesigner, Ableton Live",
-        "credits": "Photos: Lea Brugnoli"
+        "credits": "Photos: Lea Brugnoli",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -192,7 +204,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -220,7 +234,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -248,7 +264,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -276,7 +294,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": true,
+        "pressLabel": "48 Stunden Neukölln, LiTE-HAUS – Ceangailte (with David Mathúna)"
       }
     },
     {
@@ -304,7 +324,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": true,
+        "pressLabel": "B.L.O. Ateliers, Media Drift × co:evolve – read:rites | cannibalize"
       }
     },
     {
@@ -332,7 +354,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": true,
+        "pressLabel": "XoK Blackout, Neue Zukunft – read:rites | cannibalize (premiere)"
       }
     },
     {
@@ -360,7 +384,9 @@
         "lineup": "Felipe Infantino, Suuperpose (Babin x Maïm), Jamal Dilmen",
         "duration": "45 min",
         "tools": "TouchDesigner, Ableton Live",
-        "credits": "Photos: Ayca · Video: Isabelle Schmitz"
+        "credits": "Photos: Ayca · Video: Isabelle Schmitz",
+        "press": true,
+        "pressLabel": "Berlin New Media Art Week, MaHalla – Fractured Re:Call"
       }
     },
     {
@@ -386,7 +412,9 @@
         "lineup": "Joao Argonauta, Aheich, ConorMusic25, Oren Sounds, Noisy Chilli, Supergross.ie",
         "duration": "40 min",
         "tools": "Ableton Live",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -412,7 +440,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -438,7 +468,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -467,7 +499,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -495,7 +529,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     },
     {
@@ -523,7 +559,9 @@
         "lineup": "",
         "duration": "",
         "tools": "",
-        "credits": ""
+        "credits": "",
+        "press": false,
+        "pressLabel": ""
       }
     }
   ]

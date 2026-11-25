@@ -66,6 +66,8 @@ function getPropertyValue(properties, name) {
       return prop.url || null
     case 'checkbox':
       return prop.checkbox
+    case 'number':
+      return prop.number
     case 'files':
       return prop.files
         .map((f) => (f.type === 'external' ? f.external.url : f.file?.url))
@@ -172,10 +174,10 @@ const PAGE_IMAGE_WIDTH = 1600
 let sharp = null
 try { sharp = require('sharp') } catch (e) { sharp = null }
 
-async function makePageCopy(fullPath, filename) {
+async function makePageCopy(fullPath, filename, dir = IMAGES_DIR) {
   if (!sharp || !/\.(jpe?g|png|webp)$/i.test(filename)) return null
   const smName = filename.replace(/\.(\w+)$/, '-sm.$1')
-  const smPath = path.join(IMAGES_DIR, smName)
+  const smPath = path.join(dir, smName)
   try {
     const meta = await sharp(fullPath).metadata()
     if (!meta.width || meta.width <= PAGE_IMAGE_WIDTH) return null
@@ -307,6 +309,9 @@ async function fetchContentType(type, databaseId) {
           tags: getPropertyValue(props, 'Tags') || [],
           isExperiment: getPropertyValue(props, 'IsExperiment') || false,
           collaborators: parseNewlineList(getPropertyValue(props, 'Collaborators')),
+          press: getPropertyValue(props, 'Press') || false,
+          pressCaption: getPropertyValue(props, 'PressCaption'),
+          pressText: getPropertyValue(props, 'PressText'),
         }
         break
       case 'shows':
@@ -328,6 +333,8 @@ async function fetchContentType(type, databaseId) {
           duration: getPropertyValue(props, 'Duration'),
           tools: getPropertyValue(props, 'Tools'),
           credits: getPropertyValue(props, 'Credits'),
+          press: getPropertyValue(props, 'Press') || false,
+          pressLabel: getPropertyValue(props, 'PressLabel'),
         }
         break
       case 'pages':
@@ -344,6 +351,95 @@ async function fetchContentType(type, databaseId) {
   return results
 }
 
+// Press photos (auratyk.com/press). Each row: Image (Dropbox share link or a
+// site path like /press/img/x.jpg), Caption, Credit, Alt, Hero, Order.
+// Dropbox images are downloaded into static/images/press; every image gets a
+// lighter -sm copy for the grid, the full file opens in the lightbox.
+const STATIC_DIR = path.resolve(__dirname, '..', 'static')
+const PRESS_IMAGES_DIR = path.join(STATIC_DIR, 'images', 'press')
+const PRESS_FULL_WIDTH = 2400
+
+async function pressImage(url) {
+  if (!url) return null
+  let fullPath
+  let publicDir
+  let filename
+  if (url.startsWith('/')) {
+    fullPath = path.join(STATIC_DIR, url)
+    if (!fs.existsSync(fullPath)) {
+      console.error(`    ✗ press image not found: ${url}`)
+      return null
+    }
+    publicDir = path.dirname(url)
+    filename = path.basename(url)
+  } else {
+    fs.mkdirSync(PRESS_IMAGES_DIR, { recursive: true })
+    const filePath = pathname(url)
+    const hash = require('crypto').createHash('md5').update(filePath).digest('hex').substring(0, 8)
+    const ext = (filePath.match(/\.(png|jpe?g|webp)$/i)?.[1] || 'jpg').toLowerCase()
+    filename = `dbx-${hash}.${ext}`
+    fullPath = path.join(PRESS_IMAGES_DIR, filename)
+    publicDir = '/images/press'
+    if (!fs.existsSync(fullPath)) {
+      try {
+        await downloadFile(normalizeDropboxUrl(url), fullPath)
+        // Camera originals are huge; keep a 2400px version on the site.
+        if (sharp) {
+          const meta = await sharp(fullPath).metadata()
+          if (meta.width > PRESS_FULL_WIDTH || meta.height > PRESS_FULL_WIDTH) {
+            const buf = await sharp(fullPath).rotate()
+              .resize({ width: PRESS_FULL_WIDTH, height: PRESS_FULL_WIDTH, fit: 'inside' })
+              .jpeg({ quality: 84 }).toBuffer()
+            fs.writeFileSync(fullPath, buf)
+          }
+        }
+        console.log(`    ↓ downloaded press image: ${filename}`)
+      } catch (err) {
+        console.error(`    ✗ failed to download press image: ${url} (${err.message})`)
+        return null
+      }
+    }
+  }
+  const smName = await makePageCopy(fullPath, filename, path.dirname(fullPath))
+  let width = null
+  let height = null
+  if (sharp) {
+    try {
+      const meta = await sharp(fullPath).metadata()
+      width = meta.width
+      height = meta.height
+    } catch {}
+  }
+  return {
+    src: `${publicDir}/${smName || filename}`,
+    full: `${publicDir}/${filename}`,
+    width,
+    height,
+  }
+}
+
+async function fetchPress(databaseId) {
+  const rows = await queryDatabase(databaseId)
+  const items = []
+  for (const row of rows) {
+    const props = row.properties
+    const image = await pressImage(getPropertyValue(props, 'Image'))
+    if (!image) continue
+    items.push({
+      id: row.id,
+      caption: getPropertyValue(props, 'Caption') || '',
+      credit: getPropertyValue(props, 'Credit') || '',
+      alt: getPropertyValue(props, 'Alt') || getPropertyValue(props, 'Caption') || '',
+      hero: getPropertyValue(props, 'Hero') || false,
+      order: getPropertyValue(props, 'Order') ?? 999,
+      ...image,
+    })
+  }
+  items.sort((a, b) => a.order - b.order)
+  console.log(`  → ${items.length} press photos fetched`)
+  return items
+}
+
 async function main() {
   if (!fs.existsSync(OUTPUT_DIR)) {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true })
@@ -354,6 +450,7 @@ async function main() {
     { type: 'releases', dbKey: 'releases' },
     { type: 'projects', dbKey: 'projects' },
     { type: 'shows', dbKey: 'shows' },
+    { type: 'press', dbKey: 'press' },
   ]
 
   for (const { type, dbKey } of contentTypes) {
@@ -363,7 +460,10 @@ async function main() {
       continue
     }
     try {
-      const data = await fetchContentType(type, databaseId)
+      const data =
+        type === 'press'
+          ? await fetchPress(databaseId)
+          : await fetchContentType(type, databaseId)
       const output = { fetchedAt: new Date().toISOString(), items: data }
       fs.writeFileSync(
         path.join(OUTPUT_DIR, `${type}.json`),

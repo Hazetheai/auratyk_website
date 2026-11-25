@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-25T18:40:50.861Z",
+  "fetchedAt": "2026-11-25T19:56:52.924Z",
   "items": [
     {
       "id": "35f70fd9-1edd-803a-b38d-c64c36514753",
@@ -24,7 +24,10 @@
           "Community Tool"
         ],
         "isExperiment": false,
-        "collaborators": []
+        "collaborators": [],
+        "press": false,
+        "pressCaption": "",
+        "pressText": ""
       }
     },
     {
@@ -44,7 +47,10 @@
         "isExperiment": false,
         "collaborators": [
           "Orshi"
-        ]
+        ],
+        "press": false,
+        "pressCaption": "",
+        "pressText": ""
       }
     },
     {
@@ -74,7 +80,10 @@
           "Body of Music"
         ],
         "isExperiment": false,
-        "collaborators": []
+        "collaborators": [],
+        "press": false,
+        "pressCaption": "",
+        "pressText": ""
       }
     },
     {
@@ -91,7 +100,10 @@
           "VJ"
         ],
         "isExperiment": false,
-        "collaborators": []
+        "collaborators": [],
+        "press": false,
+        "pressCaption": "",
+        "pressText": ""
       }
     },
     {
@@ -111,7 +123,10 @@
         "isExperiment": false,
         "collaborators": [
           "Culture Crush"
-        ]
+        ],
+        "press": false,
+        "pressCaption": "",
+        "pressText": ""
       }
     },
     {
@@ -131,7 +146,10 @@
         "isExperiment": false,
         "collaborators": [
           "Bastien Carteni"
-        ]
+        ],
+        "press": false,
+        "pressCaption": "",
+        "pressText": ""
       }
     },
     {
@@ -160,7 +178,10 @@
         "isExperiment": false,
         "collaborators": [
           "Oskar Tomala"
-        ]
+        ],
+        "press": false,
+        "pressCaption": "",
+        "pressText": ""
       }
     },
     {
@@ -178,7 +199,10 @@
           "Performance"
         ],
         "isExperiment": false,
-        "collaborators": []
+        "collaborators": [],
+        "press": true,
+        "pressCaption": "Live audiovisual performance · Ableton, TouchDesigner · 45 min",
+        "pressText": "A live AV performance about cultural recycling and the myth of progress. A machine makes a silent human feed it a century of recorded music; with each pass the material is sampled and resampled faster, until loops shrink and fragments return eroded."
       }
     },
     {
@@ -196,7 +220,10 @@
           "Performance"
         ],
         "isExperiment": false,
-        "collaborators": []
+        "collaborators": [],
+        "press": false,
+        "pressCaption": "",
+        "pressText": ""
       }
     },
     {
@@ -219,7 +246,10 @@
           "Video Series"
         ],
         "isExperiment": false,
-        "collaborators": []
+        "collaborators": [],
+        "press": true,
+        "pressCaption": "Five-part video series · point clouds, field recordings",
+        "pressText": "Five liminal Berlin places – a grove, a square, a bridge, an underground station, a pond – scanned into point clouds and scored with sound from the same locations, so the spaces seem to breathe, dissolve and remember."
       }
     },
     {
@@ -249,7 +279,10 @@
         "isExperiment": false,
         "collaborators": [
           "David Mathuna"
-        ]
+        ],
+        "press": true,
+        "pressCaption": "Installation with David Mathúna · dual-screen video, immersive audio",
+        "pressText": "A collaborative audiovisual installation exploring how media representations shape narratives of colonialism, oppression and resilience. Shown at LiTE-HAUS (48 Stunden Neukölln), Unframe Festival in Berlin and Nano Nagle Place in Cork, 2026."
       }
     }
   ]

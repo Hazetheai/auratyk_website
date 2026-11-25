@@ -22,6 +22,8 @@ const DATABASES = {
   releases: process.env.NOTION_DB_RELEASES,
   projects: process.env.NOTION_DB_PROJECTS,
   shows: process.env.NOTION_DB_SHOWS,
+  // Not secret; the fallback means Netlify needs no extra env var.
+  press: process.env.NOTION_DB_PRESS || '42370fd91edd813abf23f093998f7448',
 }
 
 module.exports = { notion, DATABASES }
