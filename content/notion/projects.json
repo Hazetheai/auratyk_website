@@ -1,16 +1,246 @@
 {
-  "fetchedAt": "2026-07-16T07:39:25.932Z",
+  "fetchedAt": "2026-11-25T18:40:50.861Z",
   "items": [
+    {
+      "id": "35f70fd9-1edd-803a-b38d-c64c36514753",
+      "title": "Cloud Seq",
+      "slug": "cloud-seq",
+      "description": "A free TouchDesigner component for loading, arranging and sequencing point clouds, so you can move through several scans as one continuous space.",
+      "bodyHtml": "<p><em>TouchDesigner component · 2025</em></p><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Why I made it</h3><p>I love working with point clouds in TouchDesigner, both the aesthetic and using scans to capture physical spaces. It's amazing how you can capture a physical space with relative ease.</p><p>However, if you want to move the camera through space, you often need more than one cloud to maintain the illusion of scale. Managing all of this can be cumbersome. Also, swapping between scans causes a very distinct effect which you may not always want.</p></div><div class=\"notion-column\"><h3>What it does</h3><p>Cloud_Seq lets you load as many point clouds as you like (within the limits of your computer), lay them out, for example along a path, and then sequence them.</p><p>It then uses the camera direction to choose which points are shown, similar to the way games load things in the distance. It helps to think of the point clouds as game tiles: you can only see one full tile at a time.</p></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><figure><img src=\"/images/notion/c88ac3e8-sm.jpg\" data-full=\"/images/notion/c88ac3e8.jpg\" alt=\"Cloud_Seq example file\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/669a4388-sm.jpg\" data-full=\"/images/notion/669a4388.jpg\" alt=\"Cloud_Seq network\" loading=\"lazy\" /></figure></div></div><p>It later became one of the building blocks of my live system for Fractured Re:Call.</p><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Released:</strong> 10 March 2025, version 0.1.0</li><li><strong>Made with:</strong> TouchDesigner, GLSL</li><li><strong>Free:</strong> the .tox and an example file are on the download page and GitHub</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p>Feedback and questions: <a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
+      "properties": {
+        "date": "2025-03-10",
+        "coverUrl": "/images/projects/cloud-seq/hero.jpg",
+        "links": [
+          {
+            "platform": "Download",
+            "url": "https://auratyk.com/community/cloud-seq/"
+          },
+          {
+            "platform": "GitHub",
+            "url": "https://github.com/Hazetheai/touchdesigner-comps/tree/main/Cloud_Seq"
+          }
+        ],
+        "tags": [
+          "Community Tool"
+        ],
+        "isExperiment": false,
+        "collaborators": []
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-80a2-a949-cad60a8b058b",
+      "title": "deep c: transmigrating sounds of the abbyss",
+      "slug": "deep-c-transmigrating-sounds-of-the-abbyss",
+      "description": "Live visuals for a dance performance at Tresor, Berlin: real-time capture of the dancers merged with an underwater world.",
+      "bodyHtml": "<p><em>Live visuals for dance · Tresor, Berlin · 2025</em></p><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>The performance</h3><p>I was asked to create complementary visuals for a dance performance in Tresor, to give an extra layer to the performance: real-time capture of the dancers merged with an underwater aesthetic, to make the audience feel as if they were in the depths of the ocean.</p></div><div class=\"notion-column\"><h3>The system</h3><p>I built a live capture visual system around an underwater aesthetic, illustrating bioluminescence, low-light environments and refractive materials. A Kinect rendered avatars of the performers in real time, moving over a seabed made of particles.</p></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><figure><img src=\"/images/notion/ced913b8.jpg\" alt=\"deep c, live visual output\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/2c192063.jpg\" alt=\"deep c, live visual output\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Live visuals:</strong> Jake Riordan (Auratyk)</li><li><strong>Tools:</strong> TouchDesigner, Kinect, MIDI and game controllers</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p><a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
+      "properties": {
+        "date": "2025-03-27",
+        "coverUrl": "/images/projects/deep-c-transmigrating-sounds-of-the-abbyss/hero.jpg",
+        "links": [],
+        "tags": [
+          "Visual Artist",
+          "Collaboration"
+        ],
+        "isExperiment": false,
+        "collaborators": [
+          "Orshi"
+        ]
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-8095-a468-d6c03a1dd103",
+      "title": "Form",
+      "slug": "form",
+      "description": "Auratyk's debut EP: four instrumental tracks made between a harsh Montreal winter and the first years in Berlin.",
+      "bodyHtml": "<p><em>EP · 2022</em></p><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>The EP</h3><p>Form is the documentation of the formation of Auratyk. From dealing with isolation and being surrounded by machines to finding comfort in their own skin and even their surroundings.</p><p>Interlacing two pieces produced and recorded during the harsh Montreal winter and two pieces created in Berlin the following years, Form offers a nuanced seasonal narrative, ranging from atmospheric ambience to tempestuous braindance.</p></div><div class=\"notion-column\"><h3>Without words</h3><p>Lyrics can be incredible, but the most emotive experiences always seem to be without distinct words. This sonic palette allowed me to freely express myself, without language and its inherent bias getting in the way.</p><p>There are whispers throughout the tracks, as I believe the human voice is one of the most magical instruments there is, but they never tell you what to feel, or think.</p></div><div class=\"notion-column\"><h3>Tracks</h3><ol><li>Season Ending (3:40)</li><li>Skitter (5:15)</li><li>Epiderm (2:52)</li><li>Remember Linn (4:03)</li></ol><p>Self-released on 25 November 2022, digitally and as a limited cassette of 50 on high-bias tape, each with a generative, variant cover.</p></div></div><div class=\"notion-columns\" style=\"--cols:4\"><div class=\"notion-column\"><figure><img src=\"/images/notion/fff5fb6e-sm.jpg\" data-full=\"/images/notion/fff5fb6e.jpg\" alt=\"Form artwork: Season Ending\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/b9f77e38-sm.jpg\" data-full=\"/images/notion/b9f77e38.jpg\" alt=\"Form artwork: Skitter\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/3be6a73a-sm.jpg\" data-full=\"/images/notion/3be6a73a.jpg\" alt=\"Form artwork: Epiderm\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/ad8cab70-sm.jpg\" data-full=\"/images/notion/ad8cab70.jpg\" alt=\"Form artwork: Remember Linn\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Music and artwork:</strong> Jake Riordan (Auratyk)</li><li><strong>Finishing touches:</strong> The Famous Gold Watch Studios, Berlin</li><li><strong>Artwork:</strong> particle runs in TouchDesigner, one palette per track</li><li><strong>Formats:</strong> digital, cassette (50 copies)</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p><a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
+      "properties": {
+        "date": "2022-11-25",
+        "coverUrl": "/images/projects/form/hero.jpg",
+        "links": [
+          {
+            "platform": "Bandcamp",
+            "url": "https://auratyk.bandcamp.com/album/form"
+          },
+          {
+            "platform": "SoundCloud",
+            "url": "https://soundcloud.com/auratyk/sets/form"
+          },
+          {
+            "platform": "Apple Music",
+            "url": "https://music.apple.com/de/album/form-ep/1652874480"
+          }
+        ],
+        "tags": [
+          "Body of Music"
+        ],
+        "isExperiment": false,
+        "collaborators": []
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-8003-bd97-e515ab2d68d5",
+      "title": "VJ Sets",
+      "slug": "vj-sets",
+      "description": "Live visuals for other artists and events, ambient or intense, tailored to the night and performed live in TouchDesigner.",
+      "bodyHtml": "<p><em>Live visuals · since 2025</em></p><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>Approach</h3><p>My intent with VJing is to create emotionally resonant visual feels that can sometimes be ambient and sometimes intense, but always tailored to the tone of the event, while still drawing from my thematic interests whenever a space allows.</p><p>Visuals can be projection-mapped onto varied surfaces and customised to match an act's mood, colour palette, or conceptual narrative.</p></div><div class=\"notion-column\"><h3>How it works</h3><p>All visuals are built and performed live in TouchDesigner, often integrating pre-processed video loops for cohesion. My core aesthetic – point clouds, layered textures, and glitchy dimensional blends – remains present throughout.</p><p>I use real-time input from audio feeds and, where possible, other sensors (e.g. Kinect or phone inputs) to generate visuals that respond dynamically to a performance. This enables seamless adaptation to both venue architecture and musical progression.</p></div><div class=\"notion-column\"><h3>So far</h3><p>The first was a live audiovisual jam with Culture Crush, allowing me to explore the tension between my narrative and improvisation over their music. That became an ongoing collaboration with the band.</p><p>Following this, an extended session at Studio dB evolved from a low-key opener into a nine-hour visual journey.</p></div></div><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/a53e5311-sm.jpg\" data-full=\"/images/notion/a53e5311.jpg\" alt=\"VJ set at Studio dB, Berlin, May 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/4b24eb06-sm.jpg\" data-full=\"/images/notion/4b24eb06.jpg\" alt=\"VJ set at Studio dB, Berlin, May 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/daa59e59-sm.jpg\" data-full=\"/images/notion/daa59e59.jpg\" alt=\"VJ set at Studio dB, Berlin, May 2025\" loading=\"lazy\" /></figure></div></div><p>These VJ sets serve both as standalone visual experiences and as support structures for other performers. Whether ambient or high-energy, they aim to transform the stage into an immersive audiovisual field that deepens emotional engagement and heightens the spatial dimension of the music.</p><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Live visuals:</strong> Jake Riordan (Auratyk)</li><li><strong>Tools:</strong> TouchDesigner, audio-reactive point clouds, Kinect, MIDI and game controllers</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p>Booking live visuals: <a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
+      "properties": {
+        "date": null,
+        "coverUrl": "/images/projects/vj-sets/hero.jpg",
+        "links": [],
+        "tags": [
+          "VJ"
+        ],
+        "isExperiment": false,
+        "collaborators": []
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-80cb-b8f8-c442e15be398",
+      "title": "Culture Crush",
+      "slug": "culture-crush",
+      "description": "Visual and narrative direction for the Berlin band Culture Crush: a 60-minute audiovisual show in four acts, from intimate venues to Fusion Festival.",
+      "bodyHtml": "<p><em>Live visuals and visual direction · 2025</em></p><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>The show</h3><p>Culture Crush is a Berlin-based band with a 60-minute audiovisual performance I co-created, handling the visual and narrative direction. The show is structured around four thematic acts, which we developed to form a loose narrative arc shifting between irony and dread, with four audiovisual \"dividers\" guiding the emotional flow between them.</p></div><div class=\"notion-column\"><h3>The visuals</h3><p>I built a dense, reactive media environment using AI-generated loops, point-cloud visuals, glitch aesthetics, and custom animations tied to lyrical and thematic cues. All visuals are created in TouchDesigner and synced to MIDI via wireless input from their equipment or performed live by me.</p><p>The result is a feedback loop between performance, sound design, and visual spectacle that amplifies the show's immersive and critical edge.</p></div><div class=\"notion-column\"><h3>Working together</h3><p>We worked closely on ideation, with much of the material improvised live in rehearsal before being prepared for shows. It started at an AV jam at MotionLab, the first time I VJ'd for a band, and went on to venues from intimate spaces to Fusion Festival.</p></div></div><figure><img src=\"/images/notion/88f39a14-sm.jpg\" data-full=\"/images/notion/88f39a14.jpg\" alt=\"Culture Crush live, 2025\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/031f2356-sm.jpg\" data-full=\"/images/notion/031f2356.jpg\" alt=\"Culture Crush live, 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/e0b55687-sm.jpg\" data-full=\"/images/notion/e0b55687.jpg\" alt=\"Culture Crush live, 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/c5458ee1-sm.jpg\" data-full=\"/images/notion/c5458ee1.jpg\" alt=\"Culture Crush live, 2025\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Band:</strong> Culture Crush</li><li><strong>Visual and narrative direction, live visuals:</strong> Jake Riordan (Auratyk)</li><li><strong>Tools:</strong> TouchDesigner, Python, MIDI and game controllers</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p>Live visuals for bands: <a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
+      "properties": {
+        "date": null,
+        "coverUrl": "/images/projects/culture-crush/hero.jpg",
+        "links": [],
+        "tags": [
+          "Collaboration",
+          "VJ"
+        ],
+        "isExperiment": false,
+        "collaborators": [
+          "Culture Crush"
+        ]
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-806a-b558-de744c598d3c",
+      "title": "Just a Look",
+      "slug": "just-a-look",
+      "description": "Four video pieces for Bastien Carteni's Just a Look, a project about the gaze of others, each taking his street footage apart in a different way.",
+      "bodyHtml": "<p><em>Music video collaboration · 2026</em></p><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>The project</h3><p>Just a Look is a project by Bastien Carteni about the gaze of others. He filmed one person in the street, then asked five people to answer a questionnaire about the footage. Each set of answers became a track, with its own edit of the video.</p></div><div class=\"notion-column\"><h3>My part</h3><p>Bastien gave me his edits and total freedom to rework them. I made four video pieces in TouchDesigner, each taking the footage apart in a different way: breaking it into chapters, datamoshing it, slicing it and realigning it.</p></div></div><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/177c56cb-sm.jpg\" data-full=\"/images/notion/177c56cb.jpg\" alt=\"Just a Look, video 3\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/596b2927-sm.jpg\" data-full=\"/images/notion/596b2927.jpg\" alt=\"Just a Look, video 4\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/48b6ad13-sm.jpg\" data-full=\"/images/notion/48b6ad13.jpg\" alt=\"Just a Look, video 4\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Concept, music and footage:</strong> Bastien Carteni</li><li><strong>Video:</strong> Jake Riordan (Auratyk)</li><li><strong>Tools:</strong> TouchDesigner, Python</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p>Commissions and collaborations: <a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
+      "properties": {
+        "date": "2026-04-21",
+        "coverUrl": "/images/projects/just-a-look/hero.jpg",
+        "links": [],
+        "tags": [
+          "Music Video",
+          "Collaboration"
+        ],
+        "isExperiment": false,
+        "collaborators": [
+          "Bastien Carteni"
+        ]
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-80c9-ad7a-eb737d7c0968",
+      "title": "a word that explain what you hear",
+      "slug": "a-word-that-explain-what-you-hear",
+      "description": "Music video for Oskar Tomala's \"a word that explains what you hear\", built from 3D scans of a concert church, a panopticon prison and a water tower.",
+      "bodyHtml": "<p><em>Music video · 2026</em></p><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>The video</h3><p>This is the music video for \"a word that explains what you hear\", the opening track on Window Forms, the gorgeous new album by Oskar Tomala.</p><p>Oskar reached out to me in late 2025 about this project. He'd been working on it for a while and had come across these spaces, and taken 3D scans of them, while researching and recording for it. He mentioned how he was struck by the sheer size and intensity of them but also finding a sense of place in them.</p></div><div class=\"notion-column\"><h3>The spaces</h3><p>The scans – Koncertkirken, Vridsløselille State Prison (the Panopticon) and the Brønshøj Water Tower – all suggested a kind of narrative by themselves, which, coupled with the steady build of the track, led me to what you see here.</p><p>The video moves from the church to the panopticon to being in the water and seeing the water tower rise out of it. It's a slow burn, so take 15, get some headphones and sit back.</p></div></div><figure class=\"video-embed\"><div class=\"video-embed__inner\"><iframe src=\"https://www.youtube-nocookie.com/embed/-b_rwPZsXek?rel=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div></figure><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/2f5cc149-sm.jpg\" data-full=\"/images/notion/2f5cc149.jpg\" alt=\"a word that explains what you hear, still\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/d3b9c34a-sm.jpg\" data-full=\"/images/notion/d3b9c34a.jpg\" alt=\"a word that explains what you hear, still\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/43f6047e-sm.jpg\" data-full=\"/images/notion/43f6047e.jpg\" alt=\"a word that explains what you hear, still\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Music:</strong> Oskar Tomala, from the album Window Forms</li><li><strong>Video and animation:</strong> Jake Riordan (Auratyk)</li><li><strong>Source material:</strong> 3D scans by Oskar Tomala</li><li><strong>Tools:</strong> TouchDesigner</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p>Commissions and collaborations: <a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
+      "properties": {
+        "date": "2026-05-16",
+        "coverUrl": "/images/projects/a-word-that-explain-what-you-hear/hero.jpg",
+        "links": [
+          {
+            "platform": "YouTube",
+            "url": "https://www.youtube.com/watch?v=-b_rwPZsXek"
+          },
+          {
+            "platform": "Window Forms",
+            "url": "https://oskartomala.com/Window-Forms-KPO"
+          }
+        ],
+        "tags": [
+          "Music Video",
+          "Collaboration"
+        ],
+        "isExperiment": false,
+        "collaborators": [
+          "Oskar Tomala"
+        ]
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-8081-b73f-f48e2597930e",
+      "title": "read:rites | cannibalize",
+      "slug": "read-rites-cannibalize",
+      "description": "A live audiovisual performance about cultural recycling and the myth of progress, framed as a terminal command: read the culture, then devour it.",
+      "bodyHtml": "<p><em>Live audiovisual performance · 45 min · 2025–</em>\n<em>Premiered at XoK Blackout, Neue Zukunft, Berlin, December 2025</em></p><pre><code class=\"language-plain text\">> read:*\nSystem Overload: OOM: I/O error (errno=28: No space left on device)\nMore specific patterns suggested: (pattern : status)\nrites      : unknown\nlanguage   : completed\nlabour     : controlled\nknowledge  : collecting…\nsocieties  : dissenting</code></pre><figure><img src=\"/images/notion/fd8660d0-sm.jpg\" data-full=\"/images/notion/fd8660d0.jpg\" alt=\"Photo: Isabella Schmidt\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>The work</h3><p>A machine instructs a silent human operator to feed it the last century of recorded music, so that it can understand us, and eventually replace us. It comments as it goes.</p><p>It devours the music decade by decade. With each pass the material is sampled and resampled faster, the loops get shorter, and the fragments come back more eroded.</p><p>Once it has consumed enough, the machine starts trying to assemble the parts to recreate what it has decided we are.</p></div><div class=\"notion-column\"><h3>Reading the rites</h3><p>The machine has already catalogued our language, our labour and our knowledge. What it can't make sense of are our rites: the ceremonies, rituals and habits that serve no logical function, yet hold everything together.</p><p>Music is the clearest case. It has no obvious purpose, but life would be meaningless without it. If the machine can understand what music is to us, why we make it and what it means, perhaps it can finally solve the last piece of the puzzle: who we are, and how we can be replicated.</p></div><div class=\"notion-column\"><h3>Performing it</h3><p>Everything is played live, in Ableton Live and TouchDesigner. Playing the music is the main way the visuals are driven: sections are triggered and performed from a table of controllers, and samples, effects and breaks are each tied to what happens on screen.</p><p>The visuals move with the music, from soft, paper-like analogue textures into point clouds and datamosh, switching between a chaotic first-person view inside the material and the detached terminal of an overseer watching from above.</p></div></div><blockquote>Playing the part of the silent operator</blockquote><h2>Where it came from</h2><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>Read/write</h3><p>The title is a play on read/write culture, the idea that culture is something we don't only consume but rework and pass on. Stories have always been retold, simplified, elaborated and misremembered until they became myth. Cultures are formed through rituals and stories, and by passing them on, we leave our mark on them.</p></div><div class=\"notion-column\"><h3>The loop</h3><p>What I kept noticing was the speed. Trends reappear at an ever-decreasing interval, fuelled by our ability to capture and store every moment without a second thought, and sped up by algorithms that keep us inside echo chambers of our own making.</p><p>When culture is devoured for profit, the question becomes: who is reading, and what are they writing?</p></div><div class=\"notion-column\"><h3>Nostalgia</h3><p>Nostalgia has become a global brand. We are drip-fed our desire for a better world that was always yesterday. The work draws on hauntology, the sense that the present is haunted by futures that never arrived, and on what Mark Fisher called \"the slow cancellation of the future\".</p><p>The intention was never to talk about AI, at all. But as the show took shape, the parallels with a machine interpreting human culture became impossible to ignore. Sometimes the initial idea is simply a direction rather than a description.</p></div></div><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/97bdcacb.jpg\" alt=\"Photo: Claudia Montesi\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/beb24a08.jpg\" alt=\"Photo: Claudia Montesi\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/a2df3e2f.jpg\" alt=\"Photo: Claudia Montesi\" loading=\"lazy\" /></figure></div></div><figure><img src=\"/images/notion/64023dbc-sm.jpg\" data-full=\"/images/notion/64023dbc.jpg\" alt=\"Photo: Claudia Montesi\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Concept, music and visuals:</strong> Jake Riordan (Auratyk)</li><li><strong>Format:</strong> live audiovisual performance, 45 min, stereo, single screen</li><li><strong>Tools:</strong> TouchDesigner, Ableton Live</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p>Booking and technical rider: <a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p><p>Photography (Berlin New Media Week 2026): Claudia Montesi, Isabella Schmidt</p></div></div>",
+      "properties": {
+        "date": null,
+        "coverUrl": "/images/projects/readrites-cannibalize/hero.jpg",
+        "links": [],
+        "tags": [
+          "Audio-Visual",
+          "Performance"
+        ],
+        "isExperiment": false,
+        "collaborators": []
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-80d1-832e-d481cadfd036",
+      "title": "Fractured Re:call",
+      "slug": "fractured-recall",
+      "description": "An immersive audiovisual performance blending real-time generative visuals and live sound, exploring memory, perception and dreamlike spaces through found footage and fragmented point clouds.",
+      "bodyHtml": "<p><em>Live audiovisual performance · 2025</em></p><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>The work</h3><p>An evolving live performance where sound and imagery are inextricably linked, evoking the fragility of memory, the mutability of perception, and the surreal logic of dreams.</p><p>Inspired by thin places, digital hauntology and speculative dystopias, it places the audience in a space both familiar and fractured, inviting introspection over linear narrative, and blurring the line between recollection and invention.</p></div><div class=\"notion-column\"><h3>Snapshots in time</h3><p>The set includes 3D scans of places dear to me, projected as snapshots in time, alongside found footage of meaningful places.</p><p>Point cloud imagery and particle systems are woven through video textures that embrace the uncanny imperfections of early generative media: disjointed scenes, flickering logic and surreal distortions that mirror the fallibility of memory.</p></div><div class=\"notion-column\"><h3>Performing it</h3><p>Built in TouchDesigner and Ableton Live, it combines real-time generative visuals with improvised sound. The visuals are built on existing tracks, which are improvised upon live and tightly integrated through reactive systems.</p></div></div><figure><img src=\"/images/notion/1c3a8353-sm.jpg\" data-full=\"/images/notion/1c3a8353.jpg\" alt=\"Fractured Re:Call at MaHalla, Berlin New Media Week 2025. Photo: Ayca\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/9f8fd17e-sm.jpg\" data-full=\"/images/notion/9f8fd17e.jpg\" alt=\"Fractured Re:Call at VJ OpenLab, 48 Stunden Neukölln 2025. Photo: Lea Brugnoli\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/15004df1-sm.jpg\" data-full=\"/images/notion/15004df1.jpg\" alt=\"Fractured Re:Call at VJ OpenLab, 48 Stunden Neukölln 2025. Photo: Lea Brugnoli\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/00fca52c-sm.jpg\" data-full=\"/images/notion/00fca52c.jpg\" alt=\"Fractured Re:Call at MaHalla, Berlin New Media Week 2025. Photo: Ayca\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Concept, music and visuals:</strong> Jake Riordan (Auratyk)</li><li><strong>Format:</strong> live audiovisual set</li><li><strong>Tools:</strong> TouchDesigner, Ableton Live, GLSL, Python</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p>Booking and technical rider: <a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p><p>Photography: Ayca (MaHalla), Lea Brugnoli (VJ OpenLab)</p></div></div>",
+      "properties": {
+        "date": null,
+        "coverUrl": "/images/projects/fractured-recall/hero.jpg",
+        "links": [],
+        "tags": [
+          "Audio-Visual",
+          "Performance"
+        ],
+        "isExperiment": false,
+        "collaborators": []
+      }
+    },
+    {
+      "id": "35f70fd9-1edd-80d1-a05b-dd0ab0931864",
+      "title": "Remembering Linn",
+      "slug": "remembering-linn",
+      "description": "A five-part audiovisual series about thin places in Berlin, captured on a phone, rebuilt as point clouds and gaussian splats, each with its own score.",
+      "bodyHtml": "<p><em>Audiovisual series · 2023–2024</em></p><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>Thin places</h3><p>Inspired by the Irish concept of thin places, where the boundary between worlds grows delicate, Remembering Linn explores public spaces in and around Berlin as sites of memory, reverence, and emotional residue.</p><p>Growing up in Ireland, with its deep roots in mythology and sacred sites, I was often struck by locations that felt as if they blurred the veil between realities. This work translates that sensibility into a visual language rooted in Berlin's overlooked or quietly charged spaces.</p></div><div class=\"notion-column\"><h3>Capturing them</h3><p>Using only my phone, I captured videos or LiDAR scans of chosen locations, later processed into point clouds or gaussian splats via photogrammetry techniques.</p><p>These spaces were stylised with a nocturnal palette to reflect the time when the veil feels thinnest. Each video is a single unbroken shot, forming a looping dreamlike recollection.</p></div><div class=\"notion-column\"><h3>The music</h3><p>I composed a new piece for each chapter, employing both sound design and Foley techniques. Often the music and the visuals were created simultaneously, which allowed both of them to fit each other in a unique and special way.</p></div></div><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/f5ed3b8d-sm.jpg\" data-full=\"/images/notion/f5ed3b8d.jpg\" alt=\"Remembering Linn pt. i, Heides Grove\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/3c170ebd-sm.jpg\" data-full=\"/images/notion/3c170ebd.jpg\" alt=\"Remembering Linn pt. ii, Reuters Garten\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/919dad48-sm.jpg\" data-full=\"/images/notion/919dad48.jpg\" alt=\"Remembering Linn pt. iii, Unterwelten\" loading=\"lazy\" /></figure></div></div><figure><img src=\"/images/notion/397b5dfa-sm.jpg\" data-full=\"/images/notion/397b5dfa.jpg\" alt=\"Remembering Linn pt. iv, Færiern Brucke (Admiralbrücke)\" loading=\"lazy\" /></figure><h3>Five chapters</h3><ol><li>Heides Grove, Hasenheide: it was here the concept of thin places first became apparent to me.</li><li>Reuters Garten, Reuterplatz</li><li>Unterwelten, the U8</li><li>Færiern Brucke, Admiralbrücke: the first place where I felt I was drawing the veil instead of simply stumbling across it.</li><li>Follys Pond, Pond Park</li></ol><p>Together they create a personal mythology tied to Berlin's geography. It is an attempt to visualise that almost-tangible breath of presence – what might be just on the other side.</p><figure class=\"video-embed\"><div class=\"video-embed__inner\"><iframe src=\"https://www.youtube-nocookie.com/embed/ZJ1fI02uzpA?rel=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div></figure><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Concept, capture, music and visuals:</strong> Jake Riordan (Auratyk)</li><li><strong>Format:</strong> five single-shot videos, released 2024</li><li><strong>Tools:</strong> TouchDesigner, Ableton Live, Python, photogrammetry and gaussian splats</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p><a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
+      "properties": {
+        "date": "2024-04-21",
+        "coverUrl": "/images/projects/remembering-linn/hero.jpg",
+        "links": [
+          {
+            "platform": "YouTube",
+            "url": "https://youtu.be/ZJ1fI02uzpA"
+          }
+        ],
+        "tags": [
+          "Audio-Visual",
+          "Video Series"
+        ],
+        "isExperiment": false,
+        "collaborators": []
+      }
+    },
     {
       "id": "35c70fd9-1edd-804d-8ec3-cbd26835e1d9",
       "title": "Ceangailte",
       "slug": "ceangailte",
       "description": "Ceangailte, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.",
-      "bodyHtml": "",
+      "bodyHtml": "<p><em>Dual-screen audiovisual installation · Jake Riordan & David Mathúna · 2025–</em>\n<em>Shown at LiTE-HAUS Galerie + Projektraum, Berlin, during 48 Stunden Neukölln, 3–5 July 2026</em></p><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>The work</h3><p>Ceangailte is a collaborative audiovisual work by Irish artists Jake Riordan and David Mathúna, taking the form of a dramatic narrative arc across a dual-screen display, surrounded by sculptural detritus.</p><p>Through a specific examination of media representations and biases, the video work spans historical testimonies, exploring exterior themes of colonialism and oppression, while traversing interior narratives of shared resilience, humorous subversion and hope.</p></div><div class=\"notion-column\"><h3>Why we made it</h3><p>Ceangailte emerged from a series of conversations that took place against the backdrop of the Gaza genocide, concerned with the extreme dissonance between the daily horror streamed live on our social media feeds and the official business-as-usual narratives being espoused by establishment media.</p><p>We come from Ireland, a nation whose outlook is tempered by a history of subjugation under British Imperial rule, from the policy-facilitated Great Famine (1845–52), which saw over a million people die of starvation, to the burning of Cork City (1920) by the Black and Tans, the very same paramilitary force that would subsequently bring their terrorist tactics to bear upon the Palestinians.</p></div><div class=\"notion-column\"><h3>Solidarity</h3><p>Our ancestral struggles against a common oppressor have enshrined an unyielding solidarity with the Palestinian people into Irish national identity, and as such, we felt a duty to create a work that would challenge the vile hypocrisy and shocking denial shown by western governments in the face of the unimaginable human tragedy unfolding in Palestine.</p><p>Ceangailte stands as a critique of the attempts by establishment media to manufacture consent for neo-colonial agendas, but it is also a celebration of the connections forged between peoples who have suffered at the hands of colonialism, and an endorsement of our refusal to submit our spirit to the machinations of empire.</p></div></div><figure><img src=\"/images/notion/79c83865-sm.jpg\" data-full=\"/images/notion/79c83865.jpg\" alt=\"Ceangailte at LiTE-HAUS, Berlin\" loading=\"lazy\" /></figure><blockquote>Ceangailte threads a line between Irish and Palestinian struggles for liberation, foregrounding the connections between former colonies in order to challenge the hegemonic narratives of our time.</blockquote><h2>How it works</h2><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>Satire and polemic</h3><p>Ceangailte comments on the specific modern form of media dissemination and consumption that serves as a tool of division. On the one hand it parodies propaganda, its speed and insatiability, making use of appropriative modes of production as a formal montage device, imitating the irreverent extraction at the heart of the colonialist project while caricaturing its methodologies.</p></div><div class=\"notion-column\"><h3>Into three dimensions</h3><p>On the other hand, its transformation of historical and contemporary images into three-dimensional spaces gives pause, folding disparate time periods upon one another, expanding temporal space in order to bring the beholder from a removed position of spectatorship into the gravity of the context displayed, enveloping them within a singular moment.</p></div><div class=\"notion-column\"><h3>Detritus</h3><p>Newspaper cutouts and media headlines litter the physical space before the screens, mirroring their digital counterparts, highlighting historical injustice throughout time and crossing the digital divide, translating artefacts from within the virtual out into reified space.</p></div></div><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/8a2e4464-sm.jpg\" data-full=\"/images/notion/8a2e4464.jpg\" alt=\"Ceangailte at LiTE-HAUS, Berlin\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/4226675e.jpg\" alt=\"Ceangailte at LiTE-HAUS, Berlin\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/0c364ead.jpg\" alt=\"Ceangailte at LiTE-HAUS, Berlin\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><h3>The name</h3><p>The word Ceangailte [key-ang-el-ta] comes from the Irish language, Gaeilge, the definitions of which approximate \"tied\", \"connected\", or \"bound\". Taking as its point of departure the multiplicity of perspectives woven throughout the connected histories of former colonies of Empire, Ceangailte articulates future aspirations while holding a mirror up to an extreme and alienating present.</p></div><div class=\"notion-column\"><h3>Then and now</h3><p>Today, the extractive processes of our relentless pursuit of exponential growth are being played out along colonial imprints, and so too are the processes of disinformation which underpin its propagation. Ceangailte serves as an interrogation of a fabricated past, a manufactured present and a future in the process of being stolen, positing that these narratives are not fixed, but are being re-written at this very moment.</p></div><div class=\"notion-column\"><h3>Four acts</h3><p>The piece plays out over around 25 minutes, bookended by a news announcement and a doom scroller that play off each other. The first act is sardonic and in your face, playing the oppressor who thinks they're the good guy. The second is a barrage of information. The third draws the parallels between what happened before and what is happening now. The fourth recognises the connections between those under the boot of empire, and offers glimmers of hope.</p></div></div><figure><img src=\"/images/notion/e1080771-sm.jpg\" data-full=\"/images/notion/e1080771.jpg\" alt=\"Sculptural detritus, Ceangailte at LiTE-HAUS, Berlin\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><h3>Details</h3><ul><li><strong>Concept and creation:</strong> Jake Riordan, David Mathúna</li><li><strong>Format:</strong> dual-screen video installation with sound and sculptural elements, around 25 minutes</li><li><strong>Tools:</strong> TouchDesigner, Blender, Ableton, Python, GLSL</li></ul></div><div class=\"notion-column\"><h3>Contact</h3><p>More at <a href=\"https://ceangailte.ie/\" target=\"_blank\" rel=\"noopener\">ceangailte.ie</a></p><p>Booking and technical rider: <a href=\"mailto:info@auratyk.com\" target=\"_blank\" rel=\"noopener\">info@auratyk.com</a></p></div></div>",
       "properties": {
         "date": null,
         "coverUrl": "https://www.dropbox.com/scl/fi/smofkl0t9dtgm011qxmqv/social-image.jpg?rlkey=btsx8zq3t0c9tmlorl8z3kxv2&raw=1",
-        "links": [],
+        "links": [
+          {
+            "platform": "ceangailte.ie",
+            "url": "https://ceangailte.ie"
+          },
+          {
+            "platform": "lite-haus.net",
+            "url": "https://www.lite-haus.net/ceangailte-july-2026"
+          }
+        ],
         "tags": [
           "Audio-Visual",
           "Installation",

@@ -4,9 +4,14 @@ const https = require('https')
 const http = require('http')
 const { notion, DATABASES } = require('./notion-config')
 const { blocksToHtml } = require('./notion-block-to-html')
+const { normalizeDropboxUrl, pathname } = require('./dropbox-url')
 
 const OUTPUT_DIR = path.resolve(__dirname, '..', 'content', 'notion')
 const IMAGES_DIR = path.resolve(__dirname, '..', 'static', 'images', 'notion')
+
+// NOTION_INCLUDE_DRAFTS=1 also fetches unpublished entries, for local preview only.
+// Re-run the normal fetch before committing, or drafts end up in content/notion.
+const INCLUDE_DRAFTS = process.env.NOTION_INCLUDE_DRAFTS === '1'
 
 async function queryDatabase(databaseId) {
   const results = []
@@ -15,7 +20,7 @@ async function queryDatabase(databaseId) {
     const response = await notion.databases.query({
       database_id: databaseId,
       start_cursor: cursor,
-      filter: { property: 'Published', checkbox: { equals: true } },
+      ...(INCLUDE_DRAFTS ? {} : { filter: { property: 'Published', checkbox: { equals: true } } }),
     })
     results.push(...response.results)
     cursor = response.next_cursor || undefined
@@ -72,14 +77,6 @@ function getPropertyValue(properties, name) {
   }
 }
 
-function normalizeDropboxUrl(url) {
-  if (!url) return url
-  if (!url.includes('dropbox.com') && !url.includes('dropboxusercontent.com')) return url
-  return url
-    .replace(/[?&]dl=0/, '&raw=1')
-    .replace(/[?&]dl=1/, '&raw=1')
-}
-
 function getCoverUrl(props, name) {
   const prop = props[name]
   if (!prop) return null
@@ -109,24 +106,96 @@ function parseJsonField(value) {
   }
 }
 
-function parseNewlineList(value) {
+
+// Project Links: JSON [{platform, url}], or one URL per line (platform is
+// taken from the hostname, e.g. "ceangailte.ie").
+function parseLinks(value) {
   if (!value) return []
-  return value.split('\n').map(s => s.trim()).filter(Boolean)
+  const json = parseJsonField(value)
+  if (json.length) return json
+  return String(value)
+    .split(/\n/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((raw) => {
+      const url = /^https?:\/\//.test(raw) ? raw : `https://${raw}`
+      let platform = raw
+      try {
+        platform = new URL(url).hostname.replace(/^www\./, '')
+      } catch {}
+      return { platform, url }
+    })
 }
 
-function downloadFile(url, destPath) {
+// Downloads to a temp file and renames on success, so a failed download never
+// wipes out a good copy from an earlier fetch.
+function downloadOnce(url, destPath) {
   return new Promise((resolve, reject) => {
-    const file = fs.createWriteStream(destPath)
+    const tmpPath = `${destPath}.part`
     const protocol = url.startsWith('https') ? https : http
-    protocol.get(url, (response) => {
+    const req = protocol.get(url, (response) => {
       if (response.statusCode >= 300 && response.statusCode < 400) {
-        file.close()
-        return downloadFile(response.headers.location, destPath).then(resolve).catch(reject)
+        response.resume()
+        const next = new URL(response.headers.location, url).toString()
+        return downloadOnce(next, destPath).then(resolve).catch(reject)
       }
+      if (response.statusCode !== 200) {
+        response.resume()
+        return reject(new Error(`HTTP ${response.statusCode}`))
+      }
+      const file = fs.createWriteStream(tmpPath)
       response.pipe(file)
-      file.on('finish', () => { file.close(); resolve() })
-    }).on('error', (err) => { fs.unlink(destPath, () => {}); reject(err) })
+      file.on('finish', () => {
+        file.close(() => fs.rename(tmpPath, destPath, (err) => (err ? reject(err) : resolve())))
+      })
+      file.on('error', (err) => { fs.unlink(tmpPath, () => {}); reject(err) })
+    })
+    req.setTimeout(60000, () => req.destroy(new Error('timeout')))
+    req.on('error', (err) => { fs.unlink(tmpPath, () => {}); reject(err) })
   })
+}
+
+async function downloadFile(url, destPath, attempts = 3) {
+  for (let i = 1; ; i++) {
+    try {
+      return await downloadOnce(url, destPath)
+    } catch (err) {
+      if (i >= attempts) throw new Error(err.message || err.code || String(err))
+      await new Promise((resolve) => setTimeout(resolve, 1000 * i))
+    }
+  }
+}
+
+// Pages show a lighter copy of each image (max 1600px wide); the lightbox
+// loads the full file from data-full. Uses sharp when available.
+const PAGE_IMAGE_WIDTH = 1600
+let sharp = null
+try { sharp = require('sharp') } catch (e) { sharp = null }
+
+async function makePageCopy(fullPath, filename) {
+  if (!sharp || !/\.(jpe?g|png|webp)$/i.test(filename)) return null
+  const smName = filename.replace(/\.(\w+)$/, '-sm.$1')
+  const smPath = path.join(IMAGES_DIR, smName)
+  try {
+    const meta = await sharp(fullPath).metadata()
+    if (!meta.width || meta.width <= PAGE_IMAGE_WIDTH) return null
+    if (!fs.existsSync(smPath)) {
+      await sharp(fullPath).rotate().resize({ width: PAGE_IMAGE_WIDTH }).toFile(smPath)
+    }
+    return smName
+  } catch (err) {
+    console.error(`    ✗ failed to resize: ${filename} (${err.message})`)
+    return null
+  }
+}
+
+// Point <img src> at the light copy (if any) and data-full at the original.
+function swapImageUrl(html, url, filename, smName) {
+  const full = `/images/notion/${filename}`
+  if (smName) {
+    html = html.replaceAll(`<img src="${url}"`, `<img src="/images/notion/${smName}" data-full="${full}"`)
+  }
+  return html.replaceAll(url, full)
 }
 
 async function downloadAndReplaceNotionImages(html) {
@@ -140,18 +209,44 @@ async function downloadAndReplaceNotionImages(html) {
   for (const url of uniqueUrls) {
     const pathOnly = url.split('?')[0]
     const hash = require('crypto').createHash('md5').update(pathOnly).digest('hex').substring(0, 8)
-    const ext = url.match(/\.(png|jpg|jpeg|gif|webp|svg)/i)?.[1] || 'png'
+    const ext = (pathOnly.match(/\.(png|jpe?g|gif|webp|svg|mp4|webm|mov)$/i)?.[1] || 'png').toLowerCase()
     const filename = `${hash}.${ext}`
     const destPath = path.join(IMAGES_DIR, filename)
 
-    try {
-      await downloadFile(url, destPath)
-      console.log(`    ↓ downloaded notion image: ${filename}`)
-    } catch (err) {
-      console.error(`    ✗ failed to download: ${filename} (${err.message})`)
-      continue
+    // Same Notion file path → same hash, so an existing copy is reused.
+    if (!fs.existsSync(destPath)) {
+      try {
+        await downloadFile(url, destPath)
+        console.log(`    ↓ downloaded notion image: ${filename}`)
+      } catch (err) {
+        console.error(`    ✗ failed to download: ${filename} (${err.message})`)
+        continue
+      }
     }
-    html = html.replaceAll(url, `/images/notion/${filename}`)
+    html = swapImageUrl(html, url, filename, await makePageCopy(destPath, filename))
+  }
+
+  // Dropbox-hosted images: download once into static/ so the site serves them itself.
+  const dropboxImgRegex = /<img src="(https:\/\/[^"]*dropbox(?:usercontent)?\.com[^"]*)"/g
+  const dropboxUrls = [...new Set([...html.matchAll(dropboxImgRegex)].map((m) => m[1]))]
+
+  for (const url of dropboxUrls) {
+    const filePath = pathname(url)
+    const hash = require('crypto').createHash('md5').update(filePath).digest('hex').substring(0, 8)
+    const ext = (filePath.match(/\.(png|jpe?g|gif|webp|avif|svg)$/i)?.[1] || 'jpg').toLowerCase()
+    const filename = `dbx-${hash}.${ext}`
+    const destPath = path.join(IMAGES_DIR, filename)
+
+    if (!fs.existsSync(destPath)) {
+      try {
+        await downloadFile(normalizeDropboxUrl(url), destPath)
+        console.log(`    ↓ downloaded dropbox image: ${filename}`)
+      } catch (err) {
+        console.error(`    ✗ failed to download dropbox image: ${filename} (${err.message})`)
+        continue
+      }
+    }
+    html = swapImageUrl(html, url, filename, await makePageCopy(destPath, filename))
   }
   return html
 }
@@ -208,7 +303,7 @@ async function fetchContentType(type, databaseId) {
         entry.properties = {
           date: getPropertyValue(props, 'Date'),
           coverUrl: getCoverUrl(props, 'CoverImage'),
-          links: parseJsonField(getPropertyValue(props, 'Links')),
+          links: parseLinks(getPropertyValue(props, 'Links')),
           tags: getPropertyValue(props, 'Tags') || [],
           isExperiment: getPropertyValue(props, 'IsExperiment') || false,
           collaborators: parseNewlineList(getPropertyValue(props, 'Collaborators')),
@@ -219,6 +314,7 @@ async function fetchContentType(type, databaseId) {
           venueAddress: getPropertyValue(props, 'VenueAddress'),
           country: getPropertyValue(props, 'Country'),
           date: getPropertyValue(props, 'Date'),
+          dateEnd: props.Date?.date?.end || null,
           ticketLink: getPropertyValue(props, 'TicketLink'),
           city: getPropertyValue(props, 'City'),
           participants: getPropertyValue(props, 'Participants'),
@@ -226,6 +322,12 @@ async function fetchContentType(type, databaseId) {
           showUrl: getPropertyValue(props, 'Show URL'),
           projects: getPropertyValue(props, 'Projects') || [],
           coverUrl: getCoverUrl(props, 'CoverImage'),
+          event: getPropertyValue(props, 'Event'),
+          curatedBy: getPropertyValue(props, 'CuratedBy'),
+          lineup: getPropertyValue(props, 'Lineup'),
+          duration: getPropertyValue(props, 'Duration'),
+          tools: getPropertyValue(props, 'Tools'),
+          credits: getPropertyValue(props, 'Credits'),
         }
         break
       case 'pages':

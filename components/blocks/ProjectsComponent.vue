@@ -1,18 +1,60 @@
 <template>
   <section class="projects main__content">
     <h1 class="main__content-heading margin-bottom-md">{{ title }}</h1>
-    <div v-if="projects.length" class="projects__grid">
-      <div v-for="project in projects" :key="project.id" class="project">
-        <hr class="hr margin-y-md" />
-        <nuxt-link :to="`/projects/${project.slug}`" class="project__link">
-          <h3 class="text-xl">{{ project.title }}</h3>
-          <p v-if="project.properties.date" class="text-md">{{ project.properties.date }}</p>
-          <div v-if="project.properties.tags?.length" class="text-sm margin-top-xs">
-            <span v-for="tag in project.properties.tags" :key="tag" class="project__tag">{{ tag }}</span>
-          </div>
-        </nuxt-link>
+
+    <template v-if="projects.length">
+      <!-- Projects with a cover and a written page: cards with image and teaser. -->
+      <ul v-if="featured.length" class="projects__featured">
+        <li v-for="project in featured" :key="project.id">
+          <nuxt-link :to="`/projects/${project.slug}`" class="project-card">
+            <div class="project-card__media">
+              <img
+                :src="project.properties.coverUrl"
+                :alt="project.title"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-card__text">
+              <p class="project-card__meta text-sm color-contrast-medium">
+                <span v-if="project.year">{{ project.year }}</span>
+                <span v-if="project.properties.tags?.length">{{
+                  project.properties.tags.join(' · ')
+                }}</span>
+              </p>
+              <h2 class="project-card__title text-xl">{{ project.title }}</h2>
+              <p
+                v-if="project.description"
+                class="project-card__teaser color-contrast-high"
+              >
+                {{ project.description }}
+              </p>
+            </div>
+          </nuxt-link>
+        </li>
+      </ul>
+
+      <!-- Everything else: a compact list. -->
+      <div v-if="others.length" class="projects__more margin-top-xl">
+        <p v-if="featured.length" class="projects__more-label">More projects</p>
+        <ul class="projects__list">
+          <li v-for="project in others" :key="project.id">
+            <nuxt-link
+              :to="`/projects/${project.slug}`"
+              class="projects__list-link"
+            >
+              <span class="projects__list-title">{{ project.title }}</span>
+              <span class="projects__list-tags text-sm color-contrast-medium">{{
+                (project.properties.tags || []).join(' · ')
+              }}</span>
+              <span class="projects__list-year text-sm color-contrast-medium">{{
+                project.year
+              }}</span>
+            </nuxt-link>
+          </li>
+        </ul>
       </div>
-    </div>
+    </template>
+
     <div v-else class="no-projects">
       <p class="text-md color-contrast-medium">No projects yet.</p>
     </div>
@@ -20,21 +62,126 @@
 </template>
 
 <script>
+import { isFeatured, yearSpan, byRecency } from '@/libs/project-utils'
+
 export default {
   props: {
     projects: { type: Array, required: true },
     title: { type: String, default: 'Projects' },
   },
+  computed: {
+    sorted() {
+      return [...this.projects]
+        .sort(byRecency)
+        .map((p) => ({ ...p, year: yearSpan(p) }))
+    },
+    featured() {
+      return this.sorted.filter(isFeatured)
+    },
+    others() {
+      return this.sorted.filter((p) => !isFeatured(p))
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.project__tag {
-  display: inline-block;
-  border: 1px solid var(--color-contrast-medium);
-  border-radius: 3px;
-  padding: 2px 8px;
-  margin-right: var(--space-xxs);
-  margin-bottom: var(--space-xxs);
+.projects__featured {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-xl) var(--space-lg);
+}
+
+.project-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.project-card__media {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--color-contrast-lower);
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+}
+.project-card:hover .project-card__media img,
+.project-card:focus-visible .project-card__media img {
+  transform: scale(1.03);
+}
+.project-card__text {
+  padding-top: var(--space-sm);
+}
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+}
+.project-card__title {
+  margin: var(--space-xxs) 0 var(--space-xs);
+}
+.project-card:hover .project-card__title {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.project-card__teaser {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.projects__more-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-contrast-medium);
+  margin-bottom: var(--space-xs);
+}
+.projects__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    border-top: 1px solid var(--color-contrast-lower);
+  }
+  li:last-child {
+    border-bottom: 1px solid var(--color-contrast-lower);
+  }
+}
+.projects__list-link {
+  display: grid;
+  grid-template-columns: 1fr auto 6rem;
+  gap: var(--space-sm);
+  align-items: baseline;
+  padding: var(--space-xs) 0;
+  color: inherit;
+  text-decoration: none;
+  &:hover .projects__list-title {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+}
+.projects__list-year {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 40rem) {
+  .projects__list-link {
+    grid-template-columns: 1fr auto;
+  }
+  .projects__list-tags {
+    display: none;
+  }
 }
 </style>

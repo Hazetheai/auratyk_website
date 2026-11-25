@@ -5,15 +5,17 @@
         <Nuxt />
       </main>
     </AuratykHomeSceneOverlay>
+    <MediaLightbox />
   </div>
 </template>
 
 <script>
 import AuratykHomeSceneOverlay from '@/components/blocks/AuratykHomeSceneOverlay'
+import MediaLightbox from '@/components/blocks/MediaLightbox'
 
 export default {
   name: 'MainLayout',
-  components: { AuratykHomeSceneOverlay },
+  components: { AuratykHomeSceneOverlay, MediaLightbox },
 
   mounted() {
     const isProd = process.env.NODE_ENV === 'production'

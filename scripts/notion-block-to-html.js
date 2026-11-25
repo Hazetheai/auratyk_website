@@ -1,22 +1,42 @@
 const { textToHtml } = require('./notion-richtext-to-html')
-
-function normalizeDropboxUrl(url) {
-  if (!url) return url
-  if (!url.includes('dropbox.com') && !url.includes('dropboxusercontent.com')) return url
-  return url
-    .replace(/[?&]dl=0/, '&raw=1')
-    .replace(/[?&]dl=1/, '&raw=1')
-}
+const { normalizeDropboxUrl, isDropboxUrl, isImageUrl, isVideoUrl } = require('./dropbox-url')
 
 function blockChildrenHtml(block) {
   return block[block.type]?.children || ''
 }
 
+function escapeAttr(value) {
+  return String(value || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+}
+
+// Render a bare media URL (e.g. a pasted Dropbox share link) as an image or
+// video, reusing the image/video block renderers. Returns null if not media.
+function mediaUrlToHtml(url, caption = '') {
+  if (!url) return null
+  const captionRich = caption ? [{ plain_text: caption }] : []
+  if (isImageUrl(url)) {
+    return blockToHtml({ type: 'image', image: { type: 'external', external: { url }, caption: captionRich } })
+  }
+  if (isVideoUrl(url)) {
+    return blockToHtml({ type: 'video', video: { type: 'external', external: { url }, caption: captionRich } })
+  }
+  return null
+}
+
 function blockToHtml(block) {
   const children = blockChildrenHtml(block)
   switch (block.type) {
-    case 'paragraph':
+    case 'paragraph': {
+      // A paragraph that is only a Dropbox link to an image/video becomes that media.
+      const rt = block.paragraph.rich_text || []
+      const only = rt.length === 1 ? rt[0] : null
+      const href = only?.href || only?.text?.link?.url
+      if (href && isDropboxUrl(href) && !children) {
+        const media = mediaUrlToHtml(href)
+        if (media) return media
+      }
       return `<p>${textToHtml(block.paragraph.rich_text)}${children}</p>`
+    }
     case 'heading_1':
       return `<h1>${textToHtml(block.heading_1.rich_text)}${children}</h1>`
     case 'heading_2':
@@ -37,10 +57,28 @@ function blockToHtml(block) {
       return `<blockquote>${textToHtml(block.quote.rich_text)}${children}</blockquote>`
     case 'divider':
       return `<hr>`
-    case 'image':
-      return block.image.type === 'external'
-        ? `<figure><img src="${block.image.external.url}" alt="${block.image.caption?.[0]?.plain_text || ''}" /></figure>`
-        : `<figure><img src="${block.image.file.url}" alt="${block.image.caption?.[0]?.plain_text || ''}" /></figure>`
+    case 'image': {
+      const src = block.image.type === 'external'
+        ? normalizeDropboxUrl(block.image.external.url)
+        : block.image.file.url
+      const alt = escapeAttr(block.image.caption?.[0]?.plain_text)
+      return `<figure><img src="${src}" alt="${alt}" loading="lazy" /></figure>`
+    }
+    case 'column_list': {
+      // Notion columns → CSS grid. --cols lets the stylesheet size the tracks.
+      const cols = (block.children || []).filter((c) => c.type === 'column').length || 1
+      return `<div class="notion-columns" style="--cols:${cols}">${children}</div>`
+    }
+    case 'column':
+      return `<div class="notion-column">${children}</div>`
+    case 'embed':
+    case 'bookmark':
+    case 'link_preview': {
+      // Dropbox links pasted as embed/bookmark: render the media itself.
+      const url = block[block.type]?.url
+      const caption = block[block.type]?.caption?.[0]?.plain_text || ''
+      return mediaUrlToHtml(url, caption) || ''
+    }
     case 'video': {
       const url = block.video.type === 'external' ? block.video.external?.url : block.video.file?.url
       if (!url) return ''
@@ -96,6 +134,8 @@ function blockToHtml(block) {
       </figure>`
     }
     case 'callout':
+      // 🚧 callouts are editing notes in Notion; never render them on the site.
+      if (block.callout.icon?.emoji === '🚧') return ''
       return `<div class="callout">${block.callout.icon?.emoji || ''} ${textToHtml(block.callout.rich_text)}${children}</div>`
     case 'child_page':
       return ''

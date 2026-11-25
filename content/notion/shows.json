@@ -1,92 +1,267 @@
 {
-  "fetchedAt": "2026-07-16T07:39:30.604Z",
+  "fetchedAt": "2026-11-25T18:41:07.079Z",
   "items": [
     {
-      "id": "36f70fd9-1edd-8057-9342-f9194c7186ec",
-      "title": "VJOpenLab x 48NK",
-      "slug": "vjopenlab-x-48nk",
+      "id": "42370fd9-1edd-8178-92e6-d9f7a79efc25",
+      "title": "Culture Crush · Fusion Festival",
+      "slug": "culture-crush-fusion-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
-        "venueAddress": "Prachtwerk, Berlin",
+        "venueAddress": "Fusion Festival, Lärz",
         "country": "Germany",
-        "date": "2025-06-27",
+        "date": "2025-06-28",
+        "dateEnd": null,
+        "ticketLink": null,
+        "city": "Lärz",
+        "participants": "Collab",
+        "showType": "VJ Set",
+        "showUrl": "",
+        "projects": [
+          "35f70fd9-1edd-80cb-b8f8-c442e15be398"
+        ],
+        "coverUrl": null,
+        "event": "Culture Crush live · Fusion Festival 2025",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "TouchDesigner",
+        "credits": ""
+      }
+    },
+    {
+      "id": "42370fd9-1edd-816d-b772-cd6a44419c20",
+      "title": "Unframe Festival 2026",
+      "slug": "ceangailte-unframe-2026",
+      "description": "Ceangailte at Unframe Festival in Berlin, shown at the same time as at Nano Nagle Place for Culture Night in Cork, with a live connection between the two venues.",
+      "bodyHtml": "<p>Ceangailte was shown at the same time in Berlin and Cork: here at Unframe Festival, and at Nano Nagle Place for Culture Night. A live connection between the two venues was a small, symbolic gesture towards the connections the work is about.</p><p>Showing it in both cities connects where the two of us came from with where the idea for Ceangailte was first conceived. Both Culture Night in Cork and Unframe Festival in Berlin share values of solidarity and a desire for change, which the work reflects.</p><figure><img src=\"/images/notion/9cd1e076-sm.jpg\" data-full=\"/images/notion/9cd1e076.jpg\" alt=\"Ceangailte at Unframe Festival, Berlin\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/616e0eaa.jpg\" alt=\"Ceangailte at Unframe Festival, Berlin\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/6de2d04e-sm.jpg\" data-full=\"/images/notion/6de2d04e.jpg\" alt=\"Ceangailte at Unframe Festival, Berlin\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/a8251f43-sm.jpg\" data-full=\"/images/notion/a8251f43.jpg\" alt=\"Ceangailte at Unframe Festival, Berlin\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><figure><img src=\"/images/notion/3b9ce3d9.jpg\" alt=\"Ceangailte at Unframe Festival, Berlin\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/e13789bc.jpg\" alt=\"Ceangailte at Unframe Festival, Berlin\" loading=\"lazy\" /></figure></div></div>",
+      "properties": {
+        "venueAddress": "CANK, Karl-Marx-Straße 95, 12043 Berlin",
+        "country": "Germany",
+        "date": "2026-09-17",
+        "dateEnd": "2026-09-20",
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Collab",
+        "showType": "Installation",
+        "showUrl": "https://www.unframefestival.com/",
+        "projects": [
+          "35c70fd9-1edd-804d-8ec3-cbd26835e1d9"
+        ],
+        "coverUrl": "/images/shows/ceangailte-unframe-2026/cover.jpg",
+        "event": "Unframe Festival 2026 · shown at the same time as Culture Night in Cork",
+        "curatedBy": "Unframe",
+        "lineup": "",
+        "duration": "25 min loop",
+        "tools": "TouchDesigner, Ableton Live",
+        "credits": ""
+      }
+    },
+    {
+      "id": "42370fd9-1edd-81d0-a48d-e66d6c81f924",
+      "title": "Nano Nagle Place · Culture Night Cork",
+      "slug": "ceangailte-nano-nagle-2026",
+      "description": "Ceangailte at Nano Nagle Place for Culture Night in Cork, shown at the same time as at Unframe Festival in Berlin, with a live connection between the two venues.",
+      "bodyHtml": "<p>Ceangailte explores how media representations shape narratives of colonialism, oppression, and resilience through a dynamic dual-screen display, immersive audio, and sculptural elements. Drawing on the Irish word ceangailte (“tied”, “connected”, or “bound”), the installation brings together perspectives from former colonies of Empire, reflecting on power structures, resistance, and aspirations for freedom. By juxtaposing mainstream narratives with lived realities, the work invites audiences to consider the gap between what is publicly presented and what is pursued behind the scenes.</p><p>Ceangailte was shown at the same time in Cork and Berlin: here at Nano Nagle Place for Culture Night, and at Unframe Festival in Berlin. A live connection between the two venues was a small, symbolic gesture towards the connections the work is about.</p><p>Showing it in both cities connects where the two of us came from with where the idea for Ceangailte was first conceived. Both Culture Night in Cork and Unframe Festival in Berlin share values of solidarity and a desire for change, which the work reflects.</p>",
+      "properties": {
+        "venueAddress": "Global Hub, Nano Nagle Place, Douglas Street, Cork",
+        "country": "Ireland",
+        "date": "2026-09-18",
+        "dateEnd": "2026-09-20",
+        "ticketLink": null,
+        "city": "Cork",
+        "participants": "Collab",
+        "showType": "Installation",
+        "showUrl": "https://nanonagleplace.ie/events/culture-night-2026-at-nano-nagle-place/",
+        "projects": [
+          "35c70fd9-1edd-804d-8ec3-cbd26835e1d9"
+        ],
+        "coverUrl": null,
+        "event": "Culture Night 2026 · shown at the same time as Unframe Festival in Berlin",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "25 min loop",
+        "tools": "TouchDesigner, Ableton Live",
+        "credits": ""
+      }
+    },
+    {
+      "id": "3ec70fd9-1edd-804f-856f-ead1832e32b0",
+      "title": "Berlin New Media Art Week 2026",
+      "slug": "read-rites-bnmw-2026",
+      "description": "“read:rites | cannibalize” is an audio-visual critique of cultural recycling and the myth of progress, framed as a terminal command to dissect and devour the familiar. The performance interrogates how our media and culture, particularly music, are endlessly reworked, while true creativity is sacrificed to algorithmic hunger and corporate control.",
+      "bodyHtml": "<p>The third and most recent performance of read:rites | cannibalize, after XoK Blackout (December 2025) and B.L.O. Ateliers × co:evolve (February 2026).</p><p>A machine instructs a silent human operator to feed it the last century of recorded music, so that it can understand us. It devours the music decade by decade. With each pass the material is sampled and resampled faster, the loops get shorter, and the fragments come back more eroded.</p><figure><img src=\"/images/notion/42be0c32-sm.jpg\" data-full=\"/images/notion/42be0c32.jpg\" alt=\"read:rites | cannibalize at The Space, Berlin New Media Week 2026\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/a22ecc0b.jpg\" alt=\"read:rites | cannibalize at The Space, Berlin New Media Week 2026\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/2d75715d.jpg\" alt=\"read:rites | cannibalize at The Space, Berlin New Media Week 2026\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/2ac3b88e.jpg\" alt=\"read:rites | cannibalize at The Space, Berlin New Media Week 2026\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/f41b0c45-sm.jpg\" data-full=\"/images/notion/f41b0c45.jpg\" alt=\"read:rites | cannibalize at The Space, Berlin New Media Week 2026\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/4ba2641a-sm.jpg\" data-full=\"/images/notion/4ba2641a.jpg\" alt=\"read:rites | cannibalize at The Space, Berlin New Media Week 2026\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/50bcb0fe-sm.jpg\" data-full=\"/images/notion/50bcb0fe.jpg\" alt=\"read:rites | cannibalize at The Space, Berlin New Media Week 2026\" loading=\"lazy\" /></figure></div></div>",
+      "properties": {
+        "venueAddress": "The Space, Kantstraße 149, 10623 Berlin",
+        "country": "Germany",
+        "date": "2026-09-04",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "AV Set",
         "showUrl": "",
+        "projects": [
+          "35f70fd9-1edd-8081-b73f-f48e2597930e"
+        ],
+        "coverUrl": "/images/shows/readrites-bnmw-2026/cover.jpg",
+        "event": "Immersive Experience Network Huddle, hosted by Immersive Experience Network and 3AM:ENERGY · Berlin New Media Week 2026",
+        "curatedBy": "",
+        "lineup": "Function Store",
+        "duration": "45 min",
+        "tools": "TouchDesigner, Ableton Live",
+        "credits": "Photos: Claudia Montesi, Isabelle Schmitz"
+      }
+    },
+    {
+      "id": "3ec70fd9-1edd-80a6-9729-d7335c9c1a87",
+      "title": "Xposed Queer Film Festival",
+      "slug": "panel-xposed-2026",
+      "description": "Panelist in discussion, with topics about: Building and remixing, New media tools and technologies, The role of the body in our works, constructing and imagining spaces and whether it is possible to have an anti capitalist approach as a new media artist.",
+      "bodyHtml": "<p>A panel on how expanded and experimental forms of storytelling open up new artistic possibilities. We talked about building and remixing, new media tools and technologies, the role of the body in our works, constructing and imagining spaces, and whether it is possible to have an anti-capitalist approach as a new media artist.</p><p>It was a pleasure to be among all the different panelists and to learn about the different approaches we all have. It was also my first time doing any sort of public speaking in an artistic form. I'm much more comfortable when I have instruments or machines at hand to manipulate, so it was a great challenge. I'm looking forward to doing it again.</p>",
+      "properties": {
+        "venueAddress": "Aquarium, Skalitzer Straße 6, 10999 Berlin",
+        "country": "Germany",
+        "date": "2026-05-29T18:00:00.000+02:00",
+        "dateEnd": null,
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Line Up",
+        "showType": "Panel Talk",
+        "showUrl": "https://xposedfilmfestival.com/2026/in-conversation-new-media-new-narratives-in-queer-cinema/",
         "projects": [],
-        "coverUrl": null
+        "coverUrl": "/images/shows/panel-xposed-2026/cover.jpg",
+        "event": "In Conversation: New Media & New Narratives in Queer Cinema · XPOSED Queer Film Festival Berlin 2026",
+        "curatedBy": "Harshini J. Karunaratne",
+        "lineup": "sasha df (abstraqt), Rosh Zeeba, Benjamin Busch",
+        "duration": "",
+        "tools": "",
+        "credits": "Cover photo: Ayca"
+      }
+    },
+    {
+      "id": "36f70fd9-1edd-8057-9342-f9194c7186ec",
+      "title": "VJOpenLab x 48NK",
+      "slug": "fractured-recall-48nk-2025",
+      "description": "",
+      "bodyHtml": "<p>A solo audio-visual set as part of VJ OpenLab during 48 Stunden Neukölln. The performance focused on building a meditative, reactive visual language in dialogue with live sound.</p><p>VJ OpenLab is a Berlin AV community for inspiration, experimentation and exchange.</p><figure><img src=\"/images/notion/40027062-sm.jpg\" data-full=\"/images/notion/40027062.jpg\" alt=\"Auratyk at VJ OpenLab, Prachtwerk, 48 Stunden Neukölln 2025\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/97eb5204-sm.jpg\" data-full=\"/images/notion/97eb5204.jpg\" alt=\"Auratyk at VJ OpenLab, Prachtwerk, 48 Stunden Neukölln 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/e067b708-sm.jpg\" data-full=\"/images/notion/e067b708.jpg\" alt=\"Auratyk at VJ OpenLab, Prachtwerk, 48 Stunden Neukölln 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/db57b769-sm.jpg\" data-full=\"/images/notion/db57b769.jpg\" alt=\"Auratyk at VJ OpenLab, Prachtwerk, 48 Stunden Neukölln 2025\" loading=\"lazy\" /></figure></div></div><figure><img src=\"/images/notion/e2f9344d-sm.jpg\" data-full=\"/images/notion/e2f9344d.jpg\" alt=\"Auratyk at VJ OpenLab, Prachtwerk, 48 Stunden Neukölln 2025\" loading=\"lazy\" /></figure>",
+      "properties": {
+        "venueAddress": "Prachtwerk, Ganghoferstraße 2, 12043 Berlin",
+        "country": "Germany",
+        "date": "2025-06-29",
+        "dateEnd": null,
+        "ticketLink": null,
+        "city": "Berlin",
+        "participants": "Line Up",
+        "showType": "AV Set",
+        "showUrl": "",
+        "projects": [
+          "35f70fd9-1edd-80d1-832e-d481cadfd036"
+        ],
+        "coverUrl": "/images/shows/fractured-recall-48nk-2025/cover.jpg",
+        "event": "VJ OpenLab · 48 Stunden Neukölln 2025",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "18 min",
+        "tools": "TouchDesigner, Ableton Live",
+        "credits": "Photos: Lea Brugnoli"
       }
     },
     {
       "id": "35f70fd9-1edd-8039-b14a-f2f95d873374",
       "title": "Radical Picnic",
-      "slug": "radical-picnic",
+      "slug": "radical-picnic-2023",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "Mauerpark, Berlin",
         "country": "Germany",
         "date": "2023-09-16",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "AV Set",
         "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "projects": [
+          "35f70fd9-1edd-80d1-a05b-dd0ab0931864"
+        ],
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-8019-b02a-ed55dd45190f",
       "title": "Crack Bellmer",
-      "slug": "crack-bellmer",
+      "slug": "crack-bellmer-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "Crack Bellmer, Revaler Str. 99, 10245 Berlin",
         "country": "Germany",
         "date": "2025-05-10",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "VJ Set",
         "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "projects": [
+          "35f70fd9-1edd-8003-bd97-e515ab2d68d5"
+        ],
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-80cc-909a-d029d27ec663",
       "title": "Studio dB",
-      "slug": "studio-db",
+      "slug": "studio-db-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "Studio dB, Uferstraße 8-11, 13357 Berlin",
         "country": "Germany",
         "date": "2025-05-02",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Collab",
         "showType": "VJ Set",
         "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "projects": [
+          "35f70fd9-1edd-8003-bd97-e515ab2d68d5"
+        ],
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-8098-92a2-ec2b0dbb2379",
-      "title": "Ceangailte",
-      "slug": "ceangailte",
+      "title": "LiTE-HAUS · 48 Stunden Neukölln",
+      "slug": "ceangailte-48nk-2026",
       "description": "Ceangailte, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.",
       "bodyHtml": "<p><strong>Ceangailte</strong>, a new collaborative audiovisual work from Irish artists David Mathúna & Jake Riordan, explores how media representations shape narratives of colonialism, oppression, and resilience through dynamic dual-screen displays, immersive audio, and sculptural detritus.</p><p>\nThe word Ceangailte <em>[key-ang-el-ta]</em> comes from the Irish language, Gaeilge, the definitions of which approximate “tied”, “connected”, or “bound”. Taking as its point of departure, the multiplicity of perspectives woven throughout the connected histories of former colonies of Empire, Ceangailte articulates future aspirations while holding a mirror up to an extreme and alienating present, interrogating the contradictions between what is outwardly expressed by establishment media and what is internally pursued by those in power.</p><p></p>",
       "properties": {
         "venueAddress": "LiTE-HAUS Galerie + Projektraum, Mareschstraße 4, 12055 Berlin",
         "country": "Germany",
         "date": "2026-07-03",
+        "dateEnd": "2026-07-05",
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Collab",
@@ -95,178 +270,260 @@
         "projects": [
           "35c70fd9-1edd-804d-8ec3-cbd26835e1d9"
         ],
-        "coverUrl": "https://www.dropbox.com/scl/fi/fnduu9sm8hbdg5u3f0g8l/Cork_Gaza.jpg?rlkey=djov4ebbsr81tj3503p6d9om0&st=3m2pjnhu&raw=1"
+        "coverUrl": "https://www.dropbox.com/scl/fi/fnduu9sm8hbdg5u3f0g8l/Cork_Gaza.jpg?rlkey=djov4ebbsr81tj3503p6d9om0&st=3m2pjnhu&raw=1",
+        "event": "Ceangailte at 48 Stunden Neukölln 2026",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-8097-adeb-ebb1fc09939a",
       "title": "B.L.O. Ateliers",
-      "slug": "blo-ateliers",
+      "slug": "readrites-blo-2026",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "B.L.O. Ateliers, Kaskelstraße 55, 10317 Berlin",
         "country": "Germany",
         "date": "2026-02-19",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "AV Set",
         "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "projects": [
+          "35f70fd9-1edd-8081-b73f-f48e2597930e"
+        ],
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-80da-9492-e29fd3fdf6e6",
       "title": "XoK Blackout",
-      "slug": "xok-blackout",
+      "slug": "readrites-xok-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "Neue Zukunft, Alt-Stralau 68, 10245 Berlin",
         "country": "Germany",
         "date": "2025-12-04",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "AV Set",
         "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "projects": [
+          "35f70fd9-1edd-8081-b73f-f48e2597930e"
+        ],
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-80bd-ad48-d413a9c07620",
-      "title": "Berlin New Media Art Week",
-      "slug": "berlin-new-media-art-week",
+      "title": "Berlin New Media Art Week 2025",
+      "slug": "fractured-recall-bnmw-2025",
       "description": "",
-      "bodyHtml": "",
+      "bodyHtml": "<p>A live audio/visual set built from the ground up around the fallibility of memory. Found footage and point-cloud recreations of real spaces stretched an existing live set into a performance that could be mistaken for the viewer's own fractured memories.</p><p>Performed as part of Intelligent Kin, an exhibition of digital works on new forms of intelligence, perception and relation at MaHalla, with audiovisual performances on select days.</p><figure class=\"video-embed video-embed--direct\" data-video-player>\n        <div class=\"video-embed__player-wrapper\">\n          <video class=\"video-embed__player\" playsinline >\n            <source src=\"https://www.dropbox.com/scl/fi/u00li3hi2qy83hkdc5wmu/bnmaw-mahalla-teaser-web.mp4?rlkey=qltoxy5dtusqdyuqjuqxg4lc6&raw=1\" type=\"video/mp4\">\n          </video>\n          <div class=\"video-embed__overlay\">\n            <button class=\"video-embed__play-btn\" aria-label=\"Play video\">\n              <svg viewBox=\"0 0 24 24\" width=\"48\" height=\"48\" fill=\"currentColor\"><polygon points=\"5,3 19,12 5,21\"/></svg>\n            </button>\n          </div>\n          <div class=\"video-embed__controls\">\n            <div class=\"video-embed__controls-track-wrap\">\n              <div class=\"video-embed__controls-track\"><div class=\"video-embed__controls-fill\"></div></div>\n            </div>\n            <div class=\"video-embed__controls-row\">\n              <button class=\"video-embed__ctrl-btn video-embed__ctrl-play\" aria-label=\"Play\">\n                <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--play\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><polygon points=\"5,3 19,12 5,21\"/></svg>\n                <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--pause\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" style=\"display:none\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\"/></svg>\n              </button>\n              <span class=\"video-embed__time\">0:00</span>\n              <div class=\"video-embed__controls-spacer\"></div>\n              <div class=\"video-embed__volume\">\n                <button class=\"video-embed__ctrl-btn video-embed__ctrl-vol\" aria-label=\"Mute\">\n                  <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--vol-on\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>\n                  <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--vol-off\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" style=\"display:none\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/><line x1=\"4\" y1=\"4\" x2=\"20\" y2=\"20\" stroke=\"currentColor\" stroke-width=\"2\"/></svg>\n                </button>\n                <div class=\"video-embed__volume-slider\">\n                  <div class=\"video-embed__volume-track\"><div class=\"video-embed__volume-fill\"></div></div>\n                </div>\n              </div>\n              <button class=\"video-embed__ctrl-btn video-embed__ctrl-fs\" aria-label=\"Full screen\">\n                <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><path d=\"M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z\"/></svg>\n              </button>\n            </div>\n          </div>\n        </div>\n      </figure><figure><img src=\"/images/notion/a5fc4392-sm.jpg\" data-full=\"/images/notion/a5fc4392.jpg\" alt=\"Auratyk at MaHalla, Berlin New Media Art Week 2025\" loading=\"lazy\" /></figure><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/eac26562.jpg\" alt=\"Auratyk at MaHalla, Berlin New Media Week 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/72a7b847.jpg\" alt=\"Auratyk at MaHalla, Berlin New Media Week 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/b80906b3.jpg\" alt=\"Auratyk at MaHalla, Berlin New Media Week 2025\" loading=\"lazy\" /></figure></div></div><div class=\"notion-columns\" style=\"--cols:2\"><div class=\"notion-column\"><figure class=\"video-embed video-embed--direct\" data-video-player>\n        <div class=\"video-embed__player-wrapper\">\n          <video class=\"video-embed__player\" playsinline >\n            <source src=\"https://www.dropbox.com/scl/fi/kqy2pbjyrksqaf22tkek0/bnmaw-mahalla-teaser-selected61932-web.mp4?rlkey=rzs0sfd4rnhfgo2vmf8gbu8fz&raw=1\" type=\"video/mp4\">\n          </video>\n          <div class=\"video-embed__overlay\">\n            <button class=\"video-embed__play-btn\" aria-label=\"Play video\">\n              <svg viewBox=\"0 0 24 24\" width=\"48\" height=\"48\" fill=\"currentColor\"><polygon points=\"5,3 19,12 5,21\"/></svg>\n            </button>\n          </div>\n          <div class=\"video-embed__controls\">\n            <div class=\"video-embed__controls-track-wrap\">\n              <div class=\"video-embed__controls-track\"><div class=\"video-embed__controls-fill\"></div></div>\n            </div>\n            <div class=\"video-embed__controls-row\">\n              <button class=\"video-embed__ctrl-btn video-embed__ctrl-play\" aria-label=\"Play\">\n                <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--play\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><polygon points=\"5,3 19,12 5,21\"/></svg>\n                <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--pause\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" style=\"display:none\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\"/></svg>\n              </button>\n              <span class=\"video-embed__time\">0:00</span>\n              <div class=\"video-embed__controls-spacer\"></div>\n              <div class=\"video-embed__volume\">\n                <button class=\"video-embed__ctrl-btn video-embed__ctrl-vol\" aria-label=\"Mute\">\n                  <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--vol-on\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>\n                  <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--vol-off\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" style=\"display:none\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/><line x1=\"4\" y1=\"4\" x2=\"20\" y2=\"20\" stroke=\"currentColor\" stroke-width=\"2\"/></svg>\n                </button>\n                <div class=\"video-embed__volume-slider\">\n                  <div class=\"video-embed__volume-track\"><div class=\"video-embed__volume-fill\"></div></div>\n                </div>\n              </div>\n              <button class=\"video-embed__ctrl-btn video-embed__ctrl-fs\" aria-label=\"Full screen\">\n                <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><path d=\"M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z\"/></svg>\n              </button>\n            </div>\n          </div>\n        </div>\n      </figure></div><div class=\"notion-column\"><figure class=\"video-embed video-embed--direct\" data-video-player>\n        <div class=\"video-embed__player-wrapper\">\n          <video class=\"video-embed__player\" playsinline >\n            <source src=\"https://www.dropbox.com/scl/fi/4tdiameitoqrl90qwlc46/bnmaw-mahalla-teaser-selected39180-web.mp4?rlkey=eu3uyeqwj85b6qv9ltqjan918&raw=1\" type=\"video/mp4\">\n          </video>\n          <div class=\"video-embed__overlay\">\n            <button class=\"video-embed__play-btn\" aria-label=\"Play video\">\n              <svg viewBox=\"0 0 24 24\" width=\"48\" height=\"48\" fill=\"currentColor\"><polygon points=\"5,3 19,12 5,21\"/></svg>\n            </button>\n          </div>\n          <div class=\"video-embed__controls\">\n            <div class=\"video-embed__controls-track-wrap\">\n              <div class=\"video-embed__controls-track\"><div class=\"video-embed__controls-fill\"></div></div>\n            </div>\n            <div class=\"video-embed__controls-row\">\n              <button class=\"video-embed__ctrl-btn video-embed__ctrl-play\" aria-label=\"Play\">\n                <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--play\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><polygon points=\"5,3 19,12 5,21\"/></svg>\n                <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--pause\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" style=\"display:none\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\"/></svg>\n              </button>\n              <span class=\"video-embed__time\">0:00</span>\n              <div class=\"video-embed__controls-spacer\"></div>\n              <div class=\"video-embed__volume\">\n                <button class=\"video-embed__ctrl-btn video-embed__ctrl-vol\" aria-label=\"Mute\">\n                  <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--vol-on\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>\n                  <svg class=\"video-embed__ctrl-icon video-embed__ctrl-icon--vol-off\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" style=\"display:none\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/><line x1=\"4\" y1=\"4\" x2=\"20\" y2=\"20\" stroke=\"currentColor\" stroke-width=\"2\"/></svg>\n                </button>\n                <div class=\"video-embed__volume-slider\">\n                  <div class=\"video-embed__volume-track\"><div class=\"video-embed__volume-fill\"></div></div>\n                </div>\n              </div>\n              <button class=\"video-embed__ctrl-btn video-embed__ctrl-fs\" aria-label=\"Full screen\">\n                <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\"><path d=\"M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z\"/></svg>\n              </button>\n            </div>\n          </div>\n        </div>\n      </figure></div></div><div class=\"notion-columns\" style=\"--cols:3\"><div class=\"notion-column\"><figure><img src=\"/images/notion/b12009ce-sm.jpg\" data-full=\"/images/notion/b12009ce.jpg\" alt=\"Auratyk at MaHalla, Berlin New Media Art Week 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/1a938898-sm.jpg\" data-full=\"/images/notion/1a938898.jpg\" alt=\"Auratyk at MaHalla, Berlin New Media Art Week 2025\" loading=\"lazy\" /></figure></div><div class=\"notion-column\"><figure><img src=\"/images/notion/8838a869-sm.jpg\" data-full=\"/images/notion/8838a869.jpg\" alt=\"Auratyk at MaHalla, Berlin New Media Week 2025\" loading=\"lazy\" /></figure></div></div>",
       "properties": {
         "venueAddress": "MaHalla, Wilhelminenhofstraße 76, 12459 Berlin",
         "country": "Germany",
         "date": "2025-09-07",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "AV Set",
-        "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "showUrl": "https://berlinnewmediaweek.com/en/program-schedule/intelligent-kin",
+        "projects": [
+          "35f70fd9-1edd-80d1-832e-d481cadfd036"
+        ],
+        "coverUrl": "/images/shows/fractured-recall-bnmw-2025/cover.jpg",
+        "event": "Intelligent Kin · Berlin New Media Week 2025",
+        "curatedBy": "Harshini J. Karunaratne, Stav Skalidis, Marta Torres",
+        "lineup": "Felipe Infantino, Suuperpose (Babin x Maïm), Jamal Dilmen",
+        "duration": "45 min",
+        "tools": "TouchDesigner, Ableton Live",
+        "credits": "Photos: Ayca · Video: Isabelle Schmitz"
       }
     },
     {
       "id": "35c70fd9-1edd-8053-b6ac-faf58b9ffbfd",
       "title": "Panke",
-      "slug": "panke",
+      "slug": "panke-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "panke.gallery, Gerichtstraße 23/Hof 5, 13347 Berlin",
         "country": "Germany",
         "date": "2025-08-08",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "Live Set",
         "showUrl": "",
         "projects": [],
-        "coverUrl": null
+        "coverUrl": null,
+        "event": "Socrú",
+        "curatedBy": "Socrú",
+        "lineup": "Joao Argonauta, Aheich, ConorMusic25, Oren Sounds, Noisy Chilli, Supergross.ie",
+        "duration": "40 min",
+        "tools": "Ableton Live",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-8067-be5c-ff74601d93a5",
       "title": "Kukumu",
-      "slug": "kukumu",
+      "slug": "kukumu-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "Kukumu, Lübecker Str. 43, 10559 Berlin",
         "country": "Germany",
         "date": "2025-05-11",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "Live Set",
         "showUrl": "",
         "projects": [],
-        "coverUrl": null
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-8020-a258-e0a994e85554",
       "title": "AV Jam #2",
-      "slug": "av-jam-2",
+      "slug": "av-jam-2-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "MotionLab.Berlin, Bouchéstraße 12/Halle 20, 12435 Berlin",
         "country": "Germany",
         "date": "2025-03-28",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "AV Set",
         "showUrl": "",
         "projects": [],
-        "coverUrl": null
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-80fb-9fcc-d68f7e80765a",
       "title": "AV Jam #1",
-      "slug": "av-jam-1",
+      "slug": "av-jam-1-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "MotionLab.Berlin, Bouchéstraße 12/Halle 20, 12435 Berlin",
         "country": "Germany",
         "date": "2025-01-31",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Line Up",
         "showType": "VJ Set",
         "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "projects": [
+          "35f70fd9-1edd-80cb-b8f8-c442e15be398",
+          "35f70fd9-1edd-8003-bd97-e515ab2d68d5"
+        ],
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-802a-93b5-d4bf84db711e",
       "title": "Madame Claude #2",
-      "slug": "madame-claude-2",
+      "slug": "madame-claude-2025",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "Madame Claude, Lübbener Str. 19, 10997 Berlin",
         "country": "Germany",
         "date": "2025-02-15",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Support",
         "showType": "AV Set",
         "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "projects": [
+          "35f70fd9-1edd-80d1-a05b-dd0ab0931864"
+        ],
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     },
     {
       "id": "35c70fd9-1edd-8063-b342-c122a33c550c",
       "title": "Madame Claude #1",
-      "slug": "madame-claude-1",
+      "slug": "madame-claude-2024",
       "description": "",
       "bodyHtml": "",
       "properties": {
         "venueAddress": "Madame Claude, Lübbener Str. 19, 10997 Berlin",
         "country": "Germany",
         "date": "2024-04-06",
+        "dateEnd": null,
         "ticketLink": null,
         "city": "Berlin",
         "participants": "Support",
         "showType": "AV Set",
         "showUrl": "",
-        "projects": [],
-        "coverUrl": null
+        "projects": [
+          "35f70fd9-1edd-80d1-a05b-dd0ab0931864"
+        ],
+        "coverUrl": null,
+        "event": "",
+        "curatedBy": "",
+        "lineup": "",
+        "duration": "",
+        "tools": "",
+        "credits": ""
       }
     }
   ]

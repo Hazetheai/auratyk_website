@@ -8,6 +8,7 @@
     "start": "nuxt start --port 4000",
     "generate": "nuxt generate",
     "fetch-notion": "node scripts/fetch-notion.js",
+    "fetch-notion:preview": "NOTION_INCLUDE_DRAFTS=1 node scripts/fetch-notion.js",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",

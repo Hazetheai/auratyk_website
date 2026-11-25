@@ -1,0 +1,82 @@
+// Notion-rendered page bodies (projects and shows).
+// Henke-style layout: big landscape images, text in Notion columns.
+
+// Page covers (projects and shows): shown whole, never cropped, and kept short
+// enough that the title is visible on first load.
+.page-cover-wrapper {
+  width: 100%;
+}
+.page-cover {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(55vh, 600px);
+  margin: 0 auto;
+}
+
+.project__body,
+.show-detail__body {
+  // Text that isn't in columns keeps a readable line length.
+  > p,
+  > ul,
+  > ol,
+  > blockquote,
+  > pre,
+  > .callout,
+  > h2,
+  > h3 {
+    max-width: 68ch;
+  }
+
+  figure {
+    max-width: none;
+    width: 100%;
+  }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .notion-columns {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+    gap: var(--space-lg);
+    align-items: start;
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+  .notion-column > :first-child {
+    margin-top: 0;
+  }
+  .notion-column > :last-child {
+    margin-bottom: 0;
+  }
+  .notion-column figure {
+    margin: 0;
+  }
+
+  blockquote {
+    margin: var(--space-lg) 0;
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  pre {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md);
+    overflow-x: auto;
+    background: var(--color-bg-dark);
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 900px) {
+  .project__body .notion-columns,
+  .show-detail__body .notion-columns {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}

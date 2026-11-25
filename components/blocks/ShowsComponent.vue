@@ -29,7 +29,7 @@
             class="show-details__venue flex flex-column items-start text-component text-left"
           >
             <NuxtLink
-              v-if="show.slug && show.hasBody"
+              v-if="isPast && show.slug && show.hasBody"
               :to="`/shows/${show.slug}`"
               class="text-lg flex items-center gap-sm link"
               ><span class="text-sm">{{ showTypeIcon(show.showType) }}</span>
