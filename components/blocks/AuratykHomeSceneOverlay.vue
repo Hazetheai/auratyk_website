@@ -16,7 +16,7 @@
         >
           <nav class="main-menu padding-y-sm padding-right-md display@sm">
             <ul class="main-menu__list flex justify-between gap-sm">
-              <li v-show="$route.path !== '/'" class="text-sm padding-y-sm">
+              <li v-show="!isHome" class="text-sm padding-y-sm">
                 <NuxtLink v-slot="{ route, href }" to="/" event="" custom>
                   <a :href="href" @click.prevent="toggleMenu('close', route)">
                     Home
@@ -97,7 +97,7 @@
       <slot />
       <!--  -->
       <div class="col-1 col-2@sm"></div>
-      <FooterComponent v-if="$route.path !== '/'" />
+      <FooterComponent v-if="!isHome" />
     </div>
     <div
       class="app-buttons-left position-fixed flex flex-column justify-between z-index-fixed-element"
@@ -122,9 +122,7 @@
       </button> -->
     </div>
     <div
-      v-if="
-        ($store.state.menuOpen && $route.path !== '/') || $route.path === '/'
-      "
+      v-if="showPlayButton"
       class="play-button play-button--home z-index-overlay"
       :class="$store.state.isLoaded && 'play-button--animate'"
     >
@@ -168,7 +166,7 @@
               class="main-menu__list flex flex-column justify-between padding-top-md"
             >
               <li
-                v-show="$route.path !== '/'"
+                v-show="!isHome"
                 class="main-menu__list-item text-sm text-md@sm padding-y-xs padding-y-sm@xs"
               >
                 <NuxtLink v-slot="{ route, href }" to="/" event="" custom>
@@ -345,6 +343,16 @@ export default {
   components: { AuratykHomeScene, FooterComponent },
   data() {
     return { menuOpen: false, isPlaying: false, socials }
+  },
+  computed: {
+    isHome() {
+      return this.$route.path === '/'
+    },
+    // The homepage shows the film instead of the music, so the play button
+    // only appears in the open menu on other pages.
+    showPlayButton() {
+      return this.$store.state.menuOpen && !this.isHome
+    },
   },
   created() {
     if (typeof window !== 'undefined') {

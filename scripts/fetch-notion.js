@@ -308,6 +308,7 @@ async function fetchContentType(type, databaseId) {
           links: parseLinks(getPropertyValue(props, 'Links')),
           tags: getPropertyValue(props, 'Tags') || [],
           isExperiment: getPropertyValue(props, 'IsExperiment') || false,
+          section: getPropertyValue(props, 'Section') || null,
           collaborators: parseNewlineList(getPropertyValue(props, 'Collaborators')),
           press: getPropertyValue(props, 'Press') || false,
           pressCaption: getPropertyValue(props, 'PressCaption'),

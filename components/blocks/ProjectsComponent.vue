@@ -4,7 +4,11 @@
 
     <template v-if="projects.length">
       <!-- Projects with a cover and a written page: cards with image and teaser. -->
-      <ul v-if="featured.length" class="projects__featured">
+      <ul
+        v-if="featured.length"
+        class="projects__featured"
+        :class="{ 'projects__featured--lead': hasSections }"
+      >
         <li v-for="project in featured" :key="project.id">
           <nuxt-link :to="`/projects/${project.slug}`" class="project-card">
             <div class="project-card__media">
@@ -33,11 +37,15 @@
         </li>
       </ul>
 
-      <!-- Everything else: a compact list. -->
-      <div v-if="others.length" class="projects__more margin-top-xl">
-        <p v-if="featured.length" class="projects__more-label">More projects</p>
+      <!-- Everything else: compact lists, one per Notion "Section". -->
+      <div
+        v-for="group in groups"
+        :key="group.label"
+        class="projects__more margin-top-xl"
+      >
+        <p v-if="group.label" class="projects__more-label">{{ group.label }}</p>
         <ul class="projects__list">
-          <li v-for="project in others" :key="project.id">
+          <li v-for="project in group.items" :key="project.id">
             <nuxt-link
               :to="`/projects/${project.slug}`"
               class="projects__list-link"
@@ -64,6 +72,18 @@
 <script>
 import { isFeatured, yearSpan, byRecency } from '@/libs/project-utils'
 
+// Order of the list sections under the featured cards. Set per project with
+// the "Section" select in the Notion Projects DB. "Featured" projects become
+// the big cards at the top, newest first; the first one is shown full width.
+// Projects with no Section go in "More projects" at the end. If no project
+// has a Section (e.g. Experiments), the old automatic rule is used instead.
+const SECTION_ORDER = [
+  'Music',
+  'Installation',
+  'Visuals for other artists',
+  'Tools',
+]
+
 export default {
   props: {
     projects: { type: Array, required: true },
@@ -75,11 +95,39 @@ export default {
         .sort(byRecency)
         .map((p) => ({ ...p, year: yearSpan(p) }))
     },
-    featured() {
-      return this.sorted.filter(isFeatured)
+    hasSections() {
+      return this.sorted.some((p) => p.properties.section)
     },
-    others() {
-      return this.sorted.filter((p) => !isFeatured(p))
+    featured() {
+      return this.hasSections
+        ? this.sorted.filter((p) => p.properties.section === 'Featured')
+        : this.sorted.filter(isFeatured)
+    },
+    groups() {
+      if (!this.hasSections) {
+        const rest = this.sorted.filter((p) => !isFeatured(p))
+        return rest.length
+          ? [
+              {
+                label: this.featured.length ? 'More projects' : '',
+                items: rest,
+              },
+            ]
+          : []
+      }
+      const known = ['Featured', ...SECTION_ORDER]
+      return [
+        ...SECTION_ORDER.map((label) => ({
+          label,
+          items: this.sorted.filter((p) => p.properties.section === label),
+        })),
+        {
+          label: 'More projects',
+          items: this.sorted.filter(
+            (p) => !known.includes(p.properties.section)
+          ),
+        },
+      ].filter((g) => g.items.length)
     },
   },
 }
@@ -93,6 +141,13 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
   gap: var(--space-xl) var(--space-lg);
+}
+
+.projects__featured--lead > li:first-child {
+  grid-column: 1 / -1;
+  .project-card__media {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .project-card {

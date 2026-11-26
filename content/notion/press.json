@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-25T19:57:15.005Z",
+  "fetchedAt": "2026-11-26T22:36:55.485Z",
   "items": [
     {
       "id": "42370fd9-1edd-816f-879d-fe1091a31777",
@@ -76,7 +76,7 @@
     {
       "id": "42370fd9-1edd-815b-add2-f03c37332e80",
       "caption": "read:rites | cannibalize, The Space, Berlin New Media Week 2026",
-      "credit": "",
+      "credit": "Claudia Montesi",
       "alt": "Hands on Push and controllers",
       "hero": false,
       "order": 7,
@@ -88,7 +88,7 @@
     {
       "id": "42370fd9-1edd-813e-af01-c5d48384b5ac",
       "caption": "read:rites | cannibalize, B.L.O. Ateliers, Berlin, 2026",
-      "credit": "",
+      "credit": "Claudia Montesi",
       "alt": "Auratyk performing in front of a terminal projection",
       "hero": false,
       "order": 8,
@@ -100,7 +100,7 @@
     {
       "id": "42370fd9-1edd-8112-8248-ff2565a74381",
       "caption": "read:rites | cannibalize, B.L.O. Ateliers, Berlin, 2026",
-      "credit": "",
+      "credit": "Claudia Montesi",
       "alt": "Auratyk in front of a colourful datamoshed projection",
       "hero": false,
       "order": 9,
