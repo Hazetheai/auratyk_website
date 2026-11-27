@@ -9,94 +9,99 @@
     </div>
 
     <div class="main__content">
-      <h1 class="main__content-heading">{{ project.title }}</h1>
+      <header class="project-detail__header">
+        <h1 class="main__content-heading">{{ project.title }}</h1>
 
-      <div class="project-detail__meta margin-top-md">
-        <p v-if="year" class="text-md color-contrast-medium">
-          {{ year }}
+        <p
+          class="project-detail__kicker text-md color-contrast-medium margin-top-sm"
+        >
+          {{ [year, kind].filter(Boolean).join(' · ') }}
+          <span
+            v-if="project.properties.isExperiment"
+            class="badge-experiment margin-left-xs"
+            >Experiment</span
+          >
         </p>
-
-        <div
-          v-if="project.properties.isExperiment"
-          class="badge-experiment margin-top-xs"
+        <p
+          v-if="project.kickerNote"
+          class="text-sm color-contrast-medium margin-top-xxs"
         >
-          Experiment
-        </div>
-
-        <div
-          v-if="project.properties.tags?.length"
-          class="text-sm color-contrast-medium margin-top-xs"
-        >
-          {{ project.properties.tags.join(' · ') }}
-        </div>
-
-        <p v-if="project.properties.collaborators?.length" class="text-md margin-top-xs">
-          <strong>Collaboration with</strong> {{ project.properties.collaborators.join(', ') }}
+          {{ project.kickerNote }}
         </p>
 
         <p
           v-if="project.description"
-          class="text-md margin-top-sm color-contrast-medium"
+          class="project-detail__tagline text-md margin-top-sm color-contrast-high"
         >
           {{ project.description }}
         </p>
+      </header>
 
-        <div
-          v-if="project.properties.links?.length"
-          class="project__links margin-top-md"
-        >
-          <a
-            v-for="link in project.properties.links"
-            :key="link.platform"
-            :href="link.url"
-            target="_blank"
-            rel="noopener"
-            class="project__link link padding-right-sm"
-            >{{ link.platform }}</a
-          >
-        </div>
-
-        <div
-          v-for="group in showGroups"
-          :key="group.label"
-          class="project__shows margin-top-md"
-        >
-          <p class="project__shows-label">{{ group.label }}</p>
-          <ul class="project__shows-list">
-            <li v-for="show in group.shows" :key="show.slug">
-              <span class="project__shows-date">{{ show.date }}</span>
-              <span>
-                <NuxtLink
-                  v-if="show.linkable"
-                  :to="`/shows/${show.slug}`"
-                  class="link"
-                  >{{ show.title }}</NuxtLink
-                ><template v-else>{{ show.title }}</template
-                ><span v-if="show.city" class="color-contrast-medium"
-                  >, {{ show.city }}</span
-                >
-                <span v-if="show.upcoming" class="project__shows-badge"
-                  >Upcoming</span
-                >
-                <a
-                  v-if="show.upcoming && show.ticketLink"
-                  :href="show.ticketLink"
-                  target="_blank"
-                  rel="noopener"
-                  class="link"
-                  >Tickets</a
-                >
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
+      <!-- Body in its Notion order: media first, alternating with text. -->
       <div
         v-if="displayBody"
         class="project__body notion-sync-block margin-top-lg"
         v-html="displayBody"
       ></div>
+
+      <!-- Bottom: where it was shown, links, then Details and Contact from Notion. -->
+      <footer v-if="hasInfo" class="project__info margin-top-xl">
+        <div v-if="showGroups.length || links.length" class="project__info-col">
+          <div
+            v-for="group in showGroups"
+            :key="group.label"
+            class="project__shows"
+          >
+            <p class="project__info-label">{{ group.label }}</p>
+            <ul class="project__shows-list">
+              <li v-for="show in group.shows" :key="show.slug">
+                <span class="project__shows-date">{{ show.date }}</span>
+                <span>
+                  <NuxtLink
+                    v-if="show.linkable"
+                    :to="`/shows/${show.slug}`"
+                    class="link"
+                    >{{ show.title }}</NuxtLink
+                  ><template v-else>{{ show.title }}</template
+                  ><span v-if="show.city" class="color-contrast-medium"
+                    >, {{ show.city }}</span
+                  >
+                  <span v-if="show.upcoming" class="project__shows-badge"
+                    >Upcoming</span
+                  >
+                  <a
+                    v-if="show.upcoming && show.ticketLink"
+                    :href="show.ticketLink"
+                    target="_blank"
+                    rel="noopener"
+                    class="link"
+                    >Tickets</a
+                  >
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div v-if="links.length" class="project__links">
+            <p class="project__info-label">Links</p>
+            <a
+              v-for="link in links"
+              :key="link.platform"
+              :href="link.url"
+              target="_blank"
+              rel="noopener"
+              class="project__link link"
+              >{{ link.platform }} ↗</a
+            >
+          </div>
+        </div>
+
+        <div
+          v-if="project.infoHtml"
+          class="project__info-col project__details notion-sync-block"
+          v-html="project.infoHtml"
+        ></div>
+      </footer>
     </div>
   </section>
 </template>
@@ -119,6 +124,22 @@ export default {
     year() {
       return yearSpan(this.project)
     },
+    // What it is: the italic opening line in Notion, else the tags.
+    kind() {
+      return (
+        this.project.kicker || (this.project.properties.tags || []).join(' · ')
+      )
+    },
+    links() {
+      return this.project.properties.links || []
+    },
+    hasInfo() {
+      return !!(
+        this.showGroups.length ||
+        this.links.length ||
+        this.project.infoHtml
+      )
+    },
     displayBody() {
       const body = this.project.bodyHtml || ''
       const desc = this.project.description
@@ -135,7 +156,9 @@ export default {
       const shows = (showsData.items || [])
         .filter((s) => (s.properties?.projects || []).includes(this.project.id))
         .filter((s) => s.properties?.date)
-        .sort((a, b) => (dayjs(a.properties.date).isBefore(dayjs(b.properties.date)) ? -1 : 1))
+        .sort((a, b) =>
+          dayjs(a.properties.date).isBefore(dayjs(b.properties.date)) ? -1 : 1
+        )
       const groups = {}
       for (const s of shows) {
         const label = showKind(s.properties.showType)
@@ -144,7 +167,9 @@ export default {
           slug: s.slug,
           title: s.title,
           city: s.properties.city,
-          date: formatShowDate(s.properties.date, s.properties.dateEnd, { short: true }),
+          date: formatShowDate(s.properties.date, s.properties.dateEnd, {
+            short: true,
+          }),
           upcoming: !past,
           linkable: past && !!s.bodyHtml,
           ticketLink: s.properties.ticketLink,
@@ -160,7 +185,54 @@ export default {
 
 <!-- Body and cover styles: assets/scss/custom-style/_notion-body.scss -->
 <style lang="scss" scoped>
-.project__shows-label {
+.project-detail__tagline {
+  max-width: 60ch;
+}
+
+// Bottom block: shows and links on the left, Details and Contact on the right.
+.project__info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-contrast-lower);
+  @media (min-width: 56rem) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+}
+.project__info-col > * + * {
+  margin-top: var(--space-md);
+}
+.project__links {
+  .project__link {
+    display: inline-block;
+    margin-right: var(--space-md);
+  }
+}
+// Details and Contact come from Notion as a column list; stack it here.
+.project__details {
+  ::v-deep .notion-columns {
+    display: block;
+    margin: 0;
+  }
+  ::v-deep .notion-column + .notion-column {
+    margin-top: var(--space-md);
+  }
+  ::v-deep h3 {
+    font-size: 0.75rem;
+    font-family: inherit;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-contrast-medium);
+    margin: 0 0 var(--space-xxs);
+  }
+  ::v-deep ul {
+    margin: 0;
+  }
+}
+.project__info-label {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;

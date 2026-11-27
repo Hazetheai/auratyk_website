@@ -30,10 +30,6 @@
             <dt>Set</dt>
             <dd>{{ p.duration }}</dd>
           </div>
-          <div v-if="p.tools" class="show-facts__item">
-            <dt>Tools</dt>
-            <dd>{{ p.tools }}</dd>
-          </div>
           <div v-if="p.curatedBy" class="show-facts__item">
             <dt>{{ isPanel ? 'Moderated by' : 'Curated by' }}</dt>
             <dd>{{ p.curatedBy }}</dd>
@@ -51,17 +47,6 @@
                 class="show-facts__project link"
                 >{{ project.title }} →</NuxtLink
               >
-            </dd>
-          </div>
-          <div
-            v-if="lineup.length"
-            class="show-facts__item show-facts__item--wide"
-          >
-            <dt>{{ isPanel ? 'With' : 'Line-up' }}</dt>
-            <dd>
-              <ul class="show-facts__chips">
-                <li v-for="name in lineup" :key="name">{{ name }}</li>
-              </ul>
             </dd>
           </div>
         </dl>
@@ -155,12 +140,6 @@ export default {
       const city = (this.p.city || '').toLowerCase()
       return city && addr.includes(city)
     },
-    lineup() {
-      return (this.p.lineup || '')
-        .split(/,|\n/)
-        .map((s) => s.trim())
-        .filter(Boolean)
-    },
     relatedProjects() {
       const ids = this.p.projects || []
       if (!ids.length) return []
@@ -232,9 +211,6 @@ export default {
     margin: 0;
   }
 }
-.show-facts__item--wide {
-  grid-column: 1 / -1;
-}
 // Project titles are long; give them two tracks when there's room.
 @media (min-width: 40rem) {
   .show-facts__item--project {
@@ -244,20 +220,6 @@ export default {
 .show-facts__project {
   display: inline-block;
   margin-right: var(--space-sm);
-}
-.show-facts__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xxs) var(--space-xs);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  li {
-    padding: var(--space-xxxs) var(--space-xs);
-    border: 1px solid var(--color-contrast-lower);
-    border-radius: 999px;
-    font-size: 0.875em;
-  }
 }
 
 .show-detail__footnote {

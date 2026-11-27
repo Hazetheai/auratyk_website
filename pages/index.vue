@@ -1,19 +1,18 @@
 <template>
   <!--
     Homepage (HUD version, Nov 2026). Locked to one screen. Small readouts around the edges, like the screen of
-    the machine running the show. The point-cloud scene and a silent film of
-    read:rites take turns (first in at 5 s, then 15 s on / 15 s off); the film
-    toggle keeps it on. No music player on this page. ?static=1 skips the intro.
+    the machine running the show. A silent film of read:rites comes in as the
+    last step of the intro and then stays on. No music player on this page.
+    ?static=1 skips the intro (the film is then on straight away).
 
-    Intro (one GSAP timeline, about 3.5 s; replaced the old LoadingScreen):
+    Intro (one GSAP timeline, about 4.5 s; replaced the old LoadingScreen):
       the name slides in letter by letter, large, on black
       → it glides down to its place, bottom left, as the black opens like a
         screen switching on (a line across the middle, then top and bottom part)
       → viewfinder corners fly out to the edges
       → the readouts decode in, line by line
-      → the nav fades back in.
-    The film then scans in top to bottom along a thin accent line, and scans
-    out the same way.
+      → the nav fades back in
+      → the film scans in top to bottom along a thin accent line, and stays.
   -->
   <div class="hud">
     <div ref="curtain" class="hud__curtain" aria-hidden="true">
@@ -96,20 +95,6 @@
           </p>
         </div>
       </div>
-
-      <button
-        ref="toggle"
-        class="hud__toggle hud__block"
-        :aria-pressed="mode === 'on' ? 'true' : 'false'"
-        :title="
-          mode === 'on'
-            ? 'Film stays on. Click to go back to taking turns with the scene.'
-            : 'Film and scene take turns. Click to keep the film on.'
-        "
-        @click="toggle"
-      >
-        [ film: {{ mode }} ]
-      </button>
     </div>
 
     <HomeVideoBg ref="video" @time="time = $event" />
@@ -124,10 +109,8 @@ import projectsData from '@/content/notion/projects.json'
 import showsData from '@/content/notion/shows.json'
 
 const LEAD_SLUG = 'read-rites-cannibalize'
-// Seconds, counted from the start of the intro.
-const FIRST = 5
-const ON = 15
-const OFF = 15
+// Intro time (s) at which the film scans in: just after the nav is back.
+const FILM_AT = 3.2
 const SCRAMBLE_CHARS = '01/\\<>_-:.*#'
 
 export default {
@@ -151,7 +134,6 @@ export default {
       last: past[past.length - 1] || null,
       next: shows.find((s) => s.properties.date.slice(0, 10) >= today) || null,
       nextYear: new Date().getFullYear() + 1,
-      mode: 'auto', // 'auto' = takes turns with the scene; 'on' = stays on
       videoOn: false,
       time: { t: 0, d: 0 },
     }
@@ -177,13 +159,10 @@ export default {
     this.chrome = ['.header', '.app-buttons-left']
       .map((s) => document.querySelector(s))
       .filter(Boolean)
+    // the film's scan-in is the intro's last step (or immediate with no intro)
     this.playIntro()
-    // film comes in FIRST seconds after the intro starts (scaled with it)
-    if (!this.reducedMotion)
-      this.after(FIRST / (this.intro?.timeScale() || 1), this.filmOn)
   },
   beforeDestroy() {
-    clearTimeout(this.timer)
     this.intro?.kill()
     this.filmTl?.kill()
     this.$gsap.set(this.chrome, { clearProps: 'opacity,visibility' })
@@ -193,16 +172,8 @@ export default {
     // ---- intro -----------------------------------------------------------
     playIntro() {
       const gsap = this.$gsap
-      const {
-        title,
-        curtain,
-        curtainTop,
-        curtainBottom,
-        seam,
-        film,
-        status,
-        toggle,
-      } = this.$refs
+      const { title, curtain, curtainTop, curtainBottom, seam, film, status } =
+        this.$refs
       const corners = this.$refs.corners
       const letters = title.querySelectorAll('.hud__letter')
       const scr = [
@@ -216,6 +187,7 @@ export default {
 
       if (this.skipIntro) {
         gsap.set(curtain, { display: 'none' })
+        this.scanIn()
         return
       }
 
@@ -234,7 +206,7 @@ export default {
       })
       gsap.set(letters, { xPercent: -110 })
       gsap.set(lines, { autoAlpha: 0 })
-      gsap.set([toggle, ...this.chrome], { autoAlpha: 0 })
+      gsap.set(this.chrome, { autoAlpha: 0 })
       gsap.set(seam, { scaleX: 0, autoAlpha: 1 })
       gsap.set(corners, {
         autoAlpha: 0,
@@ -290,50 +262,27 @@ export default {
           2.1 + i * 0.045
         )
       })
-      tl.to(toggle, { autoAlpha: 1, duration: 0.4, ease: 'power1.out' }, 2.8)
-        .to(
-          this.chrome,
-          { autoAlpha: 1, duration: 0.6, ease: 'power1.out' },
-          2.9
-        )
+      tl.to(
+        this.chrome,
+        { autoAlpha: 1, duration: 0.6, ease: 'power1.out' },
+        2.9
+      )
         .add(() => gsap.set(this.chrome, { clearProps: 'opacity,visibility' }))
+        // last step: the film scans in, and stays
+        .add(() => this.scanIn(), FILM_AT)
     },
 
     // ---- film ------------------------------------------------------------
-    after(sec, fn) {
-      clearTimeout(this.timer)
-      this.timer = setTimeout(fn, sec * 1000)
-    },
-    filmOn() {
-      this.scanIn()
-      if (this.mode === 'auto') this.after(ON, this.filmOff)
-    },
-    filmOff() {
-      this.scanOut()
-      if (this.mode === 'auto' && !this.reducedMotion)
-        this.after(OFF, this.filmOn)
-    },
-    toggle() {
-      if (this.mode === 'auto') {
-        this.mode = 'on'
-        clearTimeout(this.timer)
-        if (!this.videoOn) this.scanIn()
-      } else {
-        // back to taking turns: finish a normal "on" stretch, then cycle
-        this.mode = 'auto'
-        if (this.reducedMotion) this.filmOff()
-        else this.after(ON, this.filmOff)
-      }
-    },
     // The film is wiped in from the top, behind a thin accent line, with a
-    // slight push-in; out the same way, so it reads like a screen refresh.
+    // slight push-in, so it reads like a screen refresh. It runs at the
+    // intro's speed (2.5x on repeat visits).
     scanIn() {
       if (this.videoOn) return
       this.videoOn = true
       const gsap = this.$gsap
       const { clip, scan } = this.$refs.video.$refs
       const video = clip.querySelector('video')
-      const d = this.reducedMotion ? 0 : 1.2
+      const d = this.skipIntro ? 0 : 1.2
       this.filmTl?.kill()
       this.$refs.video.play()
       this.filmTl = gsap
@@ -353,28 +302,7 @@ export default {
           { scale: 1, duration: d * 2.5, ease: 'power2.out' },
           0
         )
-    },
-    scanOut() {
-      if (!this.videoOn) return
-      this.videoOn = false
-      const gsap = this.$gsap
-      const { clip, scan } = this.$refs.video.$refs
-      const d = this.reducedMotion ? 0 : 1.1
-      this.filmTl?.kill()
-      this.filmTl = gsap
-        .timeline({ onComplete: () => this.$refs.video?.pause() })
-        .set(scan, { top: '0%', autoAlpha: d ? 1 : 0 })
-        .to(
-          clip,
-          {
-            clipPath: 'inset(100% 0% 0% 0%)',
-            duration: d,
-            ease: 'power2.inOut',
-          },
-          0
-        )
-        .to(scan, { top: '100%', duration: d, ease: 'power2.inOut' }, 0)
-        .to(scan, { autoAlpha: 0, duration: 0.25 }, d * 0.85)
+      if (this.intro) this.filmTl.timeScale(this.intro.timeScale())
     },
 
     // ---- formatting ------------------------------------------------------
@@ -549,7 +477,7 @@ export default {
   }
 }
 
-// ---- bottom: name above the status lines; film toggle on the right
+// ---- bottom: name above the status lines
 .hud__bottom {
   grid-row: 3;
   display: flex;
@@ -588,16 +516,5 @@ export default {
   flex-wrap: wrap;
   gap: 0 2ch;
   margin-top: var(--space-sm) !important;
-}
-.hud__toggle {
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  color: var(--color-accent);
-  text-transform: none;
-  &:hover {
-    color: var(--color-contrast-higher, #fff);
-  }
 }
 </style>

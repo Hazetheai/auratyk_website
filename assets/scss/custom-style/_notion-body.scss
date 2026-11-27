@@ -5,6 +5,8 @@
 // enough that the title is visible on first load.
 .page-cover-wrapper {
   width: 100%;
+  // starts below the fixed header, so its top isn't hidden behind the nav
+  padding-top: var(--header-height);
 }
 .page-cover {
   display: block;

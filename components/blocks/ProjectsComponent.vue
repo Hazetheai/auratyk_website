@@ -3,39 +3,18 @@
     <h1 class="main__content-heading margin-bottom-md">{{ title }}</h1>
 
     <template v-if="projects.length">
-      <!-- Projects with a cover and a written page: cards with image and teaser. -->
-      <ul
-        v-if="featured.length"
-        class="projects__featured"
-        :class="{ 'projects__featured--lead': hasSections }"
-      >
-        <li v-for="project in featured" :key="project.id">
-          <nuxt-link :to="`/projects/${project.slug}`" class="project-card">
-            <div class="project-card__media">
-              <img
-                :src="project.properties.coverUrl"
-                :alt="project.title"
-                loading="lazy"
-              />
-            </div>
-            <div class="project-card__text">
-              <p class="project-card__meta text-sm color-contrast-medium">
-                <span v-if="project.year">{{ project.year }}</span>
-                <span v-if="project.properties.tags?.length">{{
-                  project.properties.tags.join(' · ')
-                }}</span>
-              </p>
-              <h2 class="project-card__title text-xl">{{ project.title }}</h2>
-              <p
-                v-if="project.description"
-                class="project-card__teaser color-contrast-high"
-              >
-                {{ project.description }}
-              </p>
-            </div>
-          </nuxt-link>
-        </li>
-      </ul>
+      <!-- Featured projects: the newest one full width on top, the rest in
+           one row underneath that they share equally (1, 2 or 3 cards). -->
+      <template v-if="featured.length">
+        <div v-if="lead" class="projects__lead">
+          <ProjectCard :project="lead" />
+        </div>
+        <ul v-if="secondary.length" class="projects__featured">
+          <li v-for="project in secondary" :key="project.id">
+            <ProjectCard :project="project" />
+          </li>
+        </ul>
+      </template>
 
       <!-- Everything else: compact lists, one per Notion "Section". -->
       <div
@@ -50,6 +29,13 @@
               :to="`/projects/${project.slug}`"
               class="projects__list-link"
             >
+              <span class="projects__list-thumb" aria-hidden="true"
+                ><img
+                  v-if="project.properties.coverUrl"
+                  :src="project.properties.coverUrl"
+                  alt=""
+                  loading="lazy"
+              /></span>
               <span class="projects__list-title">{{ project.title }}</span>
               <span class="projects__list-tags text-sm color-contrast-medium">{{
                 (project.properties.tags || []).join(' · ')
@@ -71,6 +57,7 @@
 
 <script>
 import { isFeatured, yearSpan, byRecency } from '@/libs/project-utils'
+import ProjectCard from '@/components/blocks/ProjectCard.vue'
 
 // Order of the list sections under the featured cards. Set per project with
 // the "Section" select in the Notion Projects DB. "Featured" projects become
@@ -85,6 +72,7 @@ const SECTION_ORDER = [
 ]
 
 export default {
+  components: { ProjectCard },
   props: {
     projects: { type: Array, required: true },
     title: { type: String, default: 'Projects' },
@@ -102,6 +90,14 @@ export default {
       return this.hasSections
         ? this.sorted.filter((p) => p.properties.section === 'Featured')
         : this.sorted.filter(isFeatured)
+    },
+    // With Sections (the main /projects page) the newest Featured project is
+    // the lead; without (Experiments) all featured cards share rows.
+    lead() {
+      return this.hasSections ? this.featured[0] : null
+    },
+    secondary() {
+      return this.hasSections ? this.featured.slice(1) : this.featured
     },
     groups() {
       if (!this.hasSections) {
@@ -134,66 +130,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.projects__lead {
+  margin-bottom: var(--space-xl);
+  ::v-deep .project-card__media {
+    aspect-ratio: 16 / 9;
+  }
+}
+// Cards share the row equally; a lone card is centred, not left in a column
+// sized for three.
 .projects__featured {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
-  gap: var(--space-xl) var(--space-lg);
-}
-
-.projects__featured--lead > li:first-child {
-  grid-column: 1 / -1;
-  .project-card__media {
-    aspect-ratio: 16 / 9;
-  }
-}
-
-.project-card {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-.project-card__media {
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
-  background: var(--color-contrast-lower);
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-}
-.project-card:hover .project-card__media img,
-.project-card:focus-visible .project-card__media img {
-  transform: scale(1.03);
-}
-.project-card__text {
-  padding-top: var(--space-sm);
-}
-.project-card__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 var(--space-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.75rem;
-}
-.project-card__title {
-  margin: var(--space-xxs) 0 var(--space-xs);
-}
-.project-card:hover .project-card__title {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
-.project-card__teaser {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  justify-content: center;
+  gap: var(--space-xl) var(--space-lg);
+  > li {
+    flex: 1 1 22rem;
+    max-width: 100%;
+  }
+  > li:only-child {
+    max-width: 40rem;
+  }
 }
 
 .projects__more-label {
@@ -216,15 +175,34 @@ export default {
 }
 .projects__list-link {
   display: grid;
-  grid-template-columns: 1fr auto 6rem;
+  grid-template-columns: 4.5rem 1fr auto 6rem;
   gap: var(--space-sm);
-  align-items: baseline;
+  align-items: center;
   padding: var(--space-xs) 0;
   color: inherit;
   text-decoration: none;
   &:hover .projects__list-title {
     text-decoration: underline;
     text-underline-offset: 0.15em;
+  }
+  &:hover .projects__list-thumb img,
+  &:focus-visible .projects__list-thumb img {
+    opacity: 1;
+  }
+}
+// Small, a little dimmed until hover, so the titles still lead.
+.projects__list-thumb {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--color-contrast-lower);
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
   }
 }
 .projects__list-year {
@@ -233,7 +211,7 @@ export default {
 }
 @media (max-width: 40rem) {
   .projects__list-link {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 3.5rem 1fr auto;
   }
   .projects__list-tags {
     display: none;

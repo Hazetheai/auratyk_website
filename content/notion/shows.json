@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-26T22:36:55.084Z",
+  "fetchedAt": "2026-11-27T11:37:27.546Z",
   "items": [
     {
       "id": "42370fd9-1edd-8178-92e6-d9f7a79efc25",
@@ -23,9 +23,7 @@
         "coverUrl": null,
         "event": "Culture Crush live · Fusion Festival 2025",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "TouchDesigner",
         "credits": "",
         "press": true,
         "pressLabel": "Fusion Festival – live visuals for Culture Crush"
@@ -53,9 +51,7 @@
         "coverUrl": "/images/shows/ceangailte-unframe-2026/cover.jpg",
         "event": "Unframe Festival 2026 · shown at the same time as Culture Night in Cork",
         "curatedBy": "Unframe",
-        "lineup": "",
         "duration": "25 min loop",
-        "tools": "TouchDesigner, Ableton Live",
         "credits": "",
         "press": true,
         "pressLabel": "Unframe Festival, CANK, Berlin + Culture Night, Nano Nagle Place, Cork – Ceangailte (with David Mathúna)"
@@ -83,9 +79,7 @@
         "coverUrl": null,
         "event": "Culture Night 2026 · shown at the same time as Unframe Festival in Berlin",
         "curatedBy": "",
-        "lineup": "",
         "duration": "25 min loop",
-        "tools": "TouchDesigner, Ableton Live",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -113,9 +107,7 @@
         "coverUrl": "/images/shows/readrites-bnmw-2026/cover.jpg",
         "event": "Immersive Experience Network Huddle, hosted by Immersive Experience Network and 3AM:ENERGY · Berlin New Media Week 2026",
         "curatedBy": "",
-        "lineup": "Function Store",
         "duration": "45 min",
-        "tools": "TouchDesigner, Ableton Live",
         "credits": "Photos: Claudia Montesi, Isabelle Schmitz",
         "press": true,
         "pressLabel": "Berlin New Media Week, The Space – read:rites | cannibalize"
@@ -141,9 +133,7 @@
         "coverUrl": "/images/shows/panel-xposed-2026/cover.jpg",
         "event": "In Conversation: New Media & New Narratives in Queer Cinema · XPOSED Queer Film Festival Berlin 2026",
         "curatedBy": "Harshini J. Karunaratne",
-        "lineup": "sasha df (abstraqt), Rosh Zeeba, Benjamin Busch",
         "duration": "",
-        "tools": "",
         "credits": "Cover photo: Ayca",
         "press": false,
         "pressLabel": ""
@@ -171,9 +161,7 @@
         "coverUrl": "/images/shows/fractured-recall-48nk-2025/cover.jpg",
         "event": "VJ OpenLab · 48 Stunden Neukölln 2025",
         "curatedBy": "",
-        "lineup": "",
         "duration": "18 min",
-        "tools": "TouchDesigner, Ableton Live",
         "credits": "Photos: Lea Brugnoli",
         "press": false,
         "pressLabel": ""
@@ -201,9 +189,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -231,9 +217,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -261,9 +245,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -291,9 +273,7 @@
         "coverUrl": "https://www.dropbox.com/scl/fi/fnduu9sm8hbdg5u3f0g8l/Cork_Gaza.jpg?rlkey=djov4ebbsr81tj3503p6d9om0&st=3m2pjnhu&raw=1",
         "event": "Ceangailte at 48 Stunden Neukölln 2026",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": true,
         "pressLabel": "48 Stunden Neukölln, LiTE-HAUS – Ceangailte (with David Mathúna)"
@@ -321,9 +301,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": true,
         "pressLabel": "B.L.O. Ateliers, Media Drift × co:evolve – read:rites | cannibalize"
@@ -351,9 +329,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": true,
         "pressLabel": "XoK Blackout, Neue Zukunft – read:rites | cannibalize (premiere)"
@@ -381,9 +357,7 @@
         "coverUrl": "/images/shows/fractured-recall-bnmw-2025/cover.jpg",
         "event": "Intelligent Kin · Berlin New Media Week 2025",
         "curatedBy": "Harshini J. Karunaratne, Stav Skalidis, Marta Torres",
-        "lineup": "Felipe Infantino, Suuperpose (Babin x Maïm), Jamal Dilmen",
         "duration": "45 min",
-        "tools": "TouchDesigner, Ableton Live",
         "credits": "Photos: Ayca · Video: Isabelle Schmitz",
         "press": true,
         "pressLabel": "Berlin New Media Art Week, MaHalla – Fractured Re:Call"
@@ -409,9 +383,7 @@
         "coverUrl": null,
         "event": "Socrú",
         "curatedBy": "Socrú",
-        "lineup": "Joao Argonauta, Aheich, ConorMusic25, Oren Sounds, Noisy Chilli, Supergross.ie",
         "duration": "40 min",
-        "tools": "Ableton Live",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -437,9 +409,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -465,9 +435,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -496,9 +464,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -526,9 +492,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": false,
         "pressLabel": ""
@@ -556,9 +520,7 @@
         "coverUrl": null,
         "event": "",
         "curatedBy": "",
-        "lineup": "",
         "duration": "",
-        "tools": "",
         "credits": "",
         "press": false,
         "pressLabel": ""

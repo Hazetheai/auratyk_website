@@ -263,6 +263,48 @@ function parseRichTextLinks(props, name) {
     }))
 }
 
+// ---- project page structure -------------------------------------------
+const plainText = (rt = []) => rt.map((t) => t.plain_text).join('').trim()
+const HEADINGS = ['heading_1', 'heading_2', 'heading_3']
+const isInfoHeading = (b) =>
+  HEADINGS.includes(b?.type) && /^(details|contact)$/i.test(plainText(b[b.type].rich_text))
+
+// The info section starts at a "Details" (or "Contact") heading, either at the
+// top level or as the first block of a column in a column list.
+function startsInfo(block) {
+  if (isInfoHeading(block)) return true
+  if (block.type === 'column_list') {
+    return (block.children || []).some((col) => isInfoHeading((col.children || [])[0]))
+  }
+  return false
+}
+
+// A year or year range as a kicker segment: "2025", "2025–", "2024–2026".
+const YEAR_SEGMENT = /^\d{4}\s*([–-]\s*(\d{4})?)?$/
+
+function splitProjectBlocks(blocks) {
+  let body = [...blocks]
+  let kicker = null
+  let kickerNote = null
+  const first = body[0]
+  const rt = first?.type === 'paragraph' ? first.paragraph.rich_text || [] : []
+  if (rt.length && rt.every((t) => t.annotations?.italic || !t.plain_text.trim())) {
+    const [line, ...rest] = plainText(rt).split(/\n+/)
+    kicker =
+      line
+        .split(/\s*·\s*/)
+        .filter((seg) => seg && !YEAR_SEGMENT.test(seg))
+        .join(' · ') || null
+    // further lines of the same paragraph (e.g. "Premiered at …")
+    kickerNote = rest.join(' ').trim() || null
+    body = body.slice(1)
+  }
+  const i = body.findIndex(startsInfo)
+  const info = i === -1 ? [] : body.slice(i)
+  if (i !== -1) body = body.slice(0, i)
+  return { body, kicker, kickerNote, info }
+}
+
 async function fetchContentType(type, databaseId) {
   console.log(`Fetching ${type}...`)
   const items = await queryDatabase(databaseId)
@@ -273,7 +315,22 @@ async function fetchContentType(type, databaseId) {
     const slug = getPropertyValue(props, 'Slug')
     if (!slug) continue
 
-    const blocks = await fetchPageBlocks(item.id)
+    let blocks = await fetchPageBlocks(item.id)
+    // Projects: the opening italic line becomes the header's kicker and the
+    // Details/Contact section goes to the bottom of the page. The rest keeps
+    // its Notion order.
+    let kicker = null
+    let kickerNote = null
+    let infoHtml = null
+    if (type === 'projects') {
+      const split = splitProjectBlocks(blocks)
+      blocks = split.body
+      kicker = split.kicker
+      kickerNote = split.kickerNote
+      if (split.info.length) {
+        infoHtml = await downloadAndReplaceNotionImages(blocksToHtml(split.info))
+      }
+    }
     const bodyHtml = await downloadAndReplaceNotionImages(blocksToHtml(blocks))
 
     const entry = {
@@ -287,6 +344,11 @@ async function fetchContentType(type, databaseId) {
       description: getPropertyValue(props, 'Description'),
       bodyHtml,
       properties: {},
+    }
+    if (type === 'projects') {
+      entry.kicker = kicker
+      entry.kickerNote = kickerNote
+      entry.infoHtml = infoHtml
     }
 
     switch (type) {
@@ -330,9 +392,7 @@ async function fetchContentType(type, databaseId) {
           coverUrl: getCoverUrl(props, 'CoverImage'),
           event: getPropertyValue(props, 'Event'),
           curatedBy: getPropertyValue(props, 'CuratedBy'),
-          lineup: getPropertyValue(props, 'Lineup'),
           duration: getPropertyValue(props, 'Duration'),
-          tools: getPropertyValue(props, 'Tools'),
           credits: getPropertyValue(props, 'Credits'),
           press: getPropertyValue(props, 'Press') || false,
           pressLabel: getPropertyValue(props, 'PressLabel'),
